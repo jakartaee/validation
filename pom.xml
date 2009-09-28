@@ -88,8 +88,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:https://svn.jboss.org/repos/hibernate/beanvalidation/trunk/validation-api</connection>
-        <url>http://fisheye.jboss.org/browse/Hibernate/beanvalidation/trunk/validation-api</url>
+        <connection>scm:svn:https://svn.jboss.org/repos/hibernate/beanvalidation/api/trunk</connection>
+        <url>http://fisheye.jboss.org/browse/Hibernate/beanvalidation/api/trunk</url>
     </scm>
 
     <distributionManagement>
