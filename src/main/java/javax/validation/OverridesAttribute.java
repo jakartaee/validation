@@ -40,7 +40,7 @@ public @interface OverridesAttribute {
 
 	/**
 	 * Name of the Constraint attribute overridden.
-	 * Defaults to the name of the attribute hosting OverridesAttribute.
+	 * Defaults to the name of the attribute hosting <code>@OverridesAttribute</code>.
 	 *
 	 * @return name of constraint attribute overridden.
 	 */
@@ -60,7 +60,7 @@ public @interface OverridesAttribute {
 
 	/**
 	 * Defines several @OverridesAttribute annotations on the same element
-	 * @see OverridesAttribute
+	 * @see javax.validation.OverridesAttribute
 	 */
 	@Documented
 	@Target({ METHOD })

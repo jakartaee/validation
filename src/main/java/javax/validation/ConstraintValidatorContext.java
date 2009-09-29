@@ -27,9 +27,10 @@ package javax.validation;
  */
 public interface ConstraintValidatorContext {
 	/**
-	 * Disable the default error message and default ConstraintViolation object generation.
-	 * Useful to set a different error message or generate a ConstraintViolation based on
-	 * a different property
+	 * Disable the default error message and default <code>ConstraintViolation</code> object
+	 * generation.
+	 * Useful to set a different error message or generate a <code>ConstraintViolation</Code>
+	 * based on a different property
 	 */
 	void disableDefaultError();
 
@@ -47,19 +48,19 @@ public interface ConstraintValidatorContext {
 	 * the #addError method available in one of the
 	 * interfaces of the fluent API.
 	 * If another method is called after #addError() on
-	 * ErrorBuilder or any of its associated nested interfaces
-	 * an IllegalStateException is raised.
+	 * <code>ErrorBuilder</code> or any of its associated nested interfaces
+	 * an <code>IllegalStateException</code> is raised.
 	 * <p/>
 	 * If <code>isValid<code> returns <code>false</code>, a <code>ConstraintViolation</code>
-	 * object will be built per error including the default one unless
-	 * {@link #disableDefaultError()} has been called.
+	 * object will be built per error including the default one (unless
+	 * {@link #disableDefaultError()} has been called).
 	 * <p/>
 	 * <code>ConstraintViolation</code> objects generated from such a call
 	 * contain the same contextual information (root bean, path and so on) unless
 	 * the path has been overriden.
 	 * <p/>
 	 * To create a different error, a new error builder has to be retrieved from
-	 * ConstraintValidatorContext
+	 * <code>ConstraintValidatorContext</code>
 	 *
 	 * Here are a few usage examples:
 	 * <pre>
@@ -74,7 +75,7 @@ public interface ConstraintValidatorContext {
 	 *              .addSubNode( "street" )
 	 *              .addError();
 	 *
-	 * //create new error in the "addresses["home"].city.name subnode of the default
+	 * //create new error in the "addresses["home"].city.name" subnode of the default
 	 * // path the constraint is located on
 	 * context.buildErrorWithMessageTemplate( "this detail is wrong" )
 	 *              .addSubNode( "addresses" )
@@ -98,8 +99,8 @@ public interface ConstraintValidatorContext {
 	 * the #addError method available in one of the
 	 * interfaces of the fluent API.
 	 * If another method is called after #addError() on
-	 * ErrorBuilder or any of its associated objects
-	 * an IllegalStateException is raised.
+	 * <code>ErrorBuilder</code> or any of its associated objects
+	 * an <code>IllegalStateException</code> is raised.
 	 * 
 	 */
 	interface ErrorBuilder {
@@ -116,11 +117,11 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Add the new error report to be generated if the
-		 * constraint validator mark the value as invalid.
-		 * Methods of this ErrorBuilder instance and its nested
-		 * objects returns IllegalStateException from now on.
+		 * constraint validator marks the value as invalid.
+		 * Methods of this <code>ErrorBuilder</code> instance and its nested
+		 * objects returns <code>IllegalStateException</code> from now on.
 		 *
-		 * @return ConstraintValidatorContext instance the ErrorBuilder comes from 
+		 * @return the ConstraintValidatorContext instance the ErrorBuilder comes from
 		 */
 		ConstraintValidatorContext addError();
 
@@ -143,10 +144,10 @@ public interface ConstraintValidatorContext {
 
 			/**
 			 * Add the new error report to be generated if the
-			 * constraint validator mark the value as invalid.
-			 * Methods of the ErrorBuilder instance this object comes
+			 * constraint validator marks the value as invalid.
+			 * Methods of the <code>ErrorBuilder</code> instance this object comes
 			 * from and the error builder nested
-			 * objects returns IllegalStateException after this call.
+			 * objects returns <code>IllegalStateException</code> after this call.
 			 *
 			 * @return ConstraintValidatorContext instance the ErrorBuilder comes from
 			 */
@@ -160,7 +161,7 @@ public interface ConstraintValidatorContext {
 		interface NodeBuilderCustomizableContext {
 
 			/**
-			 * Mark the node as being in an Iterable or a Map
+			 * Mark the node as being in an <code>Iterable</code> or a <code>Map</code>
 			 * 
 			 * @return a builder representing iterable details
 			 */
@@ -180,9 +181,9 @@ public interface ConstraintValidatorContext {
 			/**
 			 * Add the new error report to be generated if the
 			 * constraint validator mark the value as invalid.
-			 * Methods of the ErrorBuilder instance this object comes
+			 * Methods of the <code>ErrorBuilder</code> instance this object comes
 			 * from and the error builder nested
-			 * objects returns IllegalStateException after this call.
+			 * objects returns <code>IllegalStateException</code> after this call.
 			 *
 			 * @return ConstraintValidatorContext instance the ErrorBuilder comes from
 			 */
@@ -191,14 +192,14 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Represent refinement choices for a node which is
-		 * in an Iterator or Map.
+		 * in an <code>Iterator<code> or <code>Map</code>.
 		 * If the iterator is an indexed collection or a map,
 		 * the index or the key should be set.
 		 */
 		interface NodeContextBuilder {
 			
 			/**
-			 * Define the key the object is into the Map
+			 * Define the key the object is into the <code>Map</code>
 			 *
 			 * @param key map key
 			 * @return a builder representing the current node
@@ -206,7 +207,7 @@ public interface ConstraintValidatorContext {
 			NodeBuilderDefinedContext atKey(Object key);
 
 			/**
-			 * Define the index the object is into the List or array
+			 * Define the index the object is into the <code>List</code> or array
 			 *
 			 * @param index index
 			 * @return a builder representing the current node
@@ -227,9 +228,9 @@ public interface ConstraintValidatorContext {
 			/**
 			 * Add the new error report to be generated if the
 			 * constraint validator mark the value as invalid.
-			 * Methods of the ErrorBuilder instance this object comes
+			 * Methods of the <code>ErrorBuilder</code> instance this object comes
 			 * from and the error builder nested
-			 * objects returns IllegalStateException after this call.
+			 * objects returns <code>IllegalStateException</code> after this call.
 			 *
 			 * @return ConstraintValidatorContext instance the ErrorBuilder comes from
 			 */
