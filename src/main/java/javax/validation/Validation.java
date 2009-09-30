@@ -35,11 +35,11 @@ import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ValidationProvider;
 
 /**
- * This class is the entry point for the Bean Validation framework. There are three ways
- * to bootstrap the framework:
+ * This class is the entry point for Bean Validation. There are three ways
+ * to bootstrap it:
  * <ul>
  * <li>
- * The easiest approach is to build the default ValidatorFactory.
+ * The easiest approach is to build the default <code>ValidatorFactory</code>.
  * <pre>{@code ValidatorFactory factory = Validation.buildDefaultValidatorFactory();}</pre>
  * In this case, the default validation provider resolver
  * will be used to locate available providers.
@@ -47,8 +47,8 @@ import javax.validation.spi.ValidationProvider;
  * <ul>
  * <li>if the XML configuration defines a provider, this provider is used</li>
  * <li>if the XML configuration does not define a provider or if no XML configuration
- * is present the first provider returned by the ValidationProviderResolver
- * isntance is used.</li>
+ * is present the first provider returned by the
+ * <code>ValidationProviderResolver</code> instance is used.</li>
  * </ul>
  * </li>
  * <li>
@@ -81,8 +81,8 @@ import javax.validation.spi.ValidationProvider;
  * Note:<br/>
  * <ul>
  * <li>
- * The ValidatorFactory object built by the bootstrap process should be cached
- * and shared amongst Validator consumers.
+ * The <code>ValidatorFactory</code> object built by the bootstrap process should be cached
+ * and shared amongst <code>Validator</code> consumers.
  * </li>
  * <li>
  * This class is thread-safe.
@@ -95,9 +95,8 @@ import javax.validation.spi.ValidationProvider;
 public class Validation {
 
 	/**
-	 * Build and return a ValidatorFactory instance based on the
-	 * default Bean Validation provider and following the
-	 * XML configuration.
+	 * Build and return a <code>ValidatorFactory</code> instance based on the
+	 * default Bean Validation provider and following the XML configuration.
 	 * <p/>
 	 * The provider list is resolved using the default validation provider resolver
 	 * logic.
@@ -147,8 +146,8 @@ public class Validation {
 	 * </pre>,
 	 * where <code>ACMEConfiguration</code> is the
 	 * <code>Configuration</code> sub interface uniquely identifying the
-	 * ACME Bean Validation provider. and ACMEProvider is the ValidationProvider
-	 * implementation of the ACME provider.
+	 * ACME Bean Validation provider. and <code>ACMEProvider</code> is the
+	 * <code>ValidationProvider</code> implementation of the ACME provider.
 	 *
 	 * @param providerType the <code>ValidationProvider</code> implementation type
 	 *

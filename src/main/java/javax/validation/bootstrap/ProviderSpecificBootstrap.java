@@ -23,36 +23,37 @@ import javax.validation.spi.ValidationProvider;
 
 /**
  * Defines the state used to bootstrap Bean Validation and
- * creates a provider specific Configuration <code>T</code>.
+ * creates a provider specific <code>Configuration</code>
+ * of type<code>T</code>.
  * <p/>
- * The specific Configuration is linked to the provider via the generic
- * parameter of the ValidationProvider implementation.
+ * The specific <code>Configuration</code> is linked to the provider via the generic
+ * parameter of the <code>ValidationProvider</code> implementation.
  * <p/>
  * The requested provider is the first provider instance assignable to
- * the requested provider type (known when ProviderSpecificBootstrap is built). 
+ * the requested provider type (known when <code>ProviderSpecificBootstrap</code> is built).
  * The list of providers evaluated is returned by {@link ValidationProviderResolver}.
- * If no ValidationProviderResolver is defined, the
- * default ValidationProviderResolver strategy is used.
+ * If no <code>ValidationProviderResolver</code> is defined, the
+ * default <code>ValidationProviderResolver</code> strategy is used.
  *
  * @author Emmanuel Bernard
  */
 public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 
 	/**
-	 * Optionally define the provider resolver implementation used.
-	 * If not defined, use the default ValidationProviderResolver
+	 * Optionally defines the provider resolver implementation used.
+	 * If not defined, use the default <code>ValidationProviderResolver</code>
 	 *
-	 * @param resolver ValidationProviderResolver implementation used
+	 * @param resolver <code>ValidationProviderResolver</code> implementation used
 	 *
 	 * @return <code>this</code> following the chaining method pattern
 	 */
 	public ProviderSpecificBootstrap<T> providerResolver(ValidationProviderResolver resolver);
 
 	/**
-	 * Determine the provider implementation suitable for T and delegate
-	 * the creation of this specific Configuration subclass to the provider.
+	 * Determines the provider implementation suitable for <code>T</code> and delegates
+	 * the creation of this specific <code>Configuration</code> subclass to the provider.
 	 *
-	 * @return a Configuration sub interface implementation
+	 * @return <code>Configuration</code> sub interface implementation
 	 * @throws javax.validation.ValidationException if the Configuration object cannot be built
 	 *                        this is generally due to an issue with the ValidationProviderResolver
 	 */

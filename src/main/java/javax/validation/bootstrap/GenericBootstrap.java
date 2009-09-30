@@ -22,7 +22,7 @@ import javax.validation.Configuration;
 
 /**
  * Defines the state used to bootstrap Bean Validation and
- * creates a provider agnostic Configuration.
+ * creates a provider agnostic <code>Configuration</code>.
  *
  * @author Emmanuel Bernard
  */
@@ -30,9 +30,9 @@ public interface GenericBootstrap {
 	/**
 	 * Defines the provider resolution strategy.
 	 * This resolver returns the list of providers evaluated
-	 * to build the Configuration
+	 * to build the <code>Configuration</code>
 	 * <p/>
-	 * If no resolver is defined, the default ValidationProviderResolver
+	 * If no resolver is defined, the default <code>ValidationProviderResolver</code>
 	 * implementation is used.
 	 *
 	 * @return <code>this</code> following the chaining method pattern
@@ -40,11 +40,12 @@ public interface GenericBootstrap {
 	GenericBootstrap providerResolver(ValidationProviderResolver resolver);
 
 	/**
-	 * Returns a generic Configuration implementation.
-	 * At this stage the provider used to build the ValidatorFactory is not defined.
+	 * Returns a generic <code>Configuration</code> implementation.
+	 * At this stage the provider used to build the <code>ValidatorFactory</code>
+	 * is not defined.
 	 * <p/>
-	 * The Configuration implementation is provided by the first provider returned
-	 * by the ValidationProviderResolver strategy.
+	 * The <code>Configuration</code> implementation is provided by the first provider
+	 * returned by the <code>ValidationProviderResolver</code> strategy.
 	 *
 	 * @return a Configuration implementation compliant with the bootstrap state
 	 * @throws javax.validation.ValidationException if the Configuration object cannot be built

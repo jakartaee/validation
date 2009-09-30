@@ -152,8 +152,9 @@ public interface Configuration<T extends Configuration<T>> {
 	T addProperty(String name, String value);
 
 	/**
-	 * Return an implementation of the MessageInterpolator interface following the
-	 * default MessageInterpolator defined in the specification:
+	 * Return an implementation of the <code>MessageInterpolator</code> interface
+	 * following the default <code>MessageInterpolator</code> defined in the
+	 * specification:
 	 * <ul>
 	 * <li>use the ValidationMessages resource bundle to load keys</li>
 	 * <li>use Locale.getDefault()</li>
@@ -164,8 +165,9 @@ public interface Configuration<T extends Configuration<T>> {
 	MessageInterpolator getDefaultMessageInterpolator();
 
 	/**
-	 * Return an implementation of the TraversableResolver interface following the
-	 * default TraversableResolver defined in the specification:
+	 * Return an implementation of the <code>TraversableResolver</code> interface
+	 * following the default <code>TraversableResolver</code> defined in the
+	 * specification:
 	 * <ul>
 	 * <li>if Java Persistence is available in the runtime environment, 
 	 * a property is considered reachable if Java Persistence considers
@@ -180,8 +182,9 @@ public interface Configuration<T extends Configuration<T>> {
 	TraversableResolver getDefaultTraversableResolver();
 
 	/**
-	 * Return an implementation of the ConstraintValidatorFactory interface following the
-	 * default ConstraintValidatorFactory defined in the specification:
+	 * Return an implementation of the <code>ConstraintValidatorFactory</code> interface
+	 * following the default <code>ConstraintValidatorFactory</code> defined in the
+	 * specification:
 	 * <ul>
 	 * <li>uses the public no-arg constructor of the <code>ConstraintValidator</code></li>
 	 * </ul>
@@ -191,7 +194,7 @@ public interface Configuration<T extends Configuration<T>> {
 	ConstraintValidatorFactory getDefaultConstraintValidatorFactory();
 
 	/**
-	 * Build a ValidatorFactory implementation.
+	 * Build a <code>ValidatorFactory</code> implementation.
 	 *
 	 * @return ValidatorFactory
 	 * @throws ValidationException if the ValidatorFactory cannot be built

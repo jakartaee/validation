@@ -35,10 +35,10 @@ import javax.validation.ValidatorFactory;
 public interface ValidationProvider<T extends Configuration<T>> {
 
 	/**
-	 * Returns a Configuration instance implementing <code>T</code>,
+	 * Returns a <code>Configuration</code> instance implementing <code>T</code>,
 	 * the <code>Configuration</code> subinterface.
-	 * The returned Configuration instance must use the current provider (<code>this</code>)
-	 * to build the ValidatorFactory instance.
+	 * The returned <code>Configuration</code> instance must use the current provider
+	 * (<code>this</code>) to build the <code>ValidatorFactory</code> instance.
 	 * <p/>
 	 *
 	 * @param state bootstrap state
@@ -48,13 +48,13 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	T createSpecializedConfiguration(BootstrapState state);
 
 	/**
-	 * Returns a Configuration instance. This instance is not bound to
+	 * Returns a <code>Configuration</code> instance. This instance is not bound to
 	 * use the current provider. The choice of provider follows the algorithm described
 	 * in {@link javax.validation.Configuration}
 	 * <p/>
-	 * The ValidationProviderResolver used by <code>Configuration</code>
+	 * The <code>ValidationProviderResolver</code> used by <code>Configuration</code>
 	 * is provided by <code>state</code>.
-	 * If null, the default ValidationProviderResolver is used.
+	 * If null, the default <code>ValidationProviderResolver</code> is used.
 	 *
 	 * @param state bootstrap state
 	 *
@@ -63,11 +63,11 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	Configuration<?> createGenericConfiguration(BootstrapState state);
 
 	/**
-	 * Build a ValidatorFactory using the current provider implementation. The
-	 * ValidatorFactory is assembled and follows the configuration passed
-	 * via ConfigurationState.
+	 * Build a <code>ValidatorFactory</code> using the current provider implementation.
+	 * The <code>ValidatorFactory</code> is assembled and follows the configuration passed
+	 * via <code>ConfigurationState</code>.
 	 * <p>
-	 * The returned ValidatorFactory is properly initialized and ready for use.
+	 * The returned <code>ValidatorFactory</code> is properly initialized and ready for use.
 	 * </p>
 	 *
 	 * @param configurationState the configuration descriptor
