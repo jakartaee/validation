@@ -27,8 +27,8 @@ package javax.validation;
  */
 public interface ConstraintValidatorContext {
 	/**
-	 * Disable the default <code>ConstraintViolation</code> object generation using the
-	 * declared message template.
+	 * Disable the default <code>ConstraintViolation</code> object generation (which
+	 * is using the message template declared on the constraint).
 	 * Useful to set a different violation message or generate a <code>ConstraintViolation</Code>
 	 * based on a different property.
 	 */
@@ -66,18 +66,18 @@ public interface ConstraintValidatorContext {
 	 * <pre>
 	 * {@code
 	 * // create new violation report with the default path the constraint is located on
-	 * context.buildConstraintViolationWithMessageTemplate( "way too long" )
+	 * context.buildConstraintViolationWithTemplate( "way too long" )
 	 *             .addConstraintViolation();
 	 *
 	 * // create new violation report in the "street" subnode of the default path
 	 * //the constraint is located on
-	 * context.buildConstraintViolationWithMessageTemplate( "way too long" )
+	 * context.buildConstraintViolationWithTemplate( "way too long" )
 	 *              .addNode( "street" )
 	 *              .addConstraintViolation();
 	 *
 	 * //create new violation report in the "addresses["home"].city.name" subnode
 	 * //of the default path the constraint is located on
-	 * context.buildConstraintViolationWithMessageTemplate( "this detail is wrong" )
+	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
 	 *              .addNode( "addresses" )
 	 *              .addNode( "country" )
 	 *                  .inIterable().atKey( "home" )
@@ -89,7 +89,7 @@ public interface ConstraintValidatorContext {
 	 * @param messageTemplate new uninterpolated constraint message.
 	 * @return Returns an constraint violation builder
 	 */
-	ConstraintViolationBuilder buildConstraintViolationWithMessageTemplate(String messageTemplate);
+	ConstraintViolationBuilder buildConstraintViolationWithTemplate(String messageTemplate);
 
 	/**
 	 * <code>ConstraintViolation</code> builder allowing to optionally associate
