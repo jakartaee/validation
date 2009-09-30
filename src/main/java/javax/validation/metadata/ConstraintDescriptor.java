@@ -26,7 +26,7 @@ import javax.validation.Payload;
 
 /**
  * Describes a single constraint and its composing constraints.
- * T is the constraint's annotation type.
+ * <code>T</code> is the constraint's annotation type.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
@@ -42,7 +42,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	T getAnnotation();
 
 	/**
-	 * The Set of groups the constraint is applied on.
+	 * The set of groups the constraint is applied on.
 	 * If the constraint declares no group, a set with only the <code>Default</code>
 	 * group is returned.
 	 *
@@ -51,14 +51,14 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Set<Class<?>> getGroups();
 
 	/**
-	 * The Set of payload the constraint hosts.
+	 * The set of payload the constraint hosts.
 	 *
 	 * @return payload classes hosted on the constraint or an empty set if none.
 	 */
 	Set<Class<? extends Payload>> getPayload();
 
 	/**
-	 * Immutable list of the constraint validation implementation classes.
+	 * List of the constraint validation implementation classes.
 	 *
 	 * @return list of the constraint validation implementation classes.
 	 */
@@ -88,7 +88,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Set<ConstraintDescriptor<?>> getComposingConstraints();
 
 	/**
-	 * @return true if the constraint is annotated with @ReportAsSingleViolation
+	 * @return true if the constraint is annotated with <code>@ReportAsSingleViolation</code>
 	 */
 	boolean isReportAsSingleViolation();
 }

@@ -61,7 +61,7 @@ public @interface Min {
 	long value();
 
 	/**
-	 * Defines several @Min annotations on the same element
+	 * Defines several <code>@Min</code> annotations on the same element
 	 * @see Min
 	 *
 	 * @author Emmanuel Bernard

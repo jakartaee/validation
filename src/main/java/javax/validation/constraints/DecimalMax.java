@@ -57,15 +57,15 @@ public @interface DecimalMax {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * The String representation of the max value according to the
-	 * BigDecimal string representation
+	 * The <code>String</code> representation of the max value according to the
+	 * <code>BigDecimal</code> string representation
 	 *
 	 * @return value the element must be lower or equal to
 	 */
 	String value();
 
 	/**
-	 * Defines several @DecimalMax annotations on the same element
+	 * Defines several <code>@DecimalMax</code> annotations on the same element
 	 *
 	 * @author Emmanuel Bernard
 	 * @see DecimalMax

@@ -46,7 +46,7 @@ public @interface Pattern {
 	String regexp();
 
 	/**
-	 * @return Array of <code>Flag</code> enumeration instances considered when resolving the regular expression.
+	 * @return Array of <code>Flag</code>s considered when resolving the regular expression.
 	 */
 	Flag[] flags() default {};
 
@@ -128,7 +128,7 @@ public @interface Pattern {
 	}
 
 	/**
-	 * Defines several @Pattern annotations on the same element
+	 * Defines several <code>@Pattern</code> annotations on the same element
 	 * @see Pattern
 	 *
 	 * @author Emmanuel Bernard

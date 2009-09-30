@@ -63,7 +63,7 @@ public @interface Digits {
 	int fraction();
 
 	/**
-	 * Defines several @Digits annotations on the same element
+	 * Defines several <code>@Digits</code> annotations on the same element
 	 * @see Digits
 	 *
 	 * @author Emmanuel Bernard

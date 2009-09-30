@@ -62,7 +62,7 @@ public @interface Size {
 	int max() default Integer.MAX_VALUE;
 
 	/**
-	 * Defines several @Size annotations on the same element
+	 * Defines several <code>@Size</code> annotations on the same element
 	 * @see Size
 	 *
 	 * @author Emmanuel Bernard

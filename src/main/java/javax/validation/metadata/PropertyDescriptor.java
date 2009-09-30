@@ -21,7 +21,7 @@ package javax.validation.metadata;
  * Describes a Java Bean property hosting validation constraints.
  *
  * Constraints placed on the attribute and the getter of a given property
- * are all referenced by this object.
+ * are all referenced.
  *
  * @author Emmanuel Bernard
  */

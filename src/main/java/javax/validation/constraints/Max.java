@@ -61,7 +61,7 @@ public @interface Max {
 	long value();
 
 	/**
-	 * Defines several @Max annotations on the same element
+	 * Defines several <code>@Max</code> annotations on the same element
 	 * @see Max
 	 *
 	 * @author Emmanuel Bernard

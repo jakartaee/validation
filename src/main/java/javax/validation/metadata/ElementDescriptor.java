@@ -40,9 +40,9 @@ public interface ElementDescriptor {
 
 	/**
 	 * Return all constraint descriptors for this element or an
-	 * empty Set if none are present.
+	 * empty <code>Set</code> if none are present.
 	 *
-	 * @return Set of constraint descriptors for this element
+	 * @return <code>Set</code> of constraint descriptors for this element
 	 */
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
 
@@ -50,9 +50,9 @@ public interface ElementDescriptor {
 	 * Return the list of matching constraints for a given set of groups for this element.
 	 *
 	 * This method respects group sequences and group inheritance (including
-	 * class-level Default group overriding) but does not return ConstraintDescriptors
-	 * in any particular order. Specifically, ordering of the group sequence is not
-	 * respected.
+	 * class-level <code>Default</code> group overriding) but does not return
+	 * <code>ConstraintDescriptor</code>s in any particular order.
+	 * Specifically, ordering of the group sequence is not respected.
 	 *
 	 * @param groups groups targeted
 	 * @return list of matching ConstraintDescriptors

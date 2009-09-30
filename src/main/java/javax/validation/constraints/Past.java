@@ -54,7 +54,7 @@ public @interface Past {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several @Past annotations on the same element
+	 * Defines several <code>@Past</code> annotations on the same element
 	 * @see Past
 	 *
 	 * @author Emmanuel Bernard

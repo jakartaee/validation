@@ -49,7 +49,7 @@ public @interface AssertFalse {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several @AssertFalse annotations on the same element
+	 * Defines several <code>@AssertFalse</code> annotations on the same element
 	 * @see javax.validation.constraints.AssertFalse
 	 *
 	 * @author Emmanuel Bernard

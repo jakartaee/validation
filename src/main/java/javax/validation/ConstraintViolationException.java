@@ -20,7 +20,7 @@ package javax.validation;
 import java.util.Set;
 
 /**
- * Report the result of constraint violations
+ * Reports the result of constraint violations
  *                                                    `
  * @author Emmanuel Bernard
  */
@@ -31,7 +31,7 @@ public class ConstraintViolationException extends ValidationException {
 	 * Creates a constraint violation report
 	 *
 	 * @param message error message
-	 * @param constraintViolations Set of ConstraintViolation
+	 * @param constraintViolations <code>Set</code> of <code>ConstraintViolation</code>
 	 */
 	public ConstraintViolationException(String message,
 										Set<ConstraintViolation<?>> constraintViolations) {
@@ -42,7 +42,7 @@ public class ConstraintViolationException extends ValidationException {
 	/**
 	 * Creates a constraint violation report
 	 *
-	 * @param constraintViolations Set of ConstraintViolation
+	 * @param constraintViolations <code>Set</code> of <code>ConstraintViolation</code>
 	 */
 	public ConstraintViolationException(Set<ConstraintViolation<?>> constraintViolations) {
 		super();
@@ -52,7 +52,7 @@ public class ConstraintViolationException extends ValidationException {
 	/**
 	 * Set of constraint violations reported during a validation
 	 *
-	 * @return Set of CosntraintViolation
+	 * @return <code>Set</code> of <code>ConstraintViolation</code>
 	 */
 	public Set<ConstraintViolation<?>> getConstraintViolations() {
 		return constraintViolations;

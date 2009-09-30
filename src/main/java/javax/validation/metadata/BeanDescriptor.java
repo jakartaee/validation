@@ -20,17 +20,17 @@ package javax.validation.metadata;
 import java.util.Set;
 
 /**
- * Describe a constrained Java Bean and the constraints associated to it.
+ * Describes a constrained Java Bean and the constraints associated to it.
  *
  * @author Emmanuel Bernard
  */
 public interface BeanDescriptor extends ElementDescriptor {
 	/**
-	 * Returns true if the bean involves validation:
+	 * Returns <code>true</code> if the bean involves validation:
 	 * <ul>
 	 * <li> a constraint is hosted on the bean itself </li>
-	 * <li> a constraint is hosted on one of the bean properties </li>
-	 * <li> or a bean property is marked for cascade (@Valid) </li>
+	 * <li> a constraint is hosted on one of the bean properties</li>
+	 * <li> or a bean property is marked for cascade (<code>@Valid</code>)</li>
 	 * </ul>
 	 *
 	 * @return <code>true</code> if the bean involves validation, <code>false</code> otherwise.
@@ -42,7 +42,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Return <code>null</code> if the property does not exist or has no
 	 * constraint nor is marked as cascaded (see {@link #getConstrainedProperties()} )
 	 * <p/>
-	 * The returned object (and associated objects including ConstraintDescriptors)
+	 * The returned object (and associated objects including <code>ConstraintDescriptor</code>s)
 	 * are immutable.
 	 *
 	 * @param propertyName property evaluated
@@ -54,8 +54,9 @@ public interface BeanDescriptor extends ElementDescriptor {
 	PropertyDescriptor getConstraintsForProperty(String propertyName);
 
 	/**
-	 * @return the property descriptors having at least one constraint defined or which are marked
-	 *         as cascaded (@Valid) or an empty set.
+	 * Returns a set of property descriptors having at least one constraint defined
+	 * or marked as cascaded (<code>@Valid<c/ode>). If not property matches,
+	 * an empty set is returned.
 	 */
 	Set<PropertyDescriptor> getConstrainedProperties();
 }

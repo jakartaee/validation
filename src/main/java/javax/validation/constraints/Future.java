@@ -54,7 +54,7 @@ public @interface Future {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several @Future annotations on the same element
+	 * Defines several <code>@Future</code> annotations on the same element
 	 * @see Future
 	 *
 	 * @author Emmanuel Bernard

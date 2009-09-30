@@ -57,14 +57,14 @@ public @interface DecimalMin {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * The String representation of the min value according to the
-	 * BigDecimal string representation
+	 * The <code>String</code> representation of the min value according to the
+	 * <code>BigDecimal</code> string representation
 	 * @return value the element must be higher or equal to
 	 */
 	String value();
 
 	/**
-	 * Defines several @DecimalMin annotations on the same element
+	 * Defines several <code>@DecimalMin</code> annotations on the same element
 	 * @see DecimalMin
 	 *
 	 * @author Emmanuel Bernard

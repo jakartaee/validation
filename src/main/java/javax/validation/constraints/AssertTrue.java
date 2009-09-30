@@ -46,7 +46,7 @@ public @interface AssertTrue {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several @AssertTrue annotations on the same element
+	 * Defines several <code>@AssertTrue</code> annotations on the same element
 	 * @see AssertTrue
 	 *
 	 * @author Emmanuel Bernard
