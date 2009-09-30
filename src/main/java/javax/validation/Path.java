@@ -18,11 +18,12 @@
 package javax.validation;
 
 /**
- * Represent a navigation path from an object to another.
- * Each path element is represented by a Node.
+ * Represent the navigation path from an object to another
+ * in an object graph.
+ * Each path element is represented by a <code>Node</code>.
  *
  * The path corresponds to the succession of nodes
- * in the order they are returned by the Iterator
+ * in the order they are returned by the <code>Iterator</code>
  *
  * @author Emmanuel Bernard
  */
@@ -33,15 +34,17 @@ public interface Path extends Iterable<Path.Node> {
 	 */
 	interface Node {
 		/**
-		 * @return Property name the node represents
-		 * or null if the leaf node and representing an entity
-		 * (in particular the node representing the root object
-		 * has its name null)
+		 * Property name the node represents
+		 * or null if representing an entity on the leaf node
+		 * (in particular the node in a <code>Path</code> representing
+		 * the root object has its name null).
+		 * 
+		 * @return property name the node represents
 		 */
 		String getName();
 
 		/**
-		 * @return True if the node represents an object contained in an Iterable
+		 * @return true if the node represents an object contained in an Iterable
 		 * or in a Map.
 		 */
 		boolean isInIterable();

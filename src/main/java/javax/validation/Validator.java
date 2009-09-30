@@ -28,11 +28,11 @@ import javax.validation.metadata.BeanDescriptor;
  */
 public interface Validator {
 	/**
-	 * Validates all constraints on object.
+	 * Validates all constraints on <code>object</code>.
 	 *
 	 * @param object object to validate
-	 * @param groups groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param groups group or list of groups targeted for validation
+	 *               (default to {@link javax.validation.groups.Default})
 	 *
 	 * @return constraint violations or an empty Set if none
 	 *
@@ -44,19 +44,19 @@ public interface Validator {
 	<T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups);
 
 	/**
-	 * Validates all constraints placed on the property named <code>propertyName</code>
-	 * of <code>object</code>
+	 * Validates all constraints placed on the property of <code>object</code>
+	 * named <code>propertyName</code>.
 	 *
 	 * @param object object to validate
 	 * @param propertyName property to validate (ie field and getter constraints)
-	 * @param groups groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param groups group or list of groups targeted for validation
+	 *               (default to {@link javax.validation.groups.Default})
 	 *
 	 * @return constraint violations or an empty Set if none
 	 *
-	 * @throws IllegalArgumentException if object is null, if propertyName null, empty
-	 *                                  or not a valid object property
-	 *                                  or if null is passed to the varargs groups
+	 * @throws IllegalArgumentException if <code>object</code> is null,
+	 *            if <code>propertyName</code> null, empty or not a valid object property
+	 *            or if null is passed to the varargs groups
 	 * @throws ValidationException	  if a non recoverable error happens
 	 *                                  during the validation process
 	 */
@@ -66,7 +66,7 @@ public interface Validator {
 
 	/**
 	 * Validates all constraints placed on the property named <code>propertyName</code>
-	 * would the property value be <code>value</code>
+	 * of the class <code>beanType</code> would the property value be <code>value</code>
 	 * <p/>
 	 * <code>ConstraintViolation</code> objects return null for
 	 * {@link ConstraintViolation#getRootBean()} and {@link ConstraintViolation#getLeafBean()}
@@ -74,14 +74,14 @@ public interface Validator {
 	 * @param beanType the bean type
 	 * @param propertyName property to validate
 	 * @param value property value to validate
-	 * @param groups groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param groups group or list of groups targeted for validation
+	 *               (default to {@link javax.validation.groups.Default})
 	 *
 	 * @return constraint violations or an empty Set if none
 	 *
-	 * @throws IllegalArgumentException if beanType is null, if propertyName null, empty
-	 *                                  or not a valid object property
-	 *                                  or if null is passed to the varargs groups
+	 * @throws IllegalArgumentException if <code>beanType</code> is null,
+	 *            if <code>propertyName</code> null, empty or not a valid object property
+	 *            or if null is passed to the varargs groups
 	 * @throws ValidationException	  if a non recoverable error happens
 	 *                                  during the validation process
 	 */
@@ -91,9 +91,9 @@ public interface Validator {
 												  Class<?>... groups);
 
 	/**
-	 * Return the descriptor object describing bean constraints
-	 * The returned object (and associated objects including ConstraintDescriptors)
-	 * are immutable.
+	 * Return the descriptor object describing bean constraints.
+	 * The returned object (and associated objects including
+	 * <code>ConstraintDescriptor<code>s) are immutable.
 	 *
 	 * @param clazz class type evaluated
 	 *
@@ -107,17 +107,16 @@ public interface Validator {
 	BeanDescriptor getConstraintsForClass(Class<?> clazz);
 
 	/**
-	 * Return an object of the specified type to allow access to the
-	 * provider-specific API.  If the Bean Validation provider
-	 * implementation does not support the specified class, the
-	 * ValidationException is thrown.
+	 * Return an instance of the specified type allowing access to
+	 * provider-specific APIs.  If the Bean Validation provider
+	 * implementation does not support the specified class,
+	 * <code>ValidationException</code> is thrown.
 	 *
 	 * @param type the class of the object to be returned.
 	 *
 	 * @return an instance of the specified class
 	 *
-	 * @throws ValidationException if the provider does not
-	 *                             support the call.
+	 * @throws ValidationException if the provider does not support the call.
 	 */
 	public <T> T unwrap(Class<T> type);
 }

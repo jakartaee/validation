@@ -20,8 +20,8 @@ package javax.validation;
 import javax.validation.metadata.ConstraintDescriptor;
 
 /**
- * Describe a constraint violation. This object describe the error context as
- * well as the message describing the violation.
+ * Describe a constraint violation. This object exposes the constraint
+ * violation context as well as the message describing the violation.
  *
  * @author Emmanuel Bernard
  */

@@ -21,7 +21,7 @@ import java.util.Locale;
 import javax.validation.metadata.ConstraintDescriptor;
 
 /**
- * Interpolate a given constraint error message.
+ * Interpolate a given constraint violation message.
  * Implementations should be as tolerant as possible on syntax errors.
  *
  * @author Emmanuel Bernard
@@ -29,8 +29,7 @@ import javax.validation.metadata.ConstraintDescriptor;
  */
 public interface MessageInterpolator {
 	/**
-	 * Interpolate the message from the constraint parameters and the actual validated
-	 * object.
+	 * Interpolate the message template based on the contraint validation context.
 	 * The locale is defaulted according to the <code>MessageInterpolator</code>
 	 * implementation. See the implementation documentation for more detail.
 	 *
@@ -42,9 +41,8 @@ public interface MessageInterpolator {
 	String interpolate(String messageTemplate, Context context);
 
 	/**
-	 * Interpolate the message from the constraint parameters and the actual validated
-	 * object.
-	 * The Locale used is provided as a parameter.
+	 * Interpolate the message template based on the contraint validation context.
+	 * The <code>Locale</code> used is provided as a parameter.
 	 *
 	 * @param messageTemplate The message to interpolate.
 	 * @param context contextual information related to the interpolation
