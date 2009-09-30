@@ -21,31 +21,45 @@ package javax.validation;
  * Represents the context that is used to create <code>Validator</code>
  * instances.
  *
- * A client may use methods of the ValidatorContext returned through
- * <code>usingContext</code> of <code>ValidatorFactory</code> to customize
- * the context (for instance establish different message interpolators or
- * traversable resolvers) used to create <code>Validator</code> instances.
+ * A client may use methods of the <code>ValidatorContext</code> returned by
+ * <code>ValidatorFactory#usingContext</code> to customize
+ * the context used to create <code>Validator</code> instances
+ * (for instance establish different message interpolators or
+ * traversable resolvers).
  * 
  * @author Emmanuel Bernard
  */
 public interface ValidatorContext {
 	/**
-	 * Defines the message interpolator implementation used by the Validator.
+	 * Defines the message interpolator implementation used by the
+	 * <code>Validator</code>.
 	 * If not set or if null is passed as a parameter,
-	 * the message interpolator of the ValidatorFactory is used.
+	 * the message interpolator of the <code>ValidatorFactory</code>
+	 * is used.
 	 *
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext messageInterpolator(MessageInterpolator messageInterpolator);
 
 	/**
-	 * Defines the traversable resolver implementation used by the Validator.
+	 * Defines the traversable resolver implementation used by the
+	 * <code>Validator</code>.
 	 * If not set or if null is passed as a parameter,
-	 * the traversable resolver of the ValidatorFactory is used.
+	 * the traversable resolver of the <code>ValidatorFactory</code> is used.
 	 *
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext traversableResolver(TraversableResolver traversableResolver);
+
+	/**
+	 * Defines the constraint validator factory implementation used by the
+	 * <code>Validator</code>.
+	 * If not set or if null is passed as a parameter,
+	 * the constraint validator factory of the <code>ValidatorFactory</code> is used.
+	 *
+	 * @return self following the chaining method pattern
+	 */
+	ValidatorContext constraintValidatorFactory(ConstraintValidatorFactory factory);
 
 	/**
 	 * @return an initialized <code>Validator</code> instance respecting the defined state.

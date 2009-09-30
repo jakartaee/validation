@@ -26,17 +26,19 @@ package javax.validation;
  */
 public interface ValidatorFactory {
 	/**
-	 * @return Returns an initialized <code>Validator</code> instance using the default
-	 * factory instances for message interpolator and traversable resolver.
+	 * Returns an initialized <code>Validator</code> instance using the
+	 * factory defaults for message interpolator, traversable resolver
+	 * and constraint validator factory.
 	 * <p>
 	 * Validator instances can be pooled and shared by the implementation.
 	 * </p>
+	 * @return an initialized <code>Validator</code> instance
 	 */
 	Validator getValidator();
 
 	/**
-	 * Define the validator context and return a <code>Validator</code> compliant
-	 * with this state.
+	 * Defines a new validator context and return a <code>Validator</code>
+	 * compliant this new context.
 	 *
 	 * @return a <code>ValidatorContext</code>.
 	 */
@@ -71,12 +73,15 @@ public interface ValidatorFactory {
 	ConstraintValidatorFactory getConstraintValidatorFactory();
 
 	/**
-	 * Return an object of the specified type to allow access to the
-	 * provider-specific API.  If the Bean Validation provider
-	 * implementation does not support the specified class, the
-	 * ValidationException is thrown. 
+	 * Return an instance of the specified type allowing access to
+	 * provider-specific APIs. If the Bean Validation provider
+	 * implementation does not support the specified class,
+	 * <code>ValidationException,</code> is thrown.
+	 *
 	 * @param type  the class of the object to be returned.
-	 * @return an instance of the specified class
+	 *
+	 * @return an instance of the specified class.
+	 *
 	 * @throws ValidationException if the provider does not
 	 *         support the call.
 	 */
