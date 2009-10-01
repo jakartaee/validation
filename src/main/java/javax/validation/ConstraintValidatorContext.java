@@ -221,7 +221,7 @@ public interface ConstraintValidatorContext {
 			 * Add a node to the path the <code>ConstraintViolation</code> will be associated to.
 			 *
 			 * <code>name</code> describes a single property. In particular,
-	         * dot (.) are not allowed.
+	         * dot (.) is not allowed.
 			 *
 			 * @param name property <code>name</code>
 			 * @return a builder representing this node
