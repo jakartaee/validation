@@ -1,7 +1,7 @@
-// $Id: ElementDescriptor.java 17590 2009-09-30 18:11:35Z epbernard $
+// $Id$
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2008, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *

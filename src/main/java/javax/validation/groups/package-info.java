@@ -1,7 +1,7 @@
-// $Id: JPATraversableResolver.java 17544 2009-09-25 13:10:20Z hardy.ferentschik $
+// $Id$
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2008, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
