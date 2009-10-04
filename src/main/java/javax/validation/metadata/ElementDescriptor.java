@@ -49,20 +49,6 @@ public interface ElementDescriptor {
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
 
 	/**
-	 * Return the list of matching constraints for a given set of groups for this element.
-	 *
-	 * This method respects group sequences and group inheritance (including
-	 * class-level <code>Default</code> group overriding) but does not return
-	 * <code>ConstraintDescriptor</code>s in any particular order.
-	 * Specifically, ordering of the group sequence is not respected.
-	 *
-	 * @param groups groups targeted
-	 * @return list of matching ConstraintDescriptors
-	 * @deprecated {@link #findConstraints()}
-	 */
-	Set<ConstraintDescriptor<?>> getUnorderedConstraintDescriptorsMatchingGroups(Class<?>... groups);
-
-	/**
 	 * Find constraints and potentially restricting to certain criteria.
 	 *
 	 * @return ConstraintFinder object.
