@@ -29,8 +29,8 @@ import java.lang.annotation.ElementType;
 public interface ElementDescriptor {
 
 	/**
-	 * @return <code>true</code> if at least one constraint declaration is
-	 *         present on the element, <code>false</code> otherwise.
+	 * Return <code>true</code> if at least one constraint declaration is present
+	 * for this element in the class hierarchy, <code>false</code> otherwise.
 	 */
 	boolean hasConstraints();
 
@@ -40,8 +40,8 @@ public interface ElementDescriptor {
 	Class<?> getElementClass();
 
 	/**
-	 * Return all constraint descriptors for this element or an
-	 * empty <code>Set</code> if none are present.
+	 * Return all constraint descriptors for this element in the class hierarchy
+	 * or an empty <code>Set</code> if none are present.
 	 *
 	 * @return <code>Set</code> of constraint descriptors for this element
 	 */
