@@ -44,22 +44,21 @@ public interface ElementDescriptor {
 	 * empty <code>Set</code> if none are present.
 	 *
 	 * @return <code>Set</code> of constraint descriptors for this element
-	 * @deprecated {@link #findConstraints()}
 	 */
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
 
 	/**
-	 * Find constraints and potentially restricting to certain criteria.
+	 * Find constraints and potentially restricts them to certain criteria.
 	 *
 	 * @return ConstraintFinder object.
 	 */
 	ConstraintFinder findConstraints();
 
 	/**
-	 * Declare restrictions on how constraints are retrieved.
+	 * Declare restrictions on retrived constraints.
 	 * Restrictions are cumulative.
 	 *
-	 * A ConstraintFinder is not thread-safe. The set of matching
+	 * A <code>ConstraintFinder</code> is not thread-safe. The set of matching
 	 * <code>ConstraintDescriptor</code> is.
 	 */
 	interface ConstraintFinder {
@@ -73,7 +72,7 @@ public interface ElementDescriptor {
 		 *
 		 * @param groups groups targeted
 		 *
-		 * @return <code>this</code> using the chaining method pattern
+		 * @return <code>this</code> following the chaining method pattern
 		 */
 		ConstraintFinder unorderedAndMatchingGroups(Class<?>... groups);
 
@@ -83,7 +82,7 @@ public interface ElementDescriptor {
 		 * Defaults to <code>Scope.HIERARCHY</code>
 		 *
 		 * @param scope exected scope
-		 * @return <code>this</code> using the chaining method pattern
+		 * @return <code>this</code> following the chaining method pattern
 		 */
 		ConstraintFinder lookingAt(Scope scope);
 
@@ -97,7 +96,7 @@ public interface ElementDescriptor {
 		 * or getters (<code>METHOD</code>)
 		 *
 		 * @param types targeted types
-		 * @return <code>this</code> using the chaining method pattern
+		 * @return <code>this</code> following the chaining method pattern
 		 */
 		ConstraintFinder declaredOn(ElementType... types);
 
