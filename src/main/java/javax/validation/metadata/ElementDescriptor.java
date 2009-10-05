@@ -117,7 +117,5 @@ public interface ElementDescriptor {
 		 * @return is there any constraint
 		 */
 		boolean hasConstraints();
-
 	}
-
 }

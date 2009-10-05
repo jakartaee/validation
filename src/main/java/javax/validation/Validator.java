@@ -95,7 +95,7 @@ public interface Validator {
 	 * The returned object (and associated objects including
 	 * <code>ConstraintDescriptor<code>s) are immutable.
 	 *
-	 * @param clazz class type evaluated
+	 * @param clazz class or interface type evaluated
 	 *
 	 * @return the bean descriptor for the specified class.
 	 *
