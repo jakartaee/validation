@@ -55,7 +55,7 @@ public interface ElementDescriptor {
 	ConstraintFinder findConstraints();
 
 	/**
-	 * Declare restrictions on retrived constraints.
+	 * Declare restrictions on retrieved constraints.
 	 * Restrictions are cumulative.
 	 *
 	 * A <code>ConstraintFinder</code> is not thread-safe. The set of matching
