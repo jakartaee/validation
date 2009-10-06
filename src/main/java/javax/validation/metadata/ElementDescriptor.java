@@ -81,7 +81,7 @@ public interface ElementDescriptor {
 		 *
 		 * Defaults to <code>Scope.HIERARCHY</code>
 		 *
-		 * @param scope exected scope
+		 * @param scope expected scope
 		 * @return <code>this</code> following the chaining method pattern
 		 */
 		ConstraintFinder lookingAt(Scope scope);
