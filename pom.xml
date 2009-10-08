@@ -4,7 +4,7 @@
 
     <groupId>javax.validation</groupId>
     <artifactId>validation-api</artifactId>
-    <version>1.0.0.GA</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Bean Validation API</name>
 
@@ -88,8 +88,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:https://svn.jboss.org/repos/hibernate/beanvalidation/api/tags/v1_0_0_GA</connection>
-        <url>http://fisheye.jboss.org/browse/Hibernate/beanvalidation/api/tags/v1_0_0_GA</url>
+        <connection>scm:svn:https://svn.jboss.org/repos/hibernate/beanvalidation/api/trunk</connection>
+        <url>http://fisheye.jboss.org/browse/Hibernate/beanvalidation/api/trunk</url>
     </scm>
 
     <distributionManagement>
