@@ -15,21 +15,24 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package javax.validation;
-
-import java.lang.annotation.Target;
-import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+package javax.validation.metadata;
 
 /**
- * A constraint annotation hosting this annotation
- * will return the composed annotation error report if any of the composing annotations
- * fail. The error reports of each individual composing constraint is ignored.
+ * Scope looked at when discovering constraints
  *
  * @author Emmanuel Bernard
  */
-@Target({ ANNOTATION_TYPE })
-@Retention(RUNTIME)
-public @interface ReportAsSingleViolation {
+public enum Scope {
+	/**
+	 * Look for constraints declared on the current class element
+	 * and ignore inheritance and elements with the same name in
+	 * the class hierarchy.
+	 */
+	LOCAL_ELEMENT,
+
+	/**
+	 * Look for constraints declared on all elements of the class hierarchy
+	 * with the same name.
+	 */
+	HIERARCHY
 }
