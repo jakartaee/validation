@@ -195,7 +195,7 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Represent refinement choices for a node which is
-		 * in an <code>Iterator<code> or <code>Map</code>.
+		 * in an <code>Iterator</code> or <code>Map</code>.
 		 * If the iterator is an indexed collection or a map,
 		 * the index or the key should be set.
 		 */
