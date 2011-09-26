@@ -319,7 +319,7 @@ public class Validation {
 						URL url = providerDefinitions.nextElement();
 						InputStream stream = url.openStream();
 						try {
-							BufferedReader reader = new BufferedReader( new InputStreamReader( stream ), 100 );
+							BufferedReader reader = new BufferedReader( new InputStreamReader( stream, "UTF-8" ), 100 );
 							name = reader.readLine();
 							while ( name != null ) {
 								name = name.trim();
