@@ -17,6 +17,7 @@
 */
 package javax.validation;
 
+import java.lang.reflect.Method;
 import java.util.Set;
 import javax.validation.metadata.BeanDescriptor;
 
@@ -89,6 +90,65 @@ public interface Validator {
 												  String propertyName,
 												  Object value,
 												  Class<?>... groups);
+
+	/**
+	 * Validates a given parameter of a given method.
+	 *
+	 * @param <T> The type hosting the invoked method.
+	 * @param object The object on which the given method was invoked.
+	 * @param method The invoked method for which the given parameter shall be
+	 * validated.
+	 * @param parameterValue The value provided by the caller for the given method.
+	 * @param parameterIndex The index of the parameter to be validated within the given
+	 * method's parameter array.
+	 * @param groups A - potentially empty - number of validation groups for which
+	 * the validation shall be performed. The @link {@link javax.validation.groups.Default}
+	 * group will be validated if no group is given.
+	 *
+	 * @return A set with the constraint violations caused by this validation.
+	 *         Will be empty, of no error occurs, but never null.
+	 */
+	<T> Set<MethodConstraintViolation<T>> validateParameter(T object,
+															Method method,
+															Object parameterValue,
+															int parameterIndex,
+															Class<?>... groups);
+
+	/**
+	 * Validates all parameters of a given method.
+	 *
+	 * @param <T> The type hosting the invoked method.
+	 * @param object The object on which the given method was invoked.
+	 * @param method The invoked method for which the given parameter shall be
+	 * validated.
+	 * @param parameterValues The values provided by the caller for the given method's
+	 * parameters.
+	 * @param groups A - potentially empty - number of validation groups for which
+	 * the validation shall be performed. The @link {@link javax.validation.groups.Default}
+	 * group will be validated if no group is given.
+	 *
+	 * @return A set with the constraint violations caused by this validation.
+	 *         Will be empty, of no error occurs, but never null.
+	 */
+	<T> Set<MethodConstraintViolation<T>> validateAllParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
+
+	/**
+	 * Validates the return value of a given method.
+	 *
+	 * @param <T> The type hosting the invoked method.
+	 * @param object The object on which the given method was invoked.
+	 * @param method The invoked method for which the given return value shall be
+	 * validated.
+	 * @param returnValue The value returned by the invoked method.
+	 * @param groups A - potentially empty - number of validation groups for which
+	 * the validation shall be performed. The @link {@link javax.validation.groups.Default}
+	 * group will be validated if no group is given.
+	 *
+	 * @return A set with the constraint violations caused by this validation.
+	 *         Will be empty, of no error occurs, but never null.
+	 */
+	<T> Set<MethodConstraintViolation<T>> validateReturnValue(T object,
+															  Method method, Object returnValue, Class<?>... groups);
 
 	/**
 	 * Return the descriptor object describing bean constraints.
