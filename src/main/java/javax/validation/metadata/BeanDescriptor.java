@@ -1,6 +1,6 @@
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2009-2011, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
@@ -22,6 +22,8 @@ import java.util.Set;
  * Describes a constrained Java Bean and the constraints associated to it.
  *
  * @author Emmanuel Bernard
+ * @author Gunnar Morling
+ *
  */
 public interface BeanDescriptor extends ElementDescriptor {
 	/**
@@ -29,7 +31,9 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * <ul>
 	 * <li> a constraint is hosted on the bean itself </li>
 	 * <li> a constraint is hosted on one of the bean properties</li>
-	 * <li> or a bean property is marked for cascade ({@code @Valid})</li>
+	 * <li> a bean property is marked for cascaded validation ({@code @Valid})</li>
+	 * <li> a constraint is hosted on the return value or a method parameter of one of the bean's methods</li>
+	 * <li> or the return value or a method parameter of one of the bean's methods is marked for cascaded validation ({@code @Valid})</li>
 	 * </ul>
 	 *
 	 * @return {@code true} if the bean involves validation, {@code false} otherwise.
@@ -61,4 +65,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *         constraint properties the empty set is returned
 	 */
 	Set<PropertyDescriptor> getConstrainedProperties();
+	
+	MethodDescriptor getConstraintsForMethod(String methodName, Class<?>... parameterTypes);
+	
+	Set<MethodDescriptor> getConstrainedMethods();
 }
