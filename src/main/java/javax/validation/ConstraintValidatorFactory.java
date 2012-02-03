@@ -34,4 +34,12 @@ public interface ConstraintValidatorFactory {
 	 * @return A constraint validator instance of the specified class.
 	 */
 	<T extends ConstraintValidator<?,?>> T getInstance(Class<T> key);
+
+	/**
+     * Signal ConstraintValidatorFactory that the instance is no longer
+     * being used by the Bean Validation provider
+	 *
+     * @param instance validator being released
+     */
+    void releaseInstance(ConstraintValidator<?,?> instance);
 }
