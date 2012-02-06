@@ -86,4 +86,14 @@ public interface ValidatorFactory {
 	 *         support the call.
 	 */
 	public <T> T unwrap(Class<T> type);
+
+	/**
+	 * Close the <code>ValidatorFactory</code> instance.
+	 *
+	 * Execution of
+	 * - methods of this <code>ValidatorFactory</code> instance
+	 * - <code>Validator</code> instances created by this <code>ValidatorFactory</code> instance
+	 * are not allowed after the <code>ValidatorFactory</code> instance is closed.
+	 */
+	public void close();
 }
