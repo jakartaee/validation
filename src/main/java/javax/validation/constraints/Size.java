@@ -31,7 +31,7 @@ import javax.validation.Payload;
  *
  * Supported types are:
  * <ul>
- * <li><code>String</code> (string length is evaludated)</li>
+ * <li><code>String</code> (string length is evaluated)</li>
  * <li><code>Collection</code> (collection size is evaluated)</li>
  * <li><code>Map</code> (map size is evaluated)</li>
  * <li>Array (array length is evaluated)</li>

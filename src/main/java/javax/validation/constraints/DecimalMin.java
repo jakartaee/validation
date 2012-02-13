@@ -28,7 +28,7 @@ import javax.validation.Payload;
 
 /**
  * The annotated element must be a number whose value must be higher or
- * equal to the specificed minimum.
+ * equal to the specified minimum.
  * <p/>
  * Supported types are:
  * <ul>

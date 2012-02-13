@@ -17,9 +17,8 @@
 */
 package javax.validation.bootstrap;
 
-import javax.validation.ValidationProviderResolver;
 import javax.validation.Configuration;
-import javax.validation.spi.ValidationProvider;
+import javax.validation.ValidationProviderResolver;
 
 /**
  * Defines the state used to bootstrap Bean Validation and
@@ -54,8 +53,9 @@ public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 	 * the creation of this specific <code>Configuration</code> subclass to the provider.
 	 *
 	 * @return <code>Configuration</code> sub interface implementation
+	 *
 	 * @throws javax.validation.ValidationException if the Configuration object cannot be built
-	 *                        this is generally due to an issue with the ValidationProviderResolver
+	 * this is generally due to an issue with the ValidationProviderResolver
 	 */
 	public T configure();
 }

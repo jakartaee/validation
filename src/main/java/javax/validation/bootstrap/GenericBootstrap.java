@@ -35,6 +35,7 @@ public interface GenericBootstrap {
 	 * If no resolver is defined, the default <code>ValidationProviderResolver</code>
 	 * implementation is used.
 	 *
+	 * @param resolver the {@code ValidationProviderResolver} to use for bootstrapping
 	 * @return <code>this</code> following the chaining method pattern
 	 */
 	GenericBootstrap providerResolver(ValidationProviderResolver resolver);

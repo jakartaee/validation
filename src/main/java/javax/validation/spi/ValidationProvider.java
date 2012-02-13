@@ -36,7 +36,7 @@ public interface ValidationProvider<T extends Configuration<T>> {
 
 	/**
 	 * Returns a <code>Configuration</code> instance implementing <code>T</code>,
-	 * the <code>Configuration</code> subinterface.
+	 * the <code>Configuration</code> sub-interface.
 	 * The returned <code>Configuration</code> instance must use the current provider
 	 * (<code>this</code>) to build the <code>ValidatorFactory</code> instance.
 	 * <p/>
@@ -72,7 +72,7 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	 *
 	 * @param configurationState the configuration descriptor
 	 *
-	 * @return the instanciated ValidatorFactory
+	 * @return the instantiated ValidatorFactory
 	 * @throws javax.validation.ValidationException if the ValidatorFactory cannot be built
 	 */
 	ValidatorFactory buildValidatorFactory(ConfigurationState configurationState);

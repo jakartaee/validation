@@ -56,6 +56,9 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Returns a set of property descriptors having at least one constraint defined
 	 * or marked as cascaded ({@code @Valid}). If not property matches,
 	 * an empty set is returned.
+	 *
+	 * @return Returns the set of {@code PropertyDescriptor}s for the constraint properties. If there are no
+	 *         constraint properties the empty set is returned
 	 */
 	Set<PropertyDescriptor> getConstrainedProperties();
 }
