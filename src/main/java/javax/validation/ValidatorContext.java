@@ -18,24 +18,26 @@
 package javax.validation;
 
 /**
- * Represents the context that is used to create <code>Validator</code>
+ * Represents the context that is used to create {@code Validator}
  * instances.
  *
- * A client may use methods of the <code>ValidatorContext</code> returned by
- * <code>ValidatorFactory#usingContext</code> to customize
- * the context used to create <code>Validator</code> instances
+ * A client may use methods of the {@code ValidatorContext} returned by
+ * {@code ValidatorFactory#usingContext} to customize
+ * the context used to create {@code Validator} instances
  * (for instance establish different message interpolators or
  * traversable resolvers).
- * 
+ *
  * @author Emmanuel Bernard
  */
 public interface ValidatorContext {
 	/**
 	 * Defines the message interpolator implementation used by the
-	 * <code>Validator</code>.
-	 * If not set or if null is passed as a parameter,
-	 * the message interpolator of the <code>ValidatorFactory</code>
+	 * {@code Validator}.
+	 * If not set or if {@code null} is passed as a parameter,
+	 * the message interpolator of the {@code ValidatorFactory}
 	 * is used.
+	 *
+	 * @param messageInterpolator the {@code MessageInterpolator} used by the {@code Validator}
 	 *
 	 * @return self following the chaining method pattern
 	 */
@@ -43,9 +45,11 @@ public interface ValidatorContext {
 
 	/**
 	 * Defines the traversable resolver implementation used by the
-	 * <code>Validator</code>.
-	 * If not set or if null is passed as a parameter,
-	 * the traversable resolver of the <code>ValidatorFactory</code> is used.
+	 * {@code Validator}.
+	 * If not set or if {@code null} is passed as a parameter,
+	 * the traversable resolver of the {@code ValidatorFactory} is used.
+	 *
+	 * @param traversableResolver the {@code TraversableResolver} used by the {@code Validator}
 	 *
 	 * @return self following the chaining method pattern
 	 */
@@ -53,9 +57,11 @@ public interface ValidatorContext {
 
 	/**
 	 * Defines the constraint validator factory implementation used by the
-	 * <code>Validator</code>.
-	 * If not set or if null is passed as a parameter,
-	 * the constraint validator factory of the <code>ValidatorFactory</code> is used.
+	 * {@code Validator}.
+	 * If not set or if {@code null} is passed as a parameter,
+	 * the constraint validator factory of the {@code ValidatorFactory} is used.
+	 *
+	 * @param factory the {@code ConstraintValidatorFactory} used by the {@code Validator}
 	 *
 	 * @return self following the chaining method pattern
 	 */
@@ -63,7 +69,7 @@ public interface ValidatorContext {
 
 	/**
 	 * @return an initialized <code>Validator</code> instance respecting the defined state.
-	 * Validator instances can be pooled and shared by the implementation.
+	 *         Validator instances can be pooled and shared by the implementation.
 	 */
 	Validator getValidator();
 }

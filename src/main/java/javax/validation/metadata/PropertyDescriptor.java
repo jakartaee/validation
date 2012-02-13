@@ -27,13 +27,13 @@ package javax.validation.metadata;
  */
 public interface PropertyDescriptor extends ElementDescriptor {
 	/**
-	 * Is the property marked by the <code>@Valid</code> annotation.
-	 * @return <code>true</code> if the annotation is present, <code>false</code> otherwise.
+	 * Is the property marked by the {@code @Valid} annotation.
+	 * @return {@code true} if the annotation is present, {@code false} otherwise.
 	 */
 	boolean isCascaded();
 
 	/**
-	 * Name of the property acording to the Java Bean specification.
+	 * Name of the property according to the Java Bean specification.
 	 * @return property name.
 	 */
 	String getPropertyName();

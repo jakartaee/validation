@@ -31,7 +31,7 @@ import javax.validation.Payload;
  * The regular expression follows the Java regular expression conventions
  * see {@link java.util.regex.Pattern}.
  *
- * Accepts String. <code>null</code> elements are considered valid.
+ * Accepts String. {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */

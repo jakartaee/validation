@@ -122,7 +122,7 @@ public class Validation {
 	 * ValidatorFactory factory = configuration.buildValidatorFactory();
 	 * </pre>
 	 * The provider can be specified in the XML configuration. If the XML
-	 * configuration does not exsist or if no provider is specified,
+	 * configuration does not exist or if no provider is specified,
 	 * the first available provider will be returned.
 	 *
 	 * @return instance building a generic <code>Configuration</code>
@@ -349,10 +349,10 @@ public class Validation {
 					throw new ValidationException( "Unable to load Bean Validation provider " + name, e );
 				}
 				catch ( IllegalAccessException e ) {
-					throw new ValidationException( "Unable to instanciate Bean Validation provider" + name, e );
+					throw new ValidationException( "Unable to instantiate Bean Validation provider" + name, e );
 				}
 				catch ( InstantiationException e ) {
-					throw new ValidationException( "Unable to instanciate Bean Validation provider" + name, e );
+					throw new ValidationException( "Unable to instantiate Bean Validation provider" + name, e );
 				}
 
 				synchronized ( providersPerClassloader ) {

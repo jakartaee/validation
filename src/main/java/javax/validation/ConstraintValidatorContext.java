@@ -35,7 +35,7 @@ public interface ConstraintValidatorContext {
 	void disableDefaultConstraintViolation();
 
 	/**
-	 * @return the current uninterpolated default message.
+	 * @return the current un-interpolated default message.
 	 */
 	String getDefaultConstraintMessageTemplate();
 
@@ -57,7 +57,7 @@ public interface ConstraintValidatorContext {
 	 * <p/>
 	 * <code>ConstraintViolation</code> objects generated from such a call
 	 * contain the same contextual information (root bean, path and so on) unless
-	 * the path has been overriden.
+	 * the path has been overridden.
 	 * <p/>
 	 * To create a different <code>ConstraintViolation</code>, a new constraint violation builder
 	 * has to be retrieved from <code>ConstraintValidatorContext</code>
@@ -86,7 +86,7 @@ public interface ConstraintValidatorContext {
 	 * }
 	 * </pre>
 	 *
-	 * @param messageTemplate new uninterpolated constraint message.
+	 * @param messageTemplate new un-interpolated constraint message.
 	 * @return Returns an constraint violation builder
 	 */
 	ConstraintViolationBuilder buildConstraintViolationWithTemplate(String messageTemplate);

@@ -29,8 +29,8 @@ import java.lang.annotation.ElementType;
 public interface ElementDescriptor {
 
 	/**
-	 * Return <code>true</code> if at least one constraint declaration is present
-	 * for this element in the class hierarchy, <code>false</code> otherwise.
+	 * @return Return {@code true} if at least one constraint declaration is present
+	 * for this element in the class hierarchy, {@code false} otherwise.
 	 */
 	boolean hasConstraints();
 
