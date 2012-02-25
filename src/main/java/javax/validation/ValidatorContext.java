@@ -28,6 +28,7 @@ package javax.validation;
  * traversable resolvers).
  *
  * @author Emmanuel Bernard
+ * @author Gunnar Morling
  */
 public interface ValidatorContext {
 	/**
@@ -66,6 +67,17 @@ public interface ValidatorContext {
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext constraintValidatorFactory(ConstraintValidatorFactory factory);
+
+	/**
+	 * Defines the parameter name provider implementation used by the
+	 * <code>Validator</code>. If not set or if null is passed as a parameter,
+	 * the parameter name provider of the <code>ValidatorFactory</code> is used.
+	 *
+	 * @param parameterNameProvider Parameter name provider implementation.
+	 *
+	 * @return self following the chaining method pattern
+	 */
+	ValidatorContext parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
 	/**
 	 * @return an initialized <code>Validator</code> instance respecting the defined state.

@@ -53,6 +53,7 @@ import java.io.InputStream;
  * Implementations are not meant to be thread-safe.
  *
  * @author Emmanuel Bernard
+ * @author Gunnar Morling
  */
 public interface Configuration<T extends Configuration<T>> {
 
@@ -97,11 +98,23 @@ public interface Configuration<T extends Configuration<T>> {
 	 * If null is passed, the default constraint validator factory is used
 	 * (defined in XML or the specification default).
 	 *
-	 * @param constraintValidatorFactory constraint factory inmplementation.
+	 * @param constraintValidatorFactory constraint factory implementation.
 	 *
 	 * @return <code>this</code> following the chaining method pattern.
 	 */
 	T constraintValidatorFactory(ConstraintValidatorFactory constraintValidatorFactory);
+
+	/**
+	 * Defines the parameter name provider. Has priority over the configuration
+	 * based provider.
+	 * If null is passed, the default parameter name provider is used
+	 * (defined in XML or the specification default).
+	 *
+	 * @param parameterNameProvider Parameter name provider implementation.
+	 *
+	 * @return <code>this</code> following the chaining method pattern.
+	 */
+	T parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
 	/**
 	 * Add a stream describing constraint mapping in the Bean Validation
@@ -114,6 +127,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @param stream XML mapping stream.
 	 *
 	 * @return <code>this</code> following the chaining method pattern.
+	 *
 	 * @throws IllegalArgumentException if <code>stream</code> is null
 	 */
 	T addMapping(InputStream stream);
@@ -144,6 +158,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 *
 	 * @param name property name.
 	 * @param value property value.
+	 *
 	 * @return <code>this</code> following the chaining method pattern.
 	 *
 	 * @throws IllegalArgumentException if <code>name</code> is null
@@ -168,7 +183,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * following the default <code>TraversableResolver</code> defined in the
 	 * specification:
 	 * <ul>
-	 * <li>if Java Persistence is available in the runtime environment, 
+	 * <li>if Java Persistence is available in the runtime environment,
 	 * a property is considered reachable if Java Persistence considers
 	 * the property as loaded</li>
 	 * <li>if Java Persistence is not available in the runtime environment,
@@ -193,6 +208,21 @@ public interface Configuration<T extends Configuration<T>> {
 	ConstraintValidatorFactory getDefaultConstraintValidatorFactory();
 
 	/**
+	 * Return an implementation of the <code>ParameterNameProvider</code>
+	 * interface following the default <code>ParameterNameProvider</code>
+	 * defined in the specification:
+	 * <ul>
+	 * <li>returns names in the form <code>arg&lt;PARAMETER_INDEX&gt;</code>
+	 * where <code>PARAMETER_INDEX</code> starts at 0 for the first parameter,
+	 * e.g. <code>arg0</code>, <code>arg1</code> etc.</code></li>
+	 * </ul>
+	 *
+	 * @return default ParameterNameProvider implementation compliant with
+	 *         the specification
+	 */
+	ParameterNameProvider getDefaultParameterNameProvider();
+
+	/**
 	 * Return information stored in the configuration source (typically the <i>META-INF/validation.xml</i>
 	 * file).
 	 * Implementations are encouraged to lazily build this object to delay parsing.
@@ -205,6 +235,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Build a <code>ValidatorFactory</code> implementation.
 	 *
 	 * @return ValidatorFactory
+	 *
 	 * @throws ValidationException if the ValidatorFactory cannot be built
 	 */
 	ValidatorFactory buildValidatorFactory();

@@ -23,6 +23,7 @@ package javax.validation;
  * This object is typically cached and reused.
  *
  * @author Emmanuel Bernard
+ * @author Gunnar Morling
  */
 public interface ValidatorFactory {
 	/**
@@ -32,6 +33,7 @@ public interface ValidatorFactory {
 	 * <p>
 	 * Validator instances can be pooled and shared by the implementation.
 	 * </p>
+	 *
 	 * @return an initialized <code>Validator</code> instance
 	 */
 	Validator getValidator();
@@ -73,17 +75,26 @@ public interface ValidatorFactory {
 	ConstraintValidatorFactory getConstraintValidatorFactory();
 
 	/**
-	 * Return an instance of the specified type allowing access to
+	 * Returns the <code>ParameterNameProvider</code> instance configured at
+	 * initialization time for the <code>ValidatorFactory<code>.
+	 * This is the instance used by #getValidator().
+	 *
+	 * @return ParameterNameProvider instance.
+	 */
+	ParameterNameProvider getParameterNameProvider();
+
+	/**
+	 * Returns an instance of the specified type allowing access to
 	 * provider-specific APIs. If the Bean Validation provider
 	 * implementation does not support the specified class,
 	 * <code>ValidationException,</code> is thrown.
 	 *
-	 * @param type  the class of the object to be returned.
+	 * @param type the class of the object to be returned.
 	 *
 	 * @return an instance of the specified class.
 	 *
 	 * @throws ValidationException if the provider does not
-	 *         support the call.
+	 * support the call.
 	 */
 	public <T> T unwrap(Class<T> type);
 

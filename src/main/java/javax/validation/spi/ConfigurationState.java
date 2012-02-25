@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.validation.ConstraintValidatorFactory;
 import javax.validation.MessageInterpolator;
+import javax.validation.ParameterNameProvider;
 import javax.validation.TraversableResolver;
 
 /**
@@ -33,6 +34,7 @@ import javax.validation.TraversableResolver;
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
+ * @author Gunnar Morling
  */
 public interface ConfigurationState {
 
@@ -100,9 +102,23 @@ public interface ConfigurationState {
 	 * <li>{@code null} if undefined.</li>
 	 * </ul>
 	 *
-	 * @return traversable provider instance or {@code null} if not defined
+	 * @return traversable resolver instance or {@code null} if not defined
 	 */
 	TraversableResolver getTraversableResolver();
+
+	/**
+	 * Returns the parameter name provider for this configuration.
+	 * <code>ParameterNameProvider</code> is defined in the following decreasing priority:
+	 * <ul>
+	 * <li>set via the <code>Configuration</code> programmatic API</li>
+	 * <li>defined in META-INF/validation.xml provided that ignoredXmlConfiguration
+	 * is false. In this case the instance is created via its no-arg constructor.</li>
+	 * <li>{@code null} if undefined.</li>
+	 * </ul>
+	 *
+	 * @return parameter name provider instance or {@code null} if not defined
+	 */
+	ParameterNameProvider getParameterNameProvider();
 
 	/**
 	 * Returns a map of non type-safe custom properties.
