@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source
- * Copyright 2011, Red Hat, Inc. and/or its affiliates, and individual contributors
+ * Copyright 2012, Red Hat, Inc. and/or its affiliates, and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
  *
@@ -16,36 +16,33 @@
  */
 package javax.validation.metadata;
 
+import java.util.List;
 import javax.validation.metadata.ElementDescriptor;
 
 /**
- * Describes a validated method or constructor parameter.
+ * Describes a validated constructor.
  *
  * @author Gunnar Morling
  */
-public interface ParameterDescriptor extends ElementDescriptor {
+public interface ConstructorDescriptor extends ElementDescriptor {
 
 	/**
-	 * Returns this parameter's index within the parameter array of the method
-	 * or constructor holding it.
+	 * <p>
+	 * Returns a list with descriptors for this constructor parameters. The size
+	 * of this list corresponds with the number of this constructor parameters.
+	 * </p>
 	 *
-	 * @return This parameter's index.
+	 * @return A list with descriptors for this constructor's parameters. An
+	 *         empty list will be returned if this constructor has no
+	 *         parameters, but never <code>null</code>.
 	 */
-	int getIndex();
+	List<ParameterDescriptor> getParameterDescriptors();
 
 	/**
-	 * Returns this parameter's name as retrieved by the current parameter name
-	 * resolver.
+	 * Whether a cascaded validation for this constructor's return value shall
+	 * be performed or not.
 	 *
-	 * @return This parameter's name.
-	 */
-	String getName();
-
-	/**
-	 * Whether a cascaded validation for this method's return value shall be
-	 * performed or not.
-	 *
-	 * @return <code>true</code>, if this method's return value shall be
+	 * @return <code>true</code>, if this constructor's return value shall be
 	 *         validated recursively, <code>false</code> otherwise.
 	 */
 	boolean isCascaded();

@@ -19,11 +19,12 @@ package javax.validation.metadata;
 import java.util.Set;
 
 /**
- * Describes a constrained Java Bean and the constraints associated to it.
+ * Describes a constrained Java Bean and the constraints associated to it. All
+ * objects returned by the methods of this descriptor (and associated objects
+ * including {@code ConstraintDescriptor}s) are immutable.
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
- *
  */
 public interface BeanDescriptor extends ElementDescriptor {
 	/**
@@ -45,8 +46,6 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Return {@code null} if the property does not exist or has no
 	 * constraint nor is marked as cascaded (see {@link #getConstrainedProperties()} )
 	 * <p/>
-	 * The returned object (and associated objects including {@code ConstraintDescriptor}s)
-	 * are immutable.
 	 *
 	 * @param propertyName property evaluated
 	 *
@@ -65,8 +64,56 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *         constraint properties the empty set is returned
 	 */
 	Set<PropertyDescriptor> getConstrainedProperties();
-	
+
+	/**
+	 * Returns a method descriptor for the given method. Returns {@code null} if
+	 * no method with the given name and parameter types exists or the specified
+	 * method neither has parameter or return value constraints nor a parameter
+	 * or return value marked for cascaded validation.
+	 *
+	 * @param methodName The name of the method.
+	 * @param parameterTypes The parameter types of the method.
+	 *
+	 * @return A method descriptor for the given method.
+	 *
+	 * @throws IllegalArgumentException if methodName is null
+	 */
 	MethodDescriptor getConstraintsForMethod(String methodName, Class<?>... parameterTypes);
-	
+
+	/**
+	 * Returns a set with descriptors for the constrained methods of the type
+	 * represented by this descriptor. Constrained are all those methods which
+	 * have at least one parameter or return value constraint or at least one
+	 * parameter or return value marked for cascaded validation.
+	 *
+	 * @return A set with descriptors for the constrained methods of this type.
+	 *         Will be empty if this type has no constrained methods but never
+	 *         {@code null}.
+	 */
 	Set<MethodDescriptor> getConstrainedMethods();
+
+	/**
+	 * Returns a constructor descriptor for the given constructor. Returns
+	 * {@code null} if no constructor with the given parameter types exists or
+	 * the specified constructor neither has parameter or return value
+	 * constraints nor a parameter or return value marked for cascaded
+	 * validation.
+	 *
+	 * @param parameterTypes The parameter types of the constructor.
+	 *
+	 * @return A constructor descriptor for the given constructor.
+	 */
+	ConstructorDescriptor getConstraintsForConstructor(Class<?>... parameterTypes);
+
+	/**
+	 * Returns a set with descriptors for the constrained constructors of the
+	 * type represented by this descriptor. Constrained are all those
+	 * constructors which have at least one parameter or return value constraint
+	 * or at least one parameter or return value marked for cascaded validation.
+	 *
+	 * @return A set with descriptors for the constrained constructor of this
+	 *         type. Will be empty if this type has no constrained constructor
+	 *         but never {@code null}.
+	 */
+	Set<ConstructorDescriptor> getConstrainedConstructors();
 }

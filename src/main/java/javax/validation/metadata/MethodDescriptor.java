@@ -23,14 +23,34 @@ import javax.validation.metadata.ElementDescriptor;
  * Describes a validated method.
  *
  * @author Gunnar Morling
- *
  */
 public interface MethodDescriptor extends ElementDescriptor {
 
-	String getMethodName();
+	/**
+	 * Returns the name of the method represented by this descriptor.
+	 *
+	 * @return The name of the method represented by this descriptor.
+	 */
+	String getName();
 
+	/**
+	 * <p>
+	 * Returns a list with descriptors for this method's parameters.
+	 * The size of this list corresponds with the number of this method's
+	 * parameters.
+	 * </p>
+	 *
+	 * @return A list with descriptors for this method's parameters. An empty
+	 *         list will be returned if this method has no parameters, but never <code>null</code>.
+	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
+	/**
+	 * Whether a cascaded validation for this method's return value shall be
+	 * performed or not.
+	 *
+	 * @return <code>true</code>, if this method's return value shall be
+	 *         validated recursively, <code>false</code> otherwise.
+	 */
 	boolean isCascaded();
-
 }
