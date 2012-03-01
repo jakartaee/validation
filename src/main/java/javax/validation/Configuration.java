@@ -1,7 +1,6 @@
 // $Id$
 /*
-* JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2009-2012, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
@@ -192,6 +191,15 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @return default ConstraintValidatorFactory implementation compliant with the specification
 	 */
 	ConstraintValidatorFactory getDefaultConstraintValidatorFactory();
+
+	/**
+	 * Return information stored in the configuration source (typically the <i>META-INF/validation.xml</i>
+	 * file).
+	 * Implementations are encouraged to lazily build this object to delay parsing.
+	 *
+	 * @return {@code ConfigurationSource} object
+	 */
+	ConfigurationSource getConfigurationSource();
 
 	/**
 	 * Build a <code>ValidatorFactory</code> implementation.
