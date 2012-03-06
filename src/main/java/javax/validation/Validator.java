@@ -98,73 +98,73 @@ public interface Validator {
 	 *
 	 * @param <T> The type hosting the method to validate.
 	 * @param object The object on which the method to validate was invoked.
-	 * @param method The method which's parameter constraints shall be validated.
+	 * @param method The method for which the parameter constraints shall be validated.
 	 * @param parameterValues The values provided by the caller for the given method's
 	 * parameters.
 	 * @param groups group or list of groups targeted for validation (default to
 	 * {@link javax.validation.groups.Default})
 	 *
 	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, of no error occurs, but never null.
+	 *         Will be empty, if no error occurs, but never null.
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
-	<T> Set<MethodConstraintViolation<T>> validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
 
 	/**
 	 * Validates all return value constraints of the given method.
 	 *
 	 * @param <T> The type hosting the method to validate.
 	 * @param object The object on which the method to validate was invoked.
-	 * @param method The method which's return constraints shall be validated.
+	 * @param method The method for which the return value constraints shall be validated.
 	 * @param returnValue The value returned by the given method.
 	 * @param groups group or list of groups targeted for validation (default to
 	 * {@link javax.validation.groups.Default})
 	 *
 	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, of no error occurs, but never null.
+	 *         Will be empty, if no error occurs, but never null.
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
-	<T> Set<MethodConstraintViolation<T>> validateReturnValue(T object, Method method, Object returnValue, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateReturnValue(T object, Method method, Object returnValue, Class<?>... groups);
 
 	/**
 	 * Validates all constraints placed on the parameters of the given constructor.
 	 *
 	 * @param <T> The type hosting the constructor to validate.
-	 * @param constructor The constructor which's parameter constraints shall be validated.
+	 * @param constructor The constructor for which the parameter constraints shall be validated.
 	 * @param parameterValues The values provided by the caller for the given constructor's
 	 * parameters.
 	 * @param groups group or list of groups targeted for validation (default to
 	 * {@link javax.validation.groups.Default})
 	 *
 	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, of no error occurs, but never null.
+	 *         Will be empty, if no error occurs, but never null.
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
 
-	<T> Set<MethodConstraintViolation<T>> validateConstructorParameters(Constructor<T> constructor, Object[] parameterValues, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<T> constructor, Object[] parameterValues, Class<?>... groups);
 
 	/**
 	 * Validates all return value constraints of the given constructor.
 	 *
 	 * @param <T> The type hosting the constructor to validate.
-	 * @param constructor The method which's return constraints shall be validated.
+	 * @param constructor The constructor for which the return value constraints shall be validated.
 	 * @param createdObject The object instantiated by the given method.
 	 * @param groups group or list of groups targeted for validation (default to
 	 * {@link javax.validation.groups.Default})
 	 *
 	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, of no error occurs, but never null.
+	 *         Will be empty, if no error occurs, but never null.
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
-	<T> Set<MethodConstraintViolation<T>> validateConstructorReturnValue(Constructor<T> constructor, T createdObject, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<T> constructor, T createdObject, Class<?>... groups);
 
 	/**
 	 * Return the descriptor object describing bean constraints.

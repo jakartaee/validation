@@ -23,6 +23,7 @@ import java.util.Set;
  * <i>META-INF/validation.xml</i>
  *
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Gunnar Morling
  */
 public interface ConfigurationSource {
 	/**
@@ -56,6 +57,14 @@ public interface ConfigurationSource {
 	 * @return traversable resolver class name or null
 	 */
 	public String getTraversableResolverClassName();
+
+    /**
+     * Class name of the {@code ParameterNameProvider} implementation
+     * or null if none is specified.
+     *
+     * @return parameter name provider class name or null
+     */
+    public String getParameterNameProviderClassName();
 
 	/**
 	 * Returns a set of resource path pointing to XML constraint mapping files.

@@ -25,11 +25,7 @@ import java.lang.reflect.Method;
  * </p>
  * <p>
  * Used by the Bean Validation runtime when creating constraint violation
- * objects for violated method-level constraints. The default implementation
- * will return names in the form <code>arg&lt;PARAMETER_INDEX&gt;</code> where
- * <code>PARAMETER_INDEX</code> starts at 0 for the first parameter, e.g.
- * <code>arg0</code>, <code>arg1</code> etc.
- * </p>
+ * objects for violated method-level constraints.</p>
  * <p>
  * Implementations must be thread-safe.
  * </p>
@@ -46,9 +42,6 @@ public interface ParameterNameProvider {
 	 *
 	 * @return An array with the names of the parameters of the given
 	 *         constructor. May be empty but never null.
-	 *
-	 * @throws ValidationException In case an unexpected problem occurred during retrieval of
-	 * the parameter names.
 	 */
 	String[] getParameterNames(Constructor<?> constructor);
 
@@ -60,9 +53,6 @@ public interface ParameterNameProvider {
 	 *
 	 * @return An array with the names of the parameters of the given method.
 	 *         May be empty but never null.
-	 *
-	 * @throws ValidationException In case an unexpected problem occurred during retrieval of
-	 * the parameter names.
 	 */
 	String[] getParameterNames(Method method);
 }
