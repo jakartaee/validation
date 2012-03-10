@@ -35,22 +35,19 @@ public interface MethodDescriptor extends ElementDescriptor {
 
 	/**
 	 * <p>
-	 * Returns a list with descriptors for this method's parameters.
-	 * The size of this list corresponds with the number of this method's
-	 * parameters.
+	 * Returns a list with descriptors for this method's parameters. The size of
+	 * this list corresponds with the number of this method's parameters.
 	 * </p>
 	 *
 	 * @return A list with descriptors for this method's parameters. An empty
-	 *         list will be returned if this method has no parameters, but never <code>null</code>.
+	 *         list will be returned if this method has no parameters, but never
+	 *         <code>null</code>.
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
 	/**
-	 * Whether a cascaded validation for this method's return value shall be
-	 * performed or not.
-	 *
-	 * @return <code>true</code>, if this method's return value shall be
-	 *         validated recursively, <code>false</code> otherwise.
+	 * Returns a descriptor for this method's return value.
+	 * @return A descriptor for this method's return value.
 	 */
-	boolean isCascaded();
+	ReturnValueDescriptor getReturnValueDescriptor();
 }

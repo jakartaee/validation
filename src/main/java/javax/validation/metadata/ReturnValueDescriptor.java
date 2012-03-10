@@ -16,32 +16,21 @@
  */
 package javax.validation.metadata;
 
-import java.util.List;
 import javax.validation.metadata.ElementDescriptor;
 
 /**
- * Describes a validated constructor.
+ * Describes a validated method or constructor return value.
  *
  * @author Gunnar Morling
  */
-public interface ConstructorDescriptor extends ElementDescriptor {
+public interface ReturnValueDescriptor extends ElementDescriptor {
 
 	/**
-	 * <p>
-	 * Returns a list with descriptors for this constructor parameters. The size
-	 * of this list corresponds with the number of this constructor parameters.
-	 * </p>
+	 * Whether a cascaded validation for this return value shall be performed or
+	 * not.
 	 *
-	 * @return A list with descriptors for this constructor's parameters. An
-	 *         empty list will be returned if this constructor has no
-	 *         parameters, but never <code>null</code>.
+	 * @return <code>true</code>, if this return value shall be validated
+	 *         recursively, <code>false</code> otherwise.
 	 */
-	List<ParameterDescriptor> getParameterDescriptors();
-
-
-	/**
-	 * Returns a descriptor for this constructor's return value.
-	 * @return A descriptor for this constructor's return value.
-	 */
-	ReturnValueDescriptor getReturnValueDescriptor();
+	boolean isCascaded();
 }

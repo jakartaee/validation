@@ -21,12 +21,34 @@ import java.util.Set;
 import java.lang.annotation.ElementType;
 
 /**
- * Describes a validated element (class, field or property).
+ * Describes a validated element (class, property, method etc.).
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
+ * @author Gunnar Morling
  */
 public interface ElementDescriptor {
+
+	/**
+	 * The kind of an {@link ElementDescriptor}.
+	 *
+	 * @author Gunnar Morling
+	 *
+	 */
+	public enum Kind {
+
+		BEAN,
+
+		PROPERTY,
+
+		METHOD,
+
+		CONSTRUCTOR,
+
+		PARAMETER,
+
+		RETURN_VALUE;
+	}
 
 	/**
 	 * @return Return {@code true} if at least one constraint declaration is present
@@ -53,6 +75,30 @@ public interface ElementDescriptor {
 	 * @return ConstraintFinder object.
 	 */
 	ConstraintFinder findConstraints();
+
+	/**
+	 * Returns the kind of this descriptor.
+	 * @return The kind of this descriptor.
+	 */
+	Kind getKind();
+
+	/**
+	 * Narrows the type of this descriptor down to the given type. The type
+	 * should be checked before by calling {@link ElementDescriptor#getKind()}.
+	 *
+	 * @param <T>
+	 *            The type to narrow down to.
+	 * @param descriptorType
+	 *            Class object representing the descriptor type to narrow down
+	 *            to.
+	 *
+	 * @return This descriptor narrowed down to the given type.
+	 *
+	 * @throws ClassCastException
+	 *             If this descriptor is not assignable to the type
+	 *             <code>T</code>.
+	 */
+	<T extends ElementDescriptor> T as(Class<T> descriptorType);
 
 	/**
 	 * Declare restrictions on retrieved constraints.
