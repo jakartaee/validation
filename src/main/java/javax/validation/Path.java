@@ -17,9 +17,7 @@
 */
 package javax.validation;
 
-import javax.validation.metadata.ConstructorDescriptor;
-import javax.validation.metadata.MethodDescriptor;
-import javax.validation.metadata.ParameterDescriptor;
+import javax.validation.metadata.ElementDescriptor;
 
 /**
  * Represent the navigation path from an object to another
@@ -35,7 +33,7 @@ import javax.validation.metadata.ParameterDescriptor;
 public interface Path extends Iterable<Path.Node> {
 
 	/**
-	 * Represents an element of a navigation path
+	 * Represents an element of a navigation path.
 	 */
 	interface Node {
 		/**
@@ -67,25 +65,11 @@ public interface Path extends Iterable<Path.Node> {
 		Object getKey();
 
 		/**
-		 * @return A descriptor for the method which the node represents or null
-		 *         if the node doesn't represent a method.
+		 * Returns a descriptor for the element (bean, property, method etc.)
+		 * represented by this node.
+		 *
+		 * @return An element descriptor for this node.
 		 */
-		MethodDescriptor getMethodDescriptor();
-
-		/**
-		 * @return A descriptor for the constructor which the node represents or
-		 *         null if the node doesn't represent a constructor.
-		 */
-		ConstructorDescriptor getConstructorDescriptor();
-
-		/**
-		 * @return A descriptor for the method or constructor parameter which
-		 *         the node represents or null if the node doesn't represent a
-		 *         method or constructor parameter. Can only be not null, if
-		 *         either {@link Node#getMethodDescriptor()} or
-		 *         {@link Node#getConstructorDescriptor()} return a non-null
-		 *         value.
-		 */
-		ParameterDescriptor getParameterDescriptor();
+		ElementDescriptor getElementDescriptor();
 	}
 }
