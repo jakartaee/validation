@@ -20,7 +20,7 @@ package javax.validation;
 import javax.validation.metadata.ElementDescriptor;
 
 /**
- * Represent the navigation path from an object to another
+ * Represents the navigation path from an object to another
  * in an object graph.
  * Each path element is represented by a <code>Node</code>.
  *
@@ -37,12 +37,13 @@ public interface Path extends Iterable<Path.Node> {
 	 */
 	interface Node {
 		/**
-		 * Property name the node represents
-		 * or null if representing an entity on the leaf node
-		 * (in particular the node in a <code>Path</code> representing
-		 * the root object has its name null).
+		 * Name of the property, constructor, method or parameter which the node
+		 * represents or null if representing an entity on the leaf node or the
+		 * return value of a constructor or method (in particular the node in a
+		 * <code>Path</code> representing the root object has its name null).
 		 * 
-		 * @return property name the node represents
+		 * @return Name of the property, constructor, method or parameter which
+		 *         the node represents.
 		 */
 		String getName();
 
@@ -66,7 +67,8 @@ public interface Path extends Iterable<Path.Node> {
 
 		/**
 		 * Returns a descriptor for the element (bean, property, method etc.)
-		 * represented by this node.
+		 * represented by this node. The specific type of the element can be
+		 * determined using {@link ElementDescriptor#getKind()}.
 		 *
 		 * @return An element descriptor for this node.
 		 */

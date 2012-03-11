@@ -19,7 +19,7 @@ package javax.validation.metadata;
 import javax.validation.metadata.ElementDescriptor;
 
 /**
- * Describes a validated method or constructor return value.
+ * Describes a validated return value of a method or constructor.
  *
  * @author Gunnar Morling
  */

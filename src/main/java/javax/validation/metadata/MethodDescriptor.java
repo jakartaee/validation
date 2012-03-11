@@ -40,14 +40,16 @@ public interface MethodDescriptor extends ElementDescriptor {
 	 * </p>
 	 *
 	 * @return A list with descriptors for this method's parameters. An empty
-	 *         list will be returned if this method has no parameters, but never
-	 *         <code>null</code>.
+	 *		 list will be returned if this method has no parameters, but never
+	 *		 <code>null</code>.
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
 	/**
 	 * Returns a descriptor for this method's return value.
-	 * @return A descriptor for this method's return value.
+	 *
+	 * @return A descriptor for this method's return value or <code>null</code>
+	 *		 if this method has no return value.
 	 */
 	ReturnValueDescriptor getReturnValueDescriptor();
 }

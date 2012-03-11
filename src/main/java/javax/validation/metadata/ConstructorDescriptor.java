@@ -38,7 +38,6 @@ public interface ConstructorDescriptor extends ElementDescriptor {
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
-
 	/**
 	 * Returns a descriptor for this constructor's return value.
 	 * @return A descriptor for this constructor's return value.
