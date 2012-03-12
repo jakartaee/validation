@@ -36,7 +36,7 @@ public interface MethodDescriptor extends ElementDescriptor {
 	/**
 	 * <p>
 	 * Returns a list with descriptors for this method's parameters. The size of
-	 * this list corresponds with the number of this method's parameters.
+	 * this list corresponds to the number of this method's parameters.
 	 * </p>
 	 *
 	 * @return A list with descriptors for this method's parameters. An empty

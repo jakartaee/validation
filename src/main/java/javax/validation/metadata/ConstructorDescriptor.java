@@ -29,7 +29,7 @@ public interface ConstructorDescriptor extends ElementDescriptor {
 	/**
 	 * <p>
 	 * Returns a list with descriptors for this constructor parameters. The size
-	 * of this list corresponds with the number of this constructor parameters.
+	 * of this list corresponds to the number of this constructor parameters.
 	 * </p>
 	 *
 	 * @return A list with descriptors for this constructor's parameters. An
