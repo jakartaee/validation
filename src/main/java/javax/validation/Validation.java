@@ -251,17 +251,18 @@ public class Validation {
 					getDefaultValidationProviderResolver() :
 					this.resolver;
 
-			List<ValidationProvider<?>> resolvers;
+			List<ValidationProvider<?>> validationProviders;
 			try {
-				resolvers = resolver.getValidationProviders();
+				validationProviders = resolver.getValidationProviders();
 			}
 			catch ( RuntimeException re ) {
 				throw new ValidationException( "Unable to get available provider resolvers.", re );
 			}
 
-			if ( resolvers.size() == 0 ) {
-				//FIXME looks like an assertion error almost
-				throw new ValidationException( "Unable to find a default provider" );
+			if ( validationProviders.size() == 0 ) {
+				String msg = "Unable to create a Configuration, because no Bean Validation provider could be found." +
+						" Add a provider like Hibernate Validator (RI) to your classpath.";
+				throw new ValidationException( msg );
 			}
 
 			Configuration<?> config;
@@ -282,7 +283,7 @@ public class Validation {
 	 * the current class if the current class loader is unavailable. The classloader is used to retrieve the Service Provider files.
 	 * <p>
 	 * This class implements the Service Provider pattern described <a href="http://java.sun.com/j2se/1.5.0/docs/guide/jar/jar.html#Service%20Provider">here</a>.
-	 * Since we cannot rely on Java 6 we have to reimplement the <code>Service</code> functionality.
+	 * Since we cannot rely on Java 6 we have to re-implement the <code>Service</code> functionality.
 	 * </p>
 	 *
 	 * @author Emmanuel Bernard
@@ -330,7 +331,7 @@ public class Validation {
 									);
 
 									providers.add(
-											( ValidationProvider ) providerClass.newInstance()
+											(ValidationProvider) providerClass.newInstance()
 									);
 								}
 								name = reader.readLine();
