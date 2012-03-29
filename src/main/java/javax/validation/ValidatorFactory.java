@@ -18,80 +18,81 @@
 package javax.validation;
 
 /**
- * Factory returning initialized <code>Validator</code> instances.
- * Implementations are thread-safe
- * This object is typically cached and reused.
+ * Factory returning initialized {@code Validator} instances.
+ *
+ * Implementations are thread-safe and instances are typically cached and reused.
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Hardy Ferentschik
  */
 public interface ValidatorFactory {
 	/**
-	 * Returns an initialized <code>Validator</code> instance using the
+	 * Returns an initialized {@code Validator} instance using the
 	 * factory defaults for message interpolator, traversable resolver
 	 * and constraint validator factory.
 	 * <p>
 	 * Validator instances can be pooled and shared by the implementation.
 	 * </p>
 	 *
-	 * @return an initialized <code>Validator</code> instance
+	 * @return an initialized {@code Validator} instance
 	 */
 	Validator getValidator();
 
 	/**
-	 * Defines a new validator context and return a <code>Validator</code>
+	 * Defines a new validator context and return a {@code Validator}
 	 * compliant this new context.
 	 *
-	 * @return a <code>ValidatorContext</code>.
+	 * @return a {@code ValidatorContext} instance
 	 */
 	ValidatorContext usingContext();
 
 	/**
-	 * Returns the <code>MessageInterpolator</code> instance configured at
-	 * initialization time for the <code>ValidatorFactory<code>.
-	 * This is the instance used by #getValidator().
+	 * Returns the {@code MessageInterpolator} instance configured at
+	 * initialization time for the {@code ValidatorFactory}.
+	 * This is the instance used by {@link #getValidator()}.
 	 *
-	 * @return MessageInterpolator instance.
+	 * @return MessageInterpolator instance
 	 */
 	MessageInterpolator getMessageInterpolator();
 
 	/**
-	 * Returns the <code>TraversableResolver</code> instance configured
-	 * at initialization time for the <code>ValidatorFactory<code>.
-	 * This is the instance used by #getValidator().
+	 * Returns the {@code TraversableResolver} instance configured
+	 * at initialization time for the {@code ValidatorFactory}.
+	 * This is the instance used by {@link #getValidator()}.
 	 *
-	 * @return TraversableResolver instance.
+	 * @return TraversableResolver instance
 	 */
 	TraversableResolver getTraversableResolver();
 
 	/**
-	 * Returns the <code>ConstraintValidatorFactory</code> instance
+	 * Returns the {@code ConstraintValidatorFactory} instance
 	 * configured at initialization time for the
-	 * <code>ValidatorFactory<code>.
+	 * {@code ValidatorFactory}.
 	 * This is the instance used by #getValidator().
 	 *
-	 * @return ConstraintValidatorFactory instance.
+	 * @return ConstraintValidatorFactory instance
 	 */
 	ConstraintValidatorFactory getConstraintValidatorFactory();
 
 	/**
-	 * Returns the <code>ParameterNameProvider</code> instance configured at
-	 * initialization time for the <code>ValidatorFactory<code>.
+	 * Returns the {@code ParameterNameProvider} instance configured at
+	 * initialization time for the {@code ValidatorFactory}.
 	 * This is the instance used by #getValidator().
 	 *
-	 * @return ParameterNameProvider instance.
+	 * @return ParameterNameProvider instance
 	 */
 	ParameterNameProvider getParameterNameProvider();
 
 	/**
 	 * Returns an instance of the specified type allowing access to
 	 * provider-specific APIs. If the Bean Validation provider
-	 * implementation does not support the specified class,
-	 * <code>ValidationException,</code> is thrown.
+	 * implementation does not support the specified class, a
+	 * {@code ValidationException} is thrown.
 	 *
-	 * @param type the class of the object to be returned.
+	 * @param type the class of the object to be returned
 	 *
-	 * @return an instance of the specified class.
+	 * @return an instance of the specified class
 	 *
 	 * @throws ValidationException if the provider does not
 	 * support the call.
@@ -99,12 +100,13 @@ public interface ValidatorFactory {
 	public <T> T unwrap(Class<T> type);
 
 	/**
-	 * Close the <code>ValidatorFactory</code> instance.
+	 * Close the {@code ValidatorFactory} instance.
 	 *
-	 * Execution of methods of
-	 * - this <code>ValidatorFactory</code> instance
-	 * - <code>Validator</code> instances created by this <code>ValidatorFactory</code> instance
-	 * are not allowed after the <code>ValidatorFactory</code> instance is closed.
+	 * After the {@code ValidatorFactory} instance is closed, it is not allowed to call:
+	 * <ul>
+	 * <li>methods of this {@code ValidatorFactory} instance</li>
+	 * <li>methods of {@code Validator} instances created by this  {@code ValidatorFactory}</li>
+	 * </ul>
 	 */
 	public void close();
 }
