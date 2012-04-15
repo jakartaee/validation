@@ -46,7 +46,7 @@ import java.io.InputStream;
  * the provider class requested and use it</li>
  * <li>if a specific provider is requested in <i>META-INF/validation.xml</i>,
  * find the first provider implementing the provider class requested and use it</li>
- * <li>otherwise, use the first provider returned by the <code>ValidationProviderResolver<code></li>
+ * <li>otherwise, use the first provider returned by the <code>ValidationProviderResolver</code></li>
  * </ul>
  * <p/>
  * Implementations are not meant to be thread-safe.
@@ -140,7 +140,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Note: Using this non type-safe method is generally not recommended.
 	 * <p/>
 	 * It is more appropriate to use, if available, the type-safe equivalent provided
-	 * by a specific provider via its <code>Configuration<code> subclass.
+	 * by a specific provider via its <code>Configuration</code> subclass.
 	 * <code>ValidatorFactory factory = Validation.byProvider(ACMEPrivoder.class)
 	 * .configure()
 	 * .providerSpecificProperty(ACMEState.FAST)
