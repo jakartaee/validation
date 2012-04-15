@@ -35,7 +35,18 @@
             <organization>JBoss, by Red Hat</organization>
             <url>http://in.relation.to/Bloggers/Hardy</url>
         </developer>
+        <developer>
+            <id>gunnar.morling</id>
+            <name>Gunnar Morling</name>
+            <email>gunnar@hibernate.org</email>
+            <organization>Individual</organization>
+            <url>http://www.gunnarmorling.de/</url>
+        </developer>
     </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <pluginManagement>
