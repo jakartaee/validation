@@ -17,7 +17,6 @@
 package javax.validation.metadata;
 
 import java.util.List;
-import javax.validation.metadata.ElementDescriptor;
 
 /**
  * Describes a validated method.
