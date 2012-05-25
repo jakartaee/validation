@@ -1,4 +1,3 @@
-// $Id$
 /*
 * JBoss, Home of Professional Open Source
 * Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
@@ -33,13 +32,15 @@ public interface ConstraintValidatorFactory {
 	 *
 	 * @return A constraint validator instance of the specified class.
 	 */
-	<T extends ConstraintValidator<?,?>> T getInstance(Class<T> key);
+	<T extends ConstraintValidator<?, ?>> T getInstance(Class<T> key);
 
 	/**
-     * Signal ConstraintValidatorFactory that the instance is no longer
-     * being used by the Bean Validation provider
+	 * Signal ConstraintValidatorFactory that the instance is no longer
+	 * being used by the Bean Validation provider
 	 *
-     * @param instance validator being released
-     */
-    void releaseInstance(ConstraintValidator<?,?> instance);
+	 * @param instance validator being released
+	 *
+	 * @since 1.1
+	 */
+	void releaseInstance(ConstraintValidator<?, ?> instance);
 }

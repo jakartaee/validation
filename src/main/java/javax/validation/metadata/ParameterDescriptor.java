@@ -16,12 +16,11 @@
  */
 package javax.validation.metadata;
 
-import javax.validation.metadata.ElementDescriptor;
-
 /**
  * Describes a validated method or constructor parameter.
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 public interface ParameterDescriptor extends ElementDescriptor {
 

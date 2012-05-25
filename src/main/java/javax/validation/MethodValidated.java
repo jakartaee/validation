@@ -20,7 +20,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
 import javax.validation.groups.Default;
 
 /**
@@ -28,57 +27,58 @@ import javax.validation.groups.Default;
  * validated upon invocation of the given method or any methods of the given type.
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 @Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MethodValidated {
 
-    /**
-     * Returns the group(s) to validate. Defaults to
-     * {@link Default}.
-     *
-     * @return The group(s) to validate.
-     */
-    Class<?>[] groups() default { };
+	/**
+	 * Returns the group(s) to validate. Defaults to
+	 * {@link Default}.
+	 *
+	 * @return The group(s) to validate.
+	 */
+	Class<?>[] groups() default { };
 
-    /**
-     * Returns the validation mode. Defaults to {@link ValidationMode#ALL}.
-     *
-     * @return The validation mode.
-     */
-    ValidationMode validationMode() default ValidationMode.ALL;
+	/**
+	 * Returns the validation mode. Defaults to {@link ValidationMode#ALL}.
+	 *
+	 * @return The validation mode.
+	 */
+	ValidationMode validationMode() default ValidationMode.ALL;
 
-    /**
-     * A mode of method-level validation. Can be used to specify the validation
-     * behavior on a type and method level.
-     *
-     * @author Gunnar Morling
-     */
-    public enum ValidationMode {
+	/**
+	 * A mode of method-level validation. Can be used to specify the validation
+	 * behavior on a type and method level.
+	 *
+	 * @author Gunnar Morling
+	 */
+	public enum ValidationMode {
 
-        /**
-         * Indicates that method and constructor parameters shall be validated automatically
-         * upon invocation of methods or constructors.
-         */
-        PARAMETERS,
+		/**
+		 * Indicates that method and constructor parameters shall be validated automatically
+		 * upon invocation of methods or constructors.
+		 */
+		PARAMETERS,
 
-        /**
-         * Indicates that the return value shall be validated automatically
-         * upon invocation of methods or constructors.
-         */
-        RETURN_VALUE,
+		/**
+		 * Indicates that the return value shall be validated automatically
+		 * upon invocation of methods or constructors.
+		 */
+		RETURN_VALUE,
 
-        /**
-         * Indicates that method and constructor parameters as well as the return value shall be validated automatically
-         * upon invocation of methods or constructors.
-         */
-        ALL,
+		/**
+		 * Indicates that method and constructor parameters as well as the return value shall be validated automatically
+		 * upon invocation of methods or constructors.
+		 */
+		ALL,
 
-        /**
-         * Indicates that neither method or constructor parameters nor the return value shall be validated automatically
-         * upon invocation of methods or constructors.
-         */
-        NONE;
-    }
+		/**
+		 * Indicates that neither method or constructor parameters nor the return value shall be validated automatically
+		 * upon invocation of methods or constructors.
+		 */
+		NONE;
+	}
 }
 

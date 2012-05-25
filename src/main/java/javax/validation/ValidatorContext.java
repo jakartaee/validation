@@ -1,4 +1,3 @@
-// $Id$
 /*
 * JBoss, Home of Professional Open Source
 * Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
@@ -76,6 +75,8 @@ public interface ValidatorContext {
 	 * @param parameterNameProvider Parameter name provider implementation.
 	 *
 	 * @return self following the chaining method pattern
+	 *
+	 * @since 1.1
 	 */
 	ValidatorContext parameterNameProvider(ParameterNameProvider parameterNameProvider);
 

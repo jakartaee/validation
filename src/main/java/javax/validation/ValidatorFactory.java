@@ -1,4 +1,3 @@
-// $Id$
 /*
 * JBoss, Home of Professional Open Source
 * Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
@@ -81,6 +80,8 @@ public interface ValidatorFactory {
 	 * This is the instance used by #getValidator().
 	 *
 	 * @return ParameterNameProvider instance
+	 *
+	 * @since 1.1
 	 */
 	ParameterNameProvider getParameterNameProvider();
 
@@ -107,6 +108,8 @@ public interface ValidatorFactory {
 	 * <li>methods of this {@code ValidatorFactory} instance</li>
 	 * <li>methods of {@code Validator} instances created by this  {@code ValidatorFactory}</li>
 	 * </ul>
+	 *
+	 * @since 1.1
 	 */
 	public void close();
 }

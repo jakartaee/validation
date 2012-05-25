@@ -1,4 +1,3 @@
-// $Id$
 /*
 * JBoss, Home of Professional Open Source
 * Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
@@ -31,7 +30,7 @@ import javax.validation.metadata.BeanDescriptor;
  */
 public interface Validator {
 	/**
-	 * Validates all constraints on <code>object</code>.
+	 * Validates all constraints on {@code object}.
 	 *
 	 * @param object object to validate
 	 * @param groups group or list of groups targeted for validation
@@ -47,8 +46,8 @@ public interface Validator {
 	<T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups);
 
 	/**
-	 * Validates all constraints placed on the property of <code>object</code>
-	 * named <code>propertyName</code>.
+	 * Validates all constraints placed on the property of {@code object}
+	 * named {@code propertyName}.
 	 *
 	 * @param object object to validate
 	 * @param propertyName property to validate (ie field and getter constraints)
@@ -57,8 +56,8 @@ public interface Validator {
 	 *
 	 * @return constraint violations or an empty Set if none
 	 *
-	 * @throws IllegalArgumentException if <code>object</code> is null,
-	 * if <code>propertyName</code> null, empty or not a valid object property
+	 * @throws IllegalArgumentException if {@code object} is null,
+	 * if {@code propertyName} null, empty or not a valid object property
 	 * or if null is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
@@ -68,11 +67,12 @@ public interface Validator {
 													 Class<?>... groups);
 
 	/**
-	 * Validates all constraints placed on the property named <code>propertyName</code>
-	 * of the class <code>beanType</code> would the property value be <code>value</code>
-	 * <p/>
-	 * <code>ConstraintViolation</code> objects return null for
+	 * Validates all constraints placed on the property named {@code propertyName}
+	 * of the class {@code beanType} would the property value be {@code value}.
+	 * <p>
+	 * {@code ConstraintViolation} objects return {@code null} for
 	 * {@link ConstraintViolation#getRootBean()} and {@link ConstraintViolation#getLeafBean()}
+	 * </p>
 	 *
 	 * @param beanType the bean type
 	 * @param propertyName property to validate
@@ -82,8 +82,8 @@ public interface Validator {
 	 *
 	 * @return constraint violations or an empty Set if none
 	 *
-	 * @throws IllegalArgumentException if <code>beanType</code> is null,
-	 * if <code>propertyName</code> null, empty or not a valid object property
+	 * @throws IllegalArgumentException if {@code beanType} is null,
+	 * if {@code propertyName} null, empty or not a valid object property
 	 * or if null is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
@@ -109,6 +109,7 @@ public interface Validator {
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
+	 * @since 1.1
 	 */
 	<T> Set<ConstraintViolation<T>> validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
 
@@ -127,6 +128,7 @@ public interface Validator {
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
+	 * @since 1.1
 	 */
 	<T> Set<ConstraintViolation<T>> validateReturnValue(T object, Method method, Object returnValue, Class<?>... groups);
 
@@ -145,8 +147,8 @@ public interface Validator {
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
+	 * @since 1.1
 	 */
-
 	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<T> constructor, Object[] parameterValues, Class<?>... groups);
 
 	/**
@@ -163,13 +165,14 @@ public interface Validator {
 	 *
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
+	 * @since 1.1
 	 */
 	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<T> constructor, T createdObject, Class<?>... groups);
 
 	/**
 	 * Return the descriptor object describing bean constraints.
 	 * The returned object (and associated objects including
-	 * <code>ConstraintDescriptor<code>s) are immutable.
+	 * {@code ConstraintDescriptor{@code s) are immutable.
 	 *
 	 * @param clazz class or interface type evaluated
 	 *
@@ -186,7 +189,7 @@ public interface Validator {
 	 * Return an instance of the specified type allowing access to
 	 * provider-specific APIs.  If the Bean Validation provider
 	 * implementation does not support the specified class,
-	 * <code>ValidationException</code> is thrown.
+	 * {@code ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned.
 	 *
