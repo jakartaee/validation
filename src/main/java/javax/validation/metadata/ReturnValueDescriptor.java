@@ -16,12 +16,11 @@
  */
 package javax.validation.metadata;
 
-import javax.validation.metadata.ElementDescriptor;
-
 /**
  * Describes a validated return value of a method or constructor.
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 public interface ReturnValueDescriptor extends ElementDescriptor {
 

@@ -51,7 +51,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *
 	 * @return the property descriptor for a given property.
 	 *
-	 * @throws IllegalArgumentException if propertyName is null
+	 * @throws IllegalArgumentException if propertyName is {@code null}
 	 */
 	PropertyDescriptor getConstraintsForProperty(String propertyName);
 
@@ -76,7 +76,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *
 	 * @return A method descriptor for the given method.
 	 *
-	 * @throws IllegalArgumentException if methodName is null
+	 * @throws IllegalArgumentException if methodName is {@code null}
+	 * @since 1.1
 	 */
 	MethodDescriptor getConstraintsForMethod(String methodName, Class<?>... parameterTypes);
 
@@ -89,6 +90,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * @return A set with descriptors for the constrained methods of this type.
 	 *         Will be empty if this type has no constrained methods but never
 	 *         {@code null}.
+	 *
+	 * @since 1.1
 	 */
 	Set<MethodDescriptor> getConstrainedMethods();
 
@@ -102,6 +105,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * @param parameterTypes The parameter types of the constructor.
 	 *
 	 * @return A constructor descriptor for the given constructor.
+	 *
+	 * @since 1.1
 	 */
 	ConstructorDescriptor getConstraintsForConstructor(Class<?>... parameterTypes);
 
@@ -114,6 +119,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * @return A set with descriptors for the constrained constructor of this
 	 *         type. Will be empty if this type has no constrained constructor
 	 *         but never {@code null}.
+	 *
+	 * @since 1.1
 	 */
 	Set<ConstructorDescriptor> getConstrainedConstructors();
 }

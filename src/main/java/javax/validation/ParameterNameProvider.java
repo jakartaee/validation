@@ -31,6 +31,7 @@ import java.lang.reflect.Method;
  * </p>
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 public interface ParameterNameProvider {
 

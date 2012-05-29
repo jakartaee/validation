@@ -17,12 +17,12 @@
 package javax.validation.metadata;
 
 import java.util.List;
-import javax.validation.metadata.ElementDescriptor;
 
 /**
  * Describes a validated constructor.
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 public interface ConstructorDescriptor extends ElementDescriptor {
 
@@ -40,6 +40,7 @@ public interface ConstructorDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a descriptor for this constructor's return value.
+	 *
 	 * @return A descriptor for this constructor's return value.
 	 */
 	ReturnValueDescriptor getReturnValueDescriptor();

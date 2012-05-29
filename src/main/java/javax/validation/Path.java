@@ -1,4 +1,3 @@
-// $Id$
 /*
 * JBoss, Home of Professional Open Source
 * Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
@@ -41,7 +40,7 @@ public interface Path extends Iterable<Path.Node> {
 		 * represents or null if representing an entity on the leaf node or the
 		 * return value of a constructor or method (in particular the node in a
 		 * <code>Path</code> representing the root object has its name null).
-		 * 
+		 *
 		 * @return Name of the property, constructor, method or parameter which
 		 *         the node represents.
 		 */
@@ -49,19 +48,19 @@ public interface Path extends Iterable<Path.Node> {
 
 		/**
 		 * @return true if the node represents an object contained in an Iterable
-		 * or in a Map.
+		 *         or in a Map.
 		 */
 		boolean isInIterable();
 
 		/**
 		 * @return The index the node is placed in if contained
-		 * in an array or List. Null otherwise.
+		 *         in an array or List. Null otherwise.
 		 */
 		Integer getIndex();
 
 		/**
 		 * @return The key the node is placed in if contained
-		 * in a Map. Null otherwise.
+		 *         in a Map. Null otherwise.
 		 */
 		Object getKey();
 
@@ -71,6 +70,8 @@ public interface Path extends Iterable<Path.Node> {
 		 * determined using {@link ElementDescriptor#getKind()}.
 		 *
 		 * @return An element descriptor for this node.
+		 *
+		 * @since 1.1
 		 */
 		ElementDescriptor getElementDescriptor();
 	}
