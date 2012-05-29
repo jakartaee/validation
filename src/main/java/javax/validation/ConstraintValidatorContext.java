@@ -28,7 +28,7 @@ public interface ConstraintValidatorContext {
 	/**
 	 * Disable the default <code>ConstraintViolation</code> object generation (which
 	 * is using the message template declared on the constraint).
-	 * Useful to set a different violation message or generate a <code>ConstraintViolation</Code>
+	 * Useful to set a different violation message or generate a <code>ConstraintViolation</code>
 	 * based on a different property.
 	 */
 	void disableDefaultConstraintViolation();
@@ -50,7 +50,7 @@ public interface ConstraintValidatorContext {
 	 * <code>ConstraintViolationBuilder</code> or any of its associated nested interfaces
 	 * an <code>IllegalStateException</code> is raised.
 	 * <p/>
-	 * If <code>isValid<code> returns <code>false</code>, a <code>ConstraintViolation</code>
+	 * If <code>isValid</code> returns <code>false</code>, a <code>ConstraintViolation</code>
 	 * object will be built per ConstraintViolation report including the default one (unless
 	 * {@link #disableDefaultConstraintViolation()} has been called).
 	 * <p/>

@@ -20,7 +20,7 @@ import java.util.Set;
 
 /**
  * Reports the result of constraint violations
- *                                                    `
+ *
  * @author Emmanuel Bernard
  */
 public class ConstraintViolationException extends ValidationException {
