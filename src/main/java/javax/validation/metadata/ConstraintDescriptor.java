@@ -81,7 +81,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	 * instances of composing constraints reflect overridden attribute values in
 	 * {@link #getAttributes()}  and {@link #getAnnotation()}.
 	 *
-	 * @return a set of <code>ConstraintDescriptor<code> objects or an empty set
+	 * @return a set of <code>ConstraintDescriptor</code> objects or an empty set
 	 *         in case there are no composing constraints.
 	 */
 	Set<ConstraintDescriptor<?>> getComposingConstraints();

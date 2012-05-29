@@ -22,7 +22,7 @@ import javax.validation.ValidationProviderResolver;
 /**
  * Defines the state used to bootstrap Bean Validation and
  * creates a provider specific <code>Configuration</code>
- * of type<code>T</code>.
+ * of type <code>T</code>.
  * <p/>
  * The specific <code>Configuration</code> is linked to the provider via the generic
  * parameter of the <code>ValidationProvider</code> implementation.

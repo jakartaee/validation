@@ -22,7 +22,7 @@
  * Each constraint declaration defines the list of groups it belongs to.
  * If no group is explicitly declared, a constraint belongs to the Default group.
  *
- * When applying validation, the list of target group is passed along.
+ * When applying validation, the list of target groups is passed along.
  * If no group is explicitly passed along, the Default group is used.
  */
 package javax.validation.groups;
