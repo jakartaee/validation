@@ -30,17 +30,17 @@ public interface TraversableResolver {
 	/**
 	 * Determine if the Bean Validation provider is allowed to reach the property state
 	 *
-	 * @param traversableObject object hosting <code>traversableProperty</code> or null
-	 *                          if <code>validateValue</code> is called
+	 * @param traversableObject object hosting {@code traversableProperty} or null
+	 *                          if {@code validateValue} is called
 	 * @param traversableProperty the traversable property.
 	 * @param rootBeanType type of the root object passed to the Validator.
 	 * @param pathToTraversableObject path from the root object to
-	 *        <code>traversableObject</code>
+	 *        {@code traversableObject}
 	 *        (using the path specification defined by Bean Validator).
-	 * @param elementType either <code>FIELD</code> or <code>METHOD</code>.
+	 * @param elementType either {@code FIELD} or {@code METHOD}.
 	 *
-	 * @return <code>true</code> if the Bean Validation provider is allowed to
-	 *         reach the property state, <code>false</code> otherwise.
+	 * @return {@code true} if the Bean Validation provider is allowed to
+	 *         reach the property state, {@code false} otherwise.
 	 */
 	boolean isReachable(Object traversableObject,
 						Path.Node traversableProperty,
@@ -51,21 +51,21 @@ public interface TraversableResolver {
 	/**
 	 * Determine if the Bean Validation provider is allowed to cascade validation on
 	 * the bean instance returned by the property value
-	 * marked as <code>@Valid</code>.
-	 * Note that this method is called only if <code>isReachable</code> returns true
-	 * for the same set of arguments and if the property is marked as <code>@Valid</code>
+	 * marked as {@code @Valid}.
+	 * Note that this method is called only if {@code isReachable} returns true
+	 * for the same set of arguments and if the property is marked as {@code @Valid}
 	 *
-	 * @param traversableObject object hosting <code>traversableProperty</code> or null
-	 *                          if <code>validateValue</code> is called
+	 * @param traversableObject object hosting {@code traversableProperty} or null
+	 *                          if {@code validateValue} is called
 	 * @param traversableProperty the traversable property.
 	 * @param rootBeanType type of the root object passed to the Validator.
 	 * @param pathToTraversableObject path from the root object to
-	 *        <code>traversableObject</code>
+	 *        {@code traversableObject}
 	 *        (using the path specification defined by Bean Validator).
-	 * @param elementType either <code>FIELD</code> or <code>METHOD</code>.
+	 * @param elementType either {@code FIELD} or {@code METHOD}.
 	 *
-	 * @return <code>true</code> if the Bean Validation provider is allowed to
-	 *         cascade validation, <code>false</code> otherwise.
+	 * @return {@code true} if the Bean Validation provider is allowed to
+	 *         cascade validation, {@code false} otherwise.
 	 */
 	boolean isCascadable(Object traversableObject,
 						 Path.Node traversableProperty,

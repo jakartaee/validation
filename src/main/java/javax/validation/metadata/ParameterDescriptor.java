@@ -44,8 +44,8 @@ public interface ParameterDescriptor extends ElementDescriptor {
 	 * Whether a cascaded validation of this parameter shall be performed or
 	 * not.
 	 *
-	 * @return <code>true</code>, if this parameter shall be validated
-	 *         recursively, <code>false</code> otherwise.
+	 * @return {@code true}, if this parameter shall be validated
+	 *         recursively, {@code false} otherwise.
 	 */
 	boolean isCascaded();
 }

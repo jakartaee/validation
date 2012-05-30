@@ -28,7 +28,7 @@ import javax.validation.spi.ValidationProvider;
  * <a href="http://java.sun.com/j2se/1.5.0/docs/guide/jar/jar.html#Service%20Provider">here</a>
  * <p/>
  * Each META-INF/services/javax.validation.spi.ValidationProvider file contains the list of
- * <code>ValidationProvider</code> implementations each of them representing a provider.
+ * {@code ValidationProvider} implementations each of them representing a provider.
  * <p/>
  * Implementations must be thread-safe.
  *

@@ -31,15 +31,15 @@ import javax.validation.Payload;
  * <p/>
  * Supported types are:
  * <ul>
- * <li><code>BigDecimal</code></li>
- * <li><code>BigInteger</code></li>
- * <li><code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
+ * <li>{@code BigDecimal}</li>
+ * <li>{@code BigInteger}</li>
+ * <li>{@code byte}, {@code short}, {@code int}, {@code long},
  * and their respective wrappers</li>
  * </ul>
- * Note that <code>double</code> and <code>float</code> are not supported due to rounding errors
+ * Note that {@code double} and {@code float} are not supported due to rounding errors
  * (some providers might provide some approximative support)
  * <p/>
- * <code>null</code> elements are considered valid
+ * {@code null} elements are considered valid
  *
  * @author Emmanuel Bernard
  */
@@ -60,7 +60,7 @@ public @interface Min {
 	long value();
 
 	/**
-	 * Defines several <code>@Min</code> annotations on the same element
+	 * Defines several {@code @Min} annotations on the same element
 	 * @see Min
 	 *
 	 * @author Emmanuel Bernard

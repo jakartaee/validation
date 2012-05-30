@@ -19,22 +19,22 @@ package javax.validation.spi;
 import javax.validation.ValidationProviderResolver;
 
 /**
- * Defines the state used to bootstrap the <code>Configuration</code>
+ * Defines the state used to bootstrap the {@code Configuration}
  *
  * @author Emmanuel Bernard
  * @author Sebastian Thomschke 
  */
 public interface BootstrapState {
 	/**
-	 * User defined <code>ValidationProviderResolver</code> strategy
-	 * instance or <code>null</code> if undefined.
+	 * User defined {@code ValidationProviderResolver} strategy
+	 * instance or {@code null} if undefined.
 	 *
 	 * @return ValidationProviderResolver instance or null
 	 */
 	ValidationProviderResolver getValidationProviderResolver();
 
 	/**
-	 * Specification default <code>ValidationProviderResolver</code>
+	 * Specification default {@code ValidationProviderResolver}
 	 * strategy instance.
 	 * 
 	 * @return default implementation of ValidationProviderResolver

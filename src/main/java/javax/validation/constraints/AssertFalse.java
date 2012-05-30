@@ -30,9 +30,9 @@ import javax.validation.Payload;
 
 /**
  * The annotated element must be false.
- * Supported types are <code>boolean</code> and <code>Boolean</code>
+ * Supported types are {@code boolean} and {@code Boolean}
  * <p/>
- * <code>null</code> elements are considered valid.
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -48,7 +48,7 @@ public @interface AssertFalse {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several <code>@AssertFalse</code> annotations on the same element
+	 * Defines several {@code @AssertFalse} annotations on the same element
 	 * @see javax.validation.constraints.AssertFalse
 	 *
 	 * @author Emmanuel Bernard

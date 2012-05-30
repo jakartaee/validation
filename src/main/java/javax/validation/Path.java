@@ -21,10 +21,10 @@ import javax.validation.metadata.ElementDescriptor;
 /**
  * Represents the navigation path from an object to another
  * in an object graph.
- * Each path element is represented by a <code>Node</code>.
+ * Each path element is represented by a {@code Node}.
  *
  * The path corresponds to the succession of nodes
- * in the order they are returned by the <code>Iterator</code>
+ * in the order they are returned by the {@code Iterator}
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
@@ -39,7 +39,7 @@ public interface Path extends Iterable<Path.Node> {
 		 * Name of the property, constructor, method or parameter which the node
 		 * represents or null if representing an entity on the leaf node or the
 		 * return value of a constructor or method (in particular the node in a
-		 * <code>Path</code> representing the root object has its name null).
+		 * {@code Path} representing the root object has its name null).
 		 *
 		 * @return Name of the property, constructor, method or parameter which
 		 *         the node represents.

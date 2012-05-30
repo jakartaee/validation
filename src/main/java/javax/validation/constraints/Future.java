@@ -28,16 +28,16 @@ import javax.validation.Payload;
 /**
  * The annotated element must be a date in the future.
  * Now is defined as the current time according to the virtual machine
- * The calendar used if the compared type is of type <code>Calendar</code>
+ * The calendar used if the compared type is of type {@code Calendar}
  * is the calendar based on the current timezone and the current locale.
  * <p/>
  * Supported types are:
  * <ul>
- * <li><code>java.util.Date</code></li>
- * <li><code>java.util.Calendar</code></li>
+ * <li>{@code java.util.Date}</li>
+ * <li>{@code java.util.Calendar}</li>
  * </ul>
  * <p/>
- * <code>null</code> elements are considered valid.
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -53,7 +53,7 @@ public @interface Future {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several <code>@Future</code> annotations on the same element
+	 * Defines several {@code @Future} annotations on the same element
 	 * @see Future
 	 *
 	 * @author Emmanuel Bernard

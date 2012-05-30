@@ -25,7 +25,7 @@ import javax.validation.ValidatorFactory;
  * Implementations must have a public no-arg constructor. The construction of a provider
  * should be as "lightweight" as possible.
  *
- * <code>T</code> represents the provider specific Configuration subclass
+ * {@code T} represents the provider specific Configuration subclass
  * which typically host provider's additional configuration methods.
  *
  * @author Emmanuel Bernard
@@ -34,10 +34,10 @@ import javax.validation.ValidatorFactory;
 public interface ValidationProvider<T extends Configuration<T>> {
 
 	/**
-	 * Returns a <code>Configuration</code> instance implementing <code>T</code>,
-	 * the <code>Configuration</code> sub-interface.
-	 * The returned <code>Configuration</code> instance must use the current provider
-	 * (<code>this</code>) to build the <code>ValidatorFactory</code> instance.
+	 * Returns a {@code Configuration} instance implementing {@code T},
+	 * the {@code Configuration} sub-interface.
+	 * The returned {@code Configuration} instance must use the current provider
+	 * ({@code this}) to build the {@code ValidatorFactory} instance.
 	 * <p/>
 	 *
 	 * @param state bootstrap state
@@ -47,13 +47,13 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	T createSpecializedConfiguration(BootstrapState state);
 
 	/**
-	 * Returns a <code>Configuration</code> instance. This instance is not bound to
+	 * Returns a {@code Configuration} instance. This instance is not bound to
 	 * use the current provider. The choice of provider follows the algorithm described
 	 * in {@link javax.validation.Configuration}
 	 * <p/>
-	 * The <code>ValidationProviderResolver</code> used by <code>Configuration</code>
-	 * is provided by <code>state</code>.
-	 * If null, the default <code>ValidationProviderResolver</code> is used.
+	 * The {@code ValidationProviderResolver} used by {@code Configuration}
+	 * is provided by {@code state}.
+	 * If null, the default {@code ValidationProviderResolver} is used.
 	 *
 	 * @param state bootstrap state
 	 *
@@ -62,11 +62,11 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	Configuration<?> createGenericConfiguration(BootstrapState state);
 
 	/**
-	 * Build a <code>ValidatorFactory</code> using the current provider implementation.
-	 * The <code>ValidatorFactory</code> is assembled and follows the configuration passed
-	 * via <code>ConfigurationState</code>.
+	 * Build a {@code ValidatorFactory} using the current provider implementation.
+	 * The {@code ValidatorFactory} is assembled and follows the configuration passed
+	 * via {@code ConfigurationState}.
 	 * <p>
-	 * The returned <code>ValidatorFactory</code> is properly initialized and ready for use.
+	 * The returned {@code ValidatorFactory} is properly initialized and ready for use.
 	 * </p>
 	 *
 	 * @param configurationState the configuration descriptor

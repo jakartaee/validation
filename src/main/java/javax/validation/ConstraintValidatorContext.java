@@ -19,16 +19,16 @@ package javax.validation;
 /**
  * Provide contextual data and operation when applying a given constraint validator.
  *
- * At least one <code>ConstraintViolation</code> must be defined (either the default one,
- * of if the default <code>ConstraintViolation</code> is disabled, a custom one).
+ * At least one {@code ConstraintViolation} must be defined (either the default one,
+ * of if the default {@code ConstraintViolation} is disabled, a custom one).
  *
  * @author Emmanuel Bernard
  */
 public interface ConstraintValidatorContext {
 	/**
-	 * Disable the default <code>ConstraintViolation</code> object generation (which
+	 * Disable the default {@code ConstraintViolation} object generation (which
 	 * is using the message template declared on the constraint).
-	 * Useful to set a different violation message or generate a <code>ConstraintViolation</Code>
+	 * Useful to set a different violation message or generate a {@code ConstraintViolation}
 	 * based on a different property.
 	 */
 	void disableDefaultConstraintViolation();
@@ -43,23 +43,23 @@ public interface ConstraintValidatorContext {
 	 * allowing to optionally associate it to a sub path.
 	 * The violation message will be interpolated.
 	 * <p/>
-	 * To create the <code>ConstraintViolation</code>, one must call either one of
+	 * To create the {@code ConstraintViolation}, one must call either one of
 	 * the #addConstraintViolation() methods available in one of the
 	 * interfaces of the fluent API.
 	 * If another method is called after #addConstraintViolation() on
-	 * <code>ConstraintViolationBuilder</code> or any of its associated nested interfaces
-	 * an <code>IllegalStateException</code> is raised.
+	 * {@code ConstraintViolationBuilder} or any of its associated nested interfaces
+	 * an {@code IllegalStateException} is raised.
 	 * <p/>
-	 * If <code>isValid<code> returns <code>false</code>, a <code>ConstraintViolation</code>
+	 * If {@code isValid} returns {@code false}, a {@code ConstraintViolation}
 	 * object will be built per ConstraintViolation report including the default one (unless
 	 * {@link #disableDefaultConstraintViolation()} has been called).
 	 * <p/>
-	 * <code>ConstraintViolation</code> objects generated from such a call
+	 * {@code ConstraintViolation} objects generated from such a call
 	 * contain the same contextual information (root bean, path and so on) unless
 	 * the path has been overridden.
 	 * <p/>
-	 * To create a different <code>ConstraintViolation</code>, a new constraint violation builder
-	 * has to be retrieved from <code>ConstraintValidatorContext</code>
+	 * To create a different {@code ConstraintViolation}, a new constraint violation builder
+	 * has to be retrieved from {@code ConstraintValidatorContext}
 	 *
 	 * Here are a few usage examples:
 	 * <pre>
@@ -91,37 +91,37 @@ public interface ConstraintValidatorContext {
 	ConstraintViolationBuilder buildConstraintViolationWithTemplate(String messageTemplate);
 
 	/**
-	 * <code>ConstraintViolation</code> builder allowing to optionally associate
+	 * {@code ConstraintViolation} builder allowing to optionally associate
 	 * the violation report to a sub path.
 	 *
-	 * To create the <code>ConstraintViolation</code>, one must call either one of
+	 * To create the {@code ConstraintViolation}, one must call either one of
 	 * the #addConstraintViolation() methods available in one of the
 	 * interfaces of the fluent API.
 	 * If another method is called after #addConstraintViolation() on
-	 * <code>ConstraintViolationBuilder</code> or any of its associated objects
-	 * an <code>IllegalStateException</code> is raised.
+	 * {@code ConstraintViolationBuilder} or any of its associated objects
+	 * an {@code IllegalStateException} is raised.
 	 * 
 	 */
 	interface ConstraintViolationBuilder {
 		/**
-		 * Add a node to the path the <code>ConstraintViolation</code> will be associated to.
+		 * Add a node to the path the {@code ConstraintViolation} will be associated to.
 		 *
-		 * <code>name</code> describes a single property. In particular,
+		 * {@code name} describes a single property. In particular,
 		 * dot (.) is not allowed.
 		 *
 		 * @param name property name
-		 * @return a builder representing node <code>name</code>
+		 * @return a builder representing node {@code name}
 		 */
 		NodeBuilderDefinedContext addNode(String name);
 
 		/**
-		 * Add the new <code>ConstraintViolation</code> to be generated if the
+		 * Add the new {@code ConstraintViolation} to be generated if the
 		 * constraint validator marks the value as invalid.
-		 * Methods of this <code>ConstraintViolationBuilder</code> instance and its nested
-		 * objects return <code>IllegalStateException</code> from now on.
+		 * Methods of this {@code ConstraintViolationBuilder} instance and its nested
+		 * objects return {@code IllegalStateException} from now on.
 		 *
-		 * @return the <code>ConstraintValidatorContext</code> instance the
-		 *           <code>ConstraintViolationBuilder</code> comes from
+		 * @return the {@code ConstraintValidatorContext} instance the
+		 *           {@code ConstraintViolationBuilder} comes from
 		 */
 		ConstraintValidatorContext addConstraintViolation();
 
@@ -132,25 +132,25 @@ public interface ConstraintValidatorContext {
 		interface NodeBuilderDefinedContext {
 
 			/**
-			 * Add a node to the path the <code>ConstraintViolation</code> will be associated to.
+			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
 			 *
-			 * <code>name</code> describes a single property. In particular,
+			 * {@code name} describes a single property. In particular,
 	         * dot (.) are not allowed.
 			 *
-			 * @param name property <code>name</code>
+			 * @param name property {@code name}
 			 * @return a builder representing this node
 			 */
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add the new <code>ConstraintViolation</code> to be generated if the
+			 * Add the new {@code ConstraintViolation} to be generated if the
 			 * constraint validator marks the value as invalid.
-			 * Methods of the <code>ConstraintViolationBuilder</code> instance this object
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return <code>IllegalStateException</code> after this call.
+			 * objects return {@code IllegalStateException} after this call.
 			 *
-			 * @return <code>ConstraintValidatorContext</code> instance the
-			 *           <code>ConstraintViolationBuilder</code> comes from
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *           {@code ConstraintViolationBuilder} comes from
 			 */
 			ConstraintValidatorContext addConstraintViolation();
 		}
@@ -162,46 +162,46 @@ public interface ConstraintValidatorContext {
 		interface NodeBuilderCustomizableContext {
 
 			/**
-			 * Mark the node as being in an <code>Iterable</code> or a <code>Map</code>
+			 * Mark the node as being in an {@code Iterable} or a {@code Map}
 			 * 
 			 * @return a builder representing iterable details
 			 */
 			NodeContextBuilder inIterable();
 
 			/**
-			 * Add a node to the path the <code>ConstraintViolation</code> will be associated to.
+			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
 			 *
-			 * <code>name</code> describes a single property. In particular,
+			 * {@code name} describes a single property. In particular,
 	         * dot (.) are not allowed.
 			 *
-			 * @param name property <code>name</code>
+			 * @param name property {@code name}
 			 * @return a builder representing this node
 			 */
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add the new <code>ConstraintViolation</code> to be generated if the
+			 * Add the new {@code ConstraintViolation} to be generated if the
 			 * constraint validator mark the value as invalid.
-			 * Methods of the <code>ConstraintViolationBuilder</code> instance this object
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return <code>IllegalStateException</code> after this call.
+			 * objects return {@code IllegalStateException} after this call.
 			 *
-			 * @return <code>ConstraintValidatorContext</code> instance the
-			 *           <code>ConstraintViolationBuilder</code> comes from
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *           {@code ConstraintViolationBuilder} comes from
 			 */
 			ConstraintValidatorContext addConstraintViolation();
 		}
 
 		/**
 		 * Represent refinement choices for a node which is
-		 * in an <code>Iterator</code> or <code>Map</code>.
+		 * in an {@code Iterator} or {@code Map}.
 		 * If the iterator is an indexed collection or a map,
 		 * the index or the key should be set.
 		 */
 		interface NodeContextBuilder {
 			
 			/**
-			 * Define the key the object is into the <code>Map</code>
+			 * Define the key the object is into the {@code Map}
 			 *
 			 * @param key map key
 			 * @return a builder representing the current node
@@ -209,7 +209,7 @@ public interface ConstraintValidatorContext {
 			NodeBuilderDefinedContext atKey(Object key);
 
 			/**
-			 * Define the index the object is into the <code>List</code> or array
+			 * Define the index the object is into the {@code List} or array
 			 *
 			 * @param index index
 			 * @return a builder representing the current node
@@ -217,25 +217,25 @@ public interface ConstraintValidatorContext {
 			NodeBuilderDefinedContext atIndex(Integer index);
 
 			/**
-			 * Add a node to the path the <code>ConstraintViolation</code> will be associated to.
+			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
 			 *
-			 * <code>name</code> describes a single property. In particular,
+			 * {@code name} describes a single property. In particular,
 	         * dot (.) is not allowed.
 			 *
-			 * @param name property <code>name</code>
+			 * @param name property {@code name}
 			 * @return a builder representing this node
 			 */
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add the new <code>ConstraintViolation</code> to be generated if the
+			 * Add the new {@code ConstraintViolation} to be generated if the
 			 * constraint validator mark the value as invalid.
-			 * Methods of the <code>ConstraintViolationBuilder</code> instance this object
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return <code>IllegalStateException</code> after this call.
+			 * objects return {@code IllegalStateException} after this call.
 			 *
-			 * @return <code>ConstraintValidatorContext</code> instance the
-			 *           <code>ConstraintViolationBuilder</code> comes from
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *           {@code ConstraintViolationBuilder} comes from
 			 */
 			ConstraintValidatorContext addConstraintViolation();
 		}

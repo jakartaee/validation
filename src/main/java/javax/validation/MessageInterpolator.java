@@ -29,7 +29,7 @@ import javax.validation.metadata.ConstraintDescriptor;
 public interface MessageInterpolator {
 	/**
 	 * Interpolate the message template based on the constraint validation context.
-	 * The locale is defaulted according to the <code>MessageInterpolator</code>
+	 * The locale is defaulted according to the {@code MessageInterpolator}
 	 * implementation. See the implementation documentation for more detail.
 	 *
 	 * @param messageTemplate The message to interpolate.
@@ -41,7 +41,7 @@ public interface MessageInterpolator {
 
 	/**
 	 * Interpolate the message template based on the constraint validation context.
-	 * The <code>Locale</code> used is provided as a parameter.
+	 * The {@code Locale} used is provided as a parameter.
 	 *
 	 * @param messageTemplate The message to interpolate.
 	 * @param context contextual information related to the interpolation

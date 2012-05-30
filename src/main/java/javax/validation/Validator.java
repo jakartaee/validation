@@ -172,7 +172,7 @@ public interface Validator {
 	/**
 	 * Return the descriptor object describing bean constraints.
 	 * The returned object (and associated objects including
-	 * {@code ConstraintDescriptor{@code s) are immutable.
+	 * {@code ConstraintDescriptor}s) are immutable.
 	 *
 	 * @param clazz class or interface type evaluated
 	 *

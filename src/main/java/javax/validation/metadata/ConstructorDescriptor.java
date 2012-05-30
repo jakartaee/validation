@@ -34,7 +34,7 @@ public interface ConstructorDescriptor extends ElementDescriptor {
 	 *
 	 * @return A list with descriptors for this constructor's parameters. An
 	 *         empty list will be returned if this constructor has no
-	 *         parameters, but never <code>null</code>.
+	 *         parameters, but never {@code null}.
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 

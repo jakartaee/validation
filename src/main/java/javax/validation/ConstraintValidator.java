@@ -46,7 +46,7 @@ public interface ConstraintValidator<A extends Annotation, T> {
 
 	/**
 	 * Implement the validation logic.
-	 * The state of <code>value</code> must not be altered.
+	 * The state of {@code value} must not be altered.
 	 *
 	 * This method can be accessed concurrently, thread-safety must be ensured
 	 * by the implementation.
@@ -54,7 +54,7 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	 * @param value object to validate
 	 * @param context context in which the constraint is evaluated
 	 *
-	 * @return false if <code>value</code> does not pass the constraint
+	 * @return false if {@code value} does not pass the constraint
 	 */
 	boolean isValid(T value, ConstraintValidatorContext context);
 }
