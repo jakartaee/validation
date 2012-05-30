@@ -19,7 +19,7 @@ import java.io.InputStream;
 
 /**
  * Receives configuration information, selects the appropriate
- * Bean Validation provider and builds the appropriate <code>ValidatorFactory</code>.
+ * Bean Validation provider and builds the appropriate {@code ValidatorFactory}.
  * <p/>
  * Usage:
  * <pre>
@@ -33,20 +33,20 @@ import java.io.InputStream;
  * By default, the configuration information is retrieved from
  * <i>META-INF/validation.xml</i>.
  * It is possible to override the configuration retrieved from the XML file
- * by using one or more of the <code>Configuration</code> methods.
+ * by using one or more of the {@code Configuration} methods.
  * <p/>
  * The {@link ValidationProviderResolver} is specified at configuration time
  * (see {@link javax.validation.spi.ValidationProvider}).
- * If none is explicitly requested, the default <code>ValidationProviderResolver</code> is used.
+ * If none is explicitly requested, the default {@code ValidationProviderResolver} is used.
  * <p/>
  * The provider is selected in the following way:
  * <ul>
  * <li>if a specific provider is requested programmatically using
- * <code>Validation.byProvider(Class)</code>, find the first provider implementing
+ * {@code Validation.byProvider(Class)}, find the first provider implementing
  * the provider class requested and use it</li>
  * <li>if a specific provider is requested in <i>META-INF/validation.xml</i>,
  * find the first provider implementing the provider class requested and use it</li>
- * <li>otherwise, use the first provider returned by the <code>ValidationProviderResolver</code></li>
+ * <li>otherwise, use the first provider returned by the {@code ValidationProviderResolver}</li>
  * </ul>
  * <p/>
  * Implementations are not meant to be thread-safe.
@@ -61,33 +61,33 @@ public interface Configuration<T extends Configuration<T>> {
 	 * method is called.
 	 * This method is typically useful for containers that parse
 	 * <i>META-INF/validation.xml</i> themselves and pass the information
-	 * via the <code>Configuration</code> methods.
+	 * via the {@code Configuration} methods.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 */
 	T ignoreXmlConfiguration();
 
 	/**
 	 * Defines the message interpolator used. Has priority over the configuration
 	 * based message interpolator.
-	 * If <code>null</code> is passed, the default message interpolator is used
+	 * If {@code null} is passed, the default message interpolator is used
 	 * (defined in XML or the specification default).
 	 *
 	 * @param interpolator message interpolator implementation.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 */
 	T messageInterpolator(MessageInterpolator interpolator);
 
 	/**
 	 * Defines the traversable resolver used. Has priority over the configuration
 	 * based traversable resolver.
-	 * If <code>null</code> is passed, the default traversable resolver is used
+	 * If {@code null} is passed, the default traversable resolver is used
 	 * (defined in XML or the specification default).
 	 *
 	 * @param resolver traversable resolver implementation.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 */
 	T traversableResolver(TraversableResolver resolver);
 
@@ -99,7 +99,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 *
 	 * @param constraintValidatorFactory constraint factory implementation.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 */
 	T constraintValidatorFactory(ConstraintValidatorFactory constraintValidatorFactory);
 
@@ -111,7 +111,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 *
 	 * @param parameterNameProvider Parameter name provider implementation.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 */
 	T parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
@@ -120,14 +120,14 @@ public interface Configuration<T extends Configuration<T>> {
 	 * XML format.
 	 * <p/>
 	 * The stream should be closed by the client API after the
-	 * <code>ValidatorFactory</code> has been built. The Bean Validation provider
+	 * {@code ValidatorFactory} has been built. The Bean Validation provider
 	 * must not close the stream.
 	 *
 	 * @param stream XML mapping stream.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 *
-	 * @throws IllegalArgumentException if <code>stream</code> is null
+	 * @throws IllegalArgumentException if {@code stream} is null
 	 */
 	T addMapping(InputStream stream);
 
@@ -140,12 +140,12 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Note: Using this non type-safe method is generally not recommended.
 	 * <p/>
 	 * It is more appropriate to use, if available, the type-safe equivalent provided
-	 * by a specific provider via its <code>Configuration</code> subclass.
-	 * <code>ValidatorFactory factory = Validation.byProvider(ACMEPrivoder.class)
+	 * by a specific provider via its {@code Configuration} subclass.
+	 * <pre>{@code ValidatorFactory factory = Validation.byProvider(ACMEProvider.class)
 	 * .configure()
 	 * .providerSpecificProperty(ACMEState.FAST)
-	 * .buildValidatorFactory();
-	 * </code>
+	 * .buildValidatorFactory();}
+	 * </pre>
 	 * This method is typically used by containers parsing <i>META-INF/validation.xml</i>
 	 * themselves and injecting the state to the Configuration object.
 	 * <p/>
@@ -158,15 +158,15 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @param name property name.
 	 * @param value property value.
 	 *
-	 * @return <code>this</code> following the chaining method pattern.
+	 * @return {@code this} following the chaining method pattern.
 	 *
-	 * @throws IllegalArgumentException if <code>name</code> is null
+	 * @throws IllegalArgumentException if {@code name} is null
 	 */
 	T addProperty(String name, String value);
 
 	/**
-	 * Return an implementation of the <code>MessageInterpolator</code> interface
-	 * following the default <code>MessageInterpolator</code> defined in the
+	 * Return an implementation of the {@code MessageInterpolator} interface
+	 * following the default {@code MessageInterpolator} defined in the
 	 * specification:
 	 * <ul>
 	 * <li>use the ValidationMessages resource bundle to load keys</li>
@@ -178,8 +178,8 @@ public interface Configuration<T extends Configuration<T>> {
 	MessageInterpolator getDefaultMessageInterpolator();
 
 	/**
-	 * Return an implementation of the <code>TraversableResolver</code> interface
-	 * following the default <code>TraversableResolver</code> defined in the
+	 * Return an implementation of the {@code TraversableResolver} interface
+	 * following the default {@code TraversableResolver} defined in the
 	 * specification:
 	 * <ul>
 	 * <li>if Java Persistence is available in the runtime environment,
@@ -195,11 +195,11 @@ public interface Configuration<T extends Configuration<T>> {
 	TraversableResolver getDefaultTraversableResolver();
 
 	/**
-	 * Return an implementation of the <code>ConstraintValidatorFactory</code> interface
-	 * following the default <code>ConstraintValidatorFactory</code> defined in the
+	 * Return an implementation of the {@code ConstraintValidatorFactory} interface
+	 * following the default {@code ConstraintValidatorFactory} defined in the
 	 * specification:
 	 * <ul>
-	 * <li>uses the public no-arg constructor of the <code>ConstraintValidator</code></li>
+	 * <li>uses the public no-arg constructor of the {@code ConstraintValidator}</li>
 	 * </ul>
 	 *
 	 * @return default ConstraintValidatorFactory implementation compliant with the specification
@@ -207,13 +207,13 @@ public interface Configuration<T extends Configuration<T>> {
 	ConstraintValidatorFactory getDefaultConstraintValidatorFactory();
 
 	/**
-	 * Return an implementation of the <code>ParameterNameProvider</code>
-	 * interface following the default <code>ParameterNameProvider</code>
+	 * Return an implementation of the {@code ParameterNameProvider}
+	 * interface following the default {@code ParameterNameProvider}
 	 * defined in the specification:
 	 * <ul>
-	 * <li>returns names in the form <code>arg&lt;PARAMETER_INDEX&gt;</code>
-	 * where <code>PARAMETER_INDEX</code> starts at 0 for the first parameter,
-	 * e.g. <code>arg0</code>, <code>arg1</code> etc.</code></li>
+	 * <li>returns names in the form {@code arg&lt;PARAMETER_INDEX&gt;}
+	 * where {@code PARAMETER_INDEX} starts at 0 for the first parameter,
+	 * e.g. {@code arg0}, {@code arg1} etc.</li>
 	 * </ul>
 	 *
 	 * @return default ParameterNameProvider implementation compliant with
@@ -231,7 +231,7 @@ public interface Configuration<T extends Configuration<T>> {
 	ConfigurationSource getConfigurationSource();
 
 	/**
-	 * Build a <code>ValidatorFactory</code> implementation.
+	 * Build a {@code ValidatorFactory} implementation.
 	 *
 	 * @return ValidatorFactory
 	 *

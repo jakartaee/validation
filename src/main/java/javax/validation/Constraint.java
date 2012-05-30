@@ -27,7 +27,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * Link between a constraint annotation and its constraint validation implementations.
  * <p/>
- * A given constraint annotation should be annotated by a <code>@Constraint</code>
+ * A given constraint annotation should be annotated by a {@code @Constraint}
  * annotation which refers to its list of constraint validation implementations.
  *
  * @author Emmanuel Bernard
@@ -39,8 +39,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface Constraint {
 	/**
-	 * <code>ConstraintValidator</code> classes must reference distinct target types.
-	 * If two <code>ConstraintValidator</code> refer to the same type,
+	 * {@code ConstraintValidator} classes must reference distinct target types.
+	 * If two {@code ConstraintValidator} refer to the same type,
 	 * an exception will occur.
 	 *
 	 * @return array of ConstraintValidator classes implementing the constraint

@@ -39,7 +39,7 @@ public @interface OverridesAttribute {
 
 	/**
 	 * Name of the Constraint attribute overridden.
-	 * Defaults to the name of the attribute hosting <code>@OverridesAttribute</code>.
+	 * Defaults to the name of the attribute hosting {@code @OverridesAttribute}.
 	 *
 	 * @return name of constraint attribute overridden.
 	 */

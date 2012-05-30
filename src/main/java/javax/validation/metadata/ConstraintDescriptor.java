@@ -25,7 +25,7 @@ import javax.validation.Payload;
 
 /**
  * Describes a single constraint and its composing constraints.
- * <code>T</code> is the constraint's annotation type.
+ * {@code T} is the constraint's annotation type.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
@@ -42,7 +42,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 
 	/**
 	 * The set of groups the constraint is applied on.
-	 * If the constraint declares no group, a set with only the <code>Default</code>
+	 * If the constraint declares no group, a set with only the {@code Default}
 	 * group is returned.
 	 *
 	 * @return The groups the constraint is applied on.
@@ -76,18 +76,18 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Map<String, Object> getAttributes();
 
 	/**
-	 * Return a set of composing <code>ConstraintDescriptor</code>s where each
-	 * descriptor describes a composing constraint. <code>ConstraintDescriptor</code>
+	 * Return a set of composing {@code ConstraintDescriptor}s where each
+	 * descriptor describes a composing constraint. {@code ConstraintDescriptor}
 	 * instances of composing constraints reflect overridden attribute values in
 	 * {@link #getAttributes()}  and {@link #getAnnotation()}.
 	 *
-	 * @return a set of <code>ConstraintDescriptor</code> objects or an empty set
+	 * @return a set of {@code ConstraintDescriptor} objects or an empty set
 	 *         in case there are no composing constraints.
 	 */
 	Set<ConstraintDescriptor<?>> getComposingConstraints();
 
 	/**
-	 * @return true if the constraint is annotated with <code>@ReportAsSingleViolation</code>
+	 * @return true if the constraint is annotated with {@code @ReportAsSingleViolation}
 	 */
 	boolean isReportAsSingleViolation();
 }

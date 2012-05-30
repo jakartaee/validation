@@ -30,7 +30,7 @@ public class ConstraintViolationException extends ValidationException {
 	 * Creates a constraint violation report
 	 *
 	 * @param message error message
-	 * @param constraintViolations <code>Set</code> of <code>ConstraintViolation</code>
+	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
 	 */
 	public ConstraintViolationException(String message,
 										Set<ConstraintViolation<?>> constraintViolations) {
@@ -41,7 +41,7 @@ public class ConstraintViolationException extends ValidationException {
 	/**
 	 * Creates a constraint violation report
 	 *
-	 * @param constraintViolations <code>Set</code> of <code>ConstraintViolation</code>
+	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
 	 */
 	public ConstraintViolationException(Set<ConstraintViolation<?>> constraintViolations) {
 		super();
@@ -51,7 +51,7 @@ public class ConstraintViolationException extends ValidationException {
 	/**
 	 * Set of constraint violations reported during a validation
 	 *
-	 * @return <code>Set</code> of <code>ConstraintViolation</code>
+	 * @return {@code Set} of {@code ConstraintViolation}
 	 */
 	public Set<ConstraintViolation<?>> getConstraintViolations() {
 		return constraintViolations;

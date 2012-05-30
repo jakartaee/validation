@@ -28,8 +28,8 @@ public interface ReturnValueDescriptor extends ElementDescriptor {
 	 * Whether a cascaded validation for this return value shall be performed or
 	 * not.
 	 *
-	 * @return <code>true</code>, if this return value shall be validated
-	 *         recursively, <code>false</code> otherwise.
+	 * @return {@code true}, if this return value shall be validated
+	 *         recursively, {@code false} otherwise.
 	 */
 	boolean isCascaded();
 }

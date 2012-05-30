@@ -29,14 +29,14 @@ import javax.validation.Payload;
  * The annotated element must be a number within accepted range
  * Supported types are:
  * <ul>
- * <li><code>BigDecimal</code></li>
- * <li><code>BigInteger</code></li>
- * <li><code>String</code></li>
- * <li><code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
+ * <li>{@code BigDecimal}</li>
+ * <li>{@code BigInteger}</li>
+ * <li>{@code String}</li>
+ * <li>{@code byte}, {@code short}, {@code int}, {@code long},
  * and their respective wrapper types</li>
  * </ul>
  * <p/>
- * <code>null</code> elements are considered valid
+ * {@code null} elements are considered valid
  *
  * @author Emmanuel Bernard
  */
@@ -62,7 +62,7 @@ public @interface Digits {
 	int fraction();
 
 	/**
-	 * Defines several <code>@Digits</code> annotations on the same element
+	 * Defines several {@code @Digits} annotations on the same element
 	 * @see Digits
 	 *
 	 * @author Emmanuel Bernard

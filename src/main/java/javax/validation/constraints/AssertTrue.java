@@ -27,9 +27,9 @@ import javax.validation.Payload;
 
 /**
  * The annotated element must be true.
- * Supported types are <code>boolean</code> and <code>Boolean</code>
+ * Supported types are {@code boolean} and {@code Boolean}
  * <p/>
- * <code>null</code> elements are considered valid.
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -45,7 +45,7 @@ public @interface AssertTrue {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several <code>@AssertTrue</code> annotations on the same element
+	 * Defines several {@code @AssertTrue} annotations on the same element
 	 * @see AssertTrue
 	 *
 	 * @author Emmanuel Bernard

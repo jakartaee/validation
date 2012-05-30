@@ -17,8 +17,8 @@
 package javax.validation;
 
 /**
- * Instantiate a <code>ConstraintValidator</code> instance based off its class.
- * The <code>ConstraintValidatorFactory</code> is <b>not</b> responsible
+ * Instantiate a {@code ConstraintValidator} instance based off its class.
+ * The {@code ConstraintValidatorFactory} is <b>not</b> responsible
  * for calling {@link ConstraintValidator#initialize(java.lang.annotation.Annotation)}.
  *
  * @author Dhanji R. Prasanna

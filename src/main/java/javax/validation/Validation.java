@@ -38,7 +38,7 @@ import javax.validation.spi.ValidationProvider;
  * to bootstrap it:
  * <ul>
  * <li>
- * The easiest approach is to build the default <code>ValidatorFactory</code>.
+ * The easiest approach is to build the default {@code ValidatorFactory}.
  * <pre>{@code ValidatorFactory factory = Validation.buildDefaultValidatorFactory();}</pre>
  * In this case, the default validation provider resolver
  * will be used to locate available providers.
@@ -47,13 +47,13 @@ import javax.validation.spi.ValidationProvider;
  * <li>if the XML configuration defines a provider, this provider is used</li>
  * <li>if the XML configuration does not define a provider or if no XML configuration
  * is present the first provider returned by the
- * <code>ValidationProviderResolver</code> instance is used.</li>
+ * {@code ValidationProviderResolver} instance is used.</li>
  * </ul>
  * </li>
  * <li>
  * The second bootstrap approach allows to choose a custom
- * <code>ValidationProviderResolver</code>. The chosen
- * <code>ValidationProvider</code> is then determined in the same way
+ * {@code ValidationProviderResolver}. The chosen
+ * {@code ValidationProvider} is then determined in the same way
  * as in the default bootstrapping case (see above).
  * <pre>{@code
  * Configuration<?> configuration = Validation
@@ -67,7 +67,7 @@ import javax.validation.spi.ValidationProvider;
  * The third approach allows you to specify explicitly and in
  * a type safe fashion the expected provider.
  * <p/>
- * Optionally you can choose a custom <code>ValidationProviderResolver</code>.
+ * Optionally you can choose a custom {@code ValidationProviderResolver}.
  * <pre>{@code
  * ACMEConfiguration configuration = Validation
  *    .byProvider(ACMEProvider.class)
@@ -80,8 +80,8 @@ import javax.validation.spi.ValidationProvider;
  * Note:<br/>
  * <ul>
  * <li>
- * The <code>ValidatorFactory</code> object built by the bootstrap process should be cached
- * and shared amongst <code>Validator</code> consumers.
+ * The {@code ValidatorFactory} object built by the bootstrap process should be cached
+ * and shared amongst {@code Validator} consumers.
  * </li>
  * <li>
  * This class is thread-safe.
@@ -94,15 +94,15 @@ import javax.validation.spi.ValidationProvider;
 public class Validation {
 
 	/**
-	 * Build and return a <code>ValidatorFactory</code> instance based on the
+	 * Build and return a {@code ValidatorFactory} instance based on the
 	 * default Bean Validation provider and following the XML configuration.
 	 * <p/>
 	 * The provider list is resolved using the default validation provider resolver
 	 * logic.
 	 * <p/> The code is semantically equivalent to
-	 * <code>Validation.byDefaultProvider().configure().buildValidatorFactory()</code>
+	 * {@code Validation.byDefaultProvider().configure().buildValidatorFactory()}
 	 *
-	 * @return <code>ValidatorFactory</code> instance.
+	 * @return {@code ValidatorFactory} instance.
 	 *
 	 * @throws ValidationException if the ValidatorFactory cannot be built
 	 */
@@ -111,7 +111,7 @@ public class Validation {
 	}
 
 	/**
-	 * Build a <code>Configuration</code>. The provider list is resolved
+	 * Build a {@code Configuration}. The provider list is resolved
 	 * using the strategy provided to the bootstrap state.
 	 * <pre>
 	 * Configuration&lt?&gt; configuration = Validation
@@ -124,7 +124,7 @@ public class Validation {
 	 * configuration does not exist or if no provider is specified,
 	 * the first available provider will be returned.
 	 *
-	 * @return instance building a generic <code>Configuration</code>
+	 * @return instance building a generic {@code Configuration}
 	 *         compliant with the bootstrap state provided.
 	 */
 	public static GenericBootstrap byDefaultProvider() {
@@ -132,7 +132,7 @@ public class Validation {
 	}
 
 	/**
-	 * Build a <code>Configuration</code> for a particular provider implementation.
+	 * Build a {@code Configuration} for a particular provider implementation.
 	 * Optionally overrides the provider resolution strategy used to determine the provider.
 	 * <p/>
 	 * Used by applications targeting a specific provider programmatically.
@@ -143,14 +143,14 @@ public class Validation {
 	 *             .providerResolver( new MyResolverStrategy() )
 	 *             .configure();
 	 * </pre>,
-	 * where <code>ACMEConfiguration</code> is the
-	 * <code>Configuration</code> sub interface uniquely identifying the
-	 * ACME Bean Validation provider. and <code>ACMEProvider</code> is the
-	 * <code>ValidationProvider</code> implementation of the ACME provider.
+	 * where {@code ACMEConfiguration} is the
+	 * {@code Configuration} sub interface uniquely identifying the
+	 * ACME Bean Validation provider. and {@code ACMEProvider} is the
+	 * {@code ValidationProvider} implementation of the ACME provider.
 	 *
-	 * @param providerType the <code>ValidationProvider</code> implementation type
+	 * @param providerType the {@code ValidationProvider} implementation type
 	 *
-	 * @return instance building a provider specific <code>Configuration</code>
+	 * @return instance building a provider specific {@code Configuration}
 	 *         sub interface implementation.
 	 */
 	public static <T extends Configuration<T>, U extends ValidationProvider<T>>
@@ -277,12 +277,12 @@ public class Validation {
 	}
 
 	/**
-	 * Find <code>ValidationProvider</code> according to the default <code>ValidationProviderResolver</code> defined in the
+	 * Find {@code ValidationProvider} according to the default {@code ValidationProviderResolver} defined in the
 	 * Bean Validation specification. This implementation uses the current classloader or the classloader which has loaded
 	 * the current class if the current class loader is unavailable. The classloader is used to retrieve the Service Provider files.
 	 * <p>
 	 * This class implements the Service Provider pattern described <a href="http://java.sun.com/j2se/1.5.0/docs/guide/jar/jar.html#Service%20Provider">here</a>.
-	 * Since we cannot rely on Java 6 we have to re-implement the <code>Service</code> functionality.
+	 * Since we cannot rely on Java 6 we have to re-implement the {@code Service} functionality.
 	 * </p>
 	 *
 	 * @author Emmanuel Bernard

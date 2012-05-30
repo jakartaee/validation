@@ -30,12 +30,12 @@ import javax.validation.Payload;
  *
  * Supported types are:
  * <ul>
- * <li><code>String</code> (string length is evaluated)</li>
- * <li><code>Collection</code> (collection size is evaluated)</li>
- * <li><code>Map</code> (map size is evaluated)</li>
+ * <li>{@code String} (string length is evaluated)</li>
+ * <li>{@code Collection} (collection size is evaluated)</li>
+ * <li>{@code Map} (map size is evaluated)</li>
  * <li>Array (array length is evaluated)</li>
  *
- * <code>null</code> elements are considered valid.
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -61,7 +61,7 @@ public @interface Size {
 	int max() default Integer.MAX_VALUE;
 
 	/**
-	 * Defines several <code>@Size</code> annotations on the same element
+	 * Defines several {@code @Size} annotations on the same element
 	 * @see Size
 	 *
 	 * @author Emmanuel Bernard

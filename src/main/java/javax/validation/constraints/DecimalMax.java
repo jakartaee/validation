@@ -31,16 +31,16 @@ import javax.validation.Payload;
  * <p/>
  * Supported types are:
  * <ul>
- * <li><code>BigDecimal</code></li>
- * <li><code>BigInteger</code></li>
- * <li><code>String</code></li>
- * <li><code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
+ * <li>{@code BigDecimal}</li>
+ * <li>{@code BigInteger}</li>
+ * <li>{@code String}</li>
+ * <li>{@code byte}, {@code short}, {@code int}, {@code long},
  * and their respective wrappers</li>
  * </ul>
- * Note that <code>double</code> and <code>float</code> are not supported due to rounding errors
+ * Note that {@code double} and {@code float} are not supported due to rounding errors
  * (some providers might provide some approximative support)
  * <p/>
- * <code>null</code> elements are considered valid.
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -56,15 +56,15 @@ public @interface DecimalMax {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * The <code>String</code> representation of the max value according to the
-	 * <code>BigDecimal</code> string representation
+	 * The {@code String} representation of the max value according to the
+	 * {@code BigDecimal} string representation
 	 *
 	 * @return value the element must be lower or equal to
 	 */
 	String value();
 
 	/**
-	 * Defines several <code>@DecimalMax</code> annotations on the same element
+	 * Defines several {@code @DecimalMax} annotations on the same element
 	 *
 	 * @author Emmanuel Bernard
 	 * @see DecimalMax

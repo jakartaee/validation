@@ -26,7 +26,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element must be <code>null</code>.
+ * The annotated element must be {@code null}.
  * Accepts any type.
  *
  * @author Emmanuel Bernard
@@ -43,7 +43,7 @@ public @interface Null {
 	Class<? extends Payload>[] payload() default {};
 
 	/**
-	 * Defines several <code>@Null</code> annotations on the same element
+	 * Defines several {@code @Null} annotations on the same element
 	 * @see javax.validation.constraints.Null
 	 *
 	 * @author Emmanuel Bernard
