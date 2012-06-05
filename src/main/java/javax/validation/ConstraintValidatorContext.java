@@ -74,7 +74,7 @@ public interface ConstraintValidatorContext {
 	 *              .addNode( "street" )
 	 *              .addConstraintViolation();
 	 *
-	 * //create new violation report in the "addresses["home"].city.name" subnode
+	 * //create new violation report in the "addresses["home"].country.name" subnode
 	 * //of the default path the constraint is located on
 	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
 	 *              .addNode( "addresses" )
