@@ -16,17 +16,14 @@
 */
 package javax.validation;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.ServiceConfigurationError;
+import java.util.ServiceLoader;
 import java.util.WeakHashMap;
 import javax.validation.bootstrap.GenericBootstrap;
 import javax.validation.bootstrap.ProviderSpecificBootstrap;
@@ -254,6 +251,11 @@ public class Validation {
 			try {
 				validationProviders = resolver.getValidationProviders();
 			}
+			// don't wrap existing ValidationExceptions in another ValidationException
+			catch ( ValidationException e ) {
+				throw e;
+			}
+			// if any other exception occurs wrap it in a ValidationException
 			catch ( RuntimeException re ) {
 				throw new ValidationException( "Unable to get available provider resolvers.", re );
 			}
@@ -293,91 +295,56 @@ public class Validation {
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hashmap to avoid memory leaks and allow proper hot redeployment
 		//TODO use a WeakConcurrentHashMap
-		//FIXME The List<VP> does keep a strong reference to the key ClassLoader, use the same model as JPA CachingPersistenceProviderResolver
 		private static final Map<ClassLoader, List<ValidationProvider<?>>> providersPerClassloader =
 				new WeakHashMap<ClassLoader, List<ValidationProvider<?>>>();
 
-		private static final String SERVICES_FILE = "META-INF/services/" + ValidationProvider.class.getName();
-
 		public List<ValidationProvider<?>> getValidationProviders() {
+			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
+
+			// try first context class loader
 			ClassLoader classloader = GetClassLoader.fromContext();
-			if ( classloader == null ) {
+			if ( getCachedValidationProviders( classloader ) != null ) {
+				// if already processed return the cached provider list
+				return getCachedValidationProviders( classloader );
+			}
+
+			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
+			Iterator<ValidationProvider> providerIterator = loader.iterator();
+
+			// if we cannot find any service files with the context class loader use the current class loader
+			if ( !providerIterator.hasNext() ) {
 				classloader = GetClassLoader.fromClass( DefaultValidationProviderResolver.class );
+				if ( getCachedValidationProviders( classloader ) != null ) {
+					// if already processed return the cached provider list
+					return getCachedValidationProviders( classloader );
+				}
+				loader = ServiceLoader.load( ValidationProvider.class, classloader );
+				providerIterator = loader.iterator();
 			}
 
-			List<ValidationProvider<?>> providers;
-			synchronized ( providersPerClassloader ) {
-				providers = providersPerClassloader.get( classloader );
-			}
-
-			if ( providers == null ) {
-				providers = new ArrayList<ValidationProvider<?>>();
-				String name = null;
+			while ( providerIterator.hasNext() ) {
 				try {
-					Enumeration<URL> providerDefinitions = classloader.getResources( SERVICES_FILE );
-					while ( providerDefinitions.hasMoreElements() ) {
-						URL url = providerDefinitions.nextElement();
-						InputStream stream = url.openStream();
-						try {
-							BufferedReader reader = new BufferedReader( new InputStreamReader( stream, "UTF-8" ), 100 );
-							name = reader.readLine();
-							while ( name != null ) {
-								name = name.trim();
-								if ( !name.startsWith( "#" ) ) {
-									final Class<?> providerClass = loadClass(
-											name,
-											DefaultValidationProviderResolver.class
-									);
-
-									providers.add(
-											(ValidationProvider) providerClass.newInstance()
-									);
-								}
-								name = reader.readLine();
-							}
-						}
-						finally {
-							stream.close();
-						}
-					}
+					validationProviderList.add( providerIterator.next() );
 				}
-				catch ( IOException e ) {
-					throw new ValidationException( "Unable to read " + SERVICES_FILE, e );
-				}
-				catch ( ClassNotFoundException e ) {
-					//TODO is it better to not fail the whole loading because of a black sheep?
-					throw new ValidationException( "Unable to load Bean Validation provider " + name, e );
-				}
-				catch ( IllegalAccessException e ) {
-					throw new ValidationException( "Unable to instantiate Bean Validation provider" + name, e );
-				}
-				catch ( InstantiationException e ) {
-					throw new ValidationException( "Unable to instantiate Bean Validation provider" + name, e );
-				}
-
-				synchronized ( providersPerClassloader ) {
-					providersPerClassloader.put( classloader, providers );
+				catch ( ServiceConfigurationError e ) {
+					throw new ValidationException(
+							"Unable to load Bean Validation provider non.existent.ValidationProvider",
+							e
+					);
 				}
 			}
 
-			return providers;
+			cacheValidationProviders( classloader, validationProviderList );
+
+			return validationProviderList;
 		}
 
-		private static Class<?> loadClass(String name, Class<?> caller) throws ClassNotFoundException {
-			try {
-				//try context classloader, if fails try caller classloader
-				ClassLoader loader = GetClassLoader.fromContext();
-				if ( loader != null ) {
-					return loader.loadClass( name );
-				}
-			}
-			catch ( ClassNotFoundException e ) {
-				//trying caller classloader
-				if ( caller == null ) {
-					throw e;
-				}
-			}
-			return Class.forName( name, true, GetClassLoader.fromClass( caller ) );
+		private synchronized List<ValidationProvider<?>> getCachedValidationProviders(ClassLoader classLoader) {
+			return providersPerClassloader.get( classLoader );
+		}
+
+		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
+			providersPerClassloader.put( classLoader, providers );
 		}
 	}
 
