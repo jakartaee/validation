@@ -16,12 +16,12 @@
 */
 package javax.validation;
 
+import java.lang.ref.SoftReference;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.WeakHashMap;
@@ -295,8 +295,8 @@ public class Validation {
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hashmap to avoid memory leaks and allow proper hot redeployment
 		//TODO use a WeakConcurrentHashMap
-		private static final Map<ClassLoader, List<ValidationProvider<?>>> providersPerClassloader =
-				new WeakHashMap<ClassLoader, List<ValidationProvider<?>>>();
+		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
+				new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>();
 
 		public List<ValidationProvider<?>> getValidationProviders() {
 			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
@@ -340,11 +340,12 @@ public class Validation {
 		}
 
 		private synchronized List<ValidationProvider<?>> getCachedValidationProviders(ClassLoader classLoader) {
-			return providersPerClassloader.get( classLoader );
+			SoftReference<List<ValidationProvider<?>>> ref = providersPerClassloader.get( classLoader );
+			return ref != null ? ref.get() : null;
 		}
 
 		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
-			providersPerClassloader.put( classLoader, providers );
+			providersPerClassloader.put( classLoader, new SoftReference<List<ValidationProvider<?>>>( providers ) );
 		}
 	}
 
