@@ -299,13 +299,12 @@ public class Validation {
 				new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>();
 
 		public List<ValidationProvider<?>> getValidationProviders() {
-			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
-
 			// try first context class loader
 			ClassLoader classloader = GetClassLoader.fromContext();
-			if ( getCachedValidationProviders( classloader ) != null ) {
+			List<ValidationProvider<?>> cachedContextClassLoaderProviderList = getCachedValidationProviders( classloader );
+			if ( cachedContextClassLoaderProviderList != null ) {
 				// if already processed return the cached provider list
-				return getCachedValidationProviders( classloader );
+				return cachedContextClassLoaderProviderList;
 			}
 
 			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
@@ -314,14 +313,16 @@ public class Validation {
 			// if we cannot find any service files with the context class loader use the current class loader
 			if ( !providerIterator.hasNext() ) {
 				classloader = GetClassLoader.fromClass( DefaultValidationProviderResolver.class );
-				if ( getCachedValidationProviders( classloader ) != null ) {
+				List<ValidationProvider<?>> cachedCurrentClassLoaderProviderList = getCachedValidationProviders( classloader );
+				if ( cachedCurrentClassLoaderProviderList != null ) {
 					// if already processed return the cached provider list
-					return getCachedValidationProviders( classloader );
+					return cachedCurrentClassLoaderProviderList;
 				}
 				loader = ServiceLoader.load( ValidationProvider.class, classloader );
 				providerIterator = loader.iterator();
 			}
 
+			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
 			while ( providerIterator.hasNext() ) {
 				try {
 					validationProviderList.add( providerIterator.next() );
