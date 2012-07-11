@@ -282,10 +282,6 @@ public class Validation {
 	 * Find {@code ValidationProvider} according to the default {@code ValidationProviderResolver} defined in the
 	 * Bean Validation specification. This implementation uses the current classloader or the classloader which has loaded
 	 * the current class if the current class loader is unavailable. The classloader is used to retrieve the Service Provider files.
-	 * <p>
-	 * This class implements the Service Provider pattern described <a href="http://java.sun.com/j2se/1.5.0/docs/guide/jar/jar.html#Service%20Provider">here</a>.
-	 * Since we cannot rely on Java 6 we have to re-implement the {@code Service} functionality.
-	 * </p>
 	 *
 	 * @author Emmanuel Bernard
 	 * @author Hardy Ferentschik
