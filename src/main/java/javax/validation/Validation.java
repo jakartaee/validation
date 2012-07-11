@@ -291,16 +291,33 @@ public class Validation {
 	 * @author Hardy Ferentschik
 	 */
 	private static class DefaultValidationProviderResolver implements ValidationProviderResolver {
+		public List<ValidationProvider<?>> getValidationProviders() {
+			// class loading and ServiceLoader methods should happen in a PrivilegedAction
+			return GetValidationProviderList.getValidationProviderList();
+		}
+	}
+
+	private static class GetValidationProviderList implements PrivilegedAction<List<ValidationProvider<?>>> {
 
 		//cache per classloader for an appropriate discovery
-		//keep them in a weak hashmap to avoid memory leaks and allow proper hot redeployment
+		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
 		//TODO use a WeakConcurrentHashMap
 		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
 				new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>();
 
-		public List<ValidationProvider<?>> getValidationProviders() {
+		public static List<ValidationProvider<?>> getValidationProviderList() {
+			final GetValidationProviderList action = new GetValidationProviderList();
+			if ( System.getSecurityManager() != null ) {
+				return AccessController.doPrivileged( action );
+			}
+			else {
+				return action.run();
+			}
+		}
+
+		public List<ValidationProvider<?>> run() {
 			// try first context class loader
-			ClassLoader classloader = GetClassLoader.fromContext();
+			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 			List<ValidationProvider<?>> cachedContextClassLoaderProviderList = getCachedValidationProviders( classloader );
 			if ( cachedContextClassLoaderProviderList != null ) {
 				// if already processed return the cached provider list
@@ -312,8 +329,10 @@ public class Validation {
 
 			// if we cannot find any service files with the context class loader use the current class loader
 			if ( !providerIterator.hasNext() ) {
-				classloader = GetClassLoader.fromClass( DefaultValidationProviderResolver.class );
-				List<ValidationProvider<?>> cachedCurrentClassLoaderProviderList = getCachedValidationProviders( classloader );
+				classloader = DefaultValidationProviderResolver.class.getClassLoader();
+				List<ValidationProvider<?>> cachedCurrentClassLoaderProviderList = getCachedValidationProviders(
+						classloader
+				);
 				if ( cachedCurrentClassLoaderProviderList != null ) {
 					// if already processed return the cached provider list
 					return cachedCurrentClassLoaderProviderList;
@@ -347,46 +366,6 @@ public class Validation {
 
 		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
 			providersPerClassloader.put( classLoader, new SoftReference<List<ValidationProvider<?>>>( providers ) );
-		}
-	}
-
-	private static class GetClassLoader implements PrivilegedAction<ClassLoader> {
-		private final Class<?> clazz;
-
-		public static ClassLoader fromContext() {
-			final GetClassLoader action = new GetClassLoader( null );
-			if ( System.getSecurityManager() != null ) {
-				return AccessController.doPrivileged( action );
-			}
-			else {
-				return action.run();
-			}
-		}
-
-		public static ClassLoader fromClass(Class<?> clazz) {
-			if ( clazz == null ) {
-				throw new IllegalArgumentException( "Class is null" );
-			}
-			final GetClassLoader action = new GetClassLoader( clazz );
-			if ( System.getSecurityManager() != null ) {
-				return AccessController.doPrivileged( action );
-			}
-			else {
-				return action.run();
-			}
-		}
-
-		private GetClassLoader(Class<?> clazz) {
-			this.clazz = clazz;
-		}
-
-		public ClassLoader run() {
-			if ( clazz != null ) {
-				return clazz.getClassLoader();
-			}
-			else {
-				return Thread.currentThread().getContextClassLoader();
-			}
 		}
 	}
 }
