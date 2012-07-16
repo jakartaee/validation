@@ -67,12 +67,12 @@ public interface XMLConfiguration {
 	public String getParameterNameProviderClassName();
 
 	/**
-	 * Returns a set of resource path pointing to XML constraint mapping files.
+	 * Returns a set of resource paths pointing to XML constraint mapping files.
 	 * The set is empty if none are specified.
 	 *
-	 * @return set of constraint mapping resource path
+	 * @return set of constraint mapping resource paths
 	 */
-	public Set<String> getConstraintMappingResourcePath();
+	public Set<String> getConstraintMappingResourcePaths();
 
 	/**
 	 * Returns properties as a map of string based key/value pairs.
