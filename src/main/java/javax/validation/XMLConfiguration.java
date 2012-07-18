@@ -32,7 +32,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return validation provider class name
 	 */
-	public String getDefaultProviderClassName();
+	String getDefaultProviderClassName();
 
 	/**
 	 * Class name of the {@code ConstraintValidatorFactory} implementation
@@ -40,7 +40,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return constraint validator factory class name
 	 */
-	public String getConstraintValidatorFactoryClassName();
+	String getConstraintValidatorFactoryClassName();
 
 	/**
 	 * Class name of the {@code MessageInterpolator} implementation
@@ -48,7 +48,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return message interpolator class name or {@code null}
 	 */
-	public String getMessageInterpolatorClassName();
+	String getMessageInterpolatorClassName();
 
 	/**
 	 * Class name of the {@code TraversableResolver} implementation
@@ -56,7 +56,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return traversable resolver class name or {@code null}
 	 */
-	public String getTraversableResolverClassName();
+	String getTraversableResolverClassName();
 
 	/**
 	 * Class name of the {@code ParameterNameProvider} implementation
@@ -64,7 +64,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return parameter name provider class name or {@code null}
 	 */
-	public String getParameterNameProviderClassName();
+	String getParameterNameProviderClassName();
 
 	/**
 	 * Returns a set of resource paths pointing to XML constraint mapping files.
@@ -72,7 +72,7 @@ public interface XMLConfiguration {
 	 *
 	 * @return set of constraint mapping resource paths
 	 */
-	public Set<String> getConstraintMappingResourcePaths();
+	Set<String> getConstraintMappingResourcePaths();
 
 	/**
 	 * Returns properties as a map of string based key/value pairs.
@@ -80,5 +80,5 @@ public interface XMLConfiguration {
 	 *
 	 * @return the properties map
 	 */
-	public Map<String, String> getProperties();
+	Map<String, String> getProperties();
 }
