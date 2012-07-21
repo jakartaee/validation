@@ -25,7 +25,7 @@ import java.util.Set;
  * @author Gunnar Morling
  * @author Hardy Ferentschik
  */
-public interface XMLConfiguration {
+public interface BootstrapConfiguration {
 	/**
 	 * Class name of the {@code ValidationProvider} implementation
 	 * or {@code null} if none is specified.

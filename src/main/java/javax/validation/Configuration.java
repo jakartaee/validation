@@ -228,11 +228,11 @@ public interface Configuration<T extends Configuration<T>> {
 	 * <b>Note</b>:<br/>
 	 * Implementations are encouraged to lazily build this object to delay parsing.
 	 *
-	 * @return Returns an instance of {@code XMLConfiguration}. This method returns never {@code null}. If there
+	 * @return Returns an instance of {@code BootstrapConfiguration}. This method returns never {@code null}. If there
 	 *         is no <i>META-INF/validation.xml</i> the different getters of the returned instance will return {@code null} respective
 	 *         the empty set or map.
 	 */
-	XMLConfiguration getXMLConfiguration();
+	BootstrapConfiguration getBootstrapConfiguration();
 
 	/**
 	 * Build a {@code ValidatorFactory} implementation.
