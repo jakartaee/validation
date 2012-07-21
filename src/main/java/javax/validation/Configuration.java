@@ -53,6 +53,7 @@ import java.io.InputStream;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Hardy Ferentschik
  */
 public interface Configuration<T extends Configuration<T>> {
 
@@ -151,7 +152,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * <p/>
 	 * If a property with a given name is defined both via this method and in the
 	 * XML configuration, the value set programmatically has priority.
-	 *
+	 * <p/>
 	 * If null is passed as a value, the value defined in XML is used. If no value
 	 * is defined in XML, the property is considered unset.
 	 *
@@ -222,13 +223,16 @@ public interface Configuration<T extends Configuration<T>> {
 	ParameterNameProvider getDefaultParameterNameProvider();
 
 	/**
-	 * Return information stored in the configuration source (typically the <i>META-INF/validation.xml</i>
-	 * file).
+	 * Return configuration information stored in the <i>META-INF/validation.xml</i> file.
+	 * <p/>
+	 * <b>Note</b>:<br/>
 	 * Implementations are encouraged to lazily build this object to delay parsing.
 	 *
-	 * @return {@code ConfigurationSource} object
+	 * @return Returns an instance of {@code BootstrapConfiguration}. This method returns never {@code null}. If there
+	 *         is no <i>META-INF/validation.xml</i> the different getters of the returned instance will return {@code null} respective
+	 *         the empty set or map.
 	 */
-	ConfigurationSource getConfigurationSource();
+	BootstrapConfiguration getBootstrapConfiguration();
 
 	/**
 	 * Build a {@code ValidatorFactory} implementation.

@@ -19,66 +19,66 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Represents a configuration source. In particular
- * <i>META-INF/validation.xml</i>
+ * Represents the user specified default configuration in <i>META-INF/validation.xml</i>.
  *
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
  * @author Gunnar Morling
+ * @author Hardy Ferentschik
  */
-public interface ConfigurationSource {
+public interface BootstrapConfiguration {
 	/**
 	 * Class name of the {@code ValidationProvider} implementation
-	 * or null if none is specified.
+	 * or {@code null} if none is specified.
 	 *
 	 * @return validation provider class name
 	 */
-	public String getDefaultProviderClassName();
+	String getDefaultProviderClassName();
 
 	/**
 	 * Class name of the {@code ConstraintValidatorFactory} implementation
-	 * or null if none is specified.
+	 * or {@code null} if none is specified.
 	 *
 	 * @return constraint validator factory class name
 	 */
-	public String getConstraintValidatorFactoryClassName();
+	String getConstraintValidatorFactoryClassName();
 
 	/**
 	 * Class name of the {@code MessageInterpolator} implementation
-	 * or null if none is specified.
+	 * or {@code null} if none is specified.
 	 *
-	 * @return message interpolator class name or null
+	 * @return message interpolator class name or {@code null}
 	 */
-	public String getMessageInterpolatorClassName();
+	String getMessageInterpolatorClassName();
 
 	/**
 	 * Class name of the {@code TraversableResolver} implementation
-	 * or null if none is specified.
+	 * or {@code null} if none is specified.
 	 *
-	 * @return traversable resolver class name or null
+	 * @return traversable resolver class name or {@code null}
 	 */
-	public String getTraversableResolverClassName();
-
-    /**
-     * Class name of the {@code ParameterNameProvider} implementation
-     * or null if none is specified.
-     *
-     * @return parameter name provider class name or null
-     */
-    public String getParameterNameProviderClassName();
+	String getTraversableResolverClassName();
 
 	/**
-	 * Returns a set of resource path pointing to XML constraint mapping files.
-	 * The Set is empty if none are specified.
+	 * Class name of the {@code ParameterNameProvider} implementation
+	 * or {@code null} if none is specified.
 	 *
-	 * @return set of constraint mapping resource path
+	 * @return parameter name provider class name or {@code null}
 	 */
-	public Set<String> getConstraintMappingResourcePath();
+	String getParameterNameProviderClassName();
 
 	/**
-	 * Returns properties as a Map of property name as key and property value as value.
-	 * The Map is empty if no property has been specified.
+	 * Returns a set of resource paths pointing to XML constraint mapping files.
+	 * The set is empty if none are specified.
 	 *
-	 * @return properties
+	 * @return set of constraint mapping resource paths
 	 */
-	public Map<String,String> getProperties();
+	Set<String> getConstraintMappingResourcePaths();
+
+	/**
+	 * Returns properties as a map of string based key/value pairs.
+	 * The map is empty if no property has been specified.
+	 *
+	 * @return the properties map
+	 */
+	Map<String, String> getProperties();
 }
