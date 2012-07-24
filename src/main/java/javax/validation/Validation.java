@@ -344,7 +344,7 @@ public class Validation {
 				}
 				catch ( ServiceConfigurationError e ) {
 					throw new ValidationException(
-							"Unable to load Bean Validation provider non.existent.ValidationProvider",
+							"Unable to load Bean Validation provider",
 							e
 					);
 				}
