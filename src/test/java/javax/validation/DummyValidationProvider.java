@@ -93,7 +93,7 @@ public class DummyValidationProvider implements ValidationProvider {
 			return null;
 		}
 
-		public ConfigurationSource getConfigurationSource() {
+		public BootstrapConfiguration getBootstrapConfiguration() {
 			return null;
 		}
 
@@ -102,5 +102,3 @@ public class DummyValidationProvider implements ValidationProvider {
 		}
 	}
 }
-
-
