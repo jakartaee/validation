@@ -50,7 +50,7 @@ public class ValidationTest {
 			// must be triggered by using the current class loader
 			assertEquals(
 					e.getMessage(),
-					"Unable to load Bean Validation provider non.existent.ValidationProvider"
+					"Unable to load Bean Validation provider"
 			);
 		}
 		finally {
@@ -71,7 +71,7 @@ public class ValidationTest {
 			// context class loader is not. exception must be caused by using the current class loader
 			assertEquals(
 					e.getMessage(),
-					"Unable to load Bean Validation provider non.existent.ValidationProvider"
+					"Unable to load Bean Validation provider"
 			);
 		}
 		finally {
