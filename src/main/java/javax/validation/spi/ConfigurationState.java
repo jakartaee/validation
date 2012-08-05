@@ -60,17 +60,18 @@ public interface ConfigurationState {
 	MessageInterpolator getMessageInterpolator();
 
 	/**
-	 * Returns a set of configuration streams.
-	 * The streams are defined by:
+	 * Returns a set of configuration streams. The streams are defined by:
 	 * <ul>
 	 * <li>mapping XML streams passed programmatically in {@code Configuration}</li>
-	 * <li>mapping XML stream located in the resources defined in</li>
+	 * <li>mapping XML streams located in the resources defined in</li>
 	 * META-INF/validation.xml (constraint-mapping element)
 	 * </ul>
 	 * Streams represented in the XML configuration and opened by the
 	 * {@code Configuration} implementation must be closed by the
 	 * {@code Configuration} implementation after the {@code ValidatorFactory}
-	 * creation (or if an exception occurs).
+	 * creation (or if an exception occurs). All streams are guaranteed to
+	 * adhere to the mark/reset contract (see
+	 * {@link InputStream#markSupported()} by the Bean Validation provider.
 	 *
 	 * @return set of input stream
 	 */

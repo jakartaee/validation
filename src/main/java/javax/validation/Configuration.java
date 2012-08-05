@@ -117,18 +117,23 @@ public interface Configuration<T extends Configuration<T>> {
 	T parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
 	/**
-	 * Add a stream describing constraint mapping in the Bean Validation
-	 * XML format.
+	 * Add a stream describing constraint mapping in the Bean Validation XML
+	 * format.
 	 * <p/>
 	 * The stream should be closed by the client API after the
 	 * {@code ValidatorFactory} has been built. The Bean Validation provider
 	 * must not close the stream.
 	 *
-	 * @param stream XML mapping stream.
+	 * @param stream
+	 *            XML mapping stream. The given stream should support the
+	 *            mark/reset contract (see {@link InputStream#markSupported()}).
+	 *            If it doesn't, it will be wrapped into a stream supporting the
+	 *            mark/reset contract by the Bean Validation provider.
 	 *
 	 * @return {@code this} following the chaining method pattern.
 	 *
-	 * @throws IllegalArgumentException if {@code stream} is null
+	 * @throws IllegalArgumentException
+	 *             if {@code stream} is null
 	 */
 	T addMapping(InputStream stream);
 
