@@ -21,7 +21,9 @@ import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.validation.spi.ValidationProvider;
 
 import org.testng.annotations.Test;
@@ -113,6 +115,28 @@ public class ValidationTest {
 		}
 	}
 
+	// BVAL-280
+	@Test
+	public void testMultipleProvidersWithOneUnknownProviderThrowsException() {
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		Thread.currentThread().setContextClassLoader( new CustomValidationXmlClassLoader( "-2", "-3" ) );
+
+		try {
+			Validation.buildDefaultValidatorFactory();
+			fail();
+		}
+		catch ( ValidationException e ) {
+			// context class loader is not. exception must be caused by using the current class loader
+			assertEquals(
+					e.getMessage(),
+					"Unable to load Bean Validation provider"
+			);
+		}
+		finally {
+			Thread.currentThread().setContextClassLoader( contextClassLoader );
+		}
+	}
+
 	private int countInMemoryProviders() {
 		int count = 0;
 		// we cannot access Validation.DefaultValidationProviderResolver#providersPerClassloader, so we have to
@@ -127,19 +151,50 @@ public class ValidationTest {
 
 	public static class CustomValidationXmlClassLoader extends ClassLoader {
 		private static final String SERVICES_FILE = "META-INF/services/" + ValidationProvider.class.getName();
-		private final String validationXmlSuffix;
+		private final String[] validationXmlSuffixes;
 
 
-		public CustomValidationXmlClassLoader(String suffix) {
+		public CustomValidationXmlClassLoader(String... suffixes) {
 			super( CustomValidationXmlClassLoader.class.getClassLoader() );
-			this.validationXmlSuffix = suffix;
+			this.validationXmlSuffixes = suffixes;
 		}
 
 		public Enumeration<URL> getResources(String name) throws IOException {
-			if ( SERVICES_FILE.equals( name ) && validationXmlSuffix != null ) {
-				name = name + validationXmlSuffix;
+			CustomEnumeration<URL> customEnumeration = new CustomEnumeration<URL>();
+
+			if ( SERVICES_FILE.equals( name ) && validationXmlSuffixes != null ) {
+				for ( String suffix : validationXmlSuffixes ) {
+					customEnumeration.addElements( super.getResources( name + suffix ) );
+				}
+
 			}
-			return super.getResources( name );
+			else {
+				customEnumeration.addElements( super.getResources( name ) );
+			}
+			return customEnumeration;
+		}
+	}
+
+	public static class CustomEnumeration<E> implements Enumeration<E> {
+		private List<E> enumList = new ArrayList<E>();
+		int currentIndex = 0;
+
+		public void addElements(Enumeration<E> enumeration) {
+			while ( enumeration.hasMoreElements() ) {
+				enumList.add( enumeration.nextElement() );
+			}
+		}
+
+		@Override
+		public boolean hasMoreElements() {
+			return currentIndex < enumList.size();
+		}
+
+		@Override
+		public E nextElement() {
+			E element = enumList.get( currentIndex );
+			currentIndex++;
+			return element;
 		}
 	}
 }
