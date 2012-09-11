@@ -22,6 +22,8 @@ import java.util.List;
  * Describes a validated method.
  *
  * @author Gunnar Morling
+ * @author Emmanuel Bernard
+ * @since 1.1
  */
 public interface MethodDescriptor extends ElementDescriptor {
 
@@ -51,4 +53,29 @@ public interface MethodDescriptor extends ElementDescriptor {
 	 *		 if this method has no return value.
 	 */
 	ReturnValueDescriptor getReturnValueDescriptor();
+
+	/**
+	 * Returns {@code true} if the method parameters are constrained either:
+	 * <ul>
+	 * <li>because of a constraint on at least one of the parameters</li>
+	 * <li>because of a cascade on at least one of the parameters (via {@code @Valid})</li>
+	 * <li>because of at least one cross-parameter constraint</li>
+	 * </ul>
+	 * Also returns {@code false} if there is no parameter.
+	 *
+	 * @return true if the method parameters are constrained
+	 */
+	boolean areParametersConstrained();
+
+	/**
+	 * Returns {@code true} if the method return value is constrained either:
+	 * <ul>
+	 * <li>because of a constraint on the return value</li>
+	 * <li>because validation is cascaded on the return value (via {@code @Valid})</li>
+	 * </ul>
+	 * Also returns {@code false} if there is no return value.
+	 *
+	 * @return true if the method return value is constrained
+	 */
+	boolean isReturnValueConstrained();
 }
