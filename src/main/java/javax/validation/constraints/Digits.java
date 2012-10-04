@@ -18,12 +18,16 @@ package javax.validation.constraints;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.PARAMETER;
 import javax.validation.Constraint;
 import javax.validation.Payload;
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * The annotated element must be a number within accepted range
@@ -31,9 +35,8 @@ import javax.validation.Payload;
  * <ul>
  * <li>{@code BigDecimal}</li>
  * <li>{@code BigInteger}</li>
- * <li>{@code String}</li>
- * <li>{@code byte}, {@code short}, {@code int}, {@code long},
- * and their respective wrapper types</li>
+ * <li>{@code CharSequence}</li>
+ * <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective wrapper types</li>
  * </ul>
  * <p/>
  * {@code null} elements are considered valid
@@ -43,13 +46,13 @@ import javax.validation.Payload;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = {})
+@Constraint(validatedBy = { })
 public @interface Digits {
 	String message() default "{javax.validation.constraints.Digits.message}";
 
 	Class<?>[] groups() default { };
 
-	Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default { };
 
 	/**
 	 * @return maximum number of integral digits accepted for this number.
@@ -63,9 +66,9 @@ public @interface Digits {
 
 	/**
 	 * Defines several {@code @Digits} annotations on the same element
-	 * @see Digits
 	 *
 	 * @author Emmanuel Bernard
+	 * @see Digits
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
