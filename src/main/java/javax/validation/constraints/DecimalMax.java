@@ -18,12 +18,16 @@ package javax.validation.constraints;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.PARAMETER;
 import javax.validation.Constraint;
 import javax.validation.Payload;
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * The annotated element must be a number whose value must be lower or
@@ -33,9 +37,8 @@ import javax.validation.Payload;
  * <ul>
  * <li>{@code BigDecimal}</li>
  * <li>{@code BigInteger}</li>
- * <li>{@code String}</li>
- * <li>{@code byte}, {@code short}, {@code int}, {@code long},
- * and their respective wrappers</li>
+ * <li>{@code CharSequence}</li>
+ * <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective wrappers</li>
  * </ul>
  * Note that {@code double} and {@code float} are not supported due to rounding errors
  * (some providers might provide some approximative support)
@@ -53,7 +56,7 @@ public @interface DecimalMax {
 
 	Class<?>[] groups() default { };
 
-	Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default { };
 
 	/**
 	 * The {@code String} representation of the max value according to the
@@ -72,7 +75,7 @@ public @interface DecimalMax {
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
-			@interface List {
+	@interface List {
 		DecimalMax[] value();
 	}
 }

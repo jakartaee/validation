@@ -16,25 +16,29 @@
 */
 package javax.validation.constraints;
 
-import java.lang.annotation.Target;
-import java.lang.annotation.Retention;
 import java.lang.annotation.Documented;
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
  * The annotated element size must be between the specified boundaries (included).
- *
+ * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code String} (string length is evaluated)</li>
+ * <li>{@code CharSequence} (length of character sequence is evaluated)</li>
  * <li>{@code Collection} (collection size is evaluated)</li>
  * <li>{@code Map} (map size is evaluated)</li>
  * <li>Array (array length is evaluated)</li>
- *
+ * <p/>
  * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
@@ -42,13 +46,13 @@ import javax.validation.Payload;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = {})
+@Constraint(validatedBy = { })
 public @interface Size {
 	String message() default "{javax.validation.constraints.Size.message}";
-	
-	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+	Class<?>[] groups() default { };
+
+	Class<? extends Payload>[] payload() default { };
 
 	/**
 	 * @return size the element must be higher or equal to
@@ -62,9 +66,9 @@ public @interface Size {
 
 	/**
 	 * Defines several {@code @Size} annotations on the same element
-	 * @see Size
 	 *
 	 * @author Emmanuel Bernard
+	 * @see Size
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
