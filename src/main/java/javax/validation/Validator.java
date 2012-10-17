@@ -16,9 +16,8 @@
 */
 package javax.validation;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.Set;
+import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
 
 /**
@@ -33,13 +32,13 @@ public interface Validator {
 	 * Validates all constraints on {@code object}.
 	 *
 	 * @param object object to validate
-	 * @param groups group or list of groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param groups The group or list of groups targeted for validation (defaults to
+	 * {@link Default}).
 	 *
-	 * @return constraint violations or an empty Set if none
+	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if object is null
-	 * or if null is passed to the varargs groups
+	 * @throws IllegalArgumentException if object is {@code null}
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -50,15 +49,15 @@ public interface Validator {
 	 * named {@code propertyName}.
 	 *
 	 * @param object object to validate
-	 * @param propertyName property to validate (ie field and getter constraints)
-	 * @param groups group or list of groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param propertyName property to validate (i.e. field and getter constraints)
+	 * @param groups The group or list of groups targeted for validation (defaults to
+	 * {@link Default}).
 	 *
-	 * @return constraint violations or an empty Set if none
+	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if {@code object} is null,
-	 * if {@code propertyName} null, empty or not a valid object property
-	 * or if null is passed to the varargs groups
+	 * @throws IllegalArgumentException if {@code object} is {@code null},
+	 * if {@code propertyName} is {@code null}, empty or not a valid object property
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -77,14 +76,14 @@ public interface Validator {
 	 * @param beanType the bean type
 	 * @param propertyName property to validate
 	 * @param value property value to validate
-	 * @param groups group or list of groups targeted for validation
-	 * (default to {@link javax.validation.groups.Default})
+	 * @param groups The group or list of groups targeted for validation (defaults to
+	 * {@link Default}).
 	 *
-	 * @return constraint violations or an empty Set if none
+	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if {@code beanType} is null,
-	 * if {@code propertyName} null, empty or not a valid object property
-	 * or if null is passed to the varargs groups
+	 * @throws IllegalArgumentException if {@code beanType} is {@code null},
+	 * if {@code propertyName} is {@code null}, empty or not a valid object property
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -92,82 +91,6 @@ public interface Validator {
 												  String propertyName,
 												  Object value,
 												  Class<?>... groups);
-
-	/**
-	 * Validates all constraints placed on the parameters of the given method.
-	 *
-	 * @param <T> The type hosting the method to validate.
-	 * @param object The object on which the method to validate was invoked.
-	 * @param method The method for which the parameter constraints shall be validated.
-	 * @param parameterValues The values provided by the caller for the given method's
-	 * parameters.
-	 * @param groups group or list of groups targeted for validation (default to
-	 * {@link javax.validation.groups.Default})
-	 *
-	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, if no error occurs, but never null.
-	 *
-	 * @throws ValidationException if a non recoverable error happens during the
-	 * validation process
-	 * @since 1.1
-	 */
-	<T> Set<ConstraintViolation<T>> validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
-
-	/**
-	 * Validates all return value constraints of the given method.
-	 *
-	 * @param <T> The type hosting the method to validate.
-	 * @param object The object on which the method to validate was invoked.
-	 * @param method The method for which the return value constraints shall be validated.
-	 * @param returnValue The value returned by the given method.
-	 * @param groups group or list of groups targeted for validation (default to
-	 * {@link javax.validation.groups.Default})
-	 *
-	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, if no error occurs, but never null.
-	 *
-	 * @throws ValidationException if a non recoverable error happens during the
-	 * validation process
-	 * @since 1.1
-	 */
-	<T> Set<ConstraintViolation<T>> validateReturnValue(T object, Method method, Object returnValue, Class<?>... groups);
-
-	/**
-	 * Validates all constraints placed on the parameters of the given constructor.
-	 *
-	 * @param <T> The type hosting the constructor to validate.
-	 * @param constructor The constructor for which the parameter constraints shall be validated.
-	 * @param parameterValues The values provided by the caller for the given constructor's
-	 * parameters.
-	 * @param groups group or list of groups targeted for validation (default to
-	 * {@link javax.validation.groups.Default})
-	 *
-	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, if no error occurs, but never null.
-	 *
-	 * @throws ValidationException if a non recoverable error happens during the
-	 * validation process
-	 * @since 1.1
-	 */
-	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<T> constructor, Object[] parameterValues, Class<?>... groups);
-
-	/**
-	 * Validates all return value constraints of the given constructor.
-	 *
-	 * @param <T> The type hosting the constructor to validate.
-	 * @param constructor The constructor for which the return value constraints shall be validated.
-	 * @param createdObject The object instantiated by the given method.
-	 * @param groups group or list of groups targeted for validation (default to
-	 * {@link javax.validation.groups.Default})
-	 *
-	 * @return A set with the constraint violations caused by this validation.
-	 *         Will be empty, if no error occurs, but never null.
-	 *
-	 * @throws ValidationException if a non recoverable error happens during the
-	 * validation process
-	 * @since 1.1
-	 */
-	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<T> constructor, T createdObject, Class<?>... groups);
 
 	/**
 	 * Return the descriptor object describing bean constraints.
@@ -178,7 +101,7 @@ public interface Validator {
 	 *
 	 * @return the bean descriptor for the specified class.
 	 *
-	 * @throws IllegalArgumentException if clazz is null
+	 * @throws IllegalArgumentException if clazz is {@code null}
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the metadata discovery or if some
 	 * constraints are invalid.
@@ -187,7 +110,7 @@ public interface Validator {
 
 	/**
 	 * Return an instance of the specified type allowing access to
-	 * provider-specific APIs.  If the Bean Validation provider
+	 * provider-specific APIs. If the Bean Validation provider
 	 * implementation does not support the specified class,
 	 * {@code ValidationException} is thrown.
 	 *
@@ -197,5 +120,15 @@ public interface Validator {
 	 *
 	 * @throws ValidationException if the provider does not support the call.
 	 */
-	public <T> T unwrap(Class<T> type);
+	<T> T unwrap(Class<T> type);
+
+	/**
+	 * Returns a delegate for validating parameters and return values of methods
+	 * respectively constructors.
+	 *
+	 * @return A delegate for method validation.
+	 *
+	 * @since 1.1
+	 */
+	MethodValidator forMethods();
 }
