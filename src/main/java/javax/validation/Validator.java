@@ -37,8 +37,8 @@ public interface Validator {
 	 *
 	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if object is {code null}
-	 * or if {code null} is passed to the varargs groups
+	 * @throws IllegalArgumentException if object is {@code null}
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -55,9 +55,9 @@ public interface Validator {
 	 *
 	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if {@code object} is {code null},
-	 * if {@code propertyName} is {code null}, empty or not a valid object property
-	 * or if {code null} is passed to the varargs groups
+	 * @throws IllegalArgumentException if {@code object} is {@code null},
+	 * if {@code propertyName} is {@code null}, empty or not a valid object property
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -81,9 +81,9 @@ public interface Validator {
 	 *
 	 * @return constraint violations or an empty set if none
 	 *
-	 * @throws IllegalArgumentException if {@code beanType} is {code null},
-	 * if {@code propertyName} is {code null}, empty or not a valid object property
-	 * or if {code null} is passed to the varargs groups
+	 * @throws IllegalArgumentException if {@code beanType} is {@code null},
+	 * if {@code propertyName} is {@code null}, empty or not a valid object property
+	 * or if {@code null} is passed to the varargs groups
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the validation process
 	 */
@@ -101,7 +101,7 @@ public interface Validator {
 	 *
 	 * @return the bean descriptor for the specified class.
 	 *
-	 * @throws IllegalArgumentException if clazz is {code null}
+	 * @throws IllegalArgumentException if clazz is {@code null}
 	 * @throws ValidationException if a non recoverable error happens
 	 * during the metadata discovery or if some
 	 * constraints are invalid.
