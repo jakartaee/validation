@@ -129,9 +129,10 @@ public interface ElementDescriptor {
 		/**
 		 * Restrict to the constraints matching a given set of groups for this element
 		 *
-		 * This method respects group sequences and group inheritance (including
-		 * class-level {@code Default} group overriding) but does not return
-		 * {@code ConstraintDescriptor}s in any particular order.
+		 * This method respects group conversion, group sequences
+		 * and group inheritance (including class-level {@code Default} group
+		 * overriding) but does not return {@code ConstraintDescriptor}s
+		 * in any particular order.
 		 * Specifically, ordering of the group sequence is not respected.
 		 *
 		 * @param groups groups targeted
