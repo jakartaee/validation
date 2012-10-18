@@ -23,7 +23,6 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-
 /**
  * Link between a constraint annotation and its constraint validation implementations.
  * <p/>
@@ -40,10 +39,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface Constraint {
 	/**
 	 * {@code ConstraintValidator} classes must reference distinct target types.
-	 * If two {@code ConstraintValidator} refer to the same type,
+	 * If two {@code ConstraintValidator}s refer to the same type,
 	 * an exception will occur.
 	 *
 	 * @return array of ConstraintValidator classes implementing the constraint
 	 */
-	public Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
+	Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
 }
