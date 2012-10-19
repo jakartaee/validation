@@ -28,6 +28,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * validation implementation.
  *
  * @author Gunnar Morling
+ * @since 1.1
  */
 @Documented
 @Target({ ANNOTATION_TYPE })

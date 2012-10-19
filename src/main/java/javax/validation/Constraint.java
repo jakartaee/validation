@@ -42,7 +42,7 @@ public @interface Constraint {
 	 * If two {@code ConstraintValidator}s refer to the same type,
 	 * an exception will occur.
 	 *
-	 * @return array of ConstraintValidator classes implementing the constraint
+	 * @return array of (@code ConstraintValidator} classes implementing the constraint
 	 */
 	Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
 }

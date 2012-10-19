@@ -63,6 +63,10 @@ public interface ConstraintViolation<T> {
 	Path getPropertyPath();
 
 	/**
+	 * Returns the value failing to pass the constraint.
+	 * For cross-parameter constraints, an {@code Object[]} representing
+	 * the method invocation arguments is returned.
+	 *
 	 * @return the value failing to pass the constraint.
 	 */
 	Object getInvalidValue();
