@@ -31,8 +31,8 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns the method name in case this descriptor represents a method or
-	 * the binary name of the declaring class in case this descriptor represents
-	 * a constructor.
+	 * the non-qualified name of the declaring class in case this descriptor
+	 * represents a constructor.
 	 *
 	 * @return The name of the executable represented by this descriptor.
 	 */
@@ -90,7 +90,9 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Return all constraint descriptors for all cross-parameter constraints of
-	 * this executable or an empty {@code Set} if none are present.
+	 * this executable or an empty {@code Set} if none are present. In
+	 * particular, constraints on individual parameters and return value
+	 * constraints are not returned.
 	 *
 	 * @return {@code Set} of cross-parameter constraint descriptors for this
 	 *         element
@@ -100,7 +102,8 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Find cross-parameter constraints and potentially restricts them to
-	 * certain criteria.
+	 * certain criteria. Neither constraints on individual parameters nor return
+	 * value constraints are taken into account.
 	 *
 	 * @return Constraint finder object.
 	 */
