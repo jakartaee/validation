@@ -17,6 +17,7 @@
 package javax.validation.metadata;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Provides common functionality of {@link MethodDescriptor} and
@@ -84,4 +85,24 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * @return true if the executable return value is constrained
 	 */
 	boolean isReturnValueConstrained();
+
+
+	/**
+	 * Return all constraint descriptors for all cross-parameter constraints of
+	 * this executable or an empty {@code Set} if none are present.
+	 *
+	 * @return {@code Set} of cross-parameter constraint descriptors for this
+	 *         element
+	 */
+	@Override
+	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
+
+	/**
+	 * Find cross-parameter constraints and potentially restricts them to
+	 * certain criteria.
+	 *
+	 * @return Constraint finder object.
+	 */
+	@Override
+	ConstraintFinder findConstraints();
 }
