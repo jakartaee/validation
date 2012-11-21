@@ -24,6 +24,7 @@ import java.util.Set;
  * {@link ConstructorDescriptor}.
  *
  * @author Gunnar Morling
+ *
  * @since 1.1
  */
 public interface ExecutableDescriptor extends ElementDescriptor {
@@ -68,7 +69,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * </ul>
 	 * Also returns {@code false} if there is no parameter.
 	 *
-	 * @return true if the executable parameters are constrained
+	 * @return {@code true} if the executable parameters are constrained
 	 */
 	boolean areParametersConstrained();
 
@@ -82,7 +83,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * </ul>
 	 * Also returns {@code false} if there is no return value.
 	 *
-	 * @return true if the executable return value is constrained
+	 * @return {@code true} if the executable return value is constrained
 	 */
 	boolean isReturnValueConstrained();
 
