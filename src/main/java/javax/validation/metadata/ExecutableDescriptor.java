@@ -87,6 +87,14 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 */
 	boolean isReturnValueConstrained();
 
+	/**
+	 * Whether this executable has any cross-parameter constraints.
+	 *
+	 * @return {@code true} if this executable has at least one cross-parameter
+	 *         constraint, {@code false} otherwise.
+	 */
+	@Override
+	boolean hasConstraints();
 
 	/**
 	 * Return all constraint descriptors for all cross-parameter constraints of
