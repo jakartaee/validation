@@ -16,12 +16,14 @@
 */
 package javax.validation;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Reports the result of constraint violations
  *
  * @author Emmanuel Bernard
+ * @author Gunnar Morling
  */
 public class ConstraintViolationException extends ValidationException {
 	private final Set<ConstraintViolation<?>> constraintViolations;
@@ -33,9 +35,15 @@ public class ConstraintViolationException extends ValidationException {
 	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
 	 */
 	public ConstraintViolationException(String message,
-										Set<ConstraintViolation<?>> constraintViolations) {
+										Set<? extends ConstraintViolation<?>> constraintViolations) {
 		super( message );
-		this.constraintViolations = constraintViolations;
+
+		if ( constraintViolations == null ) {
+			this.constraintViolations = null;
+		}
+		else {
+			this.constraintViolations = new HashSet<ConstraintViolation<?>>( constraintViolations );
+		}
 	}
 
 	/**
@@ -43,9 +51,8 @@ public class ConstraintViolationException extends ValidationException {
 	 *
 	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
 	 */
-	public ConstraintViolationException(Set<ConstraintViolation<?>> constraintViolations) {
-		super();
-		this.constraintViolations = constraintViolations;
+	public ConstraintViolationException(Set<? extends ConstraintViolation<?>> constraintViolations) {
+		this( null, constraintViolations );
 	}
 
 	/**
