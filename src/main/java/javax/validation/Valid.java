@@ -25,8 +25,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 
 /**
- * Mark an association as cascaded.
- * The associated object will be validated by cascade.
+ * Mark a property, method parameter or method return type for validation cascading.
+ *
+ * Constraints defined on the object and its properties are be validated when the
+ * property, method parameter or method return type is validated.
+ *
+ * This behavior is applied recursively.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
