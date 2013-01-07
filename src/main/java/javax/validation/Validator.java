@@ -126,9 +126,9 @@ public interface Validator {
 	 * Returns a delegate for validating parameters and return values of methods
 	 * respectively constructors.
 	 *
-	 * @return A delegate for method validation.
+	 * @return A delegate for method and constructor validation.
 	 *
 	 * @since 1.1
 	 */
-	MethodValidator forMethods();
+	ExecutableValidator forExecutables();
 }

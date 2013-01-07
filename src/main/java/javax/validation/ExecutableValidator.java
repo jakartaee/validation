@@ -12,7 +12,7 @@ import javax.validation.groups.Default;
  * @author Gunnar Morling
  * @since 1.1
  */
-public interface MethodValidator {
+public interface ExecutableValidator {
 
 	/**
 	 * Validates all constraints placed on the parameters of the given method.
