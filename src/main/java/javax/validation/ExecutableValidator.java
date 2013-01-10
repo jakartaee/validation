@@ -71,7 +71,7 @@ public interface ExecutableValidator {
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
-	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<T> constructor, Object[] parameterValues, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<? extends T> constructor, Object[] parameterValues, Class<?>... groups);
 
 	/**
 	 * Validates all return value constraints of the given constructor.
@@ -89,5 +89,5 @@ public interface ExecutableValidator {
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
-	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<T> constructor, T createdObject, Class<?>... groups);
+	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<? extends T> constructor, T createdObject, Class<?>... groups);
 }
