@@ -39,15 +39,13 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	String getName();
 
 	/**
-	 * <p>
-	 * Returns a list with descriptors for this executable's parameters. The
-	 * size of this list corresponds to the number of this executable's
+	 * Returns a list with descriptors representing this executable's
+	 * parameters, in order of their declaration, including synthetic
 	 * parameters.
-	 * </p>
 	 *
-	 * @return A list with descriptors for this executable's parameters. An
-	 *         empty list will be returned if this executable has no parameters,
-	 *         but never {@code null}.
+	 * @return A list with descriptors representing this executable's
+	 *         parameters. An empty list will be returned if this executable has
+	 *         no parameters, but never {@code null}.
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
