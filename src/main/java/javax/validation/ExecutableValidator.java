@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.validation.groups.Default;
 
 /**
- * Validates parameters and return values of methods respectively constructors.
+ * Validates parameters and return values of methods and constructors.
  * Implementations of this interface must be thread-safe.
  *
  * @author Gunnar Morling
@@ -28,6 +28,7 @@ public interface ExecutableValidator {
 	 * @return A set with the constraint violations caused by this validation.
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
+	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
@@ -46,6 +47,8 @@ public interface ExecutableValidator {
 	 * @return A set with the constraint violations caused by this validation.
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
+	 * @throws IllegalArgumentException if {@code null} is passed for any of the object,
+	 * method or groups parameters
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
@@ -64,6 +67,7 @@ public interface ExecutableValidator {
 	 * @return A set with the constraint violations caused by this validation.
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
+	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
@@ -81,6 +85,7 @@ public interface ExecutableValidator {
 	 * @return A set with the constraint violations caused by this validation.
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
+	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
 	 * @throws ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
