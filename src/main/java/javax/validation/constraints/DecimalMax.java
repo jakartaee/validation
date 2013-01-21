@@ -67,6 +67,15 @@ public @interface DecimalMax {
 	String value();
 
 	/**
+	 * Specifies, whether the specified maximum is inclusive or exclusive.
+	 * By default, it is inclusive.
+	 *
+	 * @return {@code true} if the value must be lower or equal to the specified maximum, {@code false}
+	 *         if the value must be lower.
+	 */
+	boolean inclusive() default true;
+
+	/**
 	 * Defines several {@code @DecimalMax} annotations on the same element
 	 *
 	 * @author Emmanuel Bernard
