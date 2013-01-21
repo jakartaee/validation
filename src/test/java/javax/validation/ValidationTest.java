@@ -29,6 +29,7 @@ import javax.validation.spi.ValidationProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
@@ -39,21 +40,30 @@ public class ValidationTest {
 
 	// BVAL-298
 	@Test
+	public void testContextClassLoaderIsUsedFirst() {
+		// setting a context class loader which is not able to load the service file
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		ClassLoader customClassLoader = new CustomValidationProviderClassLoader( "-1" );
+		Thread.currentThread().setContextClassLoader( customClassLoader );
+		try {
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			assertTrue( factory instanceof BarValidationProvider.DummyValidatorFactory );
+		}
+		finally {
+			Thread.currentThread().setContextClassLoader( contextClassLoader );
+		}
+	}
+
+	// BVAL-298
+	@Test
 	public void testCurrentClassLoaderIsUsedInCaseContextClassLoaderCannotLoadServiceFile() {
+		// setting a context class loader which is not able to load the service file
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		ClassLoader dummyClassLoader = new URLClassLoader( new URL[] { }, null );
 		Thread.currentThread().setContextClassLoader( dummyClassLoader );
 		try {
-			Validation.buildDefaultValidatorFactory();
-			fail();
-		}
-		catch ( ValidationException e ) {
-			// the custom context URL class loader cannot load the service file, so the exception
-			// must be triggered by using the current class loader
-			assertEquals(
-					e.getMessage(),
-					"Unable to load Bean Validation provider"
-			);
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			assertTrue( factory instanceof FooValidationProvider.DummyValidatorFactory );
 		}
 		finally {
 			Thread.currentThread().setContextClassLoader( contextClassLoader );
@@ -66,15 +76,9 @@ public class ValidationTest {
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader( null );
 		try {
-			Validation.buildDefaultValidatorFactory();
-			fail();
-		}
-		catch ( ValidationException e ) {
-			// context class loader is not. exception must be caused by using the current class loader
-			assertEquals(
-					e.getMessage(),
-					"Unable to load Bean Validation provider"
-			);
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			assertNotNull( factory );
+			assertTrue( factory instanceof FooValidationProvider.DummyValidatorFactory );
 		}
 		finally {
 			Thread.currentThread().setContextClassLoader( contextClassLoader );
@@ -89,7 +93,7 @@ public class ValidationTest {
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			for ( int i = 1; i <= LOOP_COUNT; i++ ) {
-				Thread.currentThread().setContextClassLoader( new CustomValidationXmlClassLoader( "-2" ) );
+				Thread.currentThread().setContextClassLoader( new CustomValidationProviderClassLoader( "-1" ) );
 				Validation.buildDefaultValidatorFactory();
 			}
 
@@ -115,22 +119,15 @@ public class ValidationTest {
 		}
 	}
 
-	// BVAL-280
+	// BVAL-280, BVAL-343
 	@Test
-	public void testMultipleProvidersWithOneUnknownProviderThrowsException() {
+	public void testUnknownProviderGetsIgnored() {
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-		Thread.currentThread().setContextClassLoader( new CustomValidationXmlClassLoader( "-2", "-3" ) );
+		Thread.currentThread().setContextClassLoader( new CustomValidationProviderClassLoader( "-1", "-2" ) );
 
 		try {
-			Validation.buildDefaultValidatorFactory();
-			fail();
-		}
-		catch ( ValidationException e ) {
-			// context class loader is not. exception must be caused by using the current class loader
-			assertEquals(
-					e.getMessage(),
-					"Unable to load Bean Validation provider"
-			);
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			assertNotNull( factory );
 		}
 		finally {
 			Thread.currentThread().setContextClassLoader( contextClassLoader );
@@ -140,8 +137,8 @@ public class ValidationTest {
 	private int countInMemoryProviders() {
 		int count = 0;
 		// we cannot access Validation.DefaultValidationProviderResolver#providersPerClassloader, so we have to
-		// indirectly count the providers via DummyValidationProvider#createdValidationProviders
-		for ( SoftReference<DummyValidationProvider> ref : DummyValidationProvider.createdValidationProviders ) {
+		// indirectly count the providers via BarValidationProvider#createdValidationProviders
+		for ( SoftReference<BarValidationProvider> ref : BarValidationProvider.createdValidationProviders ) {
 			if ( ref.get() != null ) {
 				count++;
 			}
@@ -149,13 +146,13 @@ public class ValidationTest {
 		return count;
 	}
 
-	public static class CustomValidationXmlClassLoader extends ClassLoader {
+	public static class CustomValidationProviderClassLoader extends ClassLoader {
 		private static final String SERVICES_FILE = "META-INF/services/" + ValidationProvider.class.getName();
 		private final String[] validationXmlSuffixes;
 
 
-		public CustomValidationXmlClassLoader(String... suffixes) {
-			super( CustomValidationXmlClassLoader.class.getClassLoader() );
+		public CustomValidationProviderClassLoader(String... suffixes) {
+			super( CustomValidationProviderClassLoader.class.getClassLoader() );
 			this.validationXmlSuffixes = suffixes;
 		}
 
@@ -166,7 +163,6 @@ public class ValidationTest {
 				for ( String suffix : validationXmlSuffixes ) {
 					customEnumeration.addElements( super.getResources( name + suffix ) );
 				}
-
 			}
 			else {
 				customEnumeration.addElements( super.getResources( name ) );

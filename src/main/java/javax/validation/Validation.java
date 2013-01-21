@@ -280,8 +280,10 @@ public class Validation {
 
 	/**
 	 * Find {@code ValidationProvider} according to the default {@code ValidationProviderResolver} defined in the
-	 * Bean Validation specification. This implementation uses the current classloader or the classloader which has loaded
-	 * the current class if the current class loader is unavailable. The classloader is used to retrieve the Service Provider files.
+	 * Bean Validation specification. This implementation first uses thread's context classloader to locate providers.
+	 * If no suitable provider is found using the aforementioned class loader, it uses current class loader.
+	 * If it still does not find any suitable provider, it tries to locate the built-in provider using the current
+	 * class loader.
 	 *
 	 * @author Emmanuel Bernard
 	 * @author Hardy Ferentschik
@@ -289,20 +291,19 @@ public class Validation {
 	private static class DefaultValidationProviderResolver implements ValidationProviderResolver {
 		public List<ValidationProvider<?>> getValidationProviders() {
 			// class loading and ServiceLoader methods should happen in a PrivilegedAction
-			return GetValidationProviderList.getValidationProviderList();
+			return GetValidationProviderListAction.getValidationProviderList();
 		}
 	}
 
-	private static class GetValidationProviderList implements PrivilegedAction<List<ValidationProvider<?>>> {
+	private static class GetValidationProviderListAction implements PrivilegedAction<List<ValidationProvider<?>>> {
 
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
-		//TODO use a WeakConcurrentHashMap
 		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
 				new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>();
 
 		public static List<ValidationProvider<?>> getValidationProviderList() {
-			final GetValidationProviderList action = new GetValidationProviderList();
+			final GetValidationProviderListAction action = new GetValidationProviderListAction();
 			if ( System.getSecurityManager() != null ) {
 				return AccessController.doPrivileged( action );
 			}
@@ -312,7 +313,7 @@ public class Validation {
 		}
 
 		public List<ValidationProvider<?>> run() {
-			// try first context class loader
+			// Option #1: try first context class loader
 			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 			List<ValidationProvider<?>> cachedContextClassLoaderProviderList = getCachedValidationProviders( classloader );
 			if ( cachedContextClassLoaderProviderList != null ) {
@@ -320,11 +321,10 @@ public class Validation {
 				return cachedContextClassLoaderProviderList;
 			}
 
-			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
-			Iterator<ValidationProvider> providerIterator = loader.iterator();
+			List<ValidationProvider<?>> validationProviderList = loadProviders( classloader );
 
-			// if we cannot find any service files with the context class loader use the current class loader
-			if ( !providerIterator.hasNext() ) {
+			// Option #2: if we cannot find any service files with the context class loader use the current class loader
+			if ( validationProviderList.isEmpty() ) {
 				classloader = DefaultValidationProviderResolver.class.getClassLoader();
 				List<ValidationProvider<?>> cachedCurrentClassLoaderProviderList = getCachedValidationProviders(
 						classloader
@@ -333,25 +333,29 @@ public class Validation {
 					// if already processed return the cached provider list
 					return cachedCurrentClassLoaderProviderList;
 				}
-				loader = ServiceLoader.load( ValidationProvider.class, classloader );
-				providerIterator = loader.iterator();
+				validationProviderList = loadProviders( classloader );
 			}
 
+			// cache the detected providers against the classloader in which they were found
+			cacheValidationProviders( classloader, validationProviderList );
+
+			return validationProviderList;
+		}
+
+		private List<ValidationProvider<?>> loadProviders(ClassLoader classloader) {
+			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
+			Iterator<ValidationProvider> providerIterator = loader.iterator();
 			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
 			while ( providerIterator.hasNext() ) {
 				try {
 					validationProviderList.add( providerIterator.next() );
 				}
 				catch ( ServiceConfigurationError e ) {
-					throw new ValidationException(
-							"Unable to load Bean Validation provider",
-							e
-					);
+					// ignore, because it can happen when multiple
+					// providers are present and some of them are not class loader
+					// compatible with our API.
 				}
 			}
-
-			cacheValidationProviders( classloader, validationProviderList );
-
 			return validationProviderList;
 		}
 

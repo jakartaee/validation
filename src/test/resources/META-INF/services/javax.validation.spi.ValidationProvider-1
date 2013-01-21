@@ -1,2 +1,2 @@
 # loaded via CustomValidationXmlClassLoader used as thread context class loader
-non.existent.ValidationProvider
+javax.validation.BarValidationProvider
