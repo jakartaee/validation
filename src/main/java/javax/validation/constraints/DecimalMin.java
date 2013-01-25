@@ -67,6 +67,15 @@ public @interface DecimalMin {
 	String value();
 
 	/**
+	 * Specifies, whether the specified minimum is inclusive or exclusive.
+	 * By default, it is inclusive.
+	 *
+	 * @return {@code true} if the value must be higher or equal to the specified minimum, {@code false}
+	 *         if the value must be higher.
+	 */
+	boolean inclusive() default true;
+
+	/**
 	 * Defines several {@code @DecimalMin} annotations on the same element
 	 *
 	 * @author Emmanuel Bernard
