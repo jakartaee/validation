@@ -146,21 +146,21 @@ public class ValidationTest {
 		return count;
 	}
 
-	public static class CustomValidationProviderClassLoader extends ClassLoader {
+	private static class CustomValidationProviderClassLoader extends ClassLoader {
 		private static final String SERVICES_FILE = "META-INF/services/" + ValidationProvider.class.getName();
-		private final String[] validationXmlSuffixes;
-
+		private final String[] serviceFileSuffixes;
 
 		public CustomValidationProviderClassLoader(String... suffixes) {
 			super( CustomValidationProviderClassLoader.class.getClassLoader() );
-			this.validationXmlSuffixes = suffixes;
+			this.serviceFileSuffixes = suffixes;
 		}
 
+		@Override
 		public Enumeration<URL> getResources(String name) throws IOException {
 			CustomEnumeration<URL> customEnumeration = new CustomEnumeration<URL>();
 
-			if ( SERVICES_FILE.equals( name ) && validationXmlSuffixes != null ) {
-				for ( String suffix : validationXmlSuffixes ) {
+			if ( SERVICES_FILE.equals( name ) && serviceFileSuffixes != null ) {
+				for ( String suffix : serviceFileSuffixes ) {
 					customEnumeration.addElements( super.getResources( name + suffix ) );
 				}
 			}
@@ -171,8 +171,8 @@ public class ValidationTest {
 		}
 	}
 
-	public static class CustomEnumeration<E> implements Enumeration<E> {
-		private List<E> enumList = new ArrayList<E>();
+	private static class CustomEnumeration<E> implements Enumeration<E> {
+		private final List<E> enumList = new ArrayList<E>();
 		int currentIndex = 0;
 
 		public void addElements(Enumeration<E> enumeration) {
@@ -194,5 +194,3 @@ public class ValidationTest {
 		}
 	}
 }
-
-
