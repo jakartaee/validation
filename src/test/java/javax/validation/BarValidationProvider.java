@@ -27,11 +27,11 @@ import javax.validation.spi.ValidationProvider;
 /**
  * @author Hardy Ferentschik
  */
-public class DummyValidationProvider implements ValidationProvider {
-	public static List<SoftReference<DummyValidationProvider>> createdValidationProviders =  new ArrayList<SoftReference<DummyValidationProvider>>();
+public class BarValidationProvider implements ValidationProvider {
+	public static List<SoftReference<BarValidationProvider>> createdValidationProviders = new ArrayList<SoftReference<BarValidationProvider>>();
 
-	public DummyValidationProvider() {
-		createdValidationProviders.add( new SoftReference<DummyValidationProvider>( this ) );
+	public BarValidationProvider() {
+		createdValidationProviders.add( new SoftReference<BarValidationProvider>( this ) );
 	}
 
 	public Configuration createSpecializedConfiguration(BootstrapState state) {
@@ -43,7 +43,7 @@ public class DummyValidationProvider implements ValidationProvider {
 	}
 
 	public ValidatorFactory buildValidatorFactory(ConfigurationState configurationState) {
-		return null;
+	   return new DummyValidatorFactory();
 	}
 
 
@@ -98,7 +98,48 @@ public class DummyValidationProvider implements ValidationProvider {
 		}
 
 		public ValidatorFactory buildValidatorFactory() {
+			return new DummyValidatorFactory();
+		}
+	}
+
+	public static class DummyValidatorFactory implements ValidatorFactory {
+		@Override
+		public Validator getValidator() {
 			return null;
+		}
+
+		@Override
+		public ValidatorContext usingContext() {
+			return null;
+		}
+
+		@Override
+		public MessageInterpolator getMessageInterpolator() {
+			return null;
+		}
+
+		@Override
+		public TraversableResolver getTraversableResolver() {
+			return null;
+		}
+
+		@Override
+		public ConstraintValidatorFactory getConstraintValidatorFactory() {
+			return null;
+		}
+
+		@Override
+		public ParameterNameProvider getParameterNameProvider() {
+			return null;
+		}
+
+		@Override
+		public <T> T unwrap(Class<T> type) {
+			return null;
+		}
+
+		@Override
+		public void close() {
 		}
 	}
 }

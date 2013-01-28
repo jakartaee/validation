@@ -1,1 +1,2 @@
-non.existent.ValidationProvider
+# loaded via current class loader
+javax.validation.FooValidationProvider
