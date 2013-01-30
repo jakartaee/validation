@@ -26,7 +26,7 @@ import javax.validation.TraversableResolver;
 
 /**
  * Contract between a {@code Configuration} and a
- * <@code ValidatorProvider} to create a {@code ValidatorFactory}.
+ * {@code javax.validation.spi.ValidationProvider} to create a {@code ValidatorFactory}.
  * The configuration artifacts defined in the XML configuration and provided to the
  * {@code Configuration} are merged and passed along via
  * {@code ConfigurationState}.
