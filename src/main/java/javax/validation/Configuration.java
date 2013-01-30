@@ -113,6 +113,8 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @param parameterNameProvider Parameter name provider implementation.
 	 *
 	 * @return {@code this} following the chaining method pattern.
+	 *
+	 * @since 1.1
 	 */
 	T parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
@@ -224,6 +226,8 @@ public interface Configuration<T extends Configuration<T>> {
 	 *
 	 * @return default ParameterNameProvider implementation compliant with
 	 *         the specification
+	 *
+	 * @since 1.1
 	 */
 	ParameterNameProvider getDefaultParameterNameProvider();
 
@@ -236,6 +240,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @return Returns an instance of {@code BootstrapConfiguration}. This method returns never {@code null}. If there
 	 *         is no <i>META-INF/validation.xml</i> the different getters of the returned instance will return {@code null} respective
 	 *         the empty set or map.
+	 * @since 1.1
 	 */
 	BootstrapConfiguration getBootstrapConfiguration();
 

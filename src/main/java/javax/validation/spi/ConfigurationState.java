@@ -117,6 +117,8 @@ public interface ConfigurationState {
 	 * </ul>
 	 *
 	 * @return parameter name provider instance or {@code null} if not defined
+	 *
+	 * @since 1.1
 	 */
 	ParameterNameProvider getParameterNameProvider();
 

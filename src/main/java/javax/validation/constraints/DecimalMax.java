@@ -72,6 +72,8 @@ public @interface DecimalMax {
 	 *
 	 * @return {@code true} if the value must be lower or equal to the specified maximum, {@code false}
 	 *         if the value must be lower.
+	 *
+	 * @since 1.1
 	 */
 	boolean inclusive() default true;
 

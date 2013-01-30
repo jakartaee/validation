@@ -3,8 +3,8 @@ package javax.validation;
 /**
  * Defines the types of executables targeted by an operation.
  *
- * @since 1.1
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @since 1.1
  */
 public enum ExecutableType {
 	/**

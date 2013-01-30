@@ -24,6 +24,8 @@ import java.util.Set;
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
  * @author Gunnar Morling
  * @author Hardy Ferentschik
+ *
+ * @since 1.1
  */
 public interface BootstrapConfiguration {
 	/**

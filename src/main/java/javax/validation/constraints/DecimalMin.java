@@ -72,6 +72,8 @@ public @interface DecimalMin {
 	 *
 	 * @return {@code true} if the value must be higher or equal to the specified minimum, {@code false}
 	 *         if the value must be higher.
+	 *
+	 * @since 1.1
 	 */
 	boolean inclusive() default true;
 

@@ -3,8 +3,8 @@ package javax.validation;
 /**
  * Defines the constraint target
  *
- * @since 1.1
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @since 1.1
  */
 public enum ConstraintTarget {
 	/**

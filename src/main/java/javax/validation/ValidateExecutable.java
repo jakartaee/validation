@@ -48,8 +48,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     of the method it overrides / implements</li>
  * </ul>
  *
- * @since 1.1
  * @author Emmanuel Bernard
+ * @since 1.1
  */
 @Target({ CONSTRUCTOR, METHOD, TYPE, PACKAGE })
 @Retention(RUNTIME)
