@@ -15,6 +15,7 @@
 */
 package javax.validation;
 
+import javax.validation.executable.ExecutableType;
 import java.util.Map;
 import java.util.Set;
 
@@ -75,6 +76,17 @@ public interface BootstrapConfiguration {
 	 * @return set of constraint mapping resource paths
 	 */
 	Set<String> getConstraintMappingResourcePaths();
+
+	/**
+	 * Return the set of executable types that should be considered
+	 * unless explicitly overridden via {@code javax.validation.ValidateExecutable}
+	 *
+	 * Return a set containing {@code CONSTRUCTORS} and {@code NON_GETTER_METHODS}
+	 * if unspecified in the configuration.
+	 *
+	 * @return set of validated executable types
+	 */
+	Set<ExecutableType> getValidatedExecutableTypes();
 
 	/**
 	 * Returns properties as a map of string based key/value pairs.
