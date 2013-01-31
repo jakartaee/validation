@@ -1,4 +1,4 @@
-package javax.validation;
+package javax.validation.executable;
 
 /**
  * Defines the types of executables targeted by an operation.
