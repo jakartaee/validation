@@ -14,7 +14,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package javax.validation;
+package javax.validation.groups;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -30,8 +30,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * Convert group {@code from} to group {@code to} during cascading.
  *
- * Can be used everywhere {@link Valid} is used and must be on an element
- * annotated with {@link Valid}.
+ * Can be used everywhere {@link javax.validation.Valid} is used and must be on an element
+ * annotated with {@link javax.validation.Valid}.
  *
  * @author Emmanuel Bernard
  * @since 1.1
