@@ -26,7 +26,7 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Expresses which executable (method or constructor) should have its parameters
+ * Expresses which executables (method or constructor) should have their parameters
  * and return value validated upon execution.
  *
  * The settings for a given executable is resolved as followed.
