@@ -22,14 +22,5 @@ package javax.validation.metadata;
  * @author Gunnar Morling
  * @since 1.1
  */
-public interface ReturnValueDescriptor extends ElementDescriptor {
-
-	/**
-	 * Whether a cascaded validation for this return value shall be performed or
-	 * not.
-	 *
-	 * @return {@code true}, if this return value shall be validated
-	 *         recursively, {@code false} otherwise.
-	 */
-	boolean isCascaded();
+public interface ReturnValueDescriptor extends ElementDescriptor, CascadableDescriptor {
 }
