@@ -22,7 +22,7 @@ package javax.validation.metadata;
  * @author Gunnar Morling
  * @since 1.1
  */
-public interface ParameterDescriptor extends ElementDescriptor {
+public interface ParameterDescriptor extends ElementDescriptor, CascadableDescriptor {
 
 	/**
 	 * Returns this parameter's index within the parameter array of the method
@@ -39,13 +39,4 @@ public interface ParameterDescriptor extends ElementDescriptor {
 	 * @return This parameter's name.
 	 */
 	String getName();
-
-	/**
-	 * Whether a cascaded validation of this parameter shall be performed or
-	 * not.
-	 *
-	 * @return {@code true}, if this parameter shall be validated
-	 *         recursively, {@code false} otherwise.
-	 */
-	boolean isCascaded();
 }

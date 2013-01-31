@@ -1,6 +1,6 @@
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
@@ -16,20 +16,31 @@
 */
 package javax.validation.metadata;
 
+import java.util.Set;
+
 /**
- * Describes a Java Bean property hosting validation constraints.
+ * Represents a cascadable element.
  *
- * Constraints placed on the attribute and the getter of a given property
- * are all referenced.
- *
- * @author Emmanuel Bernard
+ * @author Gunnar Morling
+ * @since 1.1
  */
-public interface PropertyDescriptor extends ElementDescriptor, CascadableDescriptor {
+public interface CascadableDescriptor {
 
 	/**
-	 * Name of the property according to the Java Bean specification.
+	 * Whether a cascaded validation of this element shall be performed or
+	 * not.
 	 *
-	 * @return property name.
+	 * @return {@code true}, if this element shall be validated
+	 *         recursively, {@code false} otherwise.
 	 */
-	String getPropertyName();
+	boolean isCascaded();
+
+	/**
+	 * Returns the group conversions configured for this element.
+	 *
+	 * @return A set containing this element's group conversions. An empty set
+	 *         may be returned if no conversions are configured but never
+	 *         {@code null}.
+	 */
+	Set<GroupConversionDescriptor> getGroupConversions();
 }

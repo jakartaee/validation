@@ -1,6 +1,6 @@
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
@@ -16,20 +16,30 @@
 */
 package javax.validation.metadata;
 
+import javax.validation.groups.ConvertGroup;
+
 /**
- * Describes a Java Bean property hosting validation constraints.
+ * A group conversion rule to be applied during cascaded validation. Two group
+ * conversion descriptors are considered equal if they have the same source and
+ * target group.
  *
- * Constraints placed on the attribute and the getter of a given property
- * are all referenced.
- *
- * @author Emmanuel Bernard
+ * @author Gunnar Morling
+ * @see ConvertGroup
+ * @since 1.1
  */
-public interface PropertyDescriptor extends ElementDescriptor, CascadableDescriptor {
+public interface GroupConversionDescriptor {
 
 	/**
-	 * Name of the property according to the Java Bean specification.
+	 * Returns the source group of this conversion rule.
 	 *
-	 * @return property name.
+	 * @return The source group of this conversion rule.
 	 */
-	String getPropertyName();
+	Class<?> getFrom();
+
+	/**
+	 * Returns the target group of this conversion rule.
+	 *
+	 * @return The target group of this conversion rule.
+	 */
+	Class<?> getTo();
 }
