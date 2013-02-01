@@ -27,11 +27,10 @@ import java.util.Set;
 public interface CascadableDescriptor {
 
 	/**
-	 * Whether a cascaded validation of this element shall be performed or
-	 * not.
+	 * Whether this element is marked for cascaded validation or not.
 	 *
-	 * @return {@code true}, if this element shall be validated
-	 *         recursively, {@code false} otherwise.
+	 * @return {@code true}, if this element is marked for cascaded validation,
+	 *         {@code false} otherwise.
 	 */
 	boolean isCascaded();
 

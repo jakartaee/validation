@@ -20,8 +20,8 @@ import javax.validation.groups.ConvertGroup;
 
 /**
  * A group conversion rule to be applied during cascaded validation. Two group
- * conversion descriptors are considered equal if they have the same source and
- * target group.
+ * conversion descriptors are considered equal if they have the same
+ * {@code from} and {@code to} group respectively.
  *
  * @author Gunnar Morling
  * @see ConvertGroup
