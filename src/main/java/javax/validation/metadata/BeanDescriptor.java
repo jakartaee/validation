@@ -45,6 +45,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Return the property descriptor for a given property.
 	 * Return {@code null} if the property does not exist or has no
 	 * constraint nor is marked as cascaded (see {@link #getConstrainedProperties()} )
+	 * Properties of super types are considered.
 	 * <p/>
 	 *
 	 * @param propertyName property evaluated
@@ -59,6 +60,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Returns a set of property descriptors having at least one constraint defined
 	 * or marked as cascaded ({@code @Valid}). If not property matches,
 	 * an empty set is returned.
+	 * Properties of super types are considered.
 	 *
 	 * @return Returns the set of {@code PropertyDescriptor}s for the constraint properties. If there are no
 	 *         constraint properties the empty set is returned
@@ -70,6 +72,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * no method with the given name and parameter types exists or the specified
 	 * method neither has parameter or return value constraints nor a parameter
 	 * or return value marked for cascaded validation.
+	 * Methods of super types are considered.
 	 *
 	 * @param methodName The name of the method.
 	 * @param parameterTypes The parameter types of the method.
@@ -86,6 +89,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * represented by this descriptor. Constrained are all those methods which
 	 * have at least one parameter or return value constraint or at least one
 	 * parameter or return value marked for cascaded validation.
+	 * Methods of super types are considered.
 	 *
 	 * @return A set with descriptors for the constrained methods of this type.
 	 *         Will be empty if this type has no constrained methods but never
@@ -101,6 +105,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * the specified constructor neither has parameter or return value
 	 * constraints nor a parameter or return value marked for cascaded
 	 * validation.
+	 * Constructor of super types are considered.
 	 *
 	 * @param parameterTypes The parameter types of the constructor.
 	 *
