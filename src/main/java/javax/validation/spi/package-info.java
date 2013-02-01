@@ -15,8 +15,7 @@
 * limitations under the License.
 */
 /**
- * Package related to the control of executable validation.
- * Use {@code ValidateExecutable} to control whether or not a (set of)
- * constructors or methods are being validated.
+ * Package containing objects specific to the interaction between the
+ * Bean Validation bootstrapping process and Bean Validation providers.
  */
-package javax.validation.executable;
+package javax.validation.spi;

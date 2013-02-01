@@ -15,8 +15,11 @@
 * limitations under the License.
 */
 /**
- * Package related to the control of executable validation.
- * Use {@code ValidateExecutable} to control whether or not a (set of)
- * constructors or methods are being validated.
+ * Contains all the Bean Validation provided constraints
+ * also called built-in constraints.
+ *
+ * These constraints do not cover all functional use cases but do represent
+ * all the fundamental blocks to express low level constraints on basic JDK
+ * types.
  */
-package javax.validation.executable;
+package javax.validation.constraints;

@@ -15,8 +15,7 @@
 * limitations under the License.
 */
 /**
- * Package related to the control of executable validation.
- * Use {@code ValidateExecutable} to control whether or not a (set of)
- * constructors or methods are being validated.
+ * Package containing all objects specifically used and returned by the
+ * metadata API.
  */
-package javax.validation.executable;
+package javax.validation.metadata;
