@@ -15,8 +15,7 @@
 * limitations under the License.
 */
 /**
- * Package related to the control of executable validation.
- * Use {@code ValidateExecutable} to control whether or not a (set of)
- * constructors or methods are being validated.
+ * Package containing bootstrap specific objects.
+ * Typical users are not interested in these objects.
  */
-package javax.validation.executable;
+package javax.validation.bootstrap;
