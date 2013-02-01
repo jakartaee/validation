@@ -64,7 +64,7 @@
     </xs:complexType>
     <xs:complexType name="validated-executablesType">
         <xs:sequence>
-            <xs:element name="executable-type" maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="executable-type" maxOccurs="unbounded" minOccurs="1">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="NONE"/>
