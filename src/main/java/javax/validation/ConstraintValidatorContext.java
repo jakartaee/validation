@@ -91,6 +91,22 @@ public interface ConstraintValidatorContext {
 	ConstraintViolationBuilder buildConstraintViolationWithTemplate(String messageTemplate);
 
 	/**
+	 * Return an instance of the specified type allowing access to
+	 * provider-specific APIs. If the Bean Validation provider
+	 * implementation does not support the specified class,
+	 * {@code ValidationException} is thrown.
+	 *
+	 * @param type the class of the object to be returned.
+	 *
+	 * @return an instance of the specified class
+	 *
+	 * @throws ValidationException if the provider does not support the call.
+	 *
+	 * @since 1.1
+	 */
+	<T> T unwrap(Class<T> type);
+
+	/**
 	 * {@code ConstraintViolation} builder allowing to optionally associate
 	 * the violation report to a sub path.
 	 *
