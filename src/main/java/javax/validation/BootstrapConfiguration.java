@@ -15,17 +15,19 @@
 */
 package javax.validation;
 
-import javax.validation.executable.ExecutableType;
 import java.util.Map;
 import java.util.Set;
+import javax.validation.executable.ExecutableType;
 
 /**
- * Represents the user specified default configuration in <i>META-INF/validation.xml</i>.
+ * Represents the user specified default configuration in
+ * <i>META-INF/validation.xml</i>. Note that modifications to the returned
+ * objects don't have any effect; Instead use the methods provided on
+ * {@link Configuration} in order to apply modifications to the configuration.
  *
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
  * @author Gunnar Morling
  * @author Hardy Ferentschik
- *
  * @since 1.1
  */
 public interface BootstrapConfiguration {
