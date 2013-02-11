@@ -24,7 +24,7 @@ import javax.validation.metadata.ElementDescriptor;
  * Each path element is represented by a {@code Node}.
  *
  * The path corresponds to the succession of nodes
- * in the order they are returned by the {@code Iterator}
+ * in the order they are returned by the {@code Iterator}.
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
@@ -36,31 +36,31 @@ public interface Path extends Iterable<Path.Node> {
 	 */
 	interface Node {
 		/**
-		 * Name of the property, constructor, method or parameter which the node
-		 * represents or null if representing an entity on the leaf node or the
-		 * return value of a constructor or method (in particular the node in a
-		 * {@code Path} representing the root object has its name null).
+		 * Returns the name of the element which the node represents. The name
+		 * will be {@code null}, if it represents an entity on the leaf node. In
+		 * particular the node representing the root object has {@code null} as
+		 * name. The name of a method or constructor return value is the literal
+		 * {@code <return value>}.
 		 *
-		 * @return Name of the property, constructor, method or parameter which
-		 *         the node represents.
+		 * @return Name of the element which the node represents.
 		 */
 		String getName();
 
 		/**
-		 * @return true if the node represents an object contained in an Iterable
-		 *         or in a Map.
+		 * @return {@code true} if the node represents an object contained in an
+		 *         {@code Iterable} or in a Map, {@code false} otherwise.
 		 */
 		boolean isInIterable();
 
 		/**
-		 * @return The index the node is placed in if contained
-		 *         in an array or List. Null otherwise.
+		 * @return The index the node is placed in if contained in an array or
+		 *         {@code List}. {@code null} otherwise.
 		 */
 		Integer getIndex();
 
 		/**
-		 * @return The key the node is placed in if contained
-		 *         in a Map. Null otherwise.
+		 * @return The key the node is placed in if contained in a {@code Map}.
+		 *         {@code null} otherwise.
 		 */
 		Object getKey();
 
