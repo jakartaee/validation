@@ -152,7 +152,7 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @param name property name
 		 * @return a builder representing node {@code name}
-		 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addParameterNode}
+		 * @deprecated since 1.1 - replaced by {@code addPropertyNode}, {@code addBeanNode} and {@code addParameterNode}
 		 */
 		@Deprecated
 		<T extends NodeBuilderDefinedContext & NodeBuilderCustomizableContext> T addNode(String name);
@@ -162,11 +162,10 @@ public interface ConstraintValidatorContext {
 		 *
 		 * {@code name} describes a single property. In particular,
 		 * dot (.) is not allowed.
-		 * //TODO non existent property
-		 * //TODO null value
 		 *
 		 * @param name property name
 		 * @return a builder representing node {@code name}
+		 * @throws IllegalArgumentException if the name is null
 		 *
 		 * @since 1.1
 		 */
@@ -188,6 +187,7 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @param index the parameter index
 		 * @return a builder representing the index-th parameter node
+		 * @throws IllegalArgumentException if the index is not valid
 		 *
 		 * @since 1.1
 		 */
@@ -197,7 +197,7 @@ public interface ConstraintValidatorContext {
 		 * Add the new {@code ConstraintViolation} to be generated if the
 		 * constraint validator marks the value as invalid.
 		 * Methods of this {@code ConstraintViolationBuilder} instance and its nested
-		 * objects return {@code IllegalStateException} from now on.
+		 * objects throw {@code IllegalStateException} from now on.
 		 *
 		 * @return the {@code ConstraintValidatorContext} instance the
 		 *           {@code ConstraintViolationBuilder} comes from
@@ -218,7 +218,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator marks the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
@@ -247,7 +247,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator mark the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
@@ -287,7 +287,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator mark the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
@@ -311,7 +311,7 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addParameterNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
@@ -321,11 +321,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
-			 * //TODO non existent property
-			 * //TODO null value
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
 			 *
 			 * @since 1.1
 			 */
@@ -346,7 +345,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator marks the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
@@ -377,7 +376,7 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addParameterNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
@@ -387,11 +386,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
-			 * //TODO non existent property
-			 * //TODO null value
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
 			 *
 			 * @since 1.1
 			 */
@@ -412,7 +410,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator mark the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
@@ -454,7 +452,7 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addParameterNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
@@ -464,11 +462,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
-			 * //TODO non existent property
-			 * //TODO null value
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
 			 *
 			 * @since 1.1
 			 */
@@ -489,7 +486,7 @@ public interface ConstraintValidatorContext {
 			 * constraint validator mark the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
-			 * objects return {@code IllegalStateException} after this call.
+			 * objects throw {@code IllegalStateException} after this call.
 			 *
 			 * @return {@code ConstraintValidatorContext} instance the
 			 *           {@code ConstraintViolationBuilder} comes from
