@@ -206,16 +206,54 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Represent a node whose context is known
+		 * (ie. index, key and isInIterable).
+		 * Base interface used by terminal and non terminal node representations
+		 *
+		 * @since 1.1
+		 */
+		interface NodeBuilderDefinedContextBase {
+
+			/**
+			 * Add the new {@code ConstraintViolation} to be generated if the
+			 * constraint validator marks the value as invalid.
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
+			 * comes from and the constraint violation builder nested
+			 * objects throw {@code IllegalStateException} after this call.
+			 *
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *           {@code ConstraintViolationBuilder} comes from
+			 */
+			ConstraintValidatorContext addConstraintViolation();
+		}
+
+		/**
+		 * Represent a node whose context is known
 		 * (ie. index, key and isInIterable)
 		 * and that is terminal (ie. no subnode can be added).
 		 *
 		 * @since 1.1
 		 */
-		interface TerminalNodeBuilderDefinedContext {
+		interface TerminalNodeBuilderDefinedContext extends NodeBuilderDefinedContextBase {}
+
+		/**
+		 * Represents a node whose context is
+		 * configurable (ie. index, key and isInIterable).
+		 * Base interface used by terminal and non terminal node representations
+		 *
+		 * @since 1.1
+		 */
+		interface NodeBuilderCustomizableContextBase<T extends NodeContextBuilderBase<?>> {
+
+			/**
+			 * Mark the node as being in an {@code Iterable} or a {@code Map}
+			 * 
+			 * @return a builder representing iterable details
+			 */
+			T inIterable();
 
 			/**
 			 * Add the new {@code ConstraintViolation} to be generated if the
-			 * constraint validator marks the value as invalid.
+			 * constraint validator mark the value as invalid.
 			 * Methods of the {@code ConstraintViolationBuilder} instance this object
 			 * comes from and the constraint violation builder nested
 			 * objects throw {@code IllegalStateException} after this call.
@@ -233,14 +271,34 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @since 1.1
 		 */
-		interface TerminalNodeBuilderCustomizableContext {
+		interface TerminalNodeBuilderCustomizableContext extends NodeBuilderCustomizableContextBase<TerminalNodeContextBuilder> {}
+
+		/**
+		 * Represent refinement choices for a node which is
+		 * in an {@code Iterator} or {@code Map}.
+		 * If the iterator is an indexed collection or a map,
+		 * the index or the key should be set.
+		 * Base interface used by terminal and non terminal node representations
+		 *
+		 * @since 1.1
+		 */
+		interface NodeContextBuilderBase<T extends NodeBuilderDefinedContextBase> {
 
 			/**
-			 * Mark the node as being in an {@code Iterable} or a {@code Map}
-			 * 
-			 * @return a builder representing iterable details
+			 * Define the key the object is into the {@code Map}
+			 *
+			 * @param key map key
+			 * @return a builder representing the current node
 			 */
-			TerminalNodeContextBuilder inIterable();
+			T atKey(Object key);
+
+			/**
+			 * Define the index the object is into the {@code List} or array
+			 *
+			 * @param index index
+			 * @return a builder representing the current node
+			 */
+			T atIndex(Integer index);
 
 			/**
 			 * Add the new {@code ConstraintViolation} to be generated if the
@@ -264,35 +322,52 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @since 1.1
 		 */
-		interface TerminalNodeContextBuilder {
+		interface TerminalNodeContextBuilder extends NodeContextBuilderBase<TerminalNodeBuilderDefinedContext> {}
+
+		/**
+		 * APIs offering methods to add a subnode to the current node
+		 * (except when the current node is the last of the default path)
+		 *
+		 * @since 1.1
+		 */
+		interface NonTerminalNode {
 
 			/**
-			 * Define the key the object is into the {@code Map}
+			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
 			 *
-			 * @param key map key
-			 * @return a builder representing the current node
+			 * {@code name} describes a single property. In particular,
+			 * dot (.) is not allowed.
+			 *
+			 * @param name property name
+			 * @return a builder representing node {@code name}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
 			 */
-			TerminalNodeBuilderDefinedContext atKey(Object key);
+			@Deprecated
+			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Define the index the object is into the {@code List} or array
+			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
 			 *
-			 * @param index index
-			 * @return a builder representing the current node
+			 * {@code name} describes a single property. In particular,
+			 * dot (.) is not allowed.
+			 *
+			 * @param name property name
+			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
+			 *
+			 * @since 1.1
 			 */
-			TerminalNodeBuilderDefinedContext atIndex(Integer index);
+			NodeBuilderCustomizableContext addPropertyNode(String name);
 
 			/**
-			 * Add the new {@code ConstraintViolation} to be generated if the
-			 * constraint validator mark the value as invalid.
-			 * Methods of the {@code ConstraintViolationBuilder} instance this object
-			 * comes from and the constraint violation builder nested
-			 * objects throw {@code IllegalStateException} after this call.
+			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
+			 * Note that bean nodes are always leaf nodes.
 			 *
-			 * @return {@code ConstraintValidatorContext} instance the
-			 *           {@code ConstraintViolationBuilder} comes from
+			 * @return a builder representing the bean node
+			 *
+			 * @since 1.1
 			 */
-			ConstraintValidatorContext addConstraintViolation();
+			TerminalNodeBuilderCustomizableContext addBeanNode();
 		}
 
 		/**
@@ -301,56 +376,7 @@ public interface ConstraintValidatorContext {
 		 * and that is not necessarily terminal (ie. subnodes can
 		 * be added).
 		 */
-		interface NodeBuilderDefinedContext {
-
-			/**
-			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
-			 */
-			@Deprecated
-			NodeBuilderCustomizableContext addNode(String name);
-
-			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @throws IllegalArgumentException if the name is null
-			 *
-			 * @since 1.1
-			 */
-			NodeBuilderCustomizableContext addPropertyNode(String name);
-
-			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
-			 * Note that bean nodes are always leaf nodes.
-			 *
-			 * @return a builder representing the bean node
-			 *
-			 * @since 1.1
-			 */
-			TerminalNodeBuilderCustomizableContext addBeanNode();
-
-			/**
-			 * Add the new {@code ConstraintViolation} to be generated if the
-			 * constraint validator marks the value as invalid.
-			 * Methods of the {@code ConstraintViolationBuilder} instance this object
-			 * comes from and the constraint violation builder nested
-			 * objects throw {@code IllegalStateException} after this call.
-			 *
-			 * @return {@code ConstraintValidatorContext} instance the
-			 *           {@code ConstraintViolationBuilder} comes from
-			 */
-			ConstraintValidatorContext addConstraintViolation();
+		interface NodeBuilderDefinedContext extends NodeBuilderDefinedContextBase, NonTerminalNode {
 		}
 
 		/**
@@ -359,63 +385,7 @@ public interface ConstraintValidatorContext {
 		 * and that is not necessarily terminal (ie. subnodes can
 		 * be added).
 		 */
-		interface NodeBuilderCustomizableContext {
-
-			/**
-			 * Mark the node as being in an {@code Iterable} or a {@code Map}
-			 *
-			 * @return a builder representing iterable details
-			 */
-			NodeContextBuilder inIterable();
-
-			/**
-			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
-			 */
-			@Deprecated
-			NodeBuilderCustomizableContext addNode(String name);
-
-			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @throws IllegalArgumentException if the name is null
-			 *
-			 * @since 1.1
-			 */
-			NodeBuilderCustomizableContext addPropertyNode(String name);
-
-			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
-			 * Note that bean nodes are always leaf nodes.
-			 *
-			 * @return a builder representing the bean node
-			 *
-			 * @since 1.1
-			 */
-			TerminalNodeBuilderCustomizableContext addBeanNode();
-
-			/**
-			 * Add the new {@code ConstraintViolation} to be generated if the
-			 * constraint validator mark the value as invalid.
-			 * Methods of the {@code ConstraintViolationBuilder} instance this object
-			 * comes from and the constraint violation builder nested
-			 * objects throw {@code IllegalStateException} after this call.
-			 *
-			 * @return {@code ConstraintValidatorContext} instance the
-			 *           {@code ConstraintViolationBuilder} comes from
-			 */
-			ConstraintValidatorContext addConstraintViolation();
+		interface NodeBuilderCustomizableContext extends NodeBuilderCustomizableContextBase<NodeContextBuilder>, NonTerminalNode {
 		}
 
 		/**
@@ -426,72 +396,7 @@ public interface ConstraintValidatorContext {
 		 * The node is not necessarily terminal (ie. subnodes can
  		 * be added).
 		 */
-		interface NodeContextBuilder {
-			
-			/**
-			 * Define the key the object is into the {@code Map}
-			 *
-			 * @param key map key
-			 * @return a builder representing the current node
-			 */
-			NodeBuilderDefinedContext atKey(Object key);
-
-			/**
-			 * Define the index the object is into the {@code List} or array
-			 *
-			 * @param index index
-			 * @return a builder representing the current node
-			 */
-			NodeBuilderDefinedContext atIndex(Integer index);
-
-			/**
-			 * Add a node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
-			 */
-			@Deprecated
-			NodeBuilderCustomizableContext addNode(String name);
-
-			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
-			 *
-			 * {@code name} describes a single property. In particular,
-			 * dot (.) is not allowed.
-			 *
-			 * @param name property name
-			 * @return a builder representing node {@code name}
-			 * @throws IllegalArgumentException if the name is null
-			 *
-			 * @since 1.1
-			 */
-			NodeBuilderCustomizableContext addPropertyNode(String name);
-
-			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
-			 * Note that bean nodes are always leaf nodes.
-			 *
-			 * @return a builder representing the bean node
-			 *
-			 * @since 1.1
-			 */
-			TerminalNodeBuilderCustomizableContext addBeanNode();
-
-			/**
-			 * Add the new {@code ConstraintViolation} to be generated if the
-			 * constraint validator mark the value as invalid.
-			 * Methods of the {@code ConstraintViolationBuilder} instance this object
-			 * comes from and the constraint violation builder nested
-			 * objects throw {@code IllegalStateException} after this call.
-			 *
-			 * @return {@code ConstraintValidatorContext} instance the
-			 *           {@code ConstraintViolationBuilder} comes from
-			 */
-			ConstraintValidatorContext addConstraintViolation();
+		interface NodeContextBuilder extends NodeContextBuilderBase<NodeBuilderDefinedContext>, NonTerminalNode {
 		}
 	}
 }
