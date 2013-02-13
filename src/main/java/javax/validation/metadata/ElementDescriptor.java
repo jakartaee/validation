@@ -29,45 +29,6 @@ import java.util.Set;
 public interface ElementDescriptor {
 
 	/**
-	 * The kind of an {@link ElementDescriptor}.
-	 *
-	 * @author Gunnar Morling
-	 * @since 1.1
-	 */
-	public enum Kind {
-
-		/**
-		 * A Java Bean.
-		 */
-		BEAN,
-
-		/**
-		 * A property of a Java Bean.
-		 */
-		PROPERTY,
-
-		/**
-		 * A method.
-		 */
-		METHOD,
-
-		/**
-		 * A constructor.
-		 */
-		CONSTRUCTOR,
-
-		/**
-		 * A parameter of a method or constructor.
-		 */
-		PARAMETER,
-
-		/**
-		 * The return value of a method or constructor.
-		 */
-		RETURN_VALUE
-	}
-
-	/**
 	 * @return Return {@code true} if at least one constraint declaration is present
 	 *         for this element in the class hierarchy, {@code false} otherwise.
 	 */
@@ -92,31 +53,6 @@ public interface ElementDescriptor {
 	 * @return ConstraintFinder object.
 	 */
 	ConstraintFinder findConstraints();
-
-	/**
-	 * Returns the kind of this descriptor.
-	 *
-	 * @return The kind of this descriptor.
-	 *
-	 * @since 1.1
-	 */
-	Kind getKind();
-
-	/**
-	 * Narrows the type of this descriptor down to the given type. The type
-	 * should be checked before by calling {@link ElementDescriptor#getKind()}.
-	 *
-	 * @param <T> The type to narrow down to.
-	 * @param descriptorType Class object representing the descriptor type to narrow down
-	 * to.
-	 *
-	 * @return This descriptor narrowed down to the given type.
-	 *
-	 * @throws ClassCastException If this descriptor is not assignable to the type
-	 * {@code T}.
-	 * @since 1.1
-	 */
-	<T extends ElementDescriptor> T as(Class<T> descriptorType);
 
 	/**
 	 * Declare restrictions on retrieved constraints.
