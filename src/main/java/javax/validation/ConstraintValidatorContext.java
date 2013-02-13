@@ -87,14 +87,14 @@ public interface ConstraintValidatorContext {
 	 * //Build a constraint violation on the default path + "street"
 	 * //ie. the street property of Address
 	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
-	 *             .addNode( "street" )
+	 *             .addPropertyNode( "street" )
 	 *             .addConstraintViolation();
 	 *
 	 * //From a property-level constraint on  User.addresses
 	 * //Build a constraint violation on the default path + the bean stored
 	 * //under the "home" key in the map
 	 * context.buildConstraintViolationWithTemplate( "Incorrect home address" )
-	 *             .addNode( null )
+	 *             .addBeanNode()
 	 *                 .inIterable().atKey( "home" )
 	 *             .addConstraintViolation();
 	 *
@@ -102,10 +102,10 @@ public interface ConstraintValidatorContext {
 	 * //Build a constraint violation on the default path + addresses["home"].country.name
 	 * //ie. property "country.name" on the object stored under "home" in the map
 	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
-	 *             .addNode( "addresses" )
-	 *             .addNode( "country" )
+	 *             .addPropertyNode( "addresses" )
+	 *             .addPropertyNode( "country" )
 	 *                 .inIterable().atKey( "home" )
-	 *             .addNode( "name" )
+	 *             .addPropertyNode( "name" )
 	 *             .addConstraintViolation();
 	 * }
 	 * </pre>
@@ -135,11 +135,11 @@ public interface ConstraintValidatorContext {
 	 * //mergeAddresses(Map<String,Address> addresses, Map<String,Address> otherAddresses)
 	 * //Build a constraint violation on the default path + "otherAddresses["home"].city
 	 * //ie. on the "city" property of the Address bean hosted in
-	 * //the "home" key of the "otherUser" map
+	 * //the "home" key of the "otherAddresses" map
 	 * context.buildConstraintViolationWithTemplate(
 	 *         "Map entry home present in both but city does not match")
 	 *                 .addParameterNode(1)
-	 *                 .addBeanNode()
+	 *                 .addPropertyNode("city")
 	 *                     .inIterable().atKey("home")
 	 *                 .addConstraintViolation();
 	 * }
