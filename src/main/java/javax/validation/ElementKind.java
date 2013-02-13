@@ -13,7 +13,7 @@ package javax.validation;
  */
 public enum ElementKind {
 	/**
-	 * A Java Bean.
+	 * A Java Bean or object.
 	 */
 	BEAN,
 
@@ -36,6 +36,11 @@ public enum ElementKind {
 	 * A parameter of a method or constructor.
 	 */
 	PARAMETER,
+
+	/**
+	 * Element holding cross-parameter constraints of a method or constructor
+	 */
+	CROSS_PARAMETER,
 
 	/**
 	 * The return value of a method or constructor.

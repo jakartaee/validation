@@ -186,14 +186,14 @@
                         name="parameter"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
+            <xs:element type="map:crossParameterType"
+                        name="cross-parameter"
+                        minOccurs="0"
+                        maxOccurs="1"/>
             <xs:element type="map:returnValueType"
                         name="return-value"
                         minOccurs="0"
                         maxOccurs="1"/>
-            <xs:element type="map:constraintType"
-                        name="cross-parameter-constraint"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:boolean" name="ignore-annotations" use="optional"/>
@@ -204,14 +204,14 @@
                         name="parameter"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
+            <xs:element type="map:crossParameterType"
+                        name="cross-parameter"
+                        minOccurs="0"
+                        maxOccurs="1"/>
             <xs:element type="map:returnValueType"
                         name="return-value"
                         minOccurs="0"
                         maxOccurs="1"/>
-            <xs:element type="map:constraintType"
-                        name="cross-parameter-constraint"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute type="xs:boolean" name="ignore-annotations" use="optional"/>
     </xs:complexType>
@@ -239,6 +239,15 @@
                         maxOccurs="unbounded"/>
             <xs:element type="map:groupConversionType"
                         name="convert-group"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:boolean" name="ignore-annotations" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="crossParameterType">
+        <xs:sequence>
+            <xs:element type="map:constraintType"
+                        name="constraint"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
         </xs:sequence>

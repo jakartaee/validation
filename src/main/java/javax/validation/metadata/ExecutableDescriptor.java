@@ -50,6 +50,15 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	List<ParameterDescriptor> getParameterDescriptors();
 
 	/**
+	 * Returns a descriptor containing cross-parameter constraints
+	 * of this executable.
+	 *
+	 * @return A descriptor containing cross-parameter constraints of this
+	 *         executable
+	 */
+	CrossParameterDescriptor getCrossParameterDescriptor();
+
+	/**
 	 * Returns a descriptor for this executable's return value.
 	 *
 	 * @return A descriptor for this executable's return value or {@code null}
