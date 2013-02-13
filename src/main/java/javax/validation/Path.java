@@ -16,7 +16,7 @@
 */
 package javax.validation;
 
-import javax.validation.metadata.ElementDescriptor;
+import java.util.List;
 
 /**
  * Represents the navigation path from an object to another
@@ -36,11 +36,14 @@ public interface Path extends Iterable<Path.Node> {
 	 */
 	interface Node {
 		/**
-		 * Returns the name of the element which the node represents. The name
-		 * will be {@code null}, if it represents an entity on the leaf node. In
-		 * particular the node representing the root object has {@code null} as
-		 * name. The name of a method or constructor return value is the literal
+		 * Returns the name of the element which the node represents.
+		 * The name will be {@code null}, if it represents an entity on the leaf
+		 * node. In particular the node representing the root object has
+		 * {@code null} as name.
+		 * The name of a method or constructor return value is the literal
 		 * {@code <return value>}.
+		 * The name of a constructor is the unqualified class name of the class
+		 * declaring the constructor.
 		 *
 		 * @return Name of the element which the node represents.
 		 */
@@ -65,14 +68,108 @@ public interface Path extends Iterable<Path.Node> {
 		Object getKey();
 
 		/**
-		 * Returns a descriptor for the element (bean, property, method etc.)
-		 * represented by this node. The specific type of the element can be
-		 * determined using {@link ElementDescriptor#getKind()}.
+		 * The kind of element represented by the node. The following relationship
+		 * between an {@link javax.validation.ElementKind} and its {@code Node} subtype exists:
+		 * <ul>
+		 *     <li>{@code ElementKind.BEAN}: {@link BeanNode}</li>
+		 *     <li>{@code ElementKind.PROPERTY}: {@link PropertyNode}</li>
+		 *     <li>{@code ElementKind.METHOD}: {@link MethodNode}</li>
+		 *     <li>{@code ElementKind.CONSTRUCTOR}: {@link ConstructorNode}</li>
+		 *     <li>{@code ElementKind.PARAMETER}: {@link ParameterNode}</li>
+		 *     <li>{@code ElementKind.RETURN_VALUE}: {@link ReturnValueNode}</li>
+		 * </ul>
 		 *
-		 * @return An element descriptor for this node.
-		 *
+		 * This is useful to narrow down the Node type and access node specific
+		 * information:
+		 * <pre>{@code
+		 * switch(node.getKind() {
+		 * case METHOD:
+		 *     name = node.getName();
+		 *     params = node.as(MethodNode.class).getParameterTypes();
+		 * case PARAMETER:
+		 *     index = node.as(ParameterNode.class).getParameterIndex();
+		 * [...]
+		 * }}</pre>
 		 * @since 1.1
 		 */
-		ElementDescriptor getElementDescriptor();
+		ElementKind getKind();
+
+		/**
+		 * Narrows the type of this node down to the given type. The appropriate
+		 * type should be checked before by calling {@link getKind()}.
+		 *
+		 * @param <T> The type to narrow down to
+		 * @param nodeType Class object representing the descriptor type to narrow down
+		 *                 to.
+		 *
+		 * @return This node narrowed down to the given type.
+		 *
+		 * @throws ClassCastException If this node is not assignable to the type {@code T}
+		 * @since 1.1
+		 */
+		<T extends Node> T as(Class<T> nodeType);
+	}
+
+	/**
+	 * Node representing a method
+	 *
+	 * @since 1.1
+	 */
+	interface MethodNode extends Node {
+
+		/**
+		 * @return The list of parameter types
+		 */
+		List<Class<?>> getParameterTypes();
+	}
+
+	/**
+	 * Node representing a constructor
+	 *
+	 * @since 1.1
+	 */
+	interface ConstructorNode extends Node {
+
+		/**
+		 * @return The list of parameter types
+		 */
+		List<Class<?>> getParameterTypes();
+	}
+
+	/**
+	 * Node representing the return value of a method or constructor
+	 *
+	 * @since 1.1
+	 */
+	interface ReturnValueNode extends Node {
+	}
+
+	/**
+	 * Node representing a parameter of a method or constructor
+	 *
+	 * @since 1.1
+	 */
+	interface ParameterNode extends Node {
+
+		/**
+		 * @return The parameter index in the method or constructor definition
+		 */
+		int getParameterIndex();
+	}
+
+	/**
+	 * Node representing a bean
+	 *
+	 * @since 1.1
+	 */
+	interface BeanNode extends Node {
+	}
+
+	/**
+	 * Node representing a property
+	 *
+	 * @since 1.1
+	 */
+	interface PropertyNode extends Node {
 	}
 }
