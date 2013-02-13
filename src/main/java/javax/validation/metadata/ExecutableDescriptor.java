@@ -95,30 +95,35 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	boolean isReturnValueConstrained();
 
 	/**
-	 * Whether this executable has any cross-parameter constraints.
+	 * Returns {@code false}.
+	 * <p/>
+	 * An executable per se does not host constraints, use
+	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
+	 * and {@link #getReturnValueDescriptor()} to discover constraints.
 	 *
-	 * @return {@code true} if this executable has at least one cross-parameter
-	 *         constraint, {@code false} otherwise.
+	 * @return {@code false}
 	 */
 	@Override
 	boolean hasConstraints();
 
 	/**
-	 * Return all constraint descriptors for all cross-parameter constraints of
-	 * this executable or an empty {@code Set} if none are present. In
-	 * particular, constraints on individual parameters and return value
-	 * constraints are not returned.
+	 * Returns an empty {@code Set}.
+	 * <p/>
+	 * An executable per se does not host constraints, use
+	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
+	 * and {@link #getReturnValueDescriptor()} to discover constraints.
 	 *
-	 * @return {@code Set} of cross-parameter constraint descriptors for this
-	 *         element
+	 * @return An empty {@code Set}
 	 */
 	@Override
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
 
 	/**
-	 * Find cross-parameter constraints and potentially restricts them to
-	 * certain criteria. Neither constraints on individual parameters nor return
-	 * value constraints are taken into account.
+	 * Returns a finder that will always return an empty {@code Set}.
+	 * <p/>
+	 * An executable per se does not host constraints, use
+	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
+	 * and {@link #getReturnValueDescriptor()} to discover constraints.
 	 *
 	 * @return Constraint finder object.
 	 */
