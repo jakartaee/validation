@@ -190,7 +190,7 @@ public interface ConstraintValidatorContext {
 		 * @deprecated since 1.1 - replaced by {@code addPropertyNode}, {@code addBeanNode} and {@code addParameterNode}
 		 */
 		@Deprecated
-		<T extends NodeBuilderDefinedContext & NodeBuilderCustomizableContext> T addNode(String name);
+		NodeBuilderDefinedContext addNode(String name);
 
 		/**
 		 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
