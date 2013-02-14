@@ -1,8 +1,9 @@
-package javax.validation;
+package javax.validation.executable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Set;
+import javax.validation.ConstraintViolation;
 import javax.validation.groups.Default;
 
 /**
@@ -29,7 +30,7 @@ public interface ExecutableValidator {
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
-	 * @throws ValidationException if a non recoverable error happens during the
+	 * @throws javax.validation.ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
 	<T> Set<ConstraintViolation<T>> validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups);
@@ -49,7 +50,7 @@ public interface ExecutableValidator {
 	 *
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the object,
 	 * method or groups parameters
-	 * @throws ValidationException if a non recoverable error happens during the
+	 * @throws javax.validation.ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
 	<T> Set<ConstraintViolation<T>> validateReturnValue(T object, Method method, Object returnValue, Class<?>... groups);
@@ -68,7 +69,7 @@ public interface ExecutableValidator {
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
-	 * @throws ValidationException if a non recoverable error happens during the
+	 * @throws javax.validation.ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
 	<T> Set<ConstraintViolation<T>> validateConstructorParameters(Constructor<? extends T> constructor, Object[] parameterValues, Class<?>... groups);
@@ -86,7 +87,7 @@ public interface ExecutableValidator {
 	 *         Will be empty, if no error occurs, but never {@code null}.
 	 *
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
-	 * @throws ValidationException if a non recoverable error happens during the
+	 * @throws javax.validation.ValidationException if a non recoverable error happens during the
 	 * validation process
 	 */
 	<T> Set<ConstraintViolation<T>> validateConstructorReturnValue(Constructor<? extends T> constructor, T createdObject, Class<?>... groups);

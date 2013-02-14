@@ -15,7 +15,7 @@
 * limitations under the License.
 */
 /**
- * Package related to the control of executable validation.
+ * Package related to the control and executaion of executable validation.
  * Use {@code ValidateExecutable} to control whether or not a (set of)
  * constructors or methods are being validated.
  */

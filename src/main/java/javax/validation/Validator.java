@@ -17,6 +17,7 @@
 package javax.validation;
 
 import java.util.Set;
+import javax.validation.executable.ExecutableValidator;
 import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
 
