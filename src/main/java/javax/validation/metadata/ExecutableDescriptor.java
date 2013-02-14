@@ -60,9 +60,12 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a descriptor for this executable's return value.
+	 * <p/>
+	 * An executable without return value will return a descriptor
+	 * representing {@code void}. This descriptor will have no constraint
+	 * associated.
 	 *
-	 * @return A descriptor for this executable's return value or {@code null}
-	 *         if this executable has no return value.
+	 * @return A descriptor for this executable's return value
 	 */
 	ReturnValueDescriptor getReturnValueDescriptor();
 
