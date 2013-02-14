@@ -36,14 +36,21 @@ public interface Path extends Iterable<Path.Node> {
 	 */
 	interface Node {
 		/**
-		 * Returns the name of the element which the node represents.
-		 * The name will be {@code null}, if it represents an entity on the leaf
-		 * node. In particular the node representing the root object has
-		 * {@code null} as name.
-		 * The name of a method or constructor return value is the literal
-		 * {@code <return value>}.
-		 * The name of a constructor is the unqualified class name of the class
-		 * declaring the constructor.
+		 * Returns the name of the element which the node represents:
+		 * <ul>
+		 *     <li>{@code null} if it is a leaf node which represents an entity / bean.
+		 *     In particular, the node representing the root object.</li>
+		 *     <li>The property name for a property.</li>
+		 *     <li>The method name for a method.</li>
+		 *     <li>The unqualified name of the type declaring the constructor
+		 *     for a constructor.</li>
+		 *     <li>The parameter named as defined by the {@link ParameterNameProvider}
+		 *     for a method or constructor parameter.</li>
+		 *     <li>{@code <cross-parameter>} for a method or constructor cross-parameter.
+		 *     </li>
+		 *     <li>{@code <return value>} for a method or constructor return
+		 *     value.</li>
+		 * </ul>
 		 *
 		 * @return Name of the element which the node represents.
 		 */
@@ -76,6 +83,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *     <li>{@code ElementKind.METHOD}: {@link MethodNode}</li>
 		 *     <li>{@code ElementKind.CONSTRUCTOR}: {@link ConstructorNode}</li>
 		 *     <li>{@code ElementKind.PARAMETER}: {@link ParameterNode}</li>
+		 *     <li>{@code ElementKind.CROSS_PARAMETER}: {@link CrossParameterNode}</li>
 		 *     <li>{@code ElementKind.RETURN_VALUE}: {@link ReturnValueNode}</li>
 		 * </ul>
 		 *
@@ -155,6 +163,15 @@ public interface Path extends Iterable<Path.Node> {
 		 * @return The parameter index in the method or constructor definition
 		 */
 		int getParameterIndex();
+	}
+
+	/**
+	 * Node representing the element holding cross-parameter constraints
+	 * of a method or constructor.
+	 *
+	 * @since 1.1
+	 */
+	interface CrossParameterNode extends Node {
 	}
 
 	/**
