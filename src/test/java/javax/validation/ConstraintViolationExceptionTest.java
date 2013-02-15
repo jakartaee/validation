@@ -100,6 +100,16 @@ public class ConstraintViolationExceptionTest {
 		}
 
 		@Override
+		public Object[] getExecutableParameters() {
+			return new Object[0];
+		}
+
+		@Override
+		public Object getExecutableReturnValue() {
+			return null;
+		}
+
+		@Override
 		public Path getPropertyPath() {
 			return null;
 		}
