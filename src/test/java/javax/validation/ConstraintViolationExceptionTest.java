@@ -113,5 +113,10 @@ public class ConstraintViolationExceptionTest {
 		public ConstraintDescriptor<?> getConstraintDescriptor() {
 			return null;
 		}
+
+		@Override
+		public <T> T unwrap(Class<T> type) {
+			return null;
+		}
 	}
 }
