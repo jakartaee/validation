@@ -55,7 +55,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface ValidateExecutable {
 	/**
-	 * List of executable types to be validated when called
+	 * List of executable types to be validated when called.
+	 * Default to validating all types.
 	 */
-	ExecutableType[] type();
+	ExecutableType[] value() default {ExecutableType.ALL};
 }
