@@ -104,7 +104,7 @@ public interface Path extends Iterable<Path.Node> {
 
 		/**
 		 * Narrows the type of this node down to the given type. The appropriate
-		 * type should be checked before by calling {@link getKind()}.
+		 * type should be checked before by calling {@link #getKind()}.
 		 *
 		 * @param <T> The type to narrow down to
 		 * @param nodeType Class object representing the descriptor type to narrow down
