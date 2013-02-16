@@ -30,7 +30,7 @@ public interface ConstraintValidatorFactory {
 	/**
 	 * @param key The class of the constraint validator to instantiate.
 	 *
-	 * @return A constraint validator instance of the specified class.
+	 * @return A new constraint validator instance of the specified class.
 	 */
 	<T extends ConstraintValidator<?, ?>> T getInstance(Class<T> key);
 
