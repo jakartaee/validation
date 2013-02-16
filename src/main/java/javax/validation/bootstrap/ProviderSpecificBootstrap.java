@@ -53,8 +53,10 @@ public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 	 *
 	 * @return {@code Configuration} sub interface implementation
 	 *
-	 * @throws javax.validation.ValidationException if the Configuration object cannot be built
-	 * this is generally due to an issue with the ValidationProviderResolver
+	 * @throws javax.validation.ValidationException
+	 *             If the Configuration object cannot be built. This is
+	 *             generally due to an issue with the
+	 *             ValidationProviderResolver.
 	 */
 	public T configure();
 }
