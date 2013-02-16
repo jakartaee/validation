@@ -48,8 +48,10 @@ public interface GenericBootstrap {
 	 * returned by the {@code ValidationProviderResolver} strategy.
 	 *
 	 * @return a Configuration implementation compliant with the bootstrap state
-	 * @throws javax.validation.ValidationException if the Configuration object cannot be built
-	 *                        this is generally due to an issue with the ValidationProviderResolver
+	 * @throws javax.validation.ValidationException
+	 *             If the Configuration object cannot be built. This is
+	 *             generally due to an issue with the
+	 *             ValidationProviderResolver.
 	 */
 	Configuration<?> configure();
 }
