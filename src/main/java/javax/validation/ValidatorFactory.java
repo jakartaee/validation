@@ -103,10 +103,11 @@ public interface ValidatorFactory {
 	/**
 	 * Close the {@code ValidatorFactory} instance.
 	 *
-	 * After the {@code ValidatorFactory} instance is closed, it is not allowed to call:
+	 * After the {@code ValidatorFactory} instance is closed, calling the following
+	 * methods is not allowed:
 	 * <ul>
-	 * <li>methods of this {@code ValidatorFactory} instance</li>
-	 * <li>methods of {@code Validator} instances created by this  {@code ValidatorFactory}</li>
+	 *     <li>methods of this {@code ValidatorFactory} instance</li>
+	 *     <li>methods of {@link Validator} instances created by this {@code ValidatorFactory}</li>
 	 * </ul>
 	 *
 	 * @since 1.1
