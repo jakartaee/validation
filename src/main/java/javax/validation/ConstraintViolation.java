@@ -97,6 +97,7 @@ public interface ConstraintViolation<T> {
 	 * Returns the return value of the constructor or method invocation
 	 * if the {@code ConstraintViolation} is returned after validating the method
 	 * or constructor return value.
+	 * Returns {@code null} if the method has no return value.
 	 * Returns {@code null} otherwise.
 	 *
 	 * @return the method or constructor return value or {@code null}

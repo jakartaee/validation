@@ -37,7 +37,6 @@ public interface ExecutableValidator {
 
 	/**
 	 * Validates all return value constraints of the given method.
-	 * Throws a {@link ValidationException} if the method has no return value.
 	 *
 	 * @param <T> The type hosting the method to validate.
 	 * @param object The object on which the method to validate was invoked.
