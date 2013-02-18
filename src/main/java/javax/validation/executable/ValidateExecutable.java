@@ -32,20 +32,20 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * The settings for a given executable is resolved as followed.
  * A given executable is validated upon execution:
  * <ul>
- *     <li>if it is annotated with {@code @ValidateExecutable} and the {@code type} attribute
- *     contains the executable type. If the {@code type} attribute does not contain the
+ *     <li>if it is annotated with {@code @ValidateExecutable} and the {@code value} attribute
+ *     contains the executable type. If the {@code value} attribute does not contain the
  *     executable type, the executable is not validated.</li>
  *     <li>otherwise if,
  *     the type (class, interface) on which the executable is defined
- *     is annotated with {@code @ValidateExecutable} and the {@code type} attribute
- *     contains the executable type. If the {@code type} attribute does not contain the
+ *     is annotated with {@code @ValidateExecutable} and the {@code value} attribute
+ *     contains the executable type. If the {@code value} attribute does not contain the
  *     executable type, the executable is not validated.</li>
  *     <li>otherwise if the global executable validation setting contains the executable
  *     type. If the global setting does not contain the executable type, the executable
  *     is not validated.</li>
  *     <li>The rules above do not apply to methods overriding a superclass method or
  *     implementing an interface method. In this case, the method inherits the behavior
- *     of the method it overrides / implements</li>
+ *     of the method it overrides / implements.</li>
  * </ul>
  *
  * @author Emmanuel Bernard
