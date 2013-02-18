@@ -38,9 +38,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface Constraint {
 	/**
-	 * {@code ConstraintValidator} classes must reference distinct target types.
+	 * {@link ConstraintValidator} classes must reference distinct target types
+	 * for a given {@link javax.validation.constraintvalidation.ValidationTarget}
 	 * If two {@code ConstraintValidator}s refer to the same type,
 	 * an exception will occur.
+	 *
+	 * At most one {@code ConstraintValidator} targeting the array of parameters of
+	  * methods or constructors (aka cross-parameter) is accepted. If two or more
+	 * are present, an exception will occur.
 	 *
 	 * @return array of (@code ConstraintValidator} classes implementing the constraint
 	 */
