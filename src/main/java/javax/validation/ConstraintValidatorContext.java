@@ -187,13 +187,15 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @param name property name
 		 * @return a builder representing node {@code name}
-		 * @deprecated since 1.1 - replaced by {@code addPropertyNode}, {@code addBeanNode} and {@code addParameterNode}
+		 * @deprecated since 1.1 - replaced by {@code addPropertyNode}, {@code addBeanNode}
+		 *             and {@code addParameterNode}
 		 */
 		@Deprecated
 		NodeBuilderDefinedContext addNode(String name);
 
 		/**
-		 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
+		 * Add a property node to the path the {@code ConstraintViolation}
+		 * will be associated to.
 		 *
 		 * {@code name} describes a single property. In particular,
 		 * dot (.) is not allowed.
@@ -207,7 +209,8 @@ public interface ConstraintValidatorContext {
 		NodeBuilderCustomizableContext addPropertyNode(String name);
 
 		/**
-		 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
+		 * Add a bean node (class-level) to the path the {@code ConstraintViolation}
+		 * will be associated to.
 		 * Note that bean nodes are always leaf nodes.
 		 *
 		 * @return a builder representing the bean node
@@ -217,8 +220,10 @@ public interface ConstraintValidatorContext {
 		LeafNodeBuilderCustomizableContext addBeanNode();
 
 		/**
-		 * Add a method parameter node to the path the {@code ConstraintViolation} will be associated to.
-		 * The parameter index must be valid (ie. within the boundaries of the method parameter indexes).
+		 * Add a method parameter node to the path the {@code ConstraintViolation}
+		 * will be associated to.
+		 * The parameter index must be valid (ie. within the boundaries of the method
+		 * parameter indexes).
 		 *
 		 * @param index the parameter index
 		 * @return a builder representing the index-th parameter node
@@ -346,13 +351,15 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode}
+			 *             and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a property node to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
@@ -366,7 +373,8 @@ public interface ConstraintValidatorContext {
 			NodeBuilderCustomizableContext addPropertyNode(String name);
 
 			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a bean node (class-level) to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 * Note that bean nodes are always leaf nodes.
 			 *
 			 * @return a builder representing the bean node
@@ -411,13 +419,15 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode}
+			 *             and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a property node to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
@@ -431,7 +441,8 @@ public interface ConstraintValidatorContext {
 			NodeBuilderCustomizableContext addPropertyNode(String name);
 
 			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a bean node (class-level) to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 * Note that bean nodes are always leaf nodes.
 			 *
 			 * @return a builder representing the bean node
@@ -487,13 +498,15 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@code addPropertyNode} and {@code addBeanNode}
+			 * @deprecated since 1.1 - replaced by {@code addPropertyNode}
+			 *             and {@code addBeanNode}
 			 */
 			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
-			 * Add a property node to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a property node to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 *
 			 * {@code name} describes a single property. In particular,
 			 * dot (.) is not allowed.
@@ -507,7 +520,8 @@ public interface ConstraintValidatorContext {
 			NodeBuilderCustomizableContext addPropertyNode(String name);
 
 			/**
-			 * Add a bean node (class-level) to the path the {@code ConstraintViolation} will be associated to.
+			 * Add a bean node (class-level) to the path the {@code ConstraintViolation}
+			 * will be associated to.
 			 * Note that bean nodes are always leaf nodes.
 			 *
 			 * @return a builder representing the bean node
