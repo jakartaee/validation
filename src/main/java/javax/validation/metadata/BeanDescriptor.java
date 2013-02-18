@@ -41,10 +41,10 @@ public interface BeanDescriptor extends ElementDescriptor {
 	boolean isBeanConstrained();
 
 	/**
-	 * Returns {@code true} if any of the bean constructor
-	 * or method is a constrained executable.
+	 * Returns {@code true} if any of the bean constructors
+	 * or methods are constrained executables.
 	 *
-	 * @return whether or not the bean has constrained executables
+	 * @return Whether or not the bean has constrained executables
 	 * @since 1.1
 	 */
 	boolean hasConstrainedExecutables();
