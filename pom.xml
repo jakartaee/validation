@@ -39,7 +39,7 @@
             <id>gunnar.morling</id>
             <name>Gunnar Morling</name>
             <email>gunnar@hibernate.org</email>
-            <organization>Individual</organization>
+            <organization>JBoss, by Red Hat</organization>
             <url>http://www.gunnarmorling.de/</url>
         </developer>
     </developers>
