@@ -141,5 +141,5 @@ public interface ConstraintViolation<T> {
 	 *
 	 * @since 1.1
 	 */
-	<T> T unwrap(Class<T> type);
+	<U> U unwrap(Class<U> type);
 }
