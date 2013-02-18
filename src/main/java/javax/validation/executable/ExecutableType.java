@@ -37,7 +37,7 @@ public enum ExecutableType {
 	CONSTRUCTORS,
 
 	/**
-	 * All methods except the ones following the getter pattern. A getter according ot the
+	 * All methods except the ones following the getter pattern. A getter according to the
 	 * JavaBeans specification is a method whose:
 	 * <ul>
 	 *     <li>name starts with get, has a return type but no parameter</li>
@@ -48,7 +48,7 @@ public enum ExecutableType {
 
 	/**
 	/**
-	 * All methods following the getter pattern. A getter according ot the
+	 * All methods following the getter pattern. A getter according to the
 	 * JavaBeans specification is a method whose:
 	 * <ul>
 	 *     <li>name starts with get, has a return type but no parameter</li>
