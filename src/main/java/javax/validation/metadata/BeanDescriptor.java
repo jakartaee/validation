@@ -30,16 +30,24 @@ public interface BeanDescriptor extends ElementDescriptor {
 	/**
 	 * Returns {@code true} if the bean involves validation:
 	 * <ul>
-	 * <li> a constraint is hosted on the bean itself </li>
-	 * <li> a constraint is hosted on one of the bean properties</li>
-	 * <li> a bean property is marked for cascaded validation ({@code @Valid})</li>
-	 * <li> a constraint is hosted on the return value or a method parameter of one of the bean's methods</li>
-	 * <li> or the return value or a method parameter of one of the bean's methods is marked for cascaded validation ({@code @Valid})</li>
+	 *     <li>a constraint is hosted on the bean itself</li>
+	 *     <li>a constraint is hosted on one of the bean properties</li>
+	 *     <li>or a bean property is marked for cascaded validation ({@code @Valid})</li>
 	 * </ul>
+	 * Constrained methods and constructors are ignored.
 	 *
 	 * @return {@code true} if the bean involves validation, {@code false} otherwise.
 	 */
 	boolean isBeanConstrained();
+
+	/**
+	 * Returns {@code true} if any of the bean constructor
+	 * or method is a constrained executable.
+	 *
+	 * @return whether or not the bean has constrained executables
+	 * @since 1.1
+	 */
+	boolean hasConstrainedExecutables();
 
 	/**
 	 * Return the property descriptor for a given property.
