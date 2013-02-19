@@ -70,8 +70,8 @@ public @interface DecimalMin {
 	 * Specifies, whether the specified minimum is inclusive or exclusive.
 	 * By default, it is inclusive.
 	 *
-	 * @return {@code true} if the value must be higher or equal to the specified minimum, {@code false}
-	 *         if the value must be higher.
+	 * @return {@code true} if the value must be higher or equal to the specified minimum,
+	 *         {@code false} if the value must be higher.
 	 *
 	 * @since 1.1
 	 */
