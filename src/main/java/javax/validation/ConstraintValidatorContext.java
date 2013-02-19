@@ -44,9 +44,9 @@ public interface ConstraintValidatorContext {
 	 * The violation message will be interpolated.
 	 * <p/>
 	 * To create the {@code ConstraintViolation}, one must call either one of
-	 * the #addConstraintViolation() methods available in one of the
+	 * the {@code addConstraintViolation()} methods available in one of the
 	 * interfaces of the fluent API.
-	 * If another method is called after #addConstraintViolation() on
+	 * If another method is called after {@code addConstraintViolation()} on
 	 * {@code ConstraintViolationBuilder} or any of its associated nested interfaces
 	 * an {@code IllegalStateException} is raised.
 	 * <p/>
@@ -171,9 +171,9 @@ public interface ConstraintValidatorContext {
 	 * the violation report to a sub path.
 	 *
 	 * To create the {@code ConstraintViolation}, one must call either one of
-	 * the #addConstraintViolation() methods available in one of the
+	 * the {@code addConstraintViolation()} methods available in one of the
 	 * interfaces of the fluent API.
-	 * If another method is called after #addConstraintViolation() on
+	 * If another method is called after {@code addConstraintViolation()} on
 	 * {@code ConstraintViolationBuilder} or any of its associated objects
 	 * an {@code IllegalStateException} is raised.
 	 * 
@@ -223,7 +223,7 @@ public interface ConstraintValidatorContext {
 		 * Add a method parameter node to the path the {@code ConstraintViolation}
 		 * will be associated to.
 		 * The parameter index must be valid (ie. within the boundaries of the method
-		 * parameter indexes).
+		 * parameter indexes). May only be called from within cross-parameter validators.
 		 *
 		 * @param index the parameter index
 		 * @return a builder representing the index-th parameter node
