@@ -124,10 +124,10 @@ public interface Validator {
 	<T> T unwrap(Class<T> type);
 
 	/**
-	 * Returns a delegate for validating parameters and return values of methods
-	 * respectively constructors.
+	 * Returns the contract for validating parameters and return values of methods
+	 * and constructors.
 	 *
-	 * @return A delegate for method and constructor validation.
+	 * @return Contract for method and constructor validation.
 	 *
 	 * @since 1.1
 	 */

@@ -1,6 +1,6 @@
 /*
 * JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+* Copyright 2009-2013, Red Hat, Inc. and/or its affiliates, and individual contributors
 * by the @authors tag. See the copyright.txt in the distribution for a
 * full listing of individual contributors.
 *
@@ -22,6 +22,7 @@ import javax.validation.metadata.ConstraintDescriptor;
 /**
  * Interpolate a given constraint violation message.
  * Implementations should be as tolerant as possible on syntax errors.
+ * Implementations must be thread-safe.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
