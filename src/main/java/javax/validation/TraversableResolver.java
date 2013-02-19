@@ -33,7 +33,8 @@ public interface TraversableResolver {
 	 * @param traversableObject object hosting {@code traversableProperty} or null
 	 *                          if {@code validateValue} is called
 	 * @param traversableProperty the traversable property.
-	 * @param rootBeanType type of the root object passed to the Validator.
+	 * @param rootBeanType type of the root object passed to the Validator
+	 *        or hosting the method or constructor validated.
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
 	 *        (using the path specification defined by Bean Validator).
@@ -58,7 +59,8 @@ public interface TraversableResolver {
 	 * @param traversableObject object hosting {@code traversableProperty} or null
 	 *                          if {@code validateValue} is called
 	 * @param traversableProperty the traversable property.
-	 * @param rootBeanType type of the root object passed to the Validator.
+	 * @param rootBeanType type of the root object passed to the Validator
+	 *        or hosting the method or constructor validated.
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
 	 *        (using the path specification defined by Bean Validator).
