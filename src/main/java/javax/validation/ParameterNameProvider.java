@@ -18,17 +18,15 @@ package javax.validation;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
- * <p>
  * Provides names for method and constructor parameters.
- * </p>
- * <p>
+ * <p/>
  * Used by the Bean Validation runtime when creating constraint violation
- * objects for violated method constraints.</p>
- * <p>
+ * objects for violated method constraints.
+ * <p/>
  * Implementations must be thread-safe.
- * </p>
  *
  * @author Gunnar Morling
  * @since 1.1
@@ -39,21 +37,21 @@ public interface ParameterNameProvider {
 	 * Returns the names of the parameters of the given constructor.
 	 *
 	 * @param constructor The constructor for which the parameter names shall be
-	 * retrieved. Never null.
+	 *        retrieved. Never null.
 	 *
-	 * @return An array with the names of the parameters of the given
+	 * @return A list containing the names of the parameters of the given
 	 *         constructor. May be empty but never null.
 	 */
-	String[] getParameterNames(Constructor<?> constructor);
+	List<String> getParameterNames(Constructor<?> constructor);
 
 	/**
 	 * Returns the names of the parameters of the given method.
 	 *
 	 * @param method The method for which the parameter names shall be retrieved.
-	 * Never null.
+	 *        Never null.
 	 *
-	 * @return An array with the names of the parameters of the given method.
+	 * @return A list containing the names of the parameters of the given method.
 	 *         May be empty but never null.
 	 */
-	String[] getParameterNames(Method method);
+	List<String> getParameterNames(Method method);
 }
