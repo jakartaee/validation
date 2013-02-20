@@ -23,22 +23,23 @@ import javax.validation.spi.ValidationProvider;
  * Determines the list of Bean Validation providers available in the runtime environment
  * <p/>
  * Bean Validation providers are identified by the presence of
- * META-INF/services/javax.validation.spi.ValidationProvider
+ * {@code META-INF/services/javax.validation.spi.ValidationProvider}
  * files following the Service Provider pattern described
  * <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html#Service%20Provider">here</a>.
  * <p/>
- * Each META-INF/services/javax.validation.spi.ValidationProvider file contains the list of
- * {@code ValidationProvider} implementations each of them representing a provider.
+ * Each {@code META-INF/services/javax.validation.spi.ValidationProvider} file contains the list of
+ * {@link ValidationProvider} implementations each of them representing a provider.
  * <p/>
  * Implementations must be thread-safe.
  *
  * @author Emmanuel Bernard
  */
 public interface ValidationProviderResolver {
+
 	/**
-	 * Returns a list of ValidationProviders available in the runtime environment.
+	 * Returns a list of {@link ValidationProvider} available in the runtime environment.
 	 *
-	 * @return list of validation providers.
+	 * @return list of validation providers
 	 */
 	List<ValidationProvider<?>> getValidationProviders();
 }

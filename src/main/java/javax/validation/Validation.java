@@ -31,58 +31,60 @@ import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ValidationProvider;
 
 /**
- * This class is the entry point for Bean Validation. There are three ways
- * to bootstrap it:
+ * This class is the entry point for Bean Validation.
+ * <p/>
+ * There are three ways to bootstrap it:
  * <ul>
- * <li>
- * The easiest approach is to build the default {@code ValidatorFactory}.
- * <pre>{@code ValidatorFactory factory = Validation.buildDefaultValidatorFactory();}</pre>
- * In this case, the default validation provider resolver
- * will be used to locate available providers.
- * The chosen provider is defined as followed:
- * <ul>
- * <li>if the XML configuration defines a provider, this provider is used</li>
- * <li>if the XML configuration does not define a provider or if no XML configuration
- * is present the first provider returned by the
- * {@code ValidationProviderResolver} instance is used.</li>
- * </ul>
- * </li>
- * <li>
- * The second bootstrap approach allows to choose a custom
- * {@code ValidationProviderResolver}. The chosen
- * {@code ValidationProvider} is then determined in the same way
- * as in the default bootstrapping case (see above).
- * <pre>{@code
+ *     <li>The easiest approach is to build the default {@link ValidatorFactory}.
+ *     <pre>
+ * ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+ * </pre>
+ *     In this case, the default validation provider resolver
+ *     will be used to locate available providers.
+ *     <p/>
+ *     The chosen provider is defined as followed:
+ *     <ul>
+ *         <li>if the XML configuration defines a provider, this provider is used</li>
+ *         <li>if the XML configuration does not define a provider or if no XML
+ *         configuration is present the first provider returned by the
+ *         {@link ValidationProviderResolver} instance is used.</li>
+ *     </ul>
+ *     </li>
+ *     <li>
+ *     The second bootstrap approach allows to choose a custom
+ *     {@code ValidationProviderResolver}. The chosen
+ *     {@link ValidationProvider} is then determined in the same way
+ *     as in the default bootstrapping case (see above).
+ *     <pre>
  * Configuration<?> configuration = Validation
  *    .byDefaultProvider()
  *    .providerResolver( new MyResolverStrategy() )
  *    .configure();
- * ValidatorFactory factory = configuration.buildValidatorFactory();}
+ * ValidatorFactory factory = configuration.buildValidatorFactory();
  * </pre>
- * </li>
- * <li>
- * The third approach allows you to specify explicitly and in
- * a type safe fashion the expected provider.
- * <p/>
- * Optionally you can choose a custom {@code ValidationProviderResolver}.
- * <pre>{@code
+ *     </li>
+ *     <li>
+ *     The third approach allows you to specify explicitly and in
+ *     a type safe fashion the expected provider.
+ *     <p/>
+ *     Optionally you can choose a custom {@code ValidationProviderResolver}.
+ *     <pre>
  * ACMEConfiguration configuration = Validation
  *    .byProvider(ACMEProvider.class)
  *    .providerResolver( new MyResolverStrategy() )  // optionally set the provider resolver
  *    .configure();
- * ValidatorFactory factory = configuration.buildValidatorFactory();}
+ * ValidatorFactory factory = configuration.buildValidatorFactory();
  * </pre>
- * </li>
+ *     </li>
  * </ul>
- * Note:<br/>
+ * <p/>
+ * Note:
  * <ul>
- * <li>
- * The {@code ValidatorFactory} object built by the bootstrap process should be cached
- * and shared amongst {@code Validator} consumers.
- * </li>
- * <li>
- * This class is thread-safe.
- * </li>
+ *     <li>
+ *     The {@code ValidatorFactory} object built by the bootstrap process should be cached
+ *     and shared amongst {@code Validator} consumers.
+ *     </li>
+ *     <li>This class is thread-safe.</li>
  * </ul>
  *
  * @author Emmanuel Bernard
@@ -91,24 +93,25 @@ import javax.validation.spi.ValidationProvider;
 public class Validation {
 
 	/**
-	 * Build and return a {@code ValidatorFactory} instance based on the
+	 * Builds and returns a {@link ValidatorFactory} instance based on the
 	 * default Bean Validation provider and following the XML configuration.
 	 * <p/>
 	 * The provider list is resolved using the default validation provider resolver
 	 * logic.
-	 * <p/> The code is semantically equivalent to
-	 * {@code Validation.byDefaultProvider().configure().buildValidatorFactory()}
+	 * <p/>
+	 * The code is semantically equivalent to
+	 * {@code Validation.byDefaultProvider().configure().buildValidatorFactory()}.
 	 *
-	 * @return {@code ValidatorFactory} instance.
+	 * @return {@code ValidatorFactory} instance
 	 *
-	 * @throws ValidationException if the ValidatorFactory cannot be built
+	 * @throws ValidationException if the {@code ValidatorFactory} cannot be built
 	 */
 	public static ValidatorFactory buildDefaultValidatorFactory() {
 		return byDefaultProvider().configure().buildValidatorFactory();
 	}
 
 	/**
-	 * Build a {@code Configuration}. The provider list is resolved
+	 * Builds a {@link Configuration}. The provider list is resolved
 	 * using the strategy provided to the bootstrap state.
 	 * <pre>
 	 * Configuration&lt?&gt; configuration = Validation
@@ -122,14 +125,15 @@ public class Validation {
 	 * the first available provider will be returned.
 	 *
 	 * @return instance building a generic {@code Configuration}
-	 *         compliant with the bootstrap state provided.
+	 *         compliant with the bootstrap state provided
 	 */
 	public static GenericBootstrap byDefaultProvider() {
 		return new GenericBootstrapImpl();
 	}
 
 	/**
-	 * Build a {@code Configuration} for a particular provider implementation.
+	 * Builds a {@link Configuration} for a particular provider implementation.
+	 * <p/>
 	 * Optionally overrides the provider resolution strategy used to determine the provider.
 	 * <p/>
 	 * Used by applications targeting a specific provider programmatically.
@@ -143,12 +147,12 @@ public class Validation {
 	 * where {@code ACMEConfiguration} is the
 	 * {@code Configuration} sub interface uniquely identifying the
 	 * ACME Bean Validation provider. and {@code ACMEProvider} is the
-	 * {@code ValidationProvider} implementation of the ACME provider.
+	 * {@link ValidationProvider} implementation of the ACME provider.
 	 *
 	 * @param providerType the {@code ValidationProvider} implementation type
 	 *
 	 * @return instance building a provider specific {@code Configuration}
-	 *         sub interface implementation.
+	 *         sub interface implementation
 	 */
 	public static <T extends Configuration<T>, U extends ValidationProvider<T>>
 	ProviderSpecificBootstrap<T> byProvider(Class<U> providerType) {
@@ -167,10 +171,10 @@ public class Validation {
 		}
 
 		/**
-		 * Optionally define the provider resolver implementation used.
-		 * If not defined, use the default ValidationProviderResolver
+		 * Optionally defines the provider resolver implementation used.
+		 * If not defined, use the default ValidationProviderResolver.
 		 *
-		 * @param resolver ValidationProviderResolver implementation used
+		 * @param resolver {@link ValidationProviderResolver} implementation used
 		 *
 		 * @return self
 		 */
@@ -180,10 +184,11 @@ public class Validation {
 		}
 
 		/**
-		 * Determine the provider implementation suitable for byProvider(Class)
-		 * and delegate the creation of this specific Configuration subclass to the provider.
+		 * Determines the provider implementation suitable for {@link #byProvider(Class)}
+		 * and delegates the creation of this specific {@link Configuration} subclass to the
+		 * provider.
 		 *
-		 * @return a Configuration sub interface implementation
+		 * @return a {@code Configuration} sub interface implementation
 		 */
 		public T configure() {
 			if ( validationProviderClass == null ) {
@@ -279,7 +284,7 @@ public class Validation {
 	}
 
 	/**
-	 * Find {@code ValidationProvider} according to the default {@code ValidationProviderResolver} defined in the
+	 * Finds {@link ValidationProvider} according to the default {@link ValidationProviderResolver} defined in the
 	 * Bean Validation specification. This implementation first uses thread's context classloader to locate providers.
 	 * If no suitable provider is found using the aforementioned class loader, it uses current class loader.
 	 * If it still does not find any suitable provider, it tries to locate the built-in provider using the current

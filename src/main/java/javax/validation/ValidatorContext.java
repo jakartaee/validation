@@ -17,11 +17,11 @@
 package javax.validation;
 
 /**
- * Represents the context that is used to create {@code Validator}
+ * Represents the context that is used to create {@link Validator}
  * instances.
  *
  * A client may use methods of the {@code ValidatorContext} returned by
- * {@code ValidatorFactory#usingContext} to customize
+ * {@link ValidatorFactory#usingContext()} to customize
  * the context used to create {@code Validator} instances
  * (for instance establish different message interpolators or
  * traversable resolvers).
@@ -30,14 +30,16 @@ package javax.validation;
  * @author Gunnar Morling
  */
 public interface ValidatorContext {
+
 	/**
 	 * Defines the message interpolator implementation used by the
-	 * {@code Validator}.
+	 * {@link Validator}.
+	 * <p/>
 	 * If not set or if {@code null} is passed as a parameter,
-	 * the message interpolator of the {@code ValidatorFactory}
+	 * the message interpolator of the {@link ValidatorFactory}
 	 * is used.
 	 *
-	 * @param messageInterpolator the {@code MessageInterpolator} used by the {@code Validator}
+	 * @param messageInterpolator the {@link MessageInterpolator} used by the {@code Validator}
 	 *
 	 * @return self following the chaining method pattern
 	 */
@@ -45,35 +47,33 @@ public interface ValidatorContext {
 
 	/**
 	 * Defines the traversable resolver implementation used by the
-	 * {@code Validator}.
+	 * {@link Validator}.
+	 * <p/>
 	 * If not set or if {@code null} is passed as a parameter,
-	 * the traversable resolver of the {@code ValidatorFactory} is used.
+	 * the traversable resolver of the {@link ValidatorFactory} is used.
 	 *
 	 * @param traversableResolver the {@code TraversableResolver} used by the {@code Validator}
-	 *
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext traversableResolver(TraversableResolver traversableResolver);
 
 	/**
 	 * Defines the constraint validator factory implementation used by the
-	 * {@code Validator}.
+	 * {@link Validator}.
 	 * If not set or if {@code null} is passed as a parameter,
-	 * the constraint validator factory of the {@code ValidatorFactory} is used.
+	 * the constraint validator factory of the {@link ValidatorFactory} is used.
 	 *
-	 * @param factory the {@code ConstraintValidatorFactory} used by the {@code Validator}
-	 *
+	 * @param factory the {@link ConstraintValidatorFactory} used by the {@code Validator}
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext constraintValidatorFactory(ConstraintValidatorFactory factory);
 
 	/**
 	 * Defines the parameter name provider implementation used by the
-	 * {@code Validator}. If not set or if null is passed as a parameter,
-	 * the parameter name provider of the {@code ValidatorFactory} is used.
+	 * {@link Validator}. If not set or if null is passed as a parameter,
+	 * the parameter name provider of the {@link ValidatorFactory} is used.
 	 *
-	 * @param parameterNameProvider Parameter name provider implementation.
-	 *
+	 * @param parameterNameProvider parameter name provider implementation.
 	 * @return self following the chaining method pattern
 	 *
 	 * @since 1.1
@@ -81,8 +81,10 @@ public interface ValidatorContext {
 	ValidatorContext parameterNameProvider(ParameterNameProvider parameterNameProvider);
 
 	/**
-	 * @return an initialized {@code Validator} instance respecting the defined state.
-	 *         Validator instances can be pooled and shared by the implementation.
+	 * Returns an initialized {@link Validator} instance respecting the defined state.
+	 * {@code Validator} instances can be pooled and shared by the implementation.
+	 *
+	 * @return contextualized {@code Validator}
 	 */
 	Validator getValidator();
 }

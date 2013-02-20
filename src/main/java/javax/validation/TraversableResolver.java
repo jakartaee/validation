@@ -69,7 +69,6 @@ public interface TraversableResolver {
 	 *        {@code traversableObject}
 	 *        (using the path specification defined by Bean Validator)
 	 * @param elementType either {@code FIELD} or {@code METHOD}
-	 *
 	 * @return {@code true} if the Bean Validation provider is allowed to
 	 *         cascade validation, {@code false} otherwise
 	 */

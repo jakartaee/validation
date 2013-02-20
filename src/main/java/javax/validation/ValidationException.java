@@ -17,7 +17,7 @@
 package javax.validation;
 
 /**
- * Base exception of all "unexpected" problems.
+ * Base exception of all Bean Validation "unexpected" problems.
  *
  * @author Emmanuel Bernard
  */

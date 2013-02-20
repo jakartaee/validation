@@ -18,7 +18,7 @@ package javax.validation;
 
 /**
  * Factory returning initialized {@code Validator} instances.
- *
+ * <p/>
  * Implementations are thread-safe and instances are typically cached and reused.
  *
  * @author Emmanuel Bernard
@@ -26,60 +26,60 @@ package javax.validation;
  * @author Hardy Ferentschik
  */
 public interface ValidatorFactory {
+
 	/**
-	 * Returns an initialized {@code Validator} instance using the
+	 * Returns an initialized {@link Validator} instance using the
 	 * factory defaults for message interpolator, traversable resolver
 	 * and constraint validator factory.
-	 * <p>
+	 * <p/>
 	 * Validator instances can be pooled and shared by the implementation.
-	 * </p>
 	 *
 	 * @return an initialized {@code Validator} instance
 	 */
 	Validator getValidator();
 
 	/**
-	 * Defines a new validator context and return a {@code Validator}
+	 * Defines a new validator context and returns a {@code Validator}
 	 * compliant this new context.
 	 *
-	 * @return a {@code ValidatorContext} instance
+	 * @return a {@link ValidatorContext} instance
 	 */
 	ValidatorContext usingContext();
 
 	/**
-	 * Returns the {@code MessageInterpolator} instance configured at
+	 * Returns the {@link MessageInterpolator} instance configured at
 	 * initialization time for the {@code ValidatorFactory}.
 	 * This is the instance used by {@link #getValidator()}.
 	 *
-	 * @return MessageInterpolator instance
+	 * @return {@code MessageInterpolator} instance
 	 */
 	MessageInterpolator getMessageInterpolator();
 
 	/**
-	 * Returns the {@code TraversableResolver} instance configured
+	 * Returns the {@link TraversableResolver} instance configured
 	 * at initialization time for the {@code ValidatorFactory}.
 	 * This is the instance used by {@link #getValidator()}.
 	 *
-	 * @return TraversableResolver instance
+	 * @return {@code TraversableResolver} instance
 	 */
 	TraversableResolver getTraversableResolver();
 
 	/**
-	 * Returns the {@code ConstraintValidatorFactory} instance
+	 * Returns the {@link ConstraintValidatorFactory} instance
 	 * configured at initialization time for the
 	 * {@code ValidatorFactory}.
-	 * This is the instance used by #getValidator().
+	 * This is the instance used by {@link #getValidator()}.
 	 *
-	 * @return ConstraintValidatorFactory instance
+	 * @return {@code ConstraintValidatorFactory} instance
 	 */
 	ConstraintValidatorFactory getConstraintValidatorFactory();
 
 	/**
-	 * Returns the {@code ParameterNameProvider} instance configured at
+	 * Returns the {@link ParameterNameProvider} instance configured at
 	 * initialization time for the {@code ValidatorFactory}.
 	 * This is the instance used by #getValidator().
 	 *
-	 * @return ParameterNameProvider instance
+	 * @return {@code ParameterNameProvider} instance
 	 *
 	 * @since 1.1
 	 */
@@ -92,16 +92,14 @@ public interface ValidatorFactory {
 	 * {@code ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned
-	 *
 	 * @return an instance of the specified class
-	 *
 	 * @throws ValidationException if the provider does not
-	 * support the call.
+	 *         support the call.
 	 */
 	public <T> T unwrap(Class<T> type);
 
 	/**
-	 * Close the {@code ValidatorFactory} instance.
+	 * Closes the {@code ValidatorFactory} instance.
 	 *
 	 * After the {@code ValidatorFactory} instance is closed, calling the following
 	 * methods is not allowed:
