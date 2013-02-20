@@ -28,7 +28,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * Expresses which executables (method or constructor) should have their parameters
  * and return value validated upon execution.
- *
+ * <p/>
  * The settings for a given executable is resolved as followed.
  * A given executable is validated upon execution:
  * <ul>
@@ -54,9 +54,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({ CONSTRUCTOR, METHOD, TYPE, PACKAGE })
 @Retention(RUNTIME)
 public @interface ValidateExecutable {
+
 	/**
 	 * List of executable types to be validated when called.
-	 * Default to validating all types.
+	 * Defaults to validating all types.
 	 */
 	ExecutableType[] value() default {ExecutableType.ALL};
 }

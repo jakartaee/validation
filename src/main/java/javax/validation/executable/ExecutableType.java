@@ -19,12 +19,14 @@ package javax.validation.executable;
 /**
  * Defines the types of executables targeted by an operation.
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Emmanuel Bernard
  * @since 1.1
  */
 public enum ExecutableType {
+
 	/**
 	 * None of the executables.
+	 * <p/>
 	 * Note that this option is equivalent to an empty list of executable types
 	 * and is present to improve readability. If {@code NONE} and other types of executables
 	 * are present in a list, {@code NONE} is ignored.
@@ -32,7 +34,7 @@ public enum ExecutableType {
 	NONE,
 
 	/**
-	 * All constructors
+	 * All constructors.
 	 */
 	CONSTRUCTORS,
 
