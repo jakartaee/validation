@@ -17,7 +17,7 @@
 package javax.validation.constraintvalidation;
 
 /**
- * List of possible targets for a {@link ConstraintValidator}
+ * List of possible targets for a {@link javax.validation.ConstraintValidator}
  *
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
  *
