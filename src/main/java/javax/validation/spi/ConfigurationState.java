@@ -16,17 +16,20 @@
 */
 package javax.validation.spi;
 
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Set;
+import javax.validation.Configuration;
 import javax.validation.ConstraintValidatorFactory;
 import javax.validation.MessageInterpolator;
 import javax.validation.ParameterNameProvider;
 import javax.validation.TraversableResolver;
+import javax.validation.ValidatorFactory;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Set;
 
 /**
- * Contract between a {@code Configuration} and a
- * {@code javax.validation.spi.ValidationProvider} to create a {@code ValidatorFactory}.
+ * Contract between a {@link Configuration} and a
+ * {@link ValidationProvider} to create a {@link ValidatorFactory}.
+ * <p/>
  * The configuration artifacts defined in the XML configuration and provided to the
  * {@code Configuration} are merged and passed along via
  * {@code ConfigurationState}.
@@ -38,40 +41,47 @@ import javax.validation.TraversableResolver;
 public interface ConfigurationState {
 
 	/**
-	 * Returns true if Configuration.ignoreXMLConfiguration() has been called
-	 * In this case, the ValidatorFactory must ignore META-INF/validation.xml
+	 * Returns true if {@link Configuration#ignoreXmlConfiguration()} has been called.
+	 * <p/>
+	 * In this case, the {@link ValidatorFactory} must ignore
+	 * {@code META-INF/validation.xml}.
 	 *
-	 * @return {@code true} if META-INF/validation.xml should be ignored
+	 * @return {@code true} if {@code META-INF/validation.xml} should be ignored
 	 */
 	boolean isIgnoreXmlConfiguration();
 
 	/**
 	 * Returns the message interpolator of this configuration.
+	 * <p/>
 	 * Message interpolator is defined in the following decreasing priority:
 	 * <ul>
-	 * <li>set via the {@code Configuration} programmatic API</li>
-	 * <li>defined in META-INF/validation.xml provided that ignoreXmlConfiguration
-	 * is false. In this case the instance is created via its no-arg constructor.</li>
-	 * <li>{@code null} if undefined.</li>
+	 *     <li>set via the {@link Configuration} programmatic API</li>
+	 *     <li>defined in {@code META-INF/validation.xml} provided that
+	 *     {@code ignoreXmlConfiguration} is false. In this case the instance
+	 *     is created via its no-arg constructor.</li>
+	 *     <li>{@code null} if undefined.</li>
 	 * </ul>
 	 *
-	 * @return message provider instance or null if not defined
+	 * @return message interpolator instance or {@code null} if not defined
 	 */
 	MessageInterpolator getMessageInterpolator();
 
 	/**
-	 * Returns a set of configuration streams. The streams are defined by:
+	 * Returns a set of configuration streams.
+	 * <p/>
+	 * The streams are defined by:
 	 * <ul>
-	 * <li>mapping XML streams passed programmatically in {@code Configuration}</li>
-	 * <li>mapping XML streams located in the resources defined in</li>
-	 * META-INF/validation.xml (constraint-mapping element)
+	 *     <li>mapping XML streams passed programmatically in {@link Configuration}</li>
+	 *     <li>mapping XML streams located in the resources defined in
+	 *     {@code META-INF/validation.xml} (constraint-mapping element)</li>
 	 * </ul>
+	 * <p/>
 	 * Streams represented in the XML configuration and opened by the
 	 * {@code Configuration} implementation must be closed by the
-	 * {@code Configuration} implementation after the {@code ValidatorFactory}
+	 * {@code Configuration} implementation after the {@link ValidatorFactory}
 	 * creation (or if an exception occurs). All streams are guaranteed to
-	 * adhere to the mark/reset contract (see
-	 * {@link InputStream#markSupported()} by the Bean Validation provider.
+	 * adhere to the mark/reset contract (see {@link InputStream#markSupported()}
+	 * by the Bean Validation provider.
 	 *
 	 * @return set of input stream
 	 */
@@ -79,13 +89,15 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the constraint validator factory of this configuration.
-	 * The {@code ConstraintValidatorFactory} implementation is defined in the following
+	 * <p/>
+	 * The {@link ConstraintValidatorFactory} implementation is defined in the following
 	 * decreasing priority:
 	 * <ul>
-	 * <li>set via the {@code Configuration} programmatic API</li>
-	 * <li>defined in META-INF/validation.xml provided that ignoredXmlConfiguration
-	 * is false. In this case the instance is created via its no-arg constructor.</li>
-	 * <li>{@code null} if undefined.</li>
+	 *     <li>set via the {@link Configuration} programmatic API</li>
+	 *     <li>defined in {@code META-INF/validation.xml} provided that
+	 *     {@code ignoredXmlConfiguration} is {@code false}. In this case the instance
+	 *     is created via its no-arg constructor.</li>
+	 *     <li>{@code null} if undefined.</li>
 	 * </ul>
 	 *
 	 * @return factory instance or {@code null} if not defined
@@ -94,12 +106,14 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the traversable resolver for this configuration.
-	 * {@code TraversableResolver} is defined in the following decreasing priority:
+	 * <p/>
+	 * {@link TraversableResolver} is defined in the following decreasing priority:
 	 * <ul>
-	 * <li>set via the {@code Configuration} programmatic API</li>
-	 * <li>defined in META-INF/validation.xml provided that ignoredXmlConfiguration
-	 * is false. In this case the instance is created via its no-arg constructor.</li>
-	 * <li>{@code null} if undefined.</li>
+	 *     <li>set via the {@link Configuration} programmatic API</li>
+	 *     <li>defined in {@code META-INF/validation.xml} provided that
+	 *     {@code ignoredXmlConfiguration} is {@code false}. In this case the
+	 *     instance is created via its no-arg constructor.</li>
+	 *     <li>{@code null} if undefined.</li>
 	 * </ul>
 	 *
 	 * @return traversable resolver instance or {@code null} if not defined
@@ -108,12 +122,14 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the parameter name provider for this configuration.
-	 * {@code ParameterNameProvider} is defined in the following decreasing priority:
+	 * <p/>
+	 * {@link ParameterNameProvider} is defined in the following decreasing priority:
 	 * <ul>
-	 * <li>set via the {@code Configuration} programmatic API</li>
-	 * <li>defined in META-INF/validation.xml provided that ignoredXmlConfiguration
-	 * is false. In this case the instance is created via its no-arg constructor.</li>
-	 * <li>{@code null} if undefined.</li>
+	 *     <li>set via the {@link Configuration} programmatic API</li>
+	 *     <li>defined in {@code META-INF/validation.xml} provided that
+	 *     {@code ignoreXmlConfiguration} is {@code false}. In this case the instance
+	 *     is created via its no-arg constructor.</li>
+	 *     <li>{@code null} if undefined.</li>
 	 * </ul>
 	 *
 	 * @return parameter name provider instance or {@code null} if not defined
@@ -124,16 +140,19 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns a map of non type-safe custom properties.
+	 * <p/>
 	 * Properties defined via:
 	 * <ul>
-	 * <li>Configuration.addProperty(String, String)</li>
-	 * <li>META-INF/validation.xml provided that ignoredXmlConfiguration</li>
-	 * is false.
+	 *     <li>{@link Configuration#addProperty(String, String)}</li>
+	 *     <li>{@link META-INF/validation.xml} provided that
+	 *     {@code ignoreXmlConfiguration}</li> is {@code false}.
 	 * </ul>
+	 * <p/>
 	 * If a property is defined both programmatically and in XML,
-	 * the value defined programmatically has priority
+	 * the value defined programmatically has priority.
 	 *
-	 * @return Map whose key is the property key and the value the property value
+	 * @return {@code Map} whose key is the property key and the value
+	 *         the property value
 	 */
 	Map<String, String> getProperties();
 }
