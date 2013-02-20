@@ -16,11 +16,12 @@
  */
 package javax.validation.metadata;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
 /**
- * Provides common functionality of {@link MethodDescriptor} and
+ * Provides the common functionality of {@link MethodDescriptor} and
  * {@link ConstructorDescriptor}.
  *
  * @author Gunnar Morling
@@ -34,27 +35,27 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * the non-qualified name of the declaring class in case this descriptor
 	 * represents a constructor.
 	 *
-	 * @return The name of the executable represented by this descriptor.
+	 * @return the name of the executable represented by this descriptor
 	 */
 	String getName();
 
 	/**
-	 * Returns a list with descriptors representing this executable's
-	 * parameters, in order of their declaration, including synthetic
+	 * Returns a list of descriptors representing this executable's
+	 * parameters, in the order of their declaration, including synthetic
 	 * parameters.
 	 *
-	 * @return A list with descriptors representing this executable's
-	 *         parameters. An empty list will be returned if this executable has
-	 *         no parameters, but never {@code null}.
+	 * @return a list of descriptors representing this executable's
+	 *         parameters; an empty list will be returned if this executable has
+	 *         no parameters, but never {@code null}
 	 */
 	List<ParameterDescriptor> getParameterDescriptors();
 
 	/**
-	 * Returns a descriptor containing cross-parameter constraints
+	 * Returns a descriptor containing the cross-parameter constraints
 	 * of this executable.
 	 *
-	 * @return A descriptor containing cross-parameter constraints of this
-	 *         executable
+	 * @return a descriptor containing the cross-parameter constraints of
+	 *         this executable
 	 */
 	CrossParameterDescriptor getCrossParameterDescriptor();
 
@@ -65,18 +66,19 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * representing {@code void}. This descriptor will have no constraint
 	 * associated.
 	 *
-	 * @return A descriptor for this executable's return value
+	 * @return a descriptor for this executable's return value
 	 */
 	ReturnValueDescriptor getReturnValueDescriptor();
 
 	/**
 	 * Returns {@code true} if the executable parameters are constrained either:
 	 * <ul>
-	 * <li>because of a constraint on at least one of the parameters</li>
-	 * <li>because of a cascade on at least one of the parameters (via
-	 * {@code @Valid})</li>
-	 * <li>because of at least one cross-parameter constraint</li>
+	 *     <li>because of a constraint on at least one of the parameters</li>
+	 *     <li>because of a cascade on at least one of the parameters (via
+	 *     {@link Valid})</li>
+	 *     <li>because of at least one cross-parameter constraint</li>
 	 * </ul>
+	 * <p/>
 	 * Also returns {@code false} if there is no parameter.
 	 *
 	 * @return {@code true} if the executable parameters are constrained
@@ -87,10 +89,11 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * Returns {@code true} if the executable return value is constrained
 	 * either:
 	 * <ul>
-	 * <li>because of a constraint on the return value</li>
-	 * <li>because validation is cascaded on the return value (via
-	 * {@code @Valid})</li>
+	 *     <li>because of a constraint on the return value</li>
+	 *     <li>because validation is cascaded on the return value (via
+	 *     {@link Valid})</li>
 	 * </ul>
+	 * <p/>
 	 * Also returns {@code false} if there is no return value.
 	 *
 	 * @return {@code true} if the executable return value is constrained
@@ -116,7 +119,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
 	 * and {@link #getReturnValueDescriptor()} to discover constraints.
 	 *
-	 * @return An empty {@code Set}
+	 * @return an empty {@code Set}
 	 */
 	@Override
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
@@ -128,7 +131,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
 	 * and {@link #getReturnValueDescriptor()} to discover constraints.
 	 *
-	 * @return Constraint finder object.
+	 * @return {@code ConstraintFinder} object
 	 */
 	@Override
 	ConstraintFinder findConstraints();

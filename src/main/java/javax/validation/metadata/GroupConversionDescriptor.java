@@ -32,14 +32,14 @@ public interface GroupConversionDescriptor {
 	/**
 	 * Returns the source group of this conversion rule.
 	 *
-	 * @return The source group of this conversion rule.
+	 * @return the source group of this conversion rule
 	 */
 	Class<?> getFrom();
 
 	/**
 	 * Returns the target group of this conversion rule.
 	 *
-	 * @return The target group of this conversion rule.
+	 * @return the target group of this conversion rule
 	 */
 	Class<?> getTo();
 }

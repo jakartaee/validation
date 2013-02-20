@@ -16,6 +16,7 @@
 */
 package javax.validation.metadata;
 
+import javax.validation.groups.Default;
 import java.lang.annotation.ElementType;
 import java.util.Set;
 
@@ -29,18 +30,18 @@ import java.util.Set;
 public interface ElementDescriptor {
 
 	/**
-	 * @return Return {@code true} if at least one constraint declaration is present
-	 *         for this element in the class hierarchy, {@code false} otherwise.
+	 * @return returns {@code true} if at least one constraint declaration is present
+	 *         for this element in the class hierarchy, {@code false} otherwise
 	 */
 	boolean hasConstraints();
 
 	/**
-	 * @return Statically defined returned type.
+	 * @return the statically defined returned type
 	 */
 	Class<?> getElementClass();
 
 	/**
-	 * Return all constraint descriptors for this element in the class hierarchy
+	 * Returns all constraint descriptors for this element in the class hierarchy
 	 * or an empty {@code Set} if none are present.
 	 *
 	 * @return {@code Set} of constraint descriptors for this element
@@ -48,54 +49,53 @@ public interface ElementDescriptor {
 	Set<ConstraintDescriptor<?>> getConstraintDescriptors();
 
 	/**
-	 * Find constraints and potentially restricts them to certain criteria.
+	 * Finds constraints and potentially restricts them to certain criteria.
 	 *
-	 * @return ConstraintFinder object.
+	 * @return {@code ConstraintFinder} object
 	 */
 	ConstraintFinder findConstraints();
 
 	/**
-	 * Declare restrictions on retrieved constraints.
+	 * Declares restrictions on retrieved constraints.
 	 * Restrictions are cumulative.
-	 *
+	 * <p/>
 	 * A {@code ConstraintFinder} is not thread-safe. The set of matching
-	 * {@code ConstraintDescriptor} is.
+	 * {@link ConstraintDescriptor} is.
 	 */
 	interface ConstraintFinder {
+
 		/**
-		 * Restrict to the constraints matching a given set of groups for this element
-		 *
+		 * Restricts to the constraints matching a given set of groups for this element.
+		 * <p/>
 		 * This method respects group conversion, group sequences
-		 * and group inheritance (including class-level {@code Default} group
-		 * overriding) but does not return {@code ConstraintDescriptor}s
+		 * and group inheritance (including class-level {@link Default} group
+		 * overriding) but does not return {@link ConstraintDescriptor}s
 		 * in any particular order.
 		 * Specifically, ordering of the group sequence is not respected.
 		 *
 		 * @param groups groups targeted
-		 *
 		 * @return {@code this} following the chaining method pattern
 		 */
 		ConstraintFinder unorderedAndMatchingGroups(Class<?>... groups);
 
 		/**
-		 * Restrict to the constraints matching the provided scope for this element.
+		 * Restricts to the constraints matching the provided scope for this element.
 		 *
-		 * Defaults to {@code Scope.HIERARCHY}
+		 * Defaults to {@link Scope#HIERARCHY}
 		 *
 		 * @param scope expected scope
-		 *
 		 * @return {@code this} following the chaining method pattern
 		 */
 		ConstraintFinder lookingAt(Scope scope);
 
 		/**
-		 * Restrict to the constraints hosted on the listed {@code types}
+		 * Restricts to the constraints hosted on the listed {@code types}
 		 * for a given element.
-		 *
-		 * Default to all possible types of the element.
-		 *
+		 * <p/>
+		 * Defaults to all possible types of the element.
+		 * <p/>
 		 * Typically used to restrict to fields ({@code FIELD})
-		 * or getters ({@code METHOD})
+		 * or getters ({@code METHOD}).
 		 *
 		 * @param types targeted types
 		 *
@@ -104,9 +104,9 @@ public interface ElementDescriptor {
 		ConstraintFinder declaredOn(ElementType... types);
 
 		/**
-		 * Retrieve the constraint descriptors following the defined
+		 * Retrieves the constraint descriptors following the defined
 		 * restrictions and hosted on the element described by
-		 * {@code ElementDescriptor}
+		 * {@link ElementDescriptor}.
 		 *
 		 * @return matching constraint descriptors
 		 */
@@ -117,7 +117,7 @@ public interface ElementDescriptor {
 		 * matching the restrictions is present on the element,
 		 * {@code false} otherwise.
 		 *
-		 * @return is there any constraint
+		 * @return {@code true} if there is at least one constraint
 		 */
 		boolean hasConstraints();
 	}

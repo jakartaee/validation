@@ -23,21 +23,25 @@ import java.util.Set;
 import javax.validation.ConstraintTarget;
 import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
+import javax.validation.groups.Default;
 
 /**
  * Describes a single constraint and its composing constraints.
+ * <p/>
  * {@code T} is the constraint's annotation type.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
  */
 public interface ConstraintDescriptor<T extends Annotation> {
+
 	/**
 	 * Returns the annotation describing the constraint declaration.
 	 * If a composing constraint, attribute values are reflecting
 	 * the overridden attributes of the composing constraint
 	 *
-	 * @return the annotation for this constraint.
+	 * @return the annotation for this constraint
 	 */
 	T getAnnotation();
 
@@ -50,17 +54,17 @@ public interface ConstraintDescriptor<T extends Annotation> {
 
 	/**
 	 * The set of groups the constraint is applied on.
-	 * If the constraint declares no group, a set with only the {@code Default}
+	 * If the constraint declares no group, a set with only the {@link Default}
 	 * group is returned.
 	 *
-	 * @return The groups the constraint is applied on.
+	 * @return the groups the constraint is applied on
 	 */
 	Set<Class<?>> getGroups();
 
 	/**
 	 * The set of payload the constraint hosts.
 	 *
-	 * @return payload classes hosted on the constraint or an empty set if none.
+	 * @return payload classes hosted on the constraint or an empty set if none
 	 */
 	Set<Class<? extends Payload>> getPayload();
 
@@ -75,34 +79,35 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	/**
 	 * List of the constraint validation implementation classes.
 	 *
-	 * @return list of the constraint validation implementation classes.
+	 * @return list of the constraint validation implementation classes
 	 */
 	List<Class<? extends ConstraintValidator<T, ?>>> getConstraintValidatorClasses();
 
 	/**
 	 * Returns a map containing the annotation attribute names as keys and the
 	 * annotation attribute values as value.
+	 * <p/>
 	 * If this constraint is used as part of a composed constraint, attribute
 	 * values are reflecting the overridden attribute of the composing constraint.
 	 *
 	 * @return a map containing the annotation attribute names as keys
-	 *         and the annotation attribute values as value.
+	 *         and the annotation attribute values as value
 	 */
 	Map<String, Object> getAttributes();
 
 	/**
-	 * Return a set of composing {@code ConstraintDescriptor}s where each
+	 * Return a set of composing {@link ConstraintDescriptor}s where each
 	 * descriptor describes a composing constraint. {@code ConstraintDescriptor}
 	 * instances of composing constraints reflect overridden attribute values in
 	 * {@link #getAttributes()}  and {@link #getAnnotation()}.
 	 *
 	 * @return a set of {@code ConstraintDescriptor} objects or an empty set
-	 *         in case there are no composing constraints.
+	 *         in case there are no composing constraints
 	 */
 	Set<ConstraintDescriptor<?>> getComposingConstraints();
 
 	/**
-	 * @return true if the constraint is annotated with {@code @ReportAsSingleViolation}
+	 * @return true if the constraint is annotated with {@link ReportAsSingleViolation}
 	 */
 	boolean isReportAsSingleViolation();
 }

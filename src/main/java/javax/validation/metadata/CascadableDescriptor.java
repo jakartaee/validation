@@ -30,16 +30,16 @@ public interface CascadableDescriptor {
 	 * Whether this element is marked for cascaded validation or not.
 	 *
 	 * @return {@code true}, if this element is marked for cascaded validation,
-	 *         {@code false} otherwise.
+	 *         {@code false} otherwise
 	 */
 	boolean isCascaded();
 
 	/**
 	 * Returns the group conversions configured for this element.
 	 *
-	 * @return A set containing this element's group conversions. An empty set
+	 * @return a set containing this element's group conversions; an empty set
 	 *         may be returned if no conversions are configured but never
-	 *         {@code null}.
+	 *         {@code null}
 	 */
 	Set<GroupConversionDescriptor> getGroupConversions();
 }

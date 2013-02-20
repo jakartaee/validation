@@ -28,7 +28,7 @@ public interface ParameterDescriptor extends ElementDescriptor, CascadableDescri
 	 * Returns this parameter's index within the parameter array of the method
 	 * or constructor holding it.
 	 *
-	 * @return This parameter's index.
+	 * @return this parameter's index
 	 */
 	int getIndex();
 
@@ -36,7 +36,7 @@ public interface ParameterDescriptor extends ElementDescriptor, CascadableDescri
 	 * Returns this parameter's name as retrieved by the current parameter name
 	 * resolver.
 	 *
-	 * @return This parameter's name.
+	 * @return this parameter's name
 	 */
 	String getName();
 }

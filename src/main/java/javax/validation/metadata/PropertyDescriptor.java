@@ -29,7 +29,7 @@ public interface PropertyDescriptor extends ElementDescriptor, CascadableDescrip
 	/**
 	 * Name of the property according to the Java Bean specification.
 	 *
-	 * @return property name.
+	 * @return property name
 	 */
 	String getPropertyName();
 }

@@ -17,11 +17,12 @@
 package javax.validation.metadata;
 
 /**
- * Scope looked at when discovering constraints
+ * Scope looked at when discovering constraints.
  *
  * @author Emmanuel Bernard
  */
 public enum Scope {
+
 	/**
 	 * Look for constraints declared on the current class element
 	 * and ignore inheritance and elements with the same name in
