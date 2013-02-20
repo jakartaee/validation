@@ -36,22 +36,20 @@ public interface ParameterNameProvider {
 	/**
 	 * Returns the names of the parameters of the given constructor.
 	 *
-	 * @param constructor The constructor for which the parameter names shall be
-	 *        retrieved. Never null.
-	 *
-	 * @return A list containing the names of the parameters of the given
-	 *         constructor. May be empty but never null.
+	 * @param constructor the constructor for which the parameter names shall be
+	 *        retrieved; never null
+	 * @return a list containing the names of the parameters of the given
+	 *         constructor; may be empty but never null
 	 */
 	List<String> getParameterNames(Constructor<?> constructor);
 
 	/**
 	 * Returns the names of the parameters of the given method.
 	 *
-	 * @param method The method for which the parameter names shall be retrieved.
-	 *        Never null.
-	 *
-	 * @return A list containing the names of the parameters of the given method.
-	 *         May be empty but never null.
+	 * @param method the method for which the parameter names shall be retrieved;
+	 *        never null
+	 * @return a list containing the names of the parameters of the given method;
+	 *         may be empty but never null
 	 */
 	List<String> getParameterNames(Method method);
 }

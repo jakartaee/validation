@@ -16,16 +16,19 @@
 */
 package javax.validation;
 
+import javax.validation.groups.Default;
+
 import static java.lang.annotation.ElementType.TYPE;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 
 /**
- * Define a group sequence
+ * Defines group sequence.
+ * <p/>
  * The interface hosting {@code @GroupSequence} is representing
  * the group sequence.
- * When hosted on a class, represents the {@code Default} group
+ * When hosted on a class, represents the {@link Default} group
  * for that class.
  *
  * @author Emmanuel Bernard
@@ -34,5 +37,6 @@ import java.lang.annotation.Target;
 @Target({ TYPE })
 @Retention(RUNTIME)
 public @interface GroupSequence {
+
 	Class<?>[] value();
 }

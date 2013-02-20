@@ -19,21 +19,24 @@ package javax.validation;
 import java.lang.annotation.Annotation;
 
 /**
- * Defines the logic to validate a given constraint A
- * for a given object type T.
+ * Defines the logic to validate a given constraint {@code A}
+ * for a given object type {@code T}.
+ * <p/>
  * Implementations must comply to the following restriction:
  * <ul>
- * <li>T must resolve to a non parameterized type</li>
- * <li>or generic parameters of T must be unbounded
- * wildcard types</li>
+ *     <li>{@code T} must resolve to a non parameterized type</li>
+ *     <li>or generic parameters of {@code T} must be unbounded
+ *     wildcard types</li>
  * </ul>
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
  */
 public interface ConstraintValidator<A extends Annotation, T> {
+
 	/**
-	 * Initialize the validator in preparation for isValid calls.
+	 * Initializes the validator in preparation for
+	 * {@link #isValid(Object, ConstraintValidatorContext)} calls.
 	 * The constraint annotation for a given constraint declaration
 	 * is passed.
 	 * <p/>
@@ -45,16 +48,16 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	void initialize(A constraintAnnotation);
 
 	/**
-	 * Implement the validation logic.
+	 * Implements the validation logic.
 	 * The state of {@code value} must not be altered.
-	 *
+	 * <p/>
 	 * This method can be accessed concurrently, thread-safety must be ensured
 	 * by the implementation.
 	 *
 	 * @param value object to validate
 	 * @param context context in which the constraint is evaluated
 	 *
-	 * @return false if {@code value} does not pass the constraint
+	 * @return {@code false} if {@code value} does not pass the constraint
 	 */
 	boolean isValid(T value, ConstraintValidatorContext context);
 }

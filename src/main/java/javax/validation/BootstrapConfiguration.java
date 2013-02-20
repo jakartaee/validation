@@ -18,21 +18,26 @@ package javax.validation;
 import java.util.Map;
 import java.util.Set;
 import javax.validation.executable.ExecutableType;
+import javax.validation.executable.ValidateExecutable;
+import javax.validation.spi.ValidationProvider;
 
 /**
  * Represents the user specified default configuration in
- * <i>META-INF/validation.xml</i>. Note that modifications to the returned
- * objects don't have any effect; Instead use the methods provided on
- * {@link Configuration} in order to apply modifications to the configuration.
+ * {@code META-INF/validation.xml}.
+ * <p/>
+ * Note that modifications to the returned objects do not have any effect.
+ * Instead use the methods provided on {@link Configuration} in order to
+ * apply modifications to the configuration.
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Emmanuel Bernard
  * @author Gunnar Morling
  * @author Hardy Ferentschik
  * @since 1.1
  */
 public interface BootstrapConfiguration {
+
 	/**
-	 * Class name of the {@code ValidationProvider} implementation
+	 * Class name of the {@link ValidationProvider} implementation
 	 * or {@code null} if none is specified.
 	 *
 	 * @return validation provider class name
@@ -40,7 +45,7 @@ public interface BootstrapConfiguration {
 	String getDefaultProviderClassName();
 
 	/**
-	 * Class name of the {@code ConstraintValidatorFactory} implementation
+	 * Class name of the {@link ConstraintValidatorFactory} implementation
 	 * or {@code null} if none is specified.
 	 *
 	 * @return constraint validator factory class name
@@ -48,7 +53,7 @@ public interface BootstrapConfiguration {
 	String getConstraintValidatorFactoryClassName();
 
 	/**
-	 * Class name of the {@code MessageInterpolator} implementation
+	 * Class name of the {@link MessageInterpolator} implementation
 	 * or {@code null} if none is specified.
 	 *
 	 * @return message interpolator class name or {@code null}
@@ -56,7 +61,7 @@ public interface BootstrapConfiguration {
 	String getMessageInterpolatorClassName();
 
 	/**
-	 * Class name of the {@code TraversableResolver} implementation
+	 * Class name of the {@link TraversableResolver} implementation
 	 * or {@code null} if none is specified.
 	 *
 	 * @return traversable resolver class name or {@code null}
@@ -64,7 +69,7 @@ public interface BootstrapConfiguration {
 	String getTraversableResolverClassName();
 
 	/**
-	 * Class name of the {@code ParameterNameProvider} implementation
+	 * Class name of the {@link ParameterNameProvider} implementation
 	 * or {@code null} if none is specified.
 	 *
 	 * @return parameter name provider class name or {@code null}
@@ -80,11 +85,11 @@ public interface BootstrapConfiguration {
 	Set<String> getConstraintMappingResourcePaths();
 
 	/**
-	 * Return the set of executable types that should be considered
-	 * unless explicitly overridden via {@code javax.validation.ValidateExecutable}
-	 *
-	 * Return a set containing {@code CONSTRUCTORS} and {@code NON_GETTER_METHODS}
-	 * if unspecified in the configuration.
+	 * Returns the set of executable types that should be considered
+	 * unless explicitly overridden via {@link ValidateExecutable}
+	 * <p/>
+	 * Returns a set containing {@link ExecutableType#CONSTRUCTORS} and
+	 * {@link ExecutableType#NON_GETTER_METHODS} if unspecified in the configuration.
 	 *
 	 * @return set of validated executable types
 	 */

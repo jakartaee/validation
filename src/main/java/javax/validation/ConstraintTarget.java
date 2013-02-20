@@ -17,12 +17,13 @@
 package javax.validation;
 
 /**
- * Defines the constraint target
+ * Defines the constraint target.
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Emmanuel Bernard
  * @since 1.1
  */
 public enum ConstraintTarget {
+
 	/**
 	 * Discover the type when no ambiguity is present
 	 * <ul>

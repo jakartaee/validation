@@ -22,7 +22,7 @@ import java.util.List;
  * Represents the navigation path from an object to another
  * in an object graph.
  * Each path element is represented by a {@code Node}.
- *
+ * <p/>
  * The path corresponds to the succession of nodes
  * in the order they are returned by the {@code Iterator}.
  *
@@ -35,6 +35,7 @@ public interface Path extends Iterable<Path.Node> {
 	 * Represents an element of a navigation path.
 	 */
 	interface Node {
+
 		/**
 		 * Returns the name of the element which the node represents:
 		 * <ul>
@@ -52,44 +53,44 @@ public interface Path extends Iterable<Path.Node> {
 		 *     value.</li>
 		 * </ul>
 		 *
-		 * @return Name of the element which the node represents.
+		 * @return name of the element which the node represents
 		 */
 		String getName();
 
 		/**
 		 * @return {@code true} if the node represents an object contained in an
-		 *         {@code Iterable} or in a Map, {@code false} otherwise.
+		 *         {@code Iterable} or in a {@code Map}, {@code false} otherwise
 		 */
 		boolean isInIterable();
 
 		/**
-		 * @return The index the node is placed in if contained in an array or
-		 *         {@code List}. {@code null} otherwise.
+		 * @return the index the node is placed in if contained in an array or
+		 *         {@code List}; {@code null} otherwise
 		 */
 		Integer getIndex();
 
 		/**
-		 * @return The key the node is placed in if contained in a {@code Map}.
-		 *         {@code null} otherwise.
+		 * @return the key the node is placed in if contained in a {@code Map},
+		 *         {@code null} otherwise
 		 */
 		Object getKey();
 
 		/**
 		 * The kind of element represented by the node. The following relationship
-		 * between an {@link javax.validation.ElementKind} and its {@code Node} subtype exists:
+		 * between an {@link ElementKind} and its {@code Node} subtype exists:
 		 * <ul>
-		 *     <li>{@code ElementKind.BEAN}: {@link BeanNode}</li>
-		 *     <li>{@code ElementKind.PROPERTY}: {@link PropertyNode}</li>
-		 *     <li>{@code ElementKind.METHOD}: {@link MethodNode}</li>
-		 *     <li>{@code ElementKind.CONSTRUCTOR}: {@link ConstructorNode}</li>
-		 *     <li>{@code ElementKind.PARAMETER}: {@link ParameterNode}</li>
-		 *     <li>{@code ElementKind.CROSS_PARAMETER}: {@link CrossParameterNode}</li>
-		 *     <li>{@code ElementKind.RETURN_VALUE}: {@link ReturnValueNode}</li>
+		 *     <li>{@link ElementKind#BEAN}: {@link BeanNode}</li>
+		 *     <li>{@link ElementKind#PROPERTY}: {@link PropertyNode}</li>
+		 *     <li>{@link ElementKind#METHOD}: {@link MethodNode}</li>
+		 *     <li>{@link ElementKind#CONSTRUCTOR}: {@link ConstructorNode}</li>
+		 *     <li>{@link ElementKind#PARAMETER}: {@link ParameterNode}</li>
+		 *     <li>{@link ElementKind#CROSS_PARAMETER}: {@link CrossParameterNode}</li>
+		 *     <li>{@link ElementKind#RETURN_VALUE}: {@link ReturnValueNode}</li>
 		 * </ul>
-		 *
-		 * This is useful to narrow down the Node type and access node specific
+		 * <p/>
+		 * This is useful to narrow down the {@code Node} type and access node specific
 		 * information:
-		 * <pre>{@code
+		 * <pre>
 		 * switch(node.getKind() {
 		 * case METHOD:
 		 *     name = node.getName();
@@ -97,7 +98,10 @@ public interface Path extends Iterable<Path.Node> {
 		 * case PARAMETER:
 		 *     index = node.as(ParameterNode.class).getParameterIndex();
 		 * [...]
-		 * }}</pre>
+		 * }
+		 * </pre>
+		 *  @return the {@code ElementKind}
+		 *
 		 * @since 1.1
 		 */
 		ElementKind getKind();
@@ -106,11 +110,11 @@ public interface Path extends Iterable<Path.Node> {
 		 * Narrows the type of this node down to the given type. The appropriate
 		 * type should be checked before by calling {@link #getKind()}.
 		 *
-		 * @param <T> The type to narrow down to
-		 * @param nodeType Class object representing the descriptor type to narrow down
-		 *                 to.
+		 * @param <T> the type to narrow down to
+		 * @param nodeType class object representing the descriptor type to narrow down to
+		 *                 to
 		 *
-		 * @return This node narrowed down to the given type.
+		 * @return this node narrowed down to the given type.
 		 *
 		 * @throws ClassCastException If this node is not assignable to the type {@code T}
 		 * @since 1.1
@@ -119,33 +123,33 @@ public interface Path extends Iterable<Path.Node> {
 	}
 
 	/**
-	 * Node representing a method
+	 * Node representing a method.
 	 *
 	 * @since 1.1
 	 */
 	interface MethodNode extends Node {
 
 		/**
-		 * @return The list of parameter types
+		 * @return the list of parameter types
 		 */
 		List<Class<?>> getParameterTypes();
 	}
 
 	/**
-	 * Node representing a constructor
+	 * Node representing a constructor.
 	 *
 	 * @since 1.1
 	 */
 	interface ConstructorNode extends Node {
 
 		/**
-		 * @return The list of parameter types
+		 * @return the list of parameter types
 		 */
 		List<Class<?>> getParameterTypes();
 	}
 
 	/**
-	 * Node representing the return value of a method or constructor
+	 * Node representing the return value of a method or constructor.
 	 *
 	 * @since 1.1
 	 */
@@ -153,14 +157,14 @@ public interface Path extends Iterable<Path.Node> {
 	}
 
 	/**
-	 * Node representing a parameter of a method or constructor
+	 * Node representing a parameter of a method or constructor.
 	 *
 	 * @since 1.1
 	 */
 	interface ParameterNode extends Node {
 
 		/**
-		 * @return The parameter index in the method or constructor definition
+		 * @return the parameter index in the method or constructor definition
 		 */
 		int getParameterIndex();
 	}
@@ -175,7 +179,7 @@ public interface Path extends Iterable<Path.Node> {
 	}
 
 	/**
-	 * Node representing a bean
+	 * Node representing a bean.
 	 *
 	 * @since 1.1
 	 */
@@ -183,7 +187,7 @@ public interface Path extends Iterable<Path.Node> {
 	}
 
 	/**
-	 * Node representing a property
+	 * Node representing a property.
 	 *
 	 * @since 1.1
 	 */

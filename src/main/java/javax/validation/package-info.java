@@ -19,24 +19,25 @@
  *
  * The main runtime artifacts are:
  * <ul>
- *     <li>{@code Validation}: the entry point to bootstrap Bean Validation</li>
- *     <li>{@code ValidatorFactory}: the bootstrapped Bean Validation engine</li>
- *     <li>{@code Validator}: contract to validate beans and access the metadata</li>
- *     <li>{@code ConstraintViolation}: constraint violation report</li>
+ *     <li>{@link javax.validation.Validation}: the entry point to bootstrap Bean Validation</li>
+ *     <li>{@link javax.validation.ValidatorFactory}: the bootstrapped Bean Validation engine</li>
+ *     <li>{@link javax.validation.Validator}: contract to validate beans and access the metadata</li>
+ *     <li>{@link javax.validation.ConstraintViolation}: constraint violation report</li>
  * </ul>
  *
  * The main constraint definition artifacts are:
  * <ul>
- *     <li>{@code Constraint}: annotation marking an annotation as being a constraint</li>
- *     <li>{@code CrossParameterConstraint}: annotation marking an annotation as being a cross-parameter constraint</li>
- *     <li>{@code ConstraintValidator}: interface implemented by the piece of code validating a given constraint</li>
- *     <li>{@code ReportAsSingleViolation}: mark a composed constraint as returning a single constraint violation report</li>
+ *     <li>{@link javax.validation.Constraint}: annotation marking an annotation as being a constraint</li>
+ *     <li>{@link javax.validation.ConstraintValidator}: interface implemented by the piece of code validating
+ *     a given constraint</li>
+ *     <li>{@link javax.validation.ReportAsSingleViolation}: marks a composed constraint as returning a single
+ *     constraint violation report</li>
  * </ul>
  *
  * The main constraint declaration artifacts are:
  * <ul>
- *     <li>{@code @Valid}: annotation marking an association as cascaded during validation</li>
- *     <li>{@code @GroupSequence}: defines a sequence of groups that should be validated sequentially</li>
+ *     <li>{@link javax.validation.Valid}: annotation marking an association as cascaded during validation</li>
+ *     <li>{@link javax.validation.GroupSequence}: defines a sequence of groups that should be validated sequentially</li>
  * </ul>
  */
 package javax.validation;

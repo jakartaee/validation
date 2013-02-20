@@ -17,7 +17,7 @@
 package javax.validation;
 
 /**
- * Exception raised if a group definition is not legal
+ * Exception raised if a group definition is not legal.
  *
  * @author Emmanuel Bernard
  */

@@ -17,7 +17,7 @@
 package javax.validation;
 
 /**
- * Instantiate a {@code ConstraintValidator} instance based off its class.
+ * Instantiates a {@link ConstraintValidator} instance based off its class.
  * The {@code ConstraintValidatorFactory} is <b>not</b> responsible
  * for calling {@link ConstraintValidator#initialize(java.lang.annotation.Annotation)}.
  *
@@ -28,15 +28,15 @@ package javax.validation;
 public interface ConstraintValidatorFactory {
 
 	/**
-	 * @param key The class of the constraint validator to instantiate.
+	 * @param key The class of the constraint validator to instantiate
 	 *
-	 * @return A new constraint validator instance of the specified class.
+	 * @return A new constraint validator instance of the specified class
 	 */
 	<T extends ConstraintValidator<?, ?>> T getInstance(Class<T> key);
 
 	/**
-	 * Signal ConstraintValidatorFactory that the instance is no longer
-	 * being used by the Bean Validation provider
+	 * Signals {@code ConstraintValidatorFactory} that the instance is no longer
+	 * being used by the Bean Validation provider.
 	 *
 	 * @param instance validator being released
 	 *

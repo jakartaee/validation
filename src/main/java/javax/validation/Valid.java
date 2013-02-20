@@ -25,11 +25,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 
 /**
- * Mark a property, method parameter or method return type for validation cascading.
- *
+ * Marks a property, method parameter or method return type for validation cascading.
+ * <p/>
  * Constraints defined on the object and its properties are be validated when the
  * property, method parameter or method return type is validated.
- *
+ * <p/>
  * This behavior is applied recursively.
  *
  * @author Emmanuel Bernard

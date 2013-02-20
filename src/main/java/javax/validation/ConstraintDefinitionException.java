@@ -17,11 +17,12 @@
 package javax.validation;
 
 /**
- * Exception raised if a constraint definition is not legal
+ * Exception raised if a constraint definition is not legal.
  *
  * @author Emmanuel Bernard
  */
 public class ConstraintDefinitionException extends ValidationException {
+
 	public ConstraintDefinitionException(String message) {
 		super( message );
 	}

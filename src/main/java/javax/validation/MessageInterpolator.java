@@ -20,7 +20,8 @@ import java.util.Locale;
 import javax.validation.metadata.ConstraintDescriptor;
 
 /**
- * Interpolate a given constraint violation message.
+ * Interpolates a given constraint violation message.
+ * <p/>
  * Implementations should be as tolerant as possible on syntax errors.
  * Implementations must be thread-safe.
  *
@@ -28,36 +29,38 @@ import javax.validation.metadata.ConstraintDescriptor;
  * @author Hardy Ferentschik
  */
 public interface MessageInterpolator {
+
 	/**
-	 * Interpolate the message template based on the constraint validation context.
+	 * Interpolates the message template based on the constraint validation context.
+	 * <p/>
 	 * The locale is defaulted according to the {@code MessageInterpolator}
 	 * implementation. See the implementation documentation for more detail.
 	 *
-	 * @param messageTemplate The message to interpolate.
+	 * @param messageTemplate the message to interpolate
 	 * @param context contextual information related to the interpolation
 	 *
-	 * @return Interpolated error message.
+	 * @return interpolated error message
 	 */
 	String interpolate(String messageTemplate, Context context);
 
 	/**
-	 * Interpolate the message template based on the constraint validation context.
+	 * Interpolates the message template based on the constraint validation context.
 	 * The {@code Locale} used is provided as a parameter.
 	 *
-	 * @param messageTemplate The message to interpolate.
+	 * @param messageTemplate the message to interpolate
 	 * @param context contextual information related to the interpolation
 	 * @param locale the locale targeted for the message
 	 *
-	 * @return Interpolated error message.
+	 * @return interpolated error message
 	 */
 	String interpolate(String messageTemplate, Context context,  Locale locale);
 
 	/**
-	 * Information related to the interpolation context
+	 * Information related to the interpolation context.
 	 */
 	interface Context {
 		/**
-		 * @return ConstraintDescriptor corresponding to the constraint being validated
+		 * @return {@link ConstraintDescriptor} corresponding to the constraint being validated
 		 */
 		ConstraintDescriptor<?> getConstraintDescriptor();
 
@@ -67,16 +70,14 @@ public interface MessageInterpolator {
 		Object getValidatedValue();
 
 		/**
-		 * Return an instance of the specified type allowing access to
+		 * Returns an instance of the specified type allowing access to
 		 * provider-specific APIs. If the Bean Validation provider
 		 * implementation does not support the specified class,
-		 * {@code ValidationException} is thrown.
+		 * {@link ValidationException} is thrown.
 		 *
-		 * @param type the class of the object to be returned.
-		 *
+		 * @param type the class of the object to be returned
 		 * @return an instance of the specified class
-		 *
-		 * @throws ValidationException if the provider does not support the call.
+		 * @throws ValidationException if the provider does not support the call
 		 *
 		 * @since 1.1
 		 */

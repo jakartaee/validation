@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Reports the result of constraint violations
+ * Reports the result of constraint violations.
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
@@ -29,10 +29,10 @@ public class ConstraintViolationException extends ValidationException {
 	private final Set<ConstraintViolation<?>> constraintViolations;
 
 	/**
-	 * Creates a constraint violation report
+	 * Creates a constraint violation report.
 	 *
 	 * @param message error message
-	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
+	 * @param constraintViolations {@code Set} of {@link ConstraintViolation}
 	 */
 	public ConstraintViolationException(String message,
 										Set<? extends ConstraintViolation<?>> constraintViolations) {
@@ -47,18 +47,18 @@ public class ConstraintViolationException extends ValidationException {
 	}
 
 	/**
-	 * Creates a constraint violation report
+	 * Creates a constraint violation report.
 	 *
-	 * @param constraintViolations {@code Set} of {@code ConstraintViolation}
+	 * @param constraintViolations {@code Set} of {@link ConstraintViolation}
 	 */
 	public ConstraintViolationException(Set<? extends ConstraintViolation<?>> constraintViolations) {
 		this( null, constraintViolations );
 	}
 
 	/**
-	 * Set of constraint violations reported during a validation
+	 * Set of constraint violations reported during a validation.
 	 *
-	 * @return {@code Set} of {@code ConstraintViolation}
+	 * @return {@code Set} of {@link ConstraintViolation}
 	 */
 	public Set<ConstraintViolation<?>> getConstraintViolations() {
 		return constraintViolations;

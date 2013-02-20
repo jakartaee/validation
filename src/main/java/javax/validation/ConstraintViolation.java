@@ -27,28 +27,28 @@ import javax.validation.metadata.ConstraintDescriptor;
 public interface ConstraintViolation<T> {
 
 	/**
-	 * @return The interpolated error message for this constraint violation.
+	 * @return the interpolated error message for this constraint violation
 	 */
 	String getMessage();
 
 	/**
-	 * @return The non-interpolated error message for this constraint violation.
+	 * @return the non-interpolated error message for this constraint violation
 	 */
 	String getMessageTemplate();
 
 	/**
 	 * Returns the root bean being validated. For method validation, returns
 	 * the object the method is executed on.
-	 *
+	 * <p/>
 	 * Returns {@code null} when:
 	 * <ul>
 	 *     <li>the {@code ConstraintViolation} is returned after calling
-	 *     {@link javax.validation.Validator#validateValue(Class, String, Object, Class[])}</li>
+	 *     {@link Validator#validateValue(Class, String, Object, Class[])}</li>
 	 *     <li>the {@code ConstraintViolation} is returned after validating a
 	 *     constructor.</li>
 	 * </ul>
 	 *
-	 * @return The validated object, the object hosting the validated element or {@code null}
+	 * @return the validated object, the object hosting the validated element or {@code null}
 	 */
 	T getRootBean();
 
@@ -59,7 +59,7 @@ public interface ConstraintViolation<T> {
 	 * For constructor validation, this is the class the constructor
 	 * is declared on.
 	 *
-	 * @return The class of the root bean or of the object hosting the validated element
+	 * @return the class of the root bean or of the object hosting the validated element
 	 */
 	Class<T> getRootBeanClass();
 
@@ -89,6 +89,7 @@ public interface ConstraintViolation<T> {
 	 * Returns {@code null} otherwise.
 	 *
 	 * @return parameters of the method or constructor invocation or {@code null}
+	 *
 	 * @since 1.1
 	 */
 	Object[] getExecutableParameters();
@@ -97,16 +98,18 @@ public interface ConstraintViolation<T> {
 	 * Returns the return value of the constructor or method invocation
 	 * if the {@code ConstraintViolation} is returned after validating the method
 	 * or constructor return value.
+	 * <p/>
 	 * Returns {@code null} if the method has no return value.
 	 * Returns {@code null} otherwise.
 	 *
 	 * @return the method or constructor return value or {@code null}
+	 *
 	 * @since 1.1
 	 */
 	Object getExecutableReturnValue();
 
 	/**
-	 * @return the property path to the value from {@code rootBean}.
+	 * @return the property path to the value from {@code rootBean}
 	 */
 	Path getPropertyPath();
 
@@ -115,12 +118,12 @@ public interface ConstraintViolation<T> {
 	 * For cross-parameter constraints, an {@code Object[]} representing
 	 * the method invocation arguments is returned.
 	 *
-	 * @return the value failing to pass the constraint.
+	 * @return the value failing to pass the constraint
 	 */
 	Object getInvalidValue();
 
 	/**
-	 * Constraint metadata reported to fail.
+	 * Returns the onstraint metadata reported to fail.
 	 * The returned instance is immutable.
 	 *
 	 * @return constraint metadata
@@ -128,16 +131,14 @@ public interface ConstraintViolation<T> {
 	ConstraintDescriptor<?> getConstraintDescriptor();
 
 	/**
-	 * Return an instance of the specified type allowing access to
+	 * Returns an instance of the specified type allowing access to
 	 * provider-specific APIs. If the Bean Validation provider
 	 * implementation does not support the specified class,
-	 * {@code ValidationException} is thrown.
+	 * {@link ValidationException} is thrown.
 	 *
-	 * @param type the class of the object to be returned.
-	 *
+	 * @param type the class of the object to be returned
 	 * @return an instance of the specified class
-	 *
-	 * @throws ValidationException if the provider does not support the call.
+	 * @throws ValidationException if the provider does not support the call
 	 *
 	 * @since 1.1
 	 */

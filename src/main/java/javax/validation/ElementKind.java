@@ -17,12 +17,13 @@
 package javax.validation;
 
 /**
- * Enum of possible kinds of elements encountered in Bean Validation
+ * Enum of possible kinds of elements encountered in Bean Validation.
+ * <p/>
  * Mostly elements that can be constrained and described in the metadata
  * but also elements that can be part of a {@link Path} and represented
  * by a {@link Path.Node}
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Emmanuel Bernard
  * @author Gunnar Morling
  *
  * @since 1.1
@@ -54,7 +55,7 @@ public enum ElementKind {
 	PARAMETER,
 
 	/**
-	 * Element holding cross-parameter constraints of a method or constructor
+	 * Element holding cross-parameter constraints of a method or constructor.
 	 */
 	CROSS_PARAMETER,
 
