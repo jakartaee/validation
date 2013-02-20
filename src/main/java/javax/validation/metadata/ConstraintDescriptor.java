@@ -20,6 +20,7 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.validation.ConstraintTarget;
 import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
 
@@ -36,9 +37,16 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	 * If a composing constraint, attribute values are reflecting
 	 * the overridden attributes of the composing constraint
 	 *
-	 * @return The annotation for this constraint.
+	 * @return the annotation for this constraint.
 	 */
 	T getAnnotation();
+
+	/**
+	 * The non-interpolated error message
+	 *
+	 * @return the non-interpolated error message
+	 */
+	String getMessage();
 
 	/**
 	 * The set of groups the constraint is applied on.
@@ -57,12 +65,19 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Set<Class<? extends Payload>> getPayload();
 
 	/**
+	 * The {@link ConstraintTarget} value of {@code validationAppliesTo} if the constraint
+	 * hosts it or {@code null} otherwise.
+	 *
+	 * @return the {@code ConstraintTarget} value or {@code null}
+	 */
+	ConstraintTarget getValidationAppliesTo();
+
+	/**
 	 * List of the constraint validation implementation classes.
 	 *
 	 * @return list of the constraint validation implementation classes.
 	 */
-	List<Class<? extends ConstraintValidator<T, ?>>>
-	getConstraintValidatorClasses();
+	List<Class<? extends ConstraintValidator<T, ?>>> getConstraintValidatorClasses();
 
 	/**
 	 * Returns a map containing the annotation attribute names as keys and the
