@@ -14,9 +14,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package javax.validation;
+package javax.validation.examples;
 
 import java.util.Map;
+
+import javax.validation.ConstraintValidatorContext;
 
 /**
  * This class does not actually run tests but rather makes sure
