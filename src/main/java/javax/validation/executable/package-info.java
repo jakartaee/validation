@@ -16,7 +16,7 @@
 */
 /**
  * Package related to the control and execution of executable validation.
- * Use {@link javax.validation.ValidateExecutable} to control whether or
+ * Use {@link javax.validation.executable.ValidateExecutable} to control whether or
  * not a (set of) constructors or methods are being validated.
  */
 package javax.validation.executable;

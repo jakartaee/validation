@@ -144,7 +144,7 @@ public interface ConfigurationState {
 	 * Properties defined via:
 	 * <ul>
 	 *     <li>{@link Configuration#addProperty(String, String)}</li>
-	 *     <li>{@link META-INF/validation.xml} provided that
+	 *     <li>{@code META-INF/validation.xml} provided that
 	 *     {@code ignoreXmlConfiguration}</li> is {@code false}.
 	 * </ul>
 	 * <p/>
