@@ -17,6 +17,8 @@
 package javax.validation.spi;
 
 import javax.validation.Configuration;
+import javax.validation.ValidationException;
+import javax.validation.ValidationProviderResolver;
 import javax.validation.ValidatorFactory;
 
 /**
@@ -34,45 +36,41 @@ import javax.validation.ValidatorFactory;
 public interface ValidationProvider<T extends Configuration<T>> {
 
 	/**
-	 * Returns a {@code Configuration} instance implementing {@code T},
+	 * Returns a {@link Configuration} instance implementing {@code T},
 	 * the {@code Configuration} sub-interface.
 	 * The returned {@code Configuration} instance must use the current provider
 	 * ({@code this}) to build the {@code ValidatorFactory} instance.
-	 * <p/>
 	 *
 	 * @param state bootstrap state
-	 *
-	 * @return specific Configuration implementation
+	 * @return specific {@code Configuration} implementation
 	 */
 	T createSpecializedConfiguration(BootstrapState state);
 
 	/**
-	 * Returns a {@code Configuration} instance. This instance is not bound to
+	 * Returns a {@link Configuration} instance. This instance is not bound to
 	 * use the current provider. The choice of provider follows the algorithm described
-	 * in {@link javax.validation.Configuration}
+	 * in {@code Configuration}
 	 * <p/>
-	 * The {@code ValidationProviderResolver} used by {@code Configuration}
+	 * The {@link ValidationProviderResolver} used by {@code Configuration}
 	 * is provided by {@code state}.
 	 * If null, the default {@code ValidationProviderResolver} is used.
 	 *
 	 * @param state bootstrap state
-	 *
-	 * @return Non specialized Configuration implementation
+	 * @return non specialized Configuration implementation
 	 */
 	Configuration<?> createGenericConfiguration(BootstrapState state);
 
 	/**
-	 * Build a {@code ValidatorFactory} using the current provider implementation.
+	 * Build a {@link ValidatorFactory} using the current provider implementation.
+	 * <p/>
 	 * The {@code ValidatorFactory} is assembled and follows the configuration passed
-	 * via {@code ConfigurationState}.
-	 * <p>
+	 * via {@link ConfigurationState}.
+	 * <p/>
 	 * The returned {@code ValidatorFactory} is properly initialized and ready for use.
-	 * </p>
 	 *
 	 * @param configurationState the configuration descriptor
-	 *
-	 * @return the instantiated ValidatorFactory
-	 * @throws javax.validation.ValidationException if the ValidatorFactory cannot be built
+	 * @return the instantiated {@code ValidatorFactory}
+	 * @throws ValidationException if the {@code ValidatorFactory} cannot be built
 	 */
 	ValidatorFactory buildValidatorFactory(ConfigurationState configurationState);
 }

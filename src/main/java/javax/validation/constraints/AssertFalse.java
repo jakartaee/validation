@@ -31,7 +31,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * The annotated element must be false.
- * Supported types are {@code boolean} and {@code Boolean}
+ * Supported types are {@code boolean} and {@code Boolean}.
  * <p/>
  * {@code null} elements are considered valid.
  *
@@ -42,6 +42,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface AssertFalse {
+
 	String message() default "{javax.validation.constraints.AssertFalse.message}";
 
 	Class<?>[] groups() default { };
@@ -49,15 +50,15 @@ public @interface AssertFalse {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@code @AssertFalse} annotations on the same element
+	 * Defines several {@link AssertFalse} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see javax.validation.constraints.AssertFalse
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		AssertFalse[] value();
 	}
 }

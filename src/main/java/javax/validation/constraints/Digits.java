@@ -33,13 +33,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * The annotated element must be a number within accepted range
  * Supported types are:
  * <ul>
- * <li>{@code BigDecimal}</li>
- * <li>{@code BigInteger}</li>
- * <li>{@code CharSequence}</li>
- * <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective wrapper types</li>
+ *     <li>{@code BigDecimal}</li>
+ *     <li>{@code BigInteger}</li>
+ *     <li>{@code CharSequence}</li>
+ *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective
+ *     wrapper types</li>
  * </ul>
  * <p/>
- * {@code null} elements are considered valid
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -48,6 +49,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Digits {
+
 	String message() default "{javax.validation.constraints.Digits.message}";
 
 	Class<?>[] groups() default { };
@@ -55,25 +57,25 @@ public @interface Digits {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * @return maximum number of integral digits accepted for this number.
+	 * @return maximum number of integral digits accepted for this number
 	 */
 	int integer();
 
 	/**
-	 * @return maximum number of fractional digits accepted for this number.
+	 * @return maximum number of fractional digits accepted for this number
 	 */
 	int fraction();
 
 	/**
-	 * Defines several {@code @Digits} annotations on the same element
+	 * Defines several {@link Digits} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Digits
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Digits[] value();
 	}
 }

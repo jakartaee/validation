@@ -17,18 +17,20 @@
 package javax.validation.bootstrap;
 
 import javax.validation.Configuration;
+import javax.validation.ValidationException;
 import javax.validation.ValidationProviderResolver;
+import javax.validation.spi.ValidationProvider;
 
 /**
  * Defines the state used to bootstrap Bean Validation and
- * creates a provider specific {@code Configuration}
+ * creates a provider specific {@link Configuration}
  * of type {@code T}.
  * <p/>
  * The specific {@code Configuration} is linked to the provider via the generic
- * parameter of the {@code ValidationProvider} implementation.
+ * parameter of the {@link ValidationProvider} implementation.
  * <p/>
  * The requested provider is the first provider instance assignable to
- * the requested provider type (known when {@code ProviderSpecificBootstrap} is built).
+ * the requested provider type (known when {@link ProviderSpecificBootstrap} is built).
  * The list of providers evaluated is returned by {@link ValidationProviderResolver}.
  * If no {@code ValidationProviderResolver} is defined, the
  * default {@code ValidationProviderResolver} strategy is used.
@@ -39,7 +41,7 @@ public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 
 	/**
 	 * Optionally defines the provider resolver implementation used.
-	 * If not defined, use the default {@code ValidationProviderResolver}
+	 * If not defined, use the default {@link ValidationProviderResolver}
 	 *
 	 * @param resolver {@code ValidationProviderResolver} implementation used
 	 *
@@ -49,14 +51,12 @@ public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 
 	/**
 	 * Determines the provider implementation suitable for {@code T} and delegates
-	 * the creation of this specific {@code Configuration} subclass to the provider.
+	 * the creation of this specific {@link Configuration} subclass to the provider.
 	 *
 	 * @return {@code Configuration} sub interface implementation
 	 *
-	 * @throws javax.validation.ValidationException
-	 *             If the Configuration object cannot be built. This is
-	 *             generally due to an issue with the
-	 *             ValidationProviderResolver.
+	 * @throws ValidationException if the {@code Configuration} object cannot be built;
+	 *         this is generally due to an issue with the {@code ValidationProviderResolver}
 	 */
 	public T configure();
 }

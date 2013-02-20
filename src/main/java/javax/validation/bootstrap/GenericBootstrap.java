@@ -16,22 +16,25 @@
 */
 package javax.validation.bootstrap;
 
-import javax.validation.ValidationProviderResolver;
 import javax.validation.Configuration;
+import javax.validation.ValidationException;
+import javax.validation.ValidationProviderResolver;
+import javax.validation.ValidatorFactory;
 
 /**
  * Defines the state used to bootstrap Bean Validation and
- * creates a provider agnostic {@code Configuration}.
+ * creates a provider agnostic {@link Configuration}.
  *
  * @author Emmanuel Bernard
  */
 public interface GenericBootstrap {
+
 	/**
 	 * Defines the provider resolution strategy.
 	 * This resolver returns the list of providers evaluated
-	 * to build the {@code Configuration}
+	 * to build the {@link Configuration}.
 	 * <p/>
-	 * If no resolver is defined, the default {@code ValidationProviderResolver}
+	 * If no resolver is defined, the default {@link ValidationProviderResolver}
 	 * implementation is used.
 	 *
 	 * @param resolver the {@code ValidationProviderResolver} to use for bootstrapping
@@ -40,18 +43,16 @@ public interface GenericBootstrap {
 	GenericBootstrap providerResolver(ValidationProviderResolver resolver);
 
 	/**
-	 * Returns a generic {@code Configuration} implementation.
-	 * At this stage the provider used to build the {@code ValidatorFactory}
+	 * Returns a generic {@link Configuration} implementation.
+	 * At this stage the provider used to build the {@link ValidatorFactory}
 	 * is not defined.
 	 * <p/>
 	 * The {@code Configuration} implementation is provided by the first provider
-	 * returned by the {@code ValidationProviderResolver} strategy.
+	 * returned by the {@link ValidationProviderResolver} strategy.
 	 *
-	 * @return a Configuration implementation compliant with the bootstrap state
-	 * @throws javax.validation.ValidationException
-	 *             If the Configuration object cannot be built. This is
-	 *             generally due to an issue with the
-	 *             ValidationProviderResolver.
+	 * @return a {@code Configuration} implementation compliant with the bootstrap state
+	 * @throws ValidationException if the {@code Configuration} object cannot be built;
+	 *         this is generally due to an issue with the {@code ValidationProviderResolver}
 	 */
 	Configuration<?> configure();
 }

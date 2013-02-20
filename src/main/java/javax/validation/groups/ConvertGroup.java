@@ -16,6 +16,7 @@
 */
 package javax.validation.groups;
 
+import javax.validation.Valid;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -28,10 +29,10 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Convert group {@code from} to group {@code to} during cascading.
- *
- * Can be used everywhere {@link javax.validation.Valid} is used and must be on an element
- * annotated with {@link javax.validation.Valid}.
+ * Converts group {@code from} to group {@code to} during cascading.
+ * <p/>
+ * Can be used everywhere {@link Valid} is used and must be on an element
+ * annotated with {@code Valid}.
  *
  * @author Emmanuel Bernard
  * @since 1.1
@@ -40,18 +41,20 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @Documented
 public @interface ConvertGroup {
+
 	Class<?> from();
 
 	Class<?> to();
 
 	/**
-	 * Defines several {@code ConvertGroup} annotations
-	 * on the same element
+	 * Defines several {@link ConvertGroup} annotations
+	 * on the same element.
 	 */
 	@Target({ TYPE, METHOD, FIELD, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	public @interface List {
+
 		ConvertGroup[] value();
 	}
 }
