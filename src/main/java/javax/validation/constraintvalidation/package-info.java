@@ -16,7 +16,7 @@
 */
 /**
  * Package containing constructs specific to constraint validators
- * In particular {@link SupportedValidationTarget} is used to refine the validation
+ * In particular {@link javax.validation.constraintvalidation.SupportedValidationTarget} is used to refine the validation
  * target of a {@link javax.validation.ConstraintValidator}.
  */
 package javax.validation.constraintvalidation;
