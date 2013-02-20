@@ -35,13 +35,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code BigDecimal}</li>
- * <li>{@code BigInteger}</li>
- * <li>{@code CharSequence}</li>
- * <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective wrappers</li>
+ *     <li>{@code BigDecimal}</li>
+ *     <li>{@code BigInteger}</li>
+ *     <li>{@code CharSequence}</li>
+ *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective
+ *     wrappers</li>
  * </ul>
  * Note that {@code double} and {@code float} are not supported due to rounding errors
- * (some providers might provide some approximative support)
+ * (some providers might provide some approximative support).
  * <p/>
  * {@code null} elements are considered valid.
  *
@@ -52,6 +53,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface DecimalMax {
+
 	String message() default "{javax.validation.constraints.DecimalMax.message}";
 
 	Class<?>[] groups() default { };
@@ -60,33 +62,33 @@ public @interface DecimalMax {
 
 	/**
 	 * The {@code String} representation of the max value according to the
-	 * {@code BigDecimal} string representation
+	 * {@code BigDecimal} string representation.
 	 *
 	 * @return value the element must be lower or equal to
 	 */
 	String value();
 
 	/**
-	 * Specifies, whether the specified maximum is inclusive or exclusive.
+	 * Specifies whether the specified maximum is inclusive or exclusive.
 	 * By default, it is inclusive.
 	 *
 	 * @return {@code true} if the value must be lower or equal to the specified maximum,
-	 *         {@code false} if the value must be lower.
+	 *         {@code false} if the value must be lower
 	 *
 	 * @since 1.1
 	 */
 	boolean inclusive() default true;
 
 	/**
-	 * Defines several {@code @DecimalMax} annotations on the same element
+	 * Defines several {@link DecimalMax} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see DecimalMax
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		DecimalMax[] value();
 	}
 }

@@ -37,8 +37,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code java.util.Date}</li>
- * <li>{@code java.util.Calendar}</li>
+ *     <li>{@code java.util.Date}</li>
+ *     <li>{@code java.util.Calendar}</li>
  * </ul>
  * <p/>
  * {@code null} elements are considered valid.
@@ -50,6 +50,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Future {
+
 	String message() default "{javax.validation.constraints.Future.message}";
 
 	Class<?>[] groups() default { };
@@ -57,15 +58,15 @@ public @interface Future {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@code @Future} annotations on the same element
+	 * Defines several {@link Future} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Future
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Future[] value();
 	}
 }

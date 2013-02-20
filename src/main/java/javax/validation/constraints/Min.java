@@ -35,14 +35,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code BigDecimal}</li>
- * <li>{@code BigInteger}</li>
- * <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective wrappers</li>
+ *     <li>{@code BigDecimal}</li>
+ *     <li>{@code BigInteger}</li>
+ *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective
+ *     wrappers</li>
  * </ul>
  * Note that {@code double} and {@code float} are not supported due to rounding errors
- * (some providers might provide some approximative support)
+ * (some providers might provide some approximative support).
  * <p/>
- * {@code null} elements are considered valid
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  */
@@ -51,6 +52,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Min {
+
 	String message() default "{javax.validation.constraints.Min.message}";
 
 	Class<?>[] groups() default { };
@@ -63,15 +65,15 @@ public @interface Min {
 	long value();
 
 	/**
-	 * Defines several {@code @Min} annotations on the same element
+	 * Defines several {@link Min} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Min
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Min[] value();
 	}
 }

@@ -31,14 +31,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * The annotated element must be a date in the past.
- * Now is defined as the current time according to the virtual machine
+ * Now is defined as the current time according to the virtual machine.
+ * <p/>
  * The calendar used if the compared type is of type {@code Calendar}
  * is the calendar based on the current timezone and the current locale.
  * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code java.util.Date}</li>
- * <li>{@code java.util.Calendar}</li>
+ *     <li>{@code java.util.Date}</li>
+ *     <li>{@code java.util.Calendar}</li>
  * </ul>
  * <p/>
  * {@code null} elements are considered valid.
@@ -50,6 +51,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Past {
+
 	String message() default "{javax.validation.constraints.Past.message}";
 
 	Class<?>[] groups() default { };
@@ -57,15 +59,15 @@ public @interface Past {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@code @Past} annotations on the same element
+	 * Defines several {@link Past} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Past
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Past[] value();
 	}
 }

@@ -34,10 +34,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p/>
  * Supported types are:
  * <ul>
- * <li>{@code CharSequence} (length of character sequence is evaluated)</li>
- * <li>{@code Collection} (collection size is evaluated)</li>
- * <li>{@code Map} (map size is evaluated)</li>
- * <li>Array (array length is evaluated)</li>
+ *     <li>{@code CharSequence} (length of character sequence is evaluated)</li>
+ *     <li>{@code Collection} (collection size is evaluated)</li>
+ *     <li>{@code Map} (map size is evaluated)</li>
+ *     <li>Array (array length is evaluated)</li>
+ * </ul>
  * <p/>
  * {@code null} elements are considered valid.
  *
@@ -48,6 +49,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Size {
+
 	String message() default "{javax.validation.constraints.Size.message}";
 
 	Class<?>[] groups() default { };
@@ -65,15 +67,15 @@ public @interface Size {
 	int max() default Integer.MAX_VALUE;
 
 	/**
-	 * Defines several {@code @Size} annotations on the same element
+	 * Defines several {@link Size} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Size
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Size[] value();
 	}
 }

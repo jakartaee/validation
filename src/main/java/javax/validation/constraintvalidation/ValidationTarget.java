@@ -16,22 +16,23 @@
 */
 package javax.validation.constraintvalidation;
 
+import javax.validation.ConstraintValidator;
+
 /**
- * List of possible targets for a {@link ConstraintValidator}
+ * List of possible targets for a {@link ConstraintValidator}.
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
- *
+ * @author Emmanuel Bernard
  * @since 1.1
  */
 public enum ValidationTarget {
 
 	/**
-	 * (Returned) element annotated by the constraint
+	 * (Returned) element annotated by the constraint.
 	 */
 	ANNOTATED_ELEMENT,
 
 	/**
-	 * Array of parameters of the annotated method or constructor (aka cross-parameter)
+	 * Array of parameters of the annotated method or constructor (aka cross-parameter).
 	 */
 	PARAMETERS
 }

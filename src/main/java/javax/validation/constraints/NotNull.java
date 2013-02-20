@@ -40,6 +40,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface NotNull {
+
 	String message() default "{javax.validation.constraints.NotNull.message}";
 
 	Class<?>[] groups() default { };
@@ -47,15 +48,15 @@ public @interface NotNull {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@code @NotNull} annotations on the same element
+	 * Defines several {@link NotNull} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see javax.validation.constraints.NotNull
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		NotNull[] value();
 	}
 }

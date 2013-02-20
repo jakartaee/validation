@@ -43,80 +43,81 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = { })
 public @interface Pattern {
+
 	/**
-	 * @return The regular expression to match.
+	 * @return the regular expression to match
 	 */
 	String regexp();
 
 	/**
-	 * @return Array of {@code Flag}s considered when resolving the regular expression.
+	 * @return array of {@code Flag}s considered when resolving the regular expression
 	 */
 	Flag[] flags() default { };
 
 	/**
-	 * @return The error message template.
+	 * @return the error message template
 	 */
 	String message() default "{javax.validation.constraints.Pattern.message}";
 
 	/**
-	 * @return The groups the constraint belongs to.
+	 * @return the groups the constraint belongs to
 	 */
 	Class<?>[] groups() default { };
 
 	/**
-	 * @return The payload associated to the constraint
+	 * @return the payload associated to the constraint
 	 */
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Possible Regexp flags
+	 * Possible Regexp flags.
 	 */
 	public static enum Flag {
 
 		/**
-		 * Enables Unix lines mode
+		 * Enables Unix lines mode.
 		 *
 		 * @see java.util.regex.Pattern#UNIX_LINES
 		 */
 		UNIX_LINES( java.util.regex.Pattern.UNIX_LINES ),
 
 		/**
-		 * Enables case-insensitive matching
+		 * Enables case-insensitive matching.
 		 *
 		 * @see java.util.regex.Pattern#CASE_INSENSITIVE
 		 */
 		CASE_INSENSITIVE( java.util.regex.Pattern.CASE_INSENSITIVE ),
 
 		/**
-		 * Permits whitespace and comments in pattern
+		 * Permits whitespace and comments in pattern.
 		 *
 		 * @see java.util.regex.Pattern#COMMENTS
 		 */
 		COMMENTS( java.util.regex.Pattern.COMMENTS ),
 
 		/**
-		 * Enables multiline mode
+		 * Enables multiline mode.
 		 *
 		 * @see java.util.regex.Pattern#MULTILINE
 		 */
 		MULTILINE( java.util.regex.Pattern.MULTILINE ),
 
 		/**
-		 * Enables dotall mode
+		 * Enables dotall mode.
 		 *
 		 * @see java.util.regex.Pattern#DOTALL
 		 */
 		DOTALL( java.util.regex.Pattern.DOTALL ),
 
 		/**
-		 * Enables Unicode-aware case folding
+		 * Enables Unicode-aware case folding.
 		 *
 		 * @see java.util.regex.Pattern#UNICODE_CASE
 		 */
 		UNICODE_CASE( java.util.regex.Pattern.UNICODE_CASE ),
 
 		/**
-		 * Enables canonical equivalence
+		 * Enables canonical equivalence.
 		 *
 		 * @see java.util.regex.Pattern#CANON_EQ
 		 */
@@ -138,15 +139,15 @@ public @interface Pattern {
 	}
 
 	/**
-	 * Defines several {@code @Pattern} annotations on the same element
+	 * Defines several {@link Pattern} annotations on the same element.
 	 *
-	 * @author Emmanuel Bernard
 	 * @see Pattern
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
+
 		Pattern[] value();
 	}
 }
