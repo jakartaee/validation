@@ -61,7 +61,7 @@ public interface ExecutableValidator {
 	 * @param method the method for which the return value constraints is validated
 	 * @param returnValue the value returned by the given method
 	 * @param groups the group or list of groups targeted for validation (defaults to
-	 *        {@link Default}).
+	 *        {@link Default})
 	 * @return a set with the constraint violations caused by this validation;
 	 *         will be empty if no error occurs, but never {@code null}
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the object,

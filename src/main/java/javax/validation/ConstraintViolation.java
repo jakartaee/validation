@@ -123,7 +123,7 @@ public interface ConstraintViolation<T> {
 	Object getInvalidValue();
 
 	/**
-	 * Returns the onstraint metadata reported to fail.
+	 * Returns the constraint metadata reported to fail.
 	 * The returned instance is immutable.
 	 *
 	 * @return constraint metadata

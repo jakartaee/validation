@@ -70,7 +70,7 @@ public interface ValidatorContext {
 
 	/**
 	 * Defines the parameter name provider implementation used by the
-	 * {@link Validator}. If not set or if null is passed as a parameter,
+	 * {@link Validator}. If not set or if {@code null} is passed as a parameter,
 	 * the parameter name provider of the {@link ValidatorFactory} is used.
 	 *
 	 * @param parameterNameProvider parameter name provider implementation.
