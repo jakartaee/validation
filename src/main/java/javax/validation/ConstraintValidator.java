@@ -16,6 +16,7 @@
 */
 package javax.validation;
 
+import javax.validation.constraintvalidation.SupportedValidationTarget;
 import java.lang.annotation.Annotation;
 
 /**
@@ -28,6 +29,11 @@ import java.lang.annotation.Annotation;
  *     <li>or generic parameters of {@code T} must be unbounded
  *     wildcard types</li>
  * </ul>
+ * <p/>
+ * The annotation {@link SupportedValidationTarget} can be put on a
+ * {@code ConstraintValidator} implementation to mark it as supporting
+ * cross-parameter constraints. Check out {@link SupportedValidationTarget}
+ * and {@link Constraint} for more information.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
@@ -61,4 +67,3 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	 */
 	boolean isValid(T value, ConstraintValidatorContext context);
 }
- 
