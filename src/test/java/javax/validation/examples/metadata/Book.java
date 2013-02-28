@@ -23,7 +23,7 @@ import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
 
 /**
- * @author Emmanuel Barned
+ * @author Emmanuel Bernard
  * @author Gunnar Morling
  */
 public class Book {
