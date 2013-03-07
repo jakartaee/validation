@@ -83,7 +83,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 *
 	 * @return {@code true} if the executable parameters are constrained
 	 */
-	boolean areParametersConstrained();
+	boolean hasConstrainedParameters();
 
 	/**
 	 * Returns {@code true} if the executable return value is constrained
@@ -98,7 +98,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 *
 	 * @return {@code true} if the executable return value is constrained
 	 */
-	boolean isReturnValueConstrained();
+	boolean hasConstrainedReturnValue();
 
 	/**
 	 * Returns {@code false}.
