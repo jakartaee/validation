@@ -70,6 +70,9 @@ public interface ConstraintViolation<T> {
 	 *     a bean constraint</li>
 	 *     <li>the bean instance hosting the property the constraint
 	 *     is applied on if it is a property constraint</li>
+	 *     <li>{@code null} when the {@code ConstraintViolation} is returned
+	 *     after calling {@link Validator#validateValue(Class, String, Object, Class[])}
+	 *     </li>
 	 *     <li>the object the method is executed on if it is
 	 *     a method parameter, cross-parameter or return value constraint</li>
 	 *     <li>{@code null} if it is a constructor parameter or
