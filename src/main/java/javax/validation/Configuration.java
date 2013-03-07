@@ -97,7 +97,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Defines the constraint validator factory. Has priority over the configuration
 	 * based constraint factory.
 	 * <p/>
-	 * If null is passed, the default constraint validator factory is used
+	 * If {@code null} is passed, the default constraint validator factory is used
 	 * (defined in XML or the specification default).
 	 *
 	 * @param constraintValidatorFactory constraint factory implementation
@@ -109,7 +109,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Defines the parameter name provider. Has priority over the configuration
 	 * based provider.
 	 * <p/>
-	 * If null is passed, the default parameter name provider is used
+	 * If {@code null} is passed, the default parameter name provider is used
 	 * (defined in XML or the specification default).
 	 *
 	 * @param parameterNameProvider parameter name provider implementation
@@ -160,7 +160,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * If a property with a given name is defined both via this method and in the
 	 * XML configuration, the value set programmatically has priority.
 	 * <p/>
-	 * If null is passed as a value, the value defined in XML is used. If no value
+	 * If {@code null} is passed as a value, the value defined in XML is used. If no value
 	 * is defined in XML, the property is considered unset.
 	 *
 	 * @param name property name

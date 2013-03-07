@@ -118,8 +118,8 @@ public interface ConstraintValidatorContext {
 	 * //Cross-parameter constraint on method createUser(String password, String passwordRepeat)
 	 * //Build a constraint violation on the default path + "passwordRepeat"
 	 * context.buildConstraintViolationWithTemplate("Passwords do not match")
-	 *                 .addParameterNode(1)
-	 *                 .addConstraintViolation();
+	 *             .addParameterNode(1)
+	 *             .addConstraintViolation();
 	 *
 	 * //Cross-parameter constraint on a method
 	 * //mergeAddresses(Map<String,Address> addresses, Map<String,Address> otherAddresses)
@@ -127,10 +127,10 @@ public interface ConstraintValidatorContext {
 	 * //i.e. the Address bean hosted in the "home" key of the "otherAddresses" map parameter
 	 * context.buildConstraintViolationWithTemplate(
 	 *         "Map entry home present in both and does not match")
-	 *                 .addParameterNode(1)
-	 *                 .addBeanNode()
-	 *                     .inIterable().atKey("home")
-	 *                 .addConstraintViolation();
+	 *             .addParameterNode(1)
+	 *             .addBeanNode()
+	 *                 .inIterable().atKey("home")
+	 *             .addConstraintViolation();
 	 *
 	 * //Cross-parameter constraint on a method
 	 * //mergeAddresses(Map<String,Address> addresses, Map<String,Address> otherAddresses)
@@ -139,10 +139,10 @@ public interface ConstraintValidatorContext {
 	 * //the "home" key of the "otherAddresses" map
 	 * context.buildConstraintViolationWithTemplate(
 	 *         "Map entry home present in both but city does not match")
-	 *                 .addParameterNode(1)
-	 *                 .addPropertyNode("city")
-	 *                     .inIterable().atKey("home")
-	 *                 .addConstraintViolation();
+	 *             .addParameterNode(1)
+	 *             .addPropertyNode("city")
+	 *                 .inIterable().atKey("home")
+	 *             .addConstraintViolation();
 	 * </pre>
 	 *
 	 * @param messageTemplate new un-interpolated constraint message

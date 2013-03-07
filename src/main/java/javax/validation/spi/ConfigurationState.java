@@ -41,7 +41,7 @@ import java.util.Set;
 public interface ConfigurationState {
 
 	/**
-	 * Returns true if {@link Configuration#ignoreXmlConfiguration()} has been called.
+	 * Returns {@code true} if {@link Configuration#ignoreXmlConfiguration()} has been called.
 	 * <p/>
 	 * In this case, the {@link ValidatorFactory} must ignore
 	 * {@code META-INF/validation.xml}.

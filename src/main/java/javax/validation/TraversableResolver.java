@@ -61,7 +61,7 @@ public interface TraversableResolver {
 	 * is marked as {@link Valid}.
 	 *
 	 * @param traversableObject object hosting {@code traversableProperty}
-	 *        or null if {@code validateValue} is called
+	 *        or {@code null} if {@code validateValue} is called
 	 * @param traversableProperty the traversable property
 	 * @param rootBeanType type of the root object passed to the Validator
 	 *        or hosting the method or constructor validated

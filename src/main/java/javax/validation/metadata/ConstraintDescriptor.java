@@ -111,7 +111,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Set<ConstraintDescriptor<?>> getComposingConstraints();
 
 	/**
-	 * @return true if the constraint is annotated with {@link ReportAsSingleViolation}
+	 * @return {@code true} if the constraint is annotated with {@link ReportAsSingleViolation}
 	 */
 	boolean isReportAsSingleViolation();
 }
