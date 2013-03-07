@@ -105,10 +105,10 @@ public class MetaDataApiTest {
 				);
 		assert constructorDescriptor.getName().equals( "Book" );
 		assert constructorDescriptor.getElementClass() == Book.class;
-		assert constructorDescriptor.areParametersConstrained() == true;
+		assert constructorDescriptor.hasConstrainedParameters() == true;
 
 		//return value is marked for cascaded validation
-		assert constructorDescriptor.isReturnValueConstrained() == true;
+		assert constructorDescriptor.hasConstrainedReturnValue() == true;
 
 		//constraints are retrieved via the sub-descriptors for parameters etc.
 		assert constructorDescriptor.hasConstraints() == false;
@@ -148,8 +148,8 @@ public class MetaDataApiTest {
 		MethodDescriptor methodDescriptor = bookDescriptor.getConstraintsForMethod( "getTitle" );
 		assert methodDescriptor.getName().equals( "getTitle" );
 		assert methodDescriptor.getElementClass() == String.class;
-		assert methodDescriptor.areParametersConstrained() == false;
-		assert methodDescriptor.isReturnValueConstrained() == true;
+		assert methodDescriptor.hasConstrainedParameters() == false;
+		assert methodDescriptor.hasConstrainedReturnValue() == true;
 		assert methodDescriptor.hasConstraints() == false;
 
 		returnValueDescriptor = methodDescriptor.getReturnValueDescriptor();
@@ -162,8 +162,8 @@ public class MetaDataApiTest {
 				"addChapter", String.class, int.class, int.class
 				);
 		assert methodDescriptor.getElementClass() == void.class;
-		assert methodDescriptor.areParametersConstrained() == true;
-		assert methodDescriptor.isReturnValueConstrained() == false;
+		assert methodDescriptor.hasConstrainedParameters() == true;
+		assert methodDescriptor.hasConstrainedReturnValue() == false;
 
 		//cross-parameter constraints accessible via separate descriptor
 		assert methodDescriptor.hasConstraints() == false;
