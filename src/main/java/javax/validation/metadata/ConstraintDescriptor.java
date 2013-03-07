@@ -49,6 +49,8 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	 * The non-interpolated error message
 	 *
 	 * @return the non-interpolated error message
+	 *
+	 * @since 1.1
 	 */
 	String getMessageTemplate();
 
@@ -73,6 +75,8 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	 * hosts it or {@code null} otherwise.
 	 *
 	 * @return the {@code ConstraintTarget} value or {@code null}
+	 *
+	 * @since 1.1
 	 */
 	ConstraintTarget getValidationAppliesTo();
 
