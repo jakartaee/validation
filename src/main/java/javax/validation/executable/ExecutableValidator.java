@@ -45,6 +45,7 @@ public interface ExecutableValidator {
 	 * @return a set with the constraint violations caused by this validation;
 	 *         will be empty if no error occurs, but never {@code null}
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
+	 *         or if parameters don't match with each other
 	 * @throws ValidationException if a non recoverable error happens during the
 	 *         validation process
 	 */
@@ -65,7 +66,7 @@ public interface ExecutableValidator {
 	 * @return a set with the constraint violations caused by this validation;
 	 *         will be empty if no error occurs, but never {@code null}
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the object,
-	 *         method or groups parameters
+	 *         method or groups parameters or if parameters don't match with each other
 	 * @throws ValidationException if a non recoverable error happens during the
 	 *         validation process
 	 */
@@ -86,6 +87,7 @@ public interface ExecutableValidator {
 	 * @return a set with the constraint violations caused by this validation;
 	 *         Will be empty if no error occurs, but never {@code null}
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
+	 *         or if parameters don't match with each other
 	 * @throws ValidationException if a non recoverable error happens during the
 	 *         validation process
 	 */
@@ -104,6 +106,7 @@ public interface ExecutableValidator {
 	 * @return a set with the constraint violations caused by this validation;
 	 *         will be empty, if no error occurs, but never {@code null}
 	 * @throws IllegalArgumentException if {@code null} is passed for any of the parameters
+	 *         or if parameters don't match with each other
 	 * @throws ValidationException if a non recoverable error happens during the
 	 *         validation process
 	 */
