@@ -16,11 +16,11 @@
 */
 package javax.validation;
 
-import javax.validation.constraintvalidation.SupportedValidationTarget;
-import javax.validation.constraintvalidation.ValidationTarget;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import javax.validation.constraintvalidation.SupportedValidationTarget;
+import javax.validation.constraintvalidation.ValidationTarget;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -33,13 +33,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p/>
  * Each constraint annotation must host the following attributes:
  * <ul>
- *     <li>{@code String message() default [...];} which should default to an error
- *     message key made of the fully-qualified class name of the constraint followed by
- *     {@code .message}. For example {@code "{com.acme.constraints.NotSafe.message}"}</li>
- *     <li>{@code Class<?>[] groups() default {};} for user to customize the targeted
- *     groups</li>
- *     <li>{@code Class<? extends Payload>[] payload() default {};} for
- *     extensibility purposes</li>
+ * <li>{@code String message() default [...];} which should default to an error
+ * message key made of the fully-qualified class name of the constraint followed by
+ * {@code .message}. For example {@code "{com.acme.constraints.NotSafe.message}"}</li>
+ * <li>{@code Class<?>[] groups() default {};} for user to customize the targeted
+ * groups</li>
+ * <li>{@code Class<? extends Payload>[] payload() default {};} for
+ * extensibility purposes</li>
  * </ul>
  * <p/>
  * When building a constraint that is both generic and cross-parameter, the constraint
@@ -54,12 +54,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *
  * A constraint is both generic and cross-parameter if
  * <ul>
- *     <li>two kinds of {@code ConstraintValidator}s are attached to the
- *     constraint, one targeting {@link ValidationTarget.ANNOTATED_ELEMENT}
- *     and one targeting {@link ValidationTarget.PARAMETERS},</li>
- *     <li>or if a {@code ConstraintValidator} targets both
- *     {@code ANNOTATED_ELEMENT} and
- *     {@code PARAMETERS}.</li>
+ * <li>two kinds of {@code ConstraintValidator}s are attached to the
+ * constraint, one targeting {@link ValidationTarget#ANNOTATED_ELEMENT}
+ * and one targeting {@link ValidationTarget#PARAMETERS},</li>
+ * <li>or if a {@code ConstraintValidator} targets both
+ * {@code ANNOTATED_ELEMENT} and
+ * {@code PARAMETERS}.</li>
  * </ul>
  *
  * Such dual constraints are rare. See {@link SupportedValidationTarget} for more info.
