@@ -18,7 +18,7 @@ package javax.validation;
 import java.util.Map;
 import java.util.Set;
 import javax.validation.executable.ExecutableType;
-import javax.validation.executable.ValidateExecutable;
+import javax.validation.executable.ValidateOnExecution;
 import javax.validation.spi.ValidationProvider;
 
 /**
@@ -86,7 +86,7 @@ public interface BootstrapConfiguration {
 
 	/**
 	 * Returns the set of executable types that should be considered
-	 * unless explicitly overridden via {@link ValidateExecutable}
+	 * unless explicitly overridden via {@link ValidateOnExecution}
 	 * <p/>
 	 * Returns a set containing {@link ExecutableType#CONSTRUCTORS} and
 	 * {@link ExecutableType#NON_GETTER_METHODS} if unspecified in the configuration.
