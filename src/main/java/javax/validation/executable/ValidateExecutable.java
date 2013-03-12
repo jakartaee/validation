@@ -26,27 +26,39 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Expresses which executables (method or constructor) should have their parameters
- * and return value validated upon execution.
+ * Expresses which executables (methods or constructors) should have their parameters
+ * and return value validated upon execution. Can be on executable (method, constructor)
+ * or type level (with the former taking precedence).
  * <p/>
- * The settings for a given executable is resolved as followed.
- * A given executable is validated upon execution:
+ * If not present for a given executable, the default configuration from
+ * {@code META-INF/validation.xml} and finally the implicit default
+ * validated executable types (constructors and non-getters) are taken into account to determine
+ * whether a given executable is validated upon execution or not.
+ * <p/>
+ * The following describes the formal rules for deciding whether an executable is validated.
+ * They are applied in decreasing order:
  * <ul>
- *     <li>if it is annotated with {@code @ValidateExecutable} and the {@code value} attribute
- *     contains the executable type. If the {@code value} attribute does not contain the
- *     executable type, the executable is not validated.</li>
- *     <li>otherwise if,
- *     the type (class, interface) on which the executable is defined
- *     is annotated with {@code @ValidateExecutable} and the {@code value} attribute
- *     contains the executable type. If the {@code value} attribute does not contain the
- *     executable type, the executable is not validated.</li>
- *     <li>otherwise if the global executable validation setting contains the executable
- *     type. If the global setting does not contain the executable type, the executable
- *     is not validated.</li>
+ *     <li>the executable is validated if it is annotated with {@code @ValidateExecutable} and
+ *     the {@code type} attribute contains the executable type or {@link ExecutableType#IMPLICIT}.
+ *     If the {@code type} attribute does neither contain the executable type nor {@code IMPLICIT},
+ *     the executable is not validated.</li>
+ *     <li>otherwise the executable is validated if the type (class, interface) on which it is
+ *     declared is annotated with {@code @ValidateExecutable} and the {@code type} attribute
+ *     contains the executable type. If the {@code type} attribute contains
+ *     {@code IMPLICIT}, then this rule is ignored and the behavior is
+ *     equivalent to {@code ValidateExecutable} not being present. If the
+ *     {@code type} attribute does not contain the executable type, the executable is not
+ *     validated.</li>
+ *     <li>otherwise the executable is validated if the global executable validation setting
+ *     contains the executable type. If the global setting does not contain the executable type,
+ *     the executable is not validated.</li>
  *     <li>The rules above do not apply to methods overriding a superclass method or
  *     implementing an interface method. In this case, the method inherits the behavior
- *     of the method it overrides / implements.</li>
+ *     of the method it overrides or implements.</li>
  * </ul>
+ * <p/>
+ * Note that you ou can exclude an executable from validation by making sure the rules above do not match
+ * or by annotating the executable with {@code @ValidateExecutable(NONE)}.
  *
  * @author Emmanuel Bernard
  * @since 1.1
@@ -57,7 +69,7 @@ public @interface ValidateExecutable {
 
 	/**
 	 * List of executable types to be validated when called.
-	 * Defaults to validating all types.
+	 * Defaults to the types discovered implicitly (see {@link ExecutableType#IMPLICIT}).
 	 */
-	ExecutableType[] value() default {ExecutableType.ALL};
+	ExecutableType[] type() default {ExecutableType.IMPLICIT};
 }
