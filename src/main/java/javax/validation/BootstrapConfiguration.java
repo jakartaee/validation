@@ -93,7 +93,7 @@ public interface BootstrapConfiguration {
 	 *
 	 * @return set of validated executable types
 	 */
-	Set<ExecutableType> getValidatedExecutableTypes();
+	Set<ExecutableType> getDefaultValidatedExecutableTypes();
 
 	/**
 	 * Returns properties as a map of string based key/value pairs.
