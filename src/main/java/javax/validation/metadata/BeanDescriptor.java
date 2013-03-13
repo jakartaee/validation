@@ -44,16 +44,6 @@ public interface BeanDescriptor extends ElementDescriptor {
 	boolean isBeanConstrained();
 
 	/**
-	 * Returns {@code true} if any of the bean constructors
-	 * or methods are constrained executables.
-	 *
-	 * @return whether or not the bean has constrained executables
-	 *
-	 * @since 1.1
-	 */
-	boolean hasConstrainedExecutables();
-
-	/**
 	 * Returns the property descriptor for a given property.
 	 * <p/>
 	 * Returns {@code null} if the property does not exist or has no
@@ -102,14 +92,17 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Constrained methods have at least one parameter or return value constraint
 	 * or at least one parameter or return value marked for cascaded validation.
 	 * Methods of super types are considered.
+	 * <p/>
+	 * Only methods matching the given type(s) are considered.
 	 *
+	 * @param methodTypes the list of method types to consider
 	 * @return a set with descriptors for the constrained methods of this type;
-	 *         will be empty if this type has no constrained methods but never
-	 *         {@code null}
+	 *         will be empty if this type has no constrained methods of the considered
+	 *         type(s) but never {@code null}
 	 *
 	 * @since 1.1
 	 */
-	Set<MethodDescriptor> getConstrainedMethods();
+	Set<MethodDescriptor> getConstrainedMethods(MethodType... methodTypes);
 
 	/**
 	 * Returns a constructor descriptor for the given constructor.

@@ -30,6 +30,7 @@ import javax.validation.metadata.ConstructorDescriptor;
 import javax.validation.metadata.CrossParameterDescriptor;
 import javax.validation.metadata.GroupConversionDescriptor;
 import javax.validation.metadata.MethodDescriptor;
+import javax.validation.metadata.MethodType;
 import javax.validation.metadata.ParameterDescriptor;
 import javax.validation.metadata.PropertyDescriptor;
 import javax.validation.metadata.ReturnValueDescriptor;
@@ -50,7 +51,7 @@ public class MetaDataApiTest {
 		assert ! bookDescriptor.hasConstraints();
 
 		assert bookDescriptor.isBeanConstrained();
-		assert bookDescriptor.hasConstrainedExecutables();
+		assert bookDescriptor.getConstrainedMethods( MethodType.NON_GETTER ).size() > 0;
 
 		assert bookDescriptor.getConstraintDescriptors().size() == 0; //no bean-level constraint
 
