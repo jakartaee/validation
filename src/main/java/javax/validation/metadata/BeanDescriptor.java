@@ -86,23 +86,24 @@ public interface BeanDescriptor extends ElementDescriptor {
 	MethodDescriptor getConstraintsForMethod(String methodName, Class<?>... parameterTypes);
 
 	/**
-	 * Returns a set with descriptors for the constrained methods of the type
+	 * Returns a set with descriptors for the constrained methods of the bean
 	 * represented by this descriptor.
 	 * <p/>
 	 * Constrained methods have at least one parameter or return value constraint
 	 * or at least one parameter or return value marked for cascaded validation.
 	 * Methods of super types are considered.
 	 * <p/>
-	 * Only methods matching the given type(s) are considered.
+	 * Only methods matching the given method type(s) are considered.
 	 *
-	 * @param methodTypes the list of method types to consider
-	 * @return a set with descriptors for the constrained methods of this type;
-	 *         will be empty if this type has no constrained methods of the considered
-	 *         type(s) but never {@code null}
+	 * @param methodType method type to consider
+	 * @param methodTypes remaining optional method types to consider
+	 * @return a set with descriptors for the constrained methods of this bean;
+	 *         will be empty if this bean has no constrained methods of the considered
+	 *         method type(s) but never {@code null}
 	 *
 	 * @since 1.1
 	 */
-	Set<MethodDescriptor> getConstrainedMethods(MethodType... methodTypes);
+	Set<MethodDescriptor> getConstrainedMethods(MethodType methodType, MethodType... methodTypes);
 
 	/**
 	 * Returns a constructor descriptor for the given constructor.
@@ -122,13 +123,13 @@ public interface BeanDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a set with descriptors for the constrained constructors of the
-	 * type represented by this descriptor.
+	 * bean represented by this descriptor.
 	 * <p/>
 	 * Constrained constructors have at least one parameter or return value constraint
 	 * or at least one parameter or return value marked for cascaded validation.
 	 *
 	 * @return a set with descriptors for the constrained constructor of this
-	 *         type; will be empty if this type has no constrained constructor
+	 *         bean; will be empty if this bea has no constrained constructor
 	 *         but never {@code null}
 	 *
 	 * @since 1.1

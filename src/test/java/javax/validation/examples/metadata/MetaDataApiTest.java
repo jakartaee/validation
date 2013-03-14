@@ -96,7 +96,7 @@ public class MetaDataApiTest {
 		assert propertyDescriptor.isCascaded();
 
 		//getTitle() and addChapter()
-		assert bookDescriptor.getConstrainedMethods().size() == 2;
+		assert bookDescriptor.getConstrainedMethods(MethodType.GETTER, MethodType.NON_GETTER).size() == 2;
 
 		//the constructor accepting title, description and author
 		assert bookDescriptor.getConstrainedConstructors().size() == 1;
