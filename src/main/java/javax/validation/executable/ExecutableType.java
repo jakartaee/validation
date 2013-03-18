@@ -55,7 +55,7 @@ public enum ExecutableType {
 	 * JavaBeans specification is a method whose:
 	 * <ul>
 	 *     <li>name starts with get, has a return type but no parameter</li>
-	 *     <li>name starts with is, has a return type and is returning {@code Boolean}.</li>
+	 *     <li>name starts with is, has a return type and is returning {@code boolean}.</li>
 	 * </ul>
 	 */
 	NON_GETTER_METHODS,
@@ -66,7 +66,7 @@ public enum ExecutableType {
 	 * JavaBeans specification is a method whose:
 	 * <ul>
 	 *     <li>name starts with get, has a return type but no parameter</li>
-	 *     <li>name starts with is, has a return type and is returning {@code Boolean}.</li>
+	 *     <li>name starts with is, has a return type and is returning {@code boolean}.</li>
 	 * </ul>
 	 */
 	GETTER_METHODS,
