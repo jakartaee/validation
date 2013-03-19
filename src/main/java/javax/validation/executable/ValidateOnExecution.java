@@ -16,6 +16,7 @@
 */
 package javax.validation.executable;
 
+import javax.validation.ValidationException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -54,7 +55,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     the executable is not validated.</li>
  *     <li>The rules above do not apply to methods overriding a superclass method or
  *     implementing an interface method. In this case, the method inherits the behavior
- *     of the method it overrides or implements.</li>
+ *     of the method it overrides or implements. Out of the box, a conforming implementation
+ *     should raise a {@link ValidationException} if the overriding / implementing method hosts
+ *     the {@code ValidateOnExecution} annotation.</li>
  * </ul>
  * <p/>
  * Note that you can exclude an executable from validation by making sure the rules above do not match
