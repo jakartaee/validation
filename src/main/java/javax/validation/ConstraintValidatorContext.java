@@ -189,7 +189,6 @@ public interface ConstraintValidatorContext {
 		 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)},
 		 *             {@link #addBeanNode()} and {@link #addParameterNode(int)}
 		 */
-		@Deprecated
 		NodeBuilderDefinedContext addNode(String name);
 
 		/**
@@ -359,7 +358,6 @@ public interface ConstraintValidatorContext {
 			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
-			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
@@ -428,7 +426,6 @@ public interface ConstraintValidatorContext {
 			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
-			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
@@ -510,7 +507,6 @@ public interface ConstraintValidatorContext {
 			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
-			@Deprecated
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
