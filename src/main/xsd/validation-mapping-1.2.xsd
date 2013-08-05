@@ -20,7 +20,7 @@
            targetNamespace="http://jboss.org/xml/ns/javax/validation/mapping"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:map="http://jboss.org/xml/ns/javax/validation/mapping"
-           version="1.1">
+           version="1.2">
 
     <xs:annotation>
         <xs:documentation><![CDATA[
@@ -39,8 +39,8 @@
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="
                     http://jboss.org/xml/ns/javax/validation/mapping
-                    validation-mapping-1.1.xsd"
-                version="1.1">
+                    http://jboss.org/xml/ns/javax/validation/mapping/validation-mapping-1.2.xsd"
+                version="1.2">
                 ...
             </constraint-mappings>
         ]]>
@@ -80,7 +80,7 @@
                         maxOccurs="unbounded"
                         minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="version" type="map:versionType" fixed="1.1" use="required"/>
+        <xs:attribute name="version" type="map:versionType" fixed="1.2" use="required"/>
     </xs:complexType>
     <xs:simpleType name="versionType">
         <xs:restriction base="xs:token">
