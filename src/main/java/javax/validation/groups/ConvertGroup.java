@@ -42,7 +42,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ConvertGroup {
 
-	Class<?> from();
+	Class<?> from() default Default.class;
 
 	Class<?> to();
 
