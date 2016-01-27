@@ -22,14 +22,14 @@ import java.lang.annotation.Annotation;
 /**
  * Defines the logic to validate a given constraint {@code A}
  * for a given object type {@code T}.
- * <p/>
+ * <p>
  * Implementations must comply to the following restriction:
  * <ul>
  *     <li>{@code T} must resolve to a non parameterized type</li>
  *     <li>or generic parameters of {@code T} must be unbounded
  *     wildcard types</li>
  * </ul>
- * <p/>
+ * <p>
  * The annotation {@link SupportedValidationTarget} can be put on a
  * {@code ConstraintValidator} implementation to mark it as supporting
  * cross-parameter constraints. Check out {@link SupportedValidationTarget}
@@ -45,7 +45,7 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	 * {@link #isValid(Object, ConstraintValidatorContext)} calls.
 	 * The constraint annotation for a given constraint declaration
 	 * is passed.
-	 * <p/>
+	 * <p>
 	 * This method is guaranteed to be called before any use of this instance for
 	 * validation.
 	 *
@@ -56,7 +56,7 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	/**
 	 * Implements the validation logic.
 	 * The state of {@code value} must not be altered.
-	 * <p/>
+	 * <p>
 	 * This method can be accessed concurrently, thread-safety must be ensured
 	 * by the implementation.
 	 *

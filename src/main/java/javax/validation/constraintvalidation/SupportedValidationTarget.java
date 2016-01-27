@@ -26,15 +26,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Defines the target(s) a {@link ConstraintValidator} can validate.
- * <p/>
+ * <p>
  * A {@code ConstraintValidator} can target the (returned) element
  * annotated by the constraint, the array of parameters of a method
  * or constructor (aka cross-parameter) or both.
- * <p/>
+ * <p>
  * If {@code @SupportedValidationTarget} is not present, the
  * {@code ConstraintValidator} targets the (returned) element annotated
  * by the constraint.
- * <p/>
+ * <p>
  * A {@code ConstraintValidator} targeting cross-parameter must accept
  * {@code Object[]} (or {@code Object}) as the type of object it validates.
  *

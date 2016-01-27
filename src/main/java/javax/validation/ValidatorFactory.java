@@ -18,7 +18,7 @@ package javax.validation;
 
 /**
  * Factory returning initialized {@code Validator} instances.
- * <p/>
+ * <p>
  * Implementations are thread-safe and instances are typically cached and reused.
  *
  * @author Emmanuel Bernard
@@ -31,7 +31,7 @@ public interface ValidatorFactory {
 	 * Returns an initialized {@link Validator} instance using the
 	 * factory defaults for message interpolator, traversable resolver
 	 * and constraint validator factory.
-	 * <p/>
+	 * <p>
 	 * Validator instances can be pooled and shared by the implementation.
 	 *
 	 * @return an initialized {@code Validator} instance

@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 
 /**
  * Defines group sequence.
- * <p/>
+ * <p>
  * The interface hosting {@code @GroupSequence} is representing
  * the group sequence.
  * When hosted on a class, represents the {@link Default} group

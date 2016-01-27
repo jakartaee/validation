@@ -39,7 +39,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective
  *     wrapper types</li>
  * </ul>
- * <p/>
+ * <p>
  * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard

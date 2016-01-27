@@ -34,13 +34,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * Now is defined as the current time according to the virtual machine
  * The calendar used if the compared type is of type {@code Calendar}
  * is the calendar based on the current timezone and the current locale.
- * <p/>
+ * <p>
  * Supported types are:
  * <ul>
  *     <li>{@code java.util.Date}</li>
  *     <li>{@code java.util.Calendar}</li>
  * </ul>
- * <p/>
+ * <p>
  * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard

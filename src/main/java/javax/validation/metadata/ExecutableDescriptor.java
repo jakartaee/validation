@@ -61,7 +61,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a descriptor for this executable's return value.
-	 * <p/>
+	 * <p>
 	 * An executable without return value will return a descriptor
 	 * representing {@code void}. This descriptor will have no constraint
 	 * associated.
@@ -78,7 +78,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 *     {@link Valid})</li>
 	 *     <li>because of at least one cross-parameter constraint</li>
 	 * </ul>
-	 * <p/>
+	 * <p>
 	 * Also returns {@code false} if there is no parameter.
 	 *
 	 * @return {@code true} if the executable parameters are constrained
@@ -93,7 +93,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 	 *     <li>because validation is cascaded on the return value (via
 	 *     {@link Valid})</li>
 	 * </ul>
-	 * <p/>
+	 * <p>
 	 * Also returns {@code false} if there is no return value.
 	 *
 	 * @return {@code true} if the executable return value is constrained
@@ -102,7 +102,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns {@code false}.
-	 * <p/>
+	 * <p>
 	 * An executable per se does not host constraints, use
 	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
 	 * and {@link #getReturnValueDescriptor()} to discover constraints.
@@ -114,7 +114,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns an empty {@code Set}.
-	 * <p/>
+	 * <p>
 	 * An executable per se does not host constraints, use
 	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
 	 * and {@link #getReturnValueDescriptor()} to discover constraints.
@@ -126,7 +126,7 @@ public interface ExecutableDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a finder that will always return an empty {@code Set}.
-	 * <p/>
+	 * <p>
 	 * An executable per se does not host constraints, use
 	 * {@link #getParameterDescriptors()}, {@link #getCrossParameterDescriptor()}
 	 * and {@link #getReturnValueDescriptor()} to discover constraints.

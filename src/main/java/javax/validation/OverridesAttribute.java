@@ -49,10 +49,10 @@ public @interface OverridesAttribute {
 	/**
 	 * The index of the targeted constraint declaration when using
 	 * multiple constraints of the same type.
-	 * <p/>
+	 * <p>
 	 * The index represents the index of the constraint in the
 	 * {@code value()} array.
-	 * <p/>
+	 * <p>
 	 * By default, no index is defined and the single constraint declaration
 	 * is targeted.
 	 *

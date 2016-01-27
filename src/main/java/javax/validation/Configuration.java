@@ -15,40 +15,41 @@
 */
 package javax.validation;
 
-import javax.validation.spi.ValidationProvider;
 import java.io.InputStream;
+
+import javax.validation.spi.ValidationProvider;
 
 /**
  * Receives configuration information, selects the appropriate
  * Bean Validation provider and builds the appropriate {@link ValidatorFactory}.
- * <p/>
+ * <p>
  * Usage:
  * <pre>
- * Configuration<?> configuration = //provided by one of the Validation bootstrap methods
+ * Configuration&lt;?&gt; configuration = //provided by one of the Validation bootstrap methods
  *     ValidatorFactory = configuration
  *         .messageInterpolator( new CustomMessageInterpolator() )
  *         .buildValidatorFactory();
  * </pre>
- * <p/>
+ * <p>
  * By default, the configuration information is retrieved from
  * {@code META-INF/validation.xml}.
  * It is possible to override the configuration retrieved from the XML file
  * by using one or more of the {@code Configuration} methods.
- * <p/>
+ * <p>
  * The {@link ValidationProviderResolver} is specified at configuration time
  * (see {@link ValidationProvider}).
  * If none is explicitly requested, the default {@code ValidationProviderResolver} is used.
- * <p/>
+ * <p>
  * The provider is selected in the following way:
  * <ul>
  *     <li>if a specific provider is requested programmatically using
  *     {@link Validation#byProvider(Class)}, find the first provider implementing
  *     the provider class requested and use it</li>
- *     <li>if a specific provider is requested in {@code META-INF/validation.xml}>,
+ *     <li>if a specific provider is requested in {@code META-INF/validation.xml},
  *     find the first provider implementing the provider class requested and use it</li>
  *     <li>otherwise, use the first provider returned by the {@code ValidationProviderResolver}</li>
  * </ul>
- * <p/>
+ * <p>
  * Implementations are not meant to be thread-safe.
  *
  * @author Emmanuel Bernard
@@ -60,7 +61,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Ignores data from the {@code META-INF/validation.xml} file if this
 	 * method is called.
-	 * <p/>
+	 * <p>
 	 * This method is typically useful for containers that parse
 	 * {@code META-INF/validation.xml} themselves and pass the information
 	 * via the {@code Configuration} methods.
@@ -72,7 +73,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Defines the message interpolator used. Has priority over the configuration
 	 * based message interpolator.
-	 * <p/>
+	 * <p>
 	 * If {@code null} is passed, the default message interpolator is used
 	 * (defined in XML or the specification default).
 	 *
@@ -84,7 +85,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Defines the traversable resolver used. Has priority over the configuration
 	 * based traversable resolver.
-	 * <p/>
+	 * <p>
 	 * If {@code null} is passed, the default traversable resolver is used
 	 * (defined in XML or the specification default).
 	 *
@@ -96,7 +97,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Defines the constraint validator factory. Has priority over the configuration
 	 * based constraint factory.
-	 * <p/>
+	 * <p>
 	 * If {@code null} is passed, the default constraint validator factory is used
 	 * (defined in XML or the specification default).
 	 *
@@ -108,7 +109,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Defines the parameter name provider. Has priority over the configuration
 	 * based provider.
-	 * <p/>
+	 * <p>
 	 * If {@code null} is passed, the default parameter name provider is used
 	 * (defined in XML or the specification default).
 	 *
@@ -122,7 +123,7 @@ public interface Configuration<T extends Configuration<T>> {
 	/**
 	 * Add a stream describing constraint mapping in the Bean Validation XML
 	 * format.
-	 * <p/>
+	 * <p>
 	 * The stream should be closed by the client API after the
 	 * {@link ValidatorFactory} has been built. The Bean Validation provider
 	 * must not close the stream.
@@ -143,9 +144,9 @@ public interface Configuration<T extends Configuration<T>> {
 	 * XML configuration properties.
 	 * If the underlying provider does not know how to handle the property,
 	 * it must silently ignore it.
-	 * <p/>
+	 * <p>
 	 * Note: Using this non type-safe method is generally not recommended.
-	 * <p/>
+	 * <p>
 	 * It is more appropriate to use, if available, the type-safe equivalent provided
 	 * by a specific provider via its {@link Configuration} subclass.
 	 * <pre>
@@ -156,10 +157,10 @@ public interface Configuration<T extends Configuration<T>> {
 	 * </pre>
 	 * This method is typically used by containers parsing {@code META-INF/validation.xml}
 	 * themselves and injecting the state to the {@code Configuration} object.
-	 * <p/>
+	 * <p>
 	 * If a property with a given name is defined both via this method and in the
 	 * XML configuration, the value set programmatically has priority.
-	 * <p/>
+	 * <p>
 	 * If {@code null} is passed as a value, the value defined in XML is used. If no value
 	 * is defined in XML, the property is considered unset.
 	 *
@@ -234,8 +235,9 @@ public interface Configuration<T extends Configuration<T>> {
 
 	/**
 	 * Returns configuration information stored in the {@code META-INF/validation.xml} file.
-	 * <p/>
-	 * <b>Note</b>:<br/>
+	 * <p>
+	 * <b>Note</b>:
+	 * <br>
 	 * Implementations are encouraged to lazily build this object to delay parsing.
 	 *
 	 * @return returns an instance of {@link BootstrapConfiguration}; this method never

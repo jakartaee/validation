@@ -22,7 +22,7 @@ import java.util.List;
  * Represents the navigation path from an object to another
  * in an object graph.
  * Each path element is represented by a {@code Node}.
- * <p/>
+ * <p>
  * The path corresponds to the succession of nodes
  * in the order they are returned by the {@code Iterator}.
  *
@@ -87,7 +87,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *     <li>{@link ElementKind#CROSS_PARAMETER}: {@link CrossParameterNode}</li>
 		 *     <li>{@link ElementKind#RETURN_VALUE}: {@link ReturnValueNode}</li>
 		 * </ul>
-		 * <p/>
+		 * <p>
 		 * This is useful to narrow down the {@code Node} type and access node specific
 		 * information:
 		 * <pre>

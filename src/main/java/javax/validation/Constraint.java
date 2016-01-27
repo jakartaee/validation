@@ -19,6 +19,7 @@ package javax.validation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 import javax.validation.constraintvalidation.ValidationTarget;
 
@@ -27,10 +28,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Marks an annotation as being a Bean Validation constraint.
- * <p/>
+ * <p>
  * A given constraint annotation must be annotated by a {@code @Constraint}
  * annotation which refers to its list of constraint validation implementations.
- * <p/>
+ * <p>
  * Each constraint annotation must host the following attributes:
  * <ul>
  *     <li>{@code String message() default [...];} which should default to an error
@@ -41,7 +42,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     <li>{@code Class<? extends Payload>[] payload() default {};} for
  *     extensibility purposes</li>
  * </ul>
- * <p/>
+ * <p>
  * When building a constraint that is both generic and cross-parameter, the constraint
  * annotation must host the {@code validationAppliesTo()} property.
  * A constraint is generic if it targets the annotated element and is cross-parameter if
@@ -62,7 +63,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * </ul>
  *
  * Such dual constraints are rare. See {@link SupportedValidationTarget} for more info.
- * <p/>
+ * <p>
  * Here is an example of constraint definition:
  * <pre>
  * &#64;Documented
@@ -71,8 +72,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * &#64;Retention(RUNTIME)
  * public &#64;interface OrderNumber {
  *     String message() default "{com.acme.constraint.OrderNumber.message}";
- *     Class<?>[] groups() default {};
- *     Class<? extends Payload>[] payload() default {};
+ *     Class&lt;?&gt;[] groups() default {};
+ *     Class&lt;? extends Payload&gt;[] payload() default {};
  * }
  * </pre>
  *
@@ -90,7 +91,7 @@ public @interface Constraint {
 	 * for a given {@link ValidationTarget}
 	 * If two {@code ConstraintValidator}s refer to the same type,
 	 * an exception will occur.
-	 * <p/>
+	 * <p>
 	 * At most one {@code ConstraintValidator} targeting the array of parameters of
 	 * methods or constructors (aka cross-parameter) is accepted. If two or more
 	 * are present, an exception will occur.

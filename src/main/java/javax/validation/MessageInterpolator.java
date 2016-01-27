@@ -21,7 +21,7 @@ import javax.validation.metadata.ConstraintDescriptor;
 
 /**
  * Interpolates a given constraint violation message.
- * <p/>
+ * <p>
  * Implementations should be as tolerant as possible on syntax errors.
  * Implementations must be thread-safe.
  *
@@ -32,7 +32,7 @@ public interface MessageInterpolator {
 
 	/**
 	 * Interpolates the message template based on the constraint validation context.
-	 * <p/>
+	 * <p>
 	 * The locale is defaulted according to the {@code MessageInterpolator}
 	 * implementation. See the implementation documentation for more detail.
 	 *

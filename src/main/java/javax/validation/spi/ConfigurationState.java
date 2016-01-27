@@ -16,20 +16,21 @@
 */
 package javax.validation.spi;
 
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Set;
+
 import javax.validation.Configuration;
 import javax.validation.ConstraintValidatorFactory;
 import javax.validation.MessageInterpolator;
 import javax.validation.ParameterNameProvider;
 import javax.validation.TraversableResolver;
 import javax.validation.ValidatorFactory;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Contract between a {@link Configuration} and a
  * {@link ValidationProvider} to create a {@link ValidatorFactory}.
- * <p/>
+ * <p>
  * The configuration artifacts defined in the XML configuration and provided to the
  * {@code Configuration} are merged and passed along via
  * {@code ConfigurationState}.
@@ -42,7 +43,7 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns {@code true} if {@link Configuration#ignoreXmlConfiguration()} has been called.
-	 * <p/>
+	 * <p>
 	 * In this case, the {@link ValidatorFactory} must ignore
 	 * {@code META-INF/validation.xml}.
 	 *
@@ -52,7 +53,7 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the message interpolator of this configuration.
-	 * <p/>
+	 * <p>
 	 * Message interpolator is defined in the following decreasing priority:
 	 * <ul>
 	 *     <li>set via the {@link Configuration} programmatic API</li>
@@ -68,14 +69,14 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns a set of configuration streams.
-	 * <p/>
+	 * <p>
 	 * The streams are defined by:
 	 * <ul>
 	 *     <li>mapping XML streams passed programmatically in {@link Configuration}</li>
 	 *     <li>mapping XML streams located in the resources defined in
 	 *     {@code META-INF/validation.xml} (constraint-mapping element)</li>
 	 * </ul>
-	 * <p/>
+	 * <p>
 	 * Streams represented in the XML configuration and opened by the
 	 * {@code Configuration} implementation must be closed by the
 	 * {@code Configuration} implementation after the {@link ValidatorFactory}
@@ -89,7 +90,7 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the constraint validator factory of this configuration.
-	 * <p/>
+	 * <p>
 	 * The {@link ConstraintValidatorFactory} implementation is defined in the following
 	 * decreasing priority:
 	 * <ul>
@@ -106,7 +107,7 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the traversable resolver for this configuration.
-	 * <p/>
+	 * <p>
 	 * {@link TraversableResolver} is defined in the following decreasing priority:
 	 * <ul>
 	 *     <li>set via the {@link Configuration} programmatic API</li>
@@ -122,7 +123,7 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns the parameter name provider for this configuration.
-	 * <p/>
+	 * <p>
 	 * {@link ParameterNameProvider} is defined in the following decreasing priority:
 	 * <ul>
 	 *     <li>set via the {@link Configuration} programmatic API</li>
@@ -140,14 +141,14 @@ public interface ConfigurationState {
 
 	/**
 	 * Returns a map of non type-safe custom properties.
-	 * <p/>
+	 * <p>
 	 * Properties defined via:
 	 * <ul>
 	 *     <li>{@link Configuration#addProperty(String, String)}</li>
 	 *     <li>{@code META-INF/validation.xml} provided that
-	 *     {@code ignoreXmlConfiguration}</li> is {@code false}.
+	 *     {@code ignoreXmlConfiguration} is {@code false}.</li>
 	 * </ul>
-	 * <p/>
+	 * <p>
 	 * If a property is defined both programmatically and in XML,
 	 * the value defined programmatically has priority.
 	 *
