@@ -30,12 +30,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * Expresses which executables (methods or constructors) should have their parameters
  * and return value validated upon execution. Can be on executable (method, constructor)
  * or type level (with the former taking precedence).
- * <p/>
+ * <p>
  * If not present for a given executable, the default configuration from
  * {@code META-INF/validation.xml} and finally the implicit default
  * validated executable types (constructors and non-getters) are taken into account to determine
  * whether a given executable is validated upon execution or not.
- * <p/>
+ * <p>
  * The following describes the formal rules for deciding whether an executable is validated.
  * They are applied in decreasing order:
  * <ul>
@@ -59,7 +59,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     raises a {@link ValidationException} if the overriding / implementing method hosts
  *     the {@code ValidateOnExecution} annotation.</li>
  * </ul>
- * <p/>
+ * <p>
  * Note that you can exclude an executable from validation by making sure the rules above do not match
  * or by annotating the executable with {@code @ValidateOnExecution(NONE)}.
  *

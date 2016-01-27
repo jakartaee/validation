@@ -18,7 +18,7 @@ package javax.validation;
 
 /**
  * Enum of possible kinds of elements encountered in Bean Validation.
- * <p/>
+ * <p>
  * Mostly elements that can be constrained and described in the metadata
  * but also elements that can be part of a {@link Path} and represented
  * by a {@link Path.Node}

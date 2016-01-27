@@ -18,7 +18,7 @@ package javax.validation.groups;
 
 /**
  * Default Bean Validation group.
- * <p/>
+ * <p>
  * Unless a list of groups is explicitly defined:
  * <ul>
  *     <li>constraints belong to the {@code Default} group</li>

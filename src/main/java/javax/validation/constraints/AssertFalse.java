@@ -32,7 +32,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * The annotated element must be false.
  * Supported types are {@code boolean} and {@code Boolean}.
- * <p/>
+ * <p>
  * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard

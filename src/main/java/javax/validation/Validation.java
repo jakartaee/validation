@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.WeakHashMap;
+
 import javax.validation.bootstrap.GenericBootstrap;
 import javax.validation.bootstrap.ProviderSpecificBootstrap;
 import javax.validation.spi.BootstrapState;
@@ -32,7 +33,7 @@ import javax.validation.spi.ValidationProvider;
 
 /**
  * This class is the entry point for Bean Validation.
- * <p/>
+ * <p>
  * There are three ways to bootstrap it:
  * <ul>
  *     <li>The easiest approach is to build the default {@link ValidatorFactory}.
@@ -41,7 +42,7 @@ import javax.validation.spi.ValidationProvider;
  * </pre>
  *     In this case, the default validation provider resolver
  *     will be used to locate available providers.
- *     <p/>
+ *     <p>
  *     The chosen provider is defined as followed:
  *     <ul>
  *         <li>if the XML configuration defines a provider, this provider is used</li>
@@ -56,7 +57,7 @@ import javax.validation.spi.ValidationProvider;
  *     {@link ValidationProvider} is then determined in the same way
  *     as in the default bootstrapping case (see above).
  *     <pre>
- * Configuration<?> configuration = Validation
+ * Configuration&lt;?&gt; configuration = Validation
  *    .byDefaultProvider()
  *    .providerResolver( new MyResolverStrategy() )
  *    .configure();
@@ -66,7 +67,7 @@ import javax.validation.spi.ValidationProvider;
  *     <li>
  *     The third approach allows you to specify explicitly and in
  *     a type safe fashion the expected provider.
- *     <p/>
+ *     <p>
  *     Optionally you can choose a custom {@code ValidationProviderResolver}.
  *     <pre>
  * ACMEConfiguration configuration = Validation
@@ -77,7 +78,7 @@ import javax.validation.spi.ValidationProvider;
  * </pre>
  *     </li>
  * </ul>
- * <p/>
+ * <p>
  * Note:
  * <ul>
  *     <li>
@@ -95,10 +96,10 @@ public class Validation {
 	/**
 	 * Builds and returns a {@link ValidatorFactory} instance based on the
 	 * default Bean Validation provider and following the XML configuration.
-	 * <p/>
+	 * <p>
 	 * The provider list is resolved using the default validation provider resolver
 	 * logic.
-	 * <p/>
+	 * <p>
 	 * The code is semantically equivalent to
 	 * {@code Validation.byDefaultProvider().configure().buildValidatorFactory()}.
 	 *
@@ -114,7 +115,7 @@ public class Validation {
 	 * Builds a {@link Configuration}. The provider list is resolved
 	 * using the strategy provided to the bootstrap state.
 	 * <pre>
-	 * Configuration&lt?&gt; configuration = Validation
+	 * Configuration&lt;?&gt; configuration = Validation
 	 *    .byDefaultProvider()
 	 *    .providerResolver( new MyResolverStrategy() )
 	 *    .configure();
@@ -133,11 +134,11 @@ public class Validation {
 
 	/**
 	 * Builds a {@link Configuration} for a particular provider implementation.
-	 * <p/>
+	 * <p>
 	 * Optionally overrides the provider resolution strategy used to determine the provider.
-	 * <p/>
+	 * <p>
 	 * Used by applications targeting a specific provider programmatically.
-	 * <p/>
+	 * <p>
 	 * <pre>
 	 * ACMEConfiguration configuration =
 	 *     Validation.byProvider(ACMEProvider.class)
@@ -178,6 +179,7 @@ public class Validation {
 		 *
 		 * @return self
 		 */
+		@Override
 		public ProviderSpecificBootstrap<T> providerResolver(ValidationProviderResolver resolver) {
 			this.resolver = resolver;
 			return this;
@@ -190,6 +192,7 @@ public class Validation {
 		 *
 		 * @return a {@code Configuration} sub interface implementation
 		 */
+		@Override
 		public T configure() {
 			if ( validationProviderClass == null ) {
 				throw new ValidationException(
@@ -231,15 +234,18 @@ public class Validation {
 		private ValidationProviderResolver resolver;
 		private ValidationProviderResolver defaultResolver;
 
+		@Override
 		public GenericBootstrap providerResolver(ValidationProviderResolver resolver) {
 			this.resolver = resolver;
 			return this;
 		}
 
+		@Override
 		public ValidationProviderResolver getValidationProviderResolver() {
 			return resolver;
 		}
 
+		@Override
 		public ValidationProviderResolver getDefaultValidationProviderResolver() {
 			if ( defaultResolver == null ) {
 				defaultResolver = new DefaultValidationProviderResolver();
@@ -247,6 +253,7 @@ public class Validation {
 			return defaultResolver;
 		}
 
+		@Override
 		public Configuration<?> configure() {
 			ValidationProviderResolver resolver = this.resolver == null ?
 					getDefaultValidationProviderResolver() :
@@ -294,6 +301,7 @@ public class Validation {
 	 * @author Hardy Ferentschik
 	 */
 	private static class DefaultValidationProviderResolver implements ValidationProviderResolver {
+		@Override
 		public List<ValidationProvider<?>> getValidationProviders() {
 			// class loading and ServiceLoader methods should happen in a PrivilegedAction
 			return GetValidationProviderListAction.getValidationProviderList();
@@ -317,6 +325,7 @@ public class Validation {
 			}
 		}
 
+		@Override
 		public List<ValidationProvider<?>> run() {
 			// Option #1: try first context class loader
 			ClassLoader classloader = Thread.currentThread().getContextClassLoader();

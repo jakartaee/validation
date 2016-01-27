@@ -24,7 +24,7 @@ import javax.validation.spi.ValidationProvider;
 /**
  * Represents the user specified default configuration in
  * {@code META-INF/validation.xml}.
- * <p/>
+ * <p>
  * Note that modifications to the returned objects do not have any effect.
  * Instead use the methods provided on {@link Configuration} in order to
  * apply modifications to the configuration.
@@ -95,7 +95,7 @@ public interface BootstrapConfiguration {
 	/**
 	 * Returns the set of executable types that should be considered
 	 * unless explicitly overridden via {@link ValidateOnExecution}
-	 * <p/>
+	 * <p>
 	 * Returns a set containing {@link ExecutableType#CONSTRUCTORS} and
 	 * {@link ExecutableType#NON_GETTER_METHODS} if unspecified in the configuration.
 	 *

@@ -32,7 +32,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * The annotated element must be a number whose value must be lower or
  * equal to the specified maximum.
- * <p/>
+ * <p>
  * Supported types are:
  * <ul>
  *     <li>{@code BigDecimal}</li>
@@ -42,7 +42,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * </ul>
  * Note that {@code double} and {@code float} are not supported due to rounding errors
  * (some providers might provide some approximative support).
- * <p/>
+ * <p>
  * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard

@@ -22,10 +22,10 @@ import java.util.List;
 
 /**
  * Provides names for method and constructor parameters.
- * <p/>
+ * <p>
  * Used by the Bean Validation runtime when creating constraint violation
  * objects for violated method constraints.
- * <p/>
+ * <p>
  * Implementations must be thread-safe.
  *
  * @author Gunnar Morling

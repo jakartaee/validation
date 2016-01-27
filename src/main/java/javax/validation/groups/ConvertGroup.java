@@ -30,7 +30,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Converts group {@code from} to group {@code to} during cascading.
- * <p/>
+ * <p>
  * Can be used everywhere {@link Valid} is used and must be on an element
  * annotated with {@code Valid}.
  *

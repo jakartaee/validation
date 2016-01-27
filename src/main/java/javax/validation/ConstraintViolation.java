@@ -39,7 +39,7 @@ public interface ConstraintViolation<T> {
 	/**
 	 * Returns the root bean being validated. For method validation, returns
 	 * the object the method is executed on.
-	 * <p/>
+	 * <p>
 	 * Returns {@code null} when:
 	 * <ul>
 	 *     <li>the {@code ConstraintViolation} is returned after calling
@@ -101,7 +101,7 @@ public interface ConstraintViolation<T> {
 	 * Returns the return value of the constructor or method invocation
 	 * if the {@code ConstraintViolation} is returned after validating the method
 	 * or constructor return value.
-	 * <p/>
+	 * <p>
 	 * Returns {@code null} if the method has no return value.
 	 * Returns {@code null} otherwise.
 	 *

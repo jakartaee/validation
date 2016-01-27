@@ -33,7 +33,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * The annotated {@code CharSequence} must match the specified regular expression.
  * The regular expression follows the Java regular expression conventions
  * see {@link java.util.regex.Pattern}.
- * <p/>
+ * <p>
  * Accepts {@code CharSequence}. {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard

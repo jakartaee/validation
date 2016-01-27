@@ -28,7 +28,7 @@ import javax.validation.groups.Default;
 
 /**
  * Describes a single constraint and its composing constraints.
- * <p/>
+ * <p>
  * {@code T} is the constraint's annotation type.
  *
  * @author Emmanuel Bernard
@@ -90,7 +90,7 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	/**
 	 * Returns a map containing the annotation attribute names as keys and the
 	 * annotation attribute values as value.
-	 * <p/>
+	 * <p>
 	 * If this constraint is used as part of a composed constraint, attribute
 	 * values are reflecting the overridden attribute of the composing constraint.
 	 *

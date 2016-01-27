@@ -25,10 +25,10 @@ import javax.validation.spi.ValidationProvider;
  * Defines the state used to bootstrap Bean Validation and
  * creates a provider specific {@link Configuration}
  * of type {@code T}.
- * <p/>
+ * <p>
  * The specific {@code Configuration} is linked to the provider via the generic
  * parameter of the {@link ValidationProvider} implementation.
- * <p/>
+ * <p>
  * The requested provider is the first provider instance assignable to
  * the requested provider type (known when {@link ProviderSpecificBootstrap} is built).
  * The list of providers evaluated is returned by {@link ValidationProviderResolver}.
