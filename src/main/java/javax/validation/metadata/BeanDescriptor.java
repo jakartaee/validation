@@ -36,7 +36,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *     <li>a constraint is hosted on one of the bean properties</li>
 	 *     <li>or a bean property is marked for cascaded validation ({@link Valid})</li>
 	 * </ul>
-	 * <p/>
+	 * <p>
 	 * Constrained methods and constructors are ignored.
 	 *
 	 * @return {@code true} if the bean involves validation, {@code false} otherwise
@@ -45,7 +45,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns the property descriptor for a given property.
-	 * <p/>
+	 * <p>
 	 * Returns {@code null} if the property does not exist or has no
 	 * constraint nor is marked as cascaded (see {@link #getConstrainedProperties()})
 	 * Properties of super types are considered.
@@ -59,7 +59,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	/**
 	 * Returns a set of property descriptors having at least one constraint defined
 	 * or marked as cascaded ({@link Valid}).
-	 * <p/>
+	 * <p>
 	 * If not property matches, an empty set is returned.
 	 * Properties of super types are considered.
 	 *
@@ -70,7 +70,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a method descriptor for the given method.
-	 * <p/>
+	 * <p>
 	 * Returns {@code null} if no method with the given name and parameter types
 	 * exists or the specified method neither has parameter or return value constraints nor a parameter
 	 * or return value marked for cascaded validation.
@@ -88,11 +88,11 @@ public interface BeanDescriptor extends ElementDescriptor {
 	/**
 	 * Returns a set with descriptors for the constrained methods of the bean
 	 * represented by this descriptor.
-	 * <p/>
+	 * <p>
 	 * Constrained methods have at least one parameter or return value constraint
 	 * or at least one parameter or return value marked for cascaded validation.
 	 * Methods of super types are considered.
-	 * <p/>
+	 * <p>
 	 * Only methods matching the given method type(s) are considered.
 	 *
 	 * @param methodType method type to consider
@@ -107,7 +107,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 
 	/**
 	 * Returns a constructor descriptor for the given constructor.
-	 * <p/>
+	 * <p>
 	 * Returns {@code null} if no constructor with the given parameter types
 	 * exists or the specified constructor neither has parameter or return value
 	 * constraints nor a parameter or return value marked for cascaded
@@ -124,7 +124,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	/**
 	 * Returns a set with descriptors for the constrained constructors of the
 	 * bean represented by this descriptor.
-	 * <p/>
+	 * <p>
 	 * Constrained constructors have at least one parameter or return value constraint
 	 * or at least one parameter or return value marked for cascaded validation.
 	 *

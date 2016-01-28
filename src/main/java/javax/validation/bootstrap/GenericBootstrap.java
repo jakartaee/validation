@@ -33,7 +33,7 @@ public interface GenericBootstrap {
 	 * Defines the provider resolution strategy.
 	 * This resolver returns the list of providers evaluated
 	 * to build the {@link Configuration}.
-	 * <p/>
+	 * <p>
 	 * If no resolver is defined, the default {@link ValidationProviderResolver}
 	 * implementation is used.
 	 *
@@ -46,7 +46,7 @@ public interface GenericBootstrap {
 	 * Returns a generic {@link Configuration} implementation.
 	 * At this stage the provider used to build the {@link ValidatorFactory}
 	 * is not defined.
-	 * <p/>
+	 * <p>
 	 * The {@code Configuration} implementation is provided by the first provider
 	 * returned by the {@link ValidationProviderResolver} strategy.
 	 *

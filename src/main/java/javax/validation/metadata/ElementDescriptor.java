@@ -58,7 +58,7 @@ public interface ElementDescriptor {
 	/**
 	 * Declares restrictions on retrieved constraints.
 	 * Restrictions are cumulative.
-	 * <p/>
+	 * <p>
 	 * A {@code ConstraintFinder} is not thread-safe. The set of matching
 	 * {@link ConstraintDescriptor} is.
 	 */
@@ -66,7 +66,7 @@ public interface ElementDescriptor {
 
 		/**
 		 * Restricts to the constraints matching a given set of groups for this element.
-		 * <p/>
+		 * <p>
 		 * This method respects group conversion, group sequences
 		 * and group inheritance (including class-level {@link Default} group
 		 * overriding) but does not return {@link ConstraintDescriptor}s
@@ -91,9 +91,9 @@ public interface ElementDescriptor {
 		/**
 		 * Restricts to the constraints hosted on the listed {@code types}
 		 * for a given element.
-		 * <p/>
+		 * <p>
 		 * Defaults to all possible types of the element.
-		 * <p/>
+		 * <p>
 		 * Typically used to restrict to fields ({@code FIELD})
 		 * or getters ({@code METHOD}).
 		 *

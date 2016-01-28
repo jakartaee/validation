@@ -19,7 +19,7 @@ package javax.validation.metadata;
 /**
  * Represents the type of a method: getter or non getter.
  *
- * @author Emmanuel Bernard <emmanuel@hibernate.org>
+ * @author Emmanuel Bernard
  * @since 1.1
  */
 public enum MethodType {

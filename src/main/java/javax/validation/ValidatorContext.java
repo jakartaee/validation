@@ -34,7 +34,7 @@ public interface ValidatorContext {
 	/**
 	 * Defines the message interpolator implementation used by the
 	 * {@link Validator}.
-	 * <p/>
+	 * <p>
 	 * If not set or if {@code null} is passed as a parameter,
 	 * the message interpolator of the {@link ValidatorFactory}
 	 * is used.
@@ -48,7 +48,7 @@ public interface ValidatorContext {
 	/**
 	 * Defines the traversable resolver implementation used by the
 	 * {@link Validator}.
-	 * <p/>
+	 * <p>
 	 * If not set or if {@code null} is passed as a parameter,
 	 * the traversable resolver of the {@link ValidatorFactory} is used.
 	 *

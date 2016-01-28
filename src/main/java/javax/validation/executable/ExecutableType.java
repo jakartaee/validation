@@ -27,18 +27,18 @@ public enum ExecutableType {
 	/**
 	 * If the annotation using {@code ExecutableType} is on a type (class or interface),
 	 * the behavior is equivalent to the annotation not being present.
-	 * <p/>
+	 * <p>
 	 * If on a constructor, it is equivalent to {@link #CONSTRUCTORS}.
-	 * <p/>
+	 * <p>
 	 * If on a non-getter method, it is equivalent to {@link #NON_GETTER_METHODS}.
-	 * <p/>
+	 * <p>
 	 * If on a getter method, it is equivalent to {@link #GETTER_METHODS}.
 	 */
 	IMPLICIT,
 
 	/**
 	 * None of the executables.
-	 * <p/>
+	 * <p>
 	 * Note that this option is equivalent to an empty list of executable types
 	 * and is present to improve readability. If {@code NONE} and other types of executables
 	 * are present in a list, {@code NONE} is ignored.

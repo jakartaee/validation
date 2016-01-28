@@ -17,7 +17,7 @@
 /**
  * Contains all the Bean Validation provided constraints
  * also called built-in constraints.
- * <p/>
+ * <p>
  * These constraints do not cover all functional use cases but do represent
  * all the fundamental blocks to express low level constraints on basic JDK
  * types.

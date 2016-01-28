@@ -23,7 +23,7 @@ import javax.validation.ValidatorFactory;
 
 /**
  * Contract between the validation bootstrap mechanism and the provider engine.
- * <p/>
+ * <p>
  * Implementations must have a public no-arg constructor. The construction of a provider
  * should be as "lightweight" as possible.
  *
@@ -50,7 +50,7 @@ public interface ValidationProvider<T extends Configuration<T>> {
 	 * Returns a {@link Configuration} instance. This instance is not bound to
 	 * use the current provider. The choice of provider follows the algorithm described
 	 * in {@code Configuration}
-	 * <p/>
+	 * <p>
 	 * The {@link ValidationProviderResolver} used by {@code Configuration}
 	 * is provided by {@code state}.
 	 * If null, the default {@code ValidationProviderResolver} is used.
@@ -62,10 +62,10 @@ public interface ValidationProvider<T extends Configuration<T>> {
 
 	/**
 	 * Build a {@link ValidatorFactory} using the current provider implementation.
-	 * <p/>
+	 * <p>
 	 * The {@code ValidatorFactory} is assembled and follows the configuration passed
 	 * via {@link ConfigurationState}.
-	 * <p/>
+	 * <p>
 	 * The returned {@code ValidatorFactory} is properly initialized and ready for use.
 	 *
 	 * @param configurationState the configuration descriptor

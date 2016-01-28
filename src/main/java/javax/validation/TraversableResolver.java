@@ -23,7 +23,7 @@ import static javax.validation.Path.*;
 /**
  * Contract determining if a property can be accessed by the Bean Validation provider.
  * This contract is called for each property that is being either validated or cascaded.
- * <p/>
+ * <p>
  * A traversable resolver implementation must be thread-safe.
  *
  * @author Emmanuel Bernard
@@ -54,7 +54,7 @@ public interface TraversableResolver {
 	 * Determines if the Bean Validation provider is allowed to cascade validation on
 	 * the bean instance returned by the property value
 	 * marked as {@code @Valid}.
-	 * <p/>
+	 * <p>
 	 * Note that this method is called only if
 	 * {@link #isReachable(Object, javax.validation.Path.Node, Class, Path, java.lang.annotation.ElementType)}
 	 * returns {@code true} for the same set of arguments and if the property

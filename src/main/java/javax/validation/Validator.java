@@ -67,7 +67,7 @@ public interface Validator {
 	/**
 	 * Validates all constraints placed on the property named {@code propertyName}
 	 * of the class {@code beanType} would the property value be {@code value}.
-	 * <p/>
+	 * <p>
 	 * {@link ConstraintViolation} objects return {@code null} for
 	 * {@link ConstraintViolation#getRootBean()} and {@link ConstraintViolation#getLeafBean()}.
 	 *
@@ -90,7 +90,7 @@ public interface Validator {
 
 	/**
 	 * Returns the descriptor object describing bean constraints.
-	 * <p/>
+	 * <p>
 	 * The returned object (and associated objects including
 	 * {@link ConstraintDescriptor}s) are immutable.
 	 *
@@ -106,7 +106,7 @@ public interface Validator {
 	/**
 	 * Returns an instance of the specified type allowing access to
 	 * provider-specific APIs.
-	 * <p/>
+	 * <p>
 	 * If the Bean Validation provider implementation does not support
 	 * the specified class, {@link ValidationException} is thrown.
 	 *

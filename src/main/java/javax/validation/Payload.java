@@ -19,7 +19,7 @@ package javax.validation;
 /**
  * Payload type that can be attached to a given
  * constraint declaration.
- * <p/>
+ * <p>
  * Payloads are typically used to carry on metadata information
  * consumed by a validation client.
  * </p>
