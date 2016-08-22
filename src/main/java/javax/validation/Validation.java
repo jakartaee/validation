@@ -150,6 +150,8 @@ public class Validation {
 	 * {@link ValidationProvider} implementation of the ACME provider.
 	 *
 	 * @param providerType the {@code ValidationProvider} implementation type
+	 * @param <T> the type of the {@code Configuration} corresponding to this {@code ValidationProvider}
+	 * @param <U> the type of the {@code ValidationProvider} implementation
 	 *
 	 * @return instance building a provider specific {@code Configuration}
 	 *         sub interface implementation

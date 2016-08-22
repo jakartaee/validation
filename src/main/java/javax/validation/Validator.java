@@ -37,6 +37,7 @@ public interface Validator {
 	 * @param object object to validate
 	 * @param groups the group or list of groups targeted for validation (defaults to
 	 *        {@link Default})
+	 * @param <T> the type of the object to validate
 	 * @return constraint violations or an empty set if none
 	 * @throws IllegalArgumentException if object is {@code null}
 	 *         or if {@code null} is passed to the varargs groups
@@ -53,6 +54,7 @@ public interface Validator {
 	 * @param propertyName property to validate (i.e. field and getter constraints)
 	 * @param groups the group or list of groups targeted for validation (defaults to
 	 *        {@link Default})
+	 * @param <T> the type of the object to validate
 	 * @return constraint violations or an empty set if none
 	 * @throws IllegalArgumentException if {@code object} is {@code null},
 	 *         if {@code propertyName} is {@code null}, empty or not a valid object property
@@ -76,6 +78,7 @@ public interface Validator {
 	 * @param value property value to validate
 	 * @param groups the group or list of groups targeted for validation (defaults to
 	 *        {@link Default}).
+	 * @param <T> the type of the object to validate
 	 * @return constraint violations or an empty set if none
 	 * @throws IllegalArgumentException if {@code beanType} is {@code null},
 	 *         if {@code propertyName} is {@code null}, empty or not a valid object property
@@ -111,6 +114,7 @@ public interface Validator {
 	 * the specified class, {@link ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned
+	 * @param <T> the type of the object to be returned
 	 * @return an instance of the specified class
 	 * @throws ValidationException if the provider does not support the call
 	 */

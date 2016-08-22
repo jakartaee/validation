@@ -73,6 +73,8 @@ public @interface ValidateOnExecution {
 	/**
 	 * List of executable types to be validated when called.
 	 * Defaults to the types discovered implicitly (see {@link ExecutableType#IMPLICIT}).
+	 *
+	 * @return array of {@code ExecutableType}s to be validated
 	 */
 	ExecutableType[] type() default {ExecutableType.IMPLICIT};
 }

@@ -156,6 +156,7 @@ public interface ConstraintValidatorContext {
 	 * {@link ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned
+	 * @param <T> the type of the object to be returned
 	 * @return an instance of the specified class
 	 * @throws ValidationException if the provider does not support the call
 	 *
