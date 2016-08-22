@@ -28,7 +28,8 @@ package javax.validation;
 public interface ConstraintValidatorFactory {
 
 	/**
-	 * @param key The class of the constraint validator to instantiate
+	 * @param key the class of the constraint validator to instantiate
+	 * @param <T> type of the class
 	 *
 	 * @return A new constraint validator instance of the specified class
 	 */

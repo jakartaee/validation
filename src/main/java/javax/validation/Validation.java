@@ -16,6 +16,10 @@
 */
 package javax.validation;
 
+import javax.validation.bootstrap.GenericBootstrap;
+import javax.validation.bootstrap.ProviderSpecificBootstrap;
+import javax.validation.spi.BootstrapState;
+import javax.validation.spi.ValidationProvider;
 import java.lang.ref.SoftReference;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -25,11 +29,6 @@ import java.util.List;
 import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.WeakHashMap;
-
-import javax.validation.bootstrap.GenericBootstrap;
-import javax.validation.bootstrap.ProviderSpecificBootstrap;
-import javax.validation.spi.BootstrapState;
-import javax.validation.spi.ValidationProvider;
 
 /**
  * This class is the entry point for Bean Validation.
@@ -147,8 +146,9 @@ public class Validation {
 	 * where {@code ACMEConfiguration} is the
 	 * {@code Configuration} sub interface uniquely identifying the
 	 * ACME Bean Validation provider. and {@code ACMEProvider} is the
-	 * {@link ValidationProvider} implementation of the ACME provider.
-	 *
+	 * {@link ValidationProvider} implementation of the ACME provider
+	 * @param <T> type of the {@code Configuration}
+	 * @param <U> type of the {@code ValidationProvider}
 	 * @param providerType the {@code ValidationProvider} implementation type
 	 *
 	 * @return instance building a provider specific {@code Configuration}

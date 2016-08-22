@@ -21,6 +21,7 @@ import javax.validation.metadata.ConstraintDescriptor;
 /**
  * Describes a constraint violation. This object exposes the constraint
  * violation context as well as the message describing the violation.
+ * @param <T> type of the root bean
  *
  * @author Emmanuel Bernard
  */
@@ -140,6 +141,7 @@ public interface ConstraintViolation<T> {
 	 * {@link ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned
+	 * @param <U> type of the class
 	 * @return an instance of the specified class
 	 * @throws ValidationException if the provider does not support the call
 	 *

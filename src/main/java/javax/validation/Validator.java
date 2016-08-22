@@ -16,11 +16,11 @@
 */
 package javax.validation;
 
-import java.util.Set;
 import javax.validation.executable.ExecutableValidator;
 import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
 import javax.validation.metadata.ConstraintDescriptor;
+import java.util.Set;
 
 /**
  * Validates bean instances. Implementations of this interface must be thread-safe.
@@ -35,6 +35,7 @@ public interface Validator {
 	 * Validates all constraints on {@code object}.
 	 *
 	 * @param object object to validate
+	 * @param <T> type of the object that should be validated
 	 * @param groups the group or list of groups targeted for validation (defaults to
 	 *        {@link Default})
 	 * @return constraint violations or an empty set if none
@@ -50,6 +51,7 @@ public interface Validator {
 	 * named {@code propertyName}.
 	 *
 	 * @param object object to validate
+	 * @param <T> type of the object that should be validated
 	 * @param propertyName property to validate (i.e. field and getter constraints)
 	 * @param groups the group or list of groups targeted for validation (defaults to
 	 *        {@link Default})
@@ -70,8 +72,8 @@ public interface Validator {
 	 * <p>
 	 * {@link ConstraintViolation} objects return {@code null} for
 	 * {@link ConstraintViolation#getRootBean()} and {@link ConstraintViolation#getLeafBean()}.
-	 *
-	 * @param beanType the bean type
+	 * @param <T> defines the bean type
+	 * @param beanType class that defines the bean type
 	 * @param propertyName property to validate
 	 * @param value property value to validate
 	 * @param groups the group or list of groups targeted for validation (defaults to
@@ -110,6 +112,7 @@ public interface Validator {
 	 * If the Bean Validation provider implementation does not support
 	 * the specified class, {@link ValidationException} is thrown.
 	 *
+	 * @param <T> type of the class
 	 * @param type the class of the object to be returned
 	 * @return an instance of the specified class
 	 * @throws ValidationException if the provider does not support the call
