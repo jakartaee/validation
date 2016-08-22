@@ -20,34 +20,41 @@
             <name>Emmanuel Bernard</name>
             <email>emmanuel@hibernate.org</email>
             <organization>JBoss, by Red Hat</organization>
-            <url>http://in.relation.to/Bloggers/Emmanuel</url>
+            <url>http://in.relation.to/emmanuel-bernard/</url>
         </developer>
         <developer>
             <id>emmanuelbernard</id>
             <name>Emmanuel Bernard</name>
             <email>emmanuel@hibernate.org</email>
             <organization>JBoss, by Red Hat</organization>
-            <url>http://in.relation.to/Bloggers/Emmanuel</url>
+            <url>http://in.relation.to/emmanuel-bernard/</url>
         </developer>
         <developer>
             <id>hardy.ferentschik</id>
             <name>Hardy Ferentschik</name>
             <email>hferents@redhat.com</email>
             <organization>JBoss, by Red Hat</organization>
-            <url>http://in.relation.to/Bloggers/Hardy</url>
+            <url>http://in.relation.to/hardy-ferentschik/</url>
         </developer>
         <developer>
             <id>gunnar.morling</id>
             <name>Gunnar Morling</name>
             <email>gunnar@hibernate.org</email>
             <organization>JBoss, by Red Hat</organization>
-            <url>http://www.gunnarmorling.de/</url>
+            <url>http://in.relation.to/gunnar-morling/</url>
+        </developer>
+        <developer>
+            <id>guillaume.smet</id>
+            <name>Guillaume Smet</name>
+            <email>guillaume.smet@hibernate.org</email>
+            <organization>JBoss, by Red Hat</organization>
+            <url>http://in.relation.to/guillaume-smet/</url>
         </developer>
     </developers>
 
     <issueManagement>
         <system>JIRA</system>
-        <url>http://opensource.atlassian.com/projects/hibernate/browse/BVAL</url>
+        <url>https://hibernate.atlassian.net/projects/BVAL/</url>
     </issueManagement>
 
     <inceptionYear>2007</inceptionYear>
