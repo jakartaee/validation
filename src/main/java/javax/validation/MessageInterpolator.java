@@ -16,8 +16,8 @@
 */
 package javax.validation;
 
-import java.util.Locale;
 import javax.validation.metadata.ConstraintDescriptor;
+import java.util.Locale;
 
 /**
  * Interpolates a given constraint violation message.
@@ -76,6 +76,7 @@ public interface MessageInterpolator {
 		 * {@link ValidationException} is thrown.
 		 *
 		 * @param type the class of the object to be returned
+		 * @param <T> type of the class
 		 * @return an instance of the specified class
 		 * @throws ValidationException if the provider does not support the call
 		 *
