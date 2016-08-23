@@ -218,7 +218,7 @@ public class Validation {
 				throw new ValidationException( "Unable to get available provider resolvers.", re );
 			}
 
-			for ( ValidationProvider provider : resolvers ) {
+			for ( ValidationProvider<?> provider : resolvers ) {
 				if ( validationProviderClass.isAssignableFrom( provider.getClass() ) ) {
 					ValidationProvider<T> specificProvider = validationProviderClass.cast( provider );
 					return specificProvider.createSpecializedConfiguration( state );

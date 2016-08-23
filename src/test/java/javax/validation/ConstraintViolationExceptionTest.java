@@ -125,7 +125,7 @@ public class ConstraintViolationExceptionTest {
 		}
 
 		@Override
-		public <T> T unwrap(Class<T> type) {
+		public <U> U unwrap(Class<U> type) {
 			return null;
 		}
 	}

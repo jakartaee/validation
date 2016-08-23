@@ -20,6 +20,8 @@ import java.io.InputStream;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.BarValidationProvider.DummyConfiguration;
 import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ConfigurationState;
 import javax.validation.spi.ValidationProvider;
@@ -27,76 +29,92 @@ import javax.validation.spi.ValidationProvider;
 /**
  * @author Hardy Ferentschik
  */
-public class BarValidationProvider implements ValidationProvider {
+public class BarValidationProvider implements ValidationProvider<DummyConfiguration> {
 	public static List<SoftReference<BarValidationProvider>> createdValidationProviders = new ArrayList<SoftReference<BarValidationProvider>>();
 
 	public BarValidationProvider() {
 		createdValidationProviders.add( new SoftReference<BarValidationProvider>( this ) );
 	}
 
-	public Configuration createSpecializedConfiguration(BootstrapState state) {
+	@Override
+	public DummyConfiguration createSpecializedConfiguration(BootstrapState state) {
 		return null;
 	}
 
-	public Configuration<?> createGenericConfiguration(BootstrapState state) {
+	@Override
+	public DummyConfiguration createGenericConfiguration(BootstrapState state) {
 		return new DummyConfiguration();
 	}
 
+	@Override
 	public ValidatorFactory buildValidatorFactory(ConfigurationState configurationState) {
-	   return new DummyValidatorFactory();
+		return new DummyValidatorFactory();
 	}
 
 
-	public static class DummyConfiguration implements Configuration {
+	public static class DummyConfiguration implements Configuration<DummyConfiguration> {
 
-		public Configuration ignoreXmlConfiguration() {
+		@Override
+		public DummyConfiguration ignoreXmlConfiguration() {
 			return null;
 		}
 
-		public Configuration messageInterpolator(MessageInterpolator interpolator) {
+		@Override
+		public DummyConfiguration messageInterpolator(MessageInterpolator interpolator) {
 			return null;
 		}
 
-		public Configuration traversableResolver(TraversableResolver resolver) {
+		@Override
+		public DummyConfiguration traversableResolver(TraversableResolver resolver) {
 			return null;
 		}
 
-		public Configuration constraintValidatorFactory(ConstraintValidatorFactory constraintValidatorFactory) {
+		@Override
+		public DummyConfiguration constraintValidatorFactory(ConstraintValidatorFactory constraintValidatorFactory) {
 			return null;
 		}
 
-		public Configuration parameterNameProvider(ParameterNameProvider parameterNameProvider) {
+		@Override
+		public DummyConfiguration parameterNameProvider(ParameterNameProvider parameterNameProvider) {
 			return null;
 		}
 
-		public Configuration addMapping(InputStream stream) {
+		@Override
+		public DummyConfiguration addMapping(InputStream stream) {
 			return null;
 		}
 
-		public Configuration addProperty(String name, String value) {
+		@Override
+		public DummyConfiguration addProperty(String name, String value) {
 			return null;
 		}
 
+		@Override
 		public MessageInterpolator getDefaultMessageInterpolator() {
 			return null;
 		}
 
+		@Override
 		public TraversableResolver getDefaultTraversableResolver() {
 			return null;
 		}
 
+		@Override
 		public ConstraintValidatorFactory getDefaultConstraintValidatorFactory() {
 			return null;
 		}
 
+		@Override
 		public ParameterNameProvider getDefaultParameterNameProvider() {
 			return null;
 		}
 
+		@Override
 		public BootstrapConfiguration getBootstrapConfiguration() {
 			return null;
 		}
 
+		@Override
 		public ValidatorFactory buildValidatorFactory() {
 			return new DummyValidatorFactory();
 		}

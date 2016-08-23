@@ -108,16 +108,16 @@ public class ConstraintValidationNodeBuilderTest {
 
 	//assuming the following domain model
 	public static class User {
-	    public Map<String,Address> getAddresses() { return null; }
+		public Map<String,Address> getAddresses() { return null; }
 	}
 
 	public static class Address {
-	    public String getStreet() { return null; }
-	    public Country getCountry() { return null; }
+		public String getStreet() { return null; }
+		public Country getCountry() { return null; }
 	}
 
 	public static class Country {
-	   public String getName() { return null; }
+		public String getName() { return null; }
 	}
 
 }
