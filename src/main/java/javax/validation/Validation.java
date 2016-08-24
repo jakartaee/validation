@@ -202,8 +202,11 @@ public class Validation {
 			}
 			//used mostly as a BootstrapState
 			GenericBootstrapImpl state = new GenericBootstrapImpl();
+
+			// if no resolver is given, simply instantiate the given provider
 			if ( resolver == null ) {
-				resolver = state.getDefaultValidationProviderResolver();
+				U provider = run( NewProviderInstance.action( validationProviderClass ) );
+				return provider.createSpecializedConfiguration( state );
 			}
 			else {
 				//stay null if no resolver is defined
@@ -226,6 +229,10 @@ public class Validation {
 				}
 			}
 			throw new ValidationException( "Unable to find provider: " + validationProviderClass );
+		}
+
+		private <P> P run(PrivilegedAction<P> action) {
+			return System.getSecurityManager() != null ? AccessController.doPrivileged( action ) : action.run();
 		}
 	}
 
@@ -380,7 +387,30 @@ public class Validation {
 		}
 
 		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
-			providersPerClassloader.put( classLoader, new SoftReference<List<ValidationProvider<?>>>( providers ) );
+			providersPerClassloader.put( classLoader, new SoftReference<>( providers ) );
+		}
+	}
+
+	private static class NewProviderInstance<T extends ValidationProvider<?>> implements PrivilegedAction<T> {
+
+		private final Class<T> clazz;
+
+		public static <T extends ValidationProvider<?>> NewProviderInstance<T> action(Class<T> clazz) {
+			return new NewProviderInstance<>( clazz );
+		}
+
+		private NewProviderInstance(Class<T> clazz) {
+			this.clazz = clazz;
+		}
+
+		@Override
+		public T run() {
+			try {
+				return clazz.newInstance();
+			}
+			catch (InstantiationException | IllegalAccessException e) {
+				throw new ValidationException( "Cannot instantiate provider type: " + clazz );
+			}
 		}
 	}
 }
