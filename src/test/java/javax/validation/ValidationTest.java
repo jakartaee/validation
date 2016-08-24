@@ -17,6 +17,11 @@
 package javax.validation;
 
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.net.URL;
@@ -24,14 +29,11 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+
+import javax.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
 import javax.validation.spi.ValidationProvider;
 
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
 
 /**
  * @author Hardy Ferentschik
@@ -134,6 +136,14 @@ public class ValidationTest {
 		}
 	}
 
+	// BVAL-486
+	@Test
+	public void testByProviderDoesNotRequireRetrievalViaProviderResolver() {
+		NonRegisteredConfiguration configuration = Validation.byProvider( NonRegisteredValidationProvider.class )
+				.configure();
+		assertNotNull( configuration );
+	}
+
 	private int countInMemoryProviders() {
 		int count = 0;
 		// we cannot access Validation.DefaultValidationProviderResolver#providersPerClassloader, so we have to
@@ -157,7 +167,7 @@ public class ValidationTest {
 
 		@Override
 		public Enumeration<URL> getResources(String name) throws IOException {
-			CustomEnumeration<URL> customEnumeration = new CustomEnumeration<URL>();
+			CustomEnumeration<URL> customEnumeration = new CustomEnumeration<>();
 
 			if ( SERVICES_FILE.equals( name ) && serviceFileSuffixes != null ) {
 				for ( String suffix : serviceFileSuffixes ) {
@@ -172,7 +182,7 @@ public class ValidationTest {
 	}
 
 	private static class CustomEnumeration<E> implements Enumeration<E> {
-		private final List<E> enumList = new ArrayList<E>();
+		private final List<E> enumList = new ArrayList<>();
 		int currentIndex = 0;
 
 		public void addElements(Enumeration<E> enumeration) {
