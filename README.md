@@ -31,5 +31,4 @@ Want to join us? You can find all the relevant information about contributing to
 
 ## Continuous Integration
 
-The [official Continuous Integration service for the project](https://hibernate-validator.ci.cloudbees.com/) is hosted at CloudBees.
-
+The official Continuous Integration service for the project is hosted on [ci.hibernate.org](http://ci.hibernate.org/view/Validator/).
