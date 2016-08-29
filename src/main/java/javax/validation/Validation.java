@@ -408,8 +408,8 @@ public class Validation {
 			try {
 				return clazz.newInstance();
 			}
-			catch (InstantiationException | IllegalAccessException e) {
-				throw new ValidationException( "Cannot instantiate provider type: " + clazz );
+			catch (InstantiationException | IllegalAccessException | RuntimeException e) {
+				throw new ValidationException( "Cannot instantiate provider type: " + clazz, e );
 			}
 		}
 	}
