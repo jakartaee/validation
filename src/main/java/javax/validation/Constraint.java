@@ -68,7 +68,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <pre>
  * &#64;Documented
  * &#64;Constraint(validatedBy = OrderNumberValidator.class)
- * &#64;Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+ * &#64;Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
  * &#64;Retention(RUNTIME)
  * public &#64;interface OrderNumber {
  *     String message() default "{com.acme.constraint.OrderNumber.message}";
