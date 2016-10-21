@@ -25,7 +25,7 @@ package javax.validation;
  * @author Gunnar Morling
  * @author Hardy Ferentschik
  */
-public interface ValidatorFactory {
+public interface ValidatorFactory extends AutoCloseable {
 
 	/**
 	 * Returns an initialized {@link Validator} instance using the
@@ -111,5 +111,6 @@ public interface ValidatorFactory {
 	 *
 	 * @since 1.1
 	 */
+	@Override
 	public void close();
 }
