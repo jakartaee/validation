@@ -6,6 +6,8 @@
  */
 package javax.validation;
 
+import java.time.Clock;
+
 /**
  * Provides contextual data and operation when applying a given constraint validator.
  *
@@ -13,6 +15,7 @@ package javax.validation;
  * of if the default {@code ConstraintViolation} is disabled, a custom one).
  *
  * @author Emmanuel Bernard
+ * @author Guillaume Smet
  */
 public interface ConstraintValidatorContext {
 
@@ -29,6 +32,19 @@ public interface ConstraintValidatorContext {
 	 * @return the current un-interpolated default message
 	 */
 	String getDefaultConstraintMessageTemplate();
+
+
+	/**
+	 * Returns the provider for obtaining the current time in the form of a {@link Clock}, e.g. when validating the
+	 * {@code Future} and {@code Past} constraints.
+	 *
+	 * @return the provider for obtaining the current time, never {@code null}. If no specific provider has been
+	 * configured during bootstrap, a default implementation using the current system time and the current default time
+	 * zone as returned by {@link Clock#systemDefaultZone()} will be returned.
+	 *
+	 * @since 2.0
+	 */
+	ClockProvider getClockProvider();
 
 	/**
 	 * Returns a constraint violation builder building a violation report

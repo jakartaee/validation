@@ -46,6 +46,7 @@ import javax.validation.spi.ValidationProvider;
  * @author Emmanuel Bernard
  * @author Gunnar Morling
  * @author Hardy Ferentschik
+ * @author Guillaume Smet
  */
 public interface Configuration<T extends Configuration<T>> {
 
@@ -110,6 +111,20 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @since 1.1
 	 */
 	T parameterNameProvider(ParameterNameProvider parameterNameProvider);
+
+	/**
+	 * Defines the clock provider. Has priority over the configuration
+	 * based provider.
+	 * <p>
+	 * If {@code null} is passed, the default clock provider is used
+	 * (defined in XML or the specification default).
+	 *
+	 * @param clockProvider clock provider implementation
+	 * @return {@code this} following the chaining method pattern.
+	 *
+	 * @since 2.0
+	 */
+	T clockProvider(ClockProvider clockProvider);
 
 	/**
 	 * Add a stream describing constraint mapping in the Bean Validation XML
@@ -223,6 +238,20 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @since 1.1
 	 */
 	ParameterNameProvider getDefaultParameterNameProvider();
+
+	/**
+	 * Returns an implementation of the {@link ClockProvider}
+	 * interface following the default {@code ClockProvider}
+	 * defined in the specification:
+	 *
+	 * XXX BVAL-496 paste definition of the specification
+	 *
+	 * @return default {@code ClockProvider} implementation compliant with
+	 *         the specification
+	 *
+	 * @since 2.0
+	 */
+	ClockProvider getDefaultClockProvider();
 
 	/**
 	 * Returns configuration information stored in the {@code META-INF/validation.xml} file.

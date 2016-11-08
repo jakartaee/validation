@@ -23,6 +23,7 @@ import javax.validation.spi.ValidationProvider;
  * @author Emmanuel Bernard
  * @author Gunnar Morling
  * @author Hardy Ferentschik
+ * @author Guillaume Smet
  * @since 1.1
  */
 public interface BootstrapConfiguration {
@@ -66,6 +67,16 @@ public interface BootstrapConfiguration {
 	 * @return parameter name provider class name or {@code null}
 	 */
 	String getParameterNameProviderClassName();
+
+	/**
+	 * Class name of the {@link ClockProvider} implementation or
+	 * {@code null} if none is specified.
+	 *
+	 * @return clock provider class name or {@code null}
+	 *
+	 * @since 2.0
+	 */
+	String getClockProviderClassName();
 
 	/**
 	 * Returns a set of resource paths pointing to XML constraint mapping files.

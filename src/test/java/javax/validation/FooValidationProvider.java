@@ -70,6 +70,11 @@ public class FooValidationProvider implements ValidationProvider<DummyConfigurat
 		}
 
 		@Override
+		public DummyConfiguration clockProvider(ClockProvider clockProvider) {
+			return null;
+		}
+
+		@Override
 		public DummyConfiguration addMapping(InputStream stream) {
 			return null;
 		}
@@ -96,6 +101,11 @@ public class FooValidationProvider implements ValidationProvider<DummyConfigurat
 
 		@Override
 		public ParameterNameProvider getDefaultParameterNameProvider() {
+			return null;
+		}
+
+		@Override
+		public ClockProvider getDefaultClockProvider() {
 			return null;
 		}
 
@@ -138,6 +148,11 @@ public class FooValidationProvider implements ValidationProvider<DummyConfigurat
 
 		@Override
 		public ParameterNameProvider getParameterNameProvider() {
+			return null;
+		}
+
+		@Override
+		public ClockProvider getClockProvider() {
 			return null;
 		}
 

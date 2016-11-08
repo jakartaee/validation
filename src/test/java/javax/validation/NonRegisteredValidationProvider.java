@@ -64,6 +64,11 @@ public class NonRegisteredValidationProvider implements ValidationProvider<NonRe
 		}
 
 		@Override
+		public NonRegisteredConfiguration clockProvider(ClockProvider clockProvider) {
+			throw new UnsupportedOperationException( "Not implemented" );
+		}
+
+		@Override
 		public NonRegisteredConfiguration addMapping(InputStream stream) {
 			throw new UnsupportedOperationException( "Not implemented" );
 		}
@@ -90,6 +95,11 @@ public class NonRegisteredValidationProvider implements ValidationProvider<NonRe
 
 		@Override
 		public ParameterNameProvider getDefaultParameterNameProvider() {
+			throw new UnsupportedOperationException( "Not implemented" );
+		}
+
+		@Override
+		public ClockProvider getDefaultClockProvider() {
 			throw new UnsupportedOperationException( "Not implemented" );
 		}
 

@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
+import javax.validation.ClockProvider;
 import javax.validation.Configuration;
 import javax.validation.ConstraintValidatorFactory;
 import javax.validation.MessageInterpolator;
@@ -28,6 +29,7 @@ import javax.validation.ValidatorFactory;
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public interface ConfigurationState {
 
@@ -128,6 +130,24 @@ public interface ConfigurationState {
 	 * @since 1.1
 	 */
 	ParameterNameProvider getParameterNameProvider();
+
+	/**
+	 * Returns the clock provider for this configuration.
+	 * <p>
+	 * {@link ClockProvider} is defined in the following decreasing priority:
+	 * <ul>
+	 *     <li>set via the {@link Configuration} programmatic API</li>
+	 *     <li>defined in {@code META-INF/validation.xml} provided that
+	 *     {@code ignoreXmlConfiguration} is {@code false}. In this case the instance
+	 *     is created via its no-arg constructor.</li>
+	 *     <li>{@code null} if undefined.</li>
+	 * </ul>
+	 *
+	 * @return clock provider instance or {@code null} if not defined
+	 *
+	 * @since 2.0
+	 */
+	ClockProvider getClockProvider();
 
 	/**
 	 * Returns a map of non type-safe custom properties.

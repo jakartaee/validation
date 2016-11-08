@@ -14,6 +14,7 @@ package javax.validation;
  * @author Emmanuel Bernard
  * @author Gunnar Morling
  * @author Hardy Ferentschik
+ * @author Guillaume Smet
  */
 public interface ValidatorFactory extends AutoCloseable {
 
@@ -74,6 +75,17 @@ public interface ValidatorFactory extends AutoCloseable {
 	 * @since 1.1
 	 */
 	ParameterNameProvider getParameterNameProvider();
+
+	/**
+	 * Returns the {@link ClockProvider} instance configured at
+	 * initialization time for the {@code ValidatorFactory}.
+	 * This is the instance used by #getValidator().
+	 *
+	 * @return {@code ClockProvider} instance
+	 *
+	 * @since 2.0
+	 */
+	ClockProvider getClockProvider();
 
 	/**
 	 * Returns an instance of the specified type allowing access to

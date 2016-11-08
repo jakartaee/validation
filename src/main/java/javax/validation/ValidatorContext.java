@@ -18,6 +18,7 @@ package javax.validation;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public interface ValidatorContext {
 
@@ -69,6 +70,18 @@ public interface ValidatorContext {
 	 * @since 1.1
 	 */
 	ValidatorContext parameterNameProvider(ParameterNameProvider parameterNameProvider);
+
+	/**
+	 * Defines the {@link ClockProvider} implementation used by the {@link Validator}.
+	 * If not set or if {@code null} is passed as a parameter,
+	 * the clock provider of the {@link ValidatorFactory} is used.
+	 *
+	 * @param clockProvider {@code ClockProvider} implementation
+	 * @return self following the chaining method pattern
+	 *
+	 * @since 2.0
+	 */
+	ValidatorContext clockProvider(ClockProvider clockProvider);
 
 	/**
 	 * Returns an initialized {@link Validator} instance respecting the defined state.
