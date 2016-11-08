@@ -27,12 +27,26 @@ import javax.validation.constraints.Future.List;
  * The annotated element must be a date in the future.
  * Now is defined as the current time according to the virtual machine
  * The calendar used if the compared type is of type {@code Calendar}
- * is the calendar based on the current timezone and the current locale.
+ * is the calendar based on the current time zone and the current locale.
  * <p>
  * Supported types are:
  * <ul>
  *     <li>{@code java.util.Date}</li>
  *     <li>{@code java.util.Calendar}</li>
+ *     <li>{@code java.time.Instant}</li>
+ *     <li>{@code java.time.LocalDate}</li>
+ *     <li>{@code java.time.LocalDateTime}</li>
+ *     <li>{@code java.time.LocalTime}</li>
+ *     <li>{@code java.time.MonthDay}</li>
+ *     <li>{@code java.time.OffsetDateTime}</li>
+ *     <li>{@code java.time.OffsetTime}</li>
+ *     <li>{@code java.time.Year}</li>
+ *     <li>{@code java.time.YearMonth}</li>
+ *     <li>{@code java.time.ZonedDateTime}</li>
+ *     <li>{@code java.time.chrono.HijrahDate}</li>
+ *     <li>{@code java.time.chrono.JapaneseDate}</li>
+ *     <li>{@code java.time.chrono.MinguoDate}</li>
+ *     <li>{@code java.time.chrono.ThaiBuddhistDate}</li>
  * </ul>
  * <p>
  * {@code null} elements are considered valid.
