@@ -18,6 +18,7 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.time.Year;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -65,6 +66,14 @@ public @interface Future {
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
+
+	/**
+	 * The notion of present here is defined relatively to the type on which the constraint is used. For instance, if
+	 * the constraint is on a {@link Year}, present would mean the whole current year.
+	 *
+	 * @return true if the present date should be considered valid
+	 */
+	boolean orPresent() default false;
 
 	/**
 	 * Defines several {@link Future} annotations on the same element.
