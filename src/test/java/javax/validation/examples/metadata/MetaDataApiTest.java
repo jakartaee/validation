@@ -1,18 +1,8 @@
 /*
- * JBoss, Home of Professional Open Source
- * Copyright 2009-2013, Red Hat, Inc. and/or its affiliates, and individual contributors
- * by the @authors tag. See the copyright.txt in the distribution for a
- * full listing of individual contributors.
+ * Bean Validation API
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * License: Apache License, Version 2.0
+ * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
  */
 package javax.validation.examples.metadata;
 
@@ -59,10 +49,10 @@ public class MetaDataApiTest {
 		assert bookDescriptor.getConstrainedProperties().size() == 2;
 
 		//not a property
-		assert bookDescriptor.getConstraintsForProperty("doesNotExist") == null; 
+		assert bookDescriptor.getConstraintsForProperty("doesNotExist") == null;
 
 		//property with no constraint
-		assert bookDescriptor.getConstraintsForProperty("description") == null; 
+		assert bookDescriptor.getConstraintsForProperty("description") == null;
 
 		PropertyDescriptor propertyDescriptor = bookDescriptor.getConstraintsForProperty("title");
 		assert propertyDescriptor.getConstraintDescriptors().size() == 2;
@@ -83,7 +73,7 @@ public class MetaDataApiTest {
 				notNullPresence = true;
 			}
 		}
-		assert notNullPresence; 
+		assert notNullPresence;
 
 		//assuming the implementation returns the Size constraint second
 		constraintDescriptor = propertyDescriptor.getConstraintDescriptors().iterator().next();
@@ -102,7 +92,7 @@ public class MetaDataApiTest {
 		assert bookDescriptor.getConstrainedConstructors().size() == 1;
 
 		ConstructorDescriptor constructorDescriptor = bookDescriptor.getConstraintsForConstructor(
-				String.class, String.class, Author.class 
+				String.class, String.class, Author.class
 				);
 		assert constructorDescriptor.getName().equals( "Book" );
 		assert constructorDescriptor.getElementClass() == Book.class;
