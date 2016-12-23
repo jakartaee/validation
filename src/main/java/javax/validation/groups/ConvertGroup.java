@@ -7,9 +7,7 @@
 package javax.validation.groups;
 
 import javax.validation.Valid;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.FIELD;
@@ -32,9 +30,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ConvertGroup {
 
-	Class<?> from();
+	/**
+	 * Specifies from which group to convert.
+	 */
+	Class<?> from() default Default.class;
 
-	Class<?> to();
+	/**
+	 * Specifies to which group to convert.
+	 */
+	Class<?> to() default Default.class;
 
 	/**
 	 * Defines several {@link ConvertGroup} annotations
