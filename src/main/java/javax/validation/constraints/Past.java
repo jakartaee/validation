@@ -72,7 +72,7 @@ public @interface Past {
 	 * The notion of present here is defined relatively to the type on which the constraint is used. For instance, if
 	 * the constraint is on a {@link Year}, present would mean the whole current year.
 	 *
-	 * @return true if the present date should be considered valid
+	 * @return {@code true} if the present date should be considered valid
 	 */
 	boolean orPresent() default false;
 

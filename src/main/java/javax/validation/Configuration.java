@@ -244,7 +244,7 @@ public interface Configuration<T extends Configuration<T>> {
 	 * interface following the default {@code ClockProvider}
 	 * defined in the specification:
 	 *
-	 * XXX BVAL-496 paste definition of the specification
+	 * TODO BVAL-496 paste definition of the specification
 	 *
 	 * @return default {@code ClockProvider} implementation compliant with
 	 *         the specification
