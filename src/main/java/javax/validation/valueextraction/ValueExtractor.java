@@ -26,7 +26,7 @@ import javax.validation.Path;
  *
  *     &#064;Override
  *     public void extractValues(List&lt;?&gt; originalValue, ValueReceiver receiver) {
- *         for ( int i = 0; i < originalValue.size(); i++ ) {
+ *         for ( int i = 0; i &lt; originalValue.size(); i++ ) {
  *             receiver.indexedValue( "&lt;iterable element&gt;", i, originalValue.get( i ) );
  *         }
  *     }
