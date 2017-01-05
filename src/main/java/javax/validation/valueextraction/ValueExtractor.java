@@ -20,16 +20,14 @@ import javax.validation.Path;
  * <p>
  * The extracted values are passed to the corresponding method of the {@link ValueReceiver}.
  * <p>
- * A typical value extractor implementation for {@link List} may look like:
+ * A typical value extractor implementation for {@link List} may look like this:
  * <pre>
  * public class ListValueExtractor implements ValueExtractor&lt;List&lt;&#064;ExtractedValue ?&gt;&gt; {
  *
  *     &#064;Override
  *     public void extractValues(List&lt;?&gt; originalValue, ValueReceiver receiver) {
- *         int i = 0;
- *         for ( Object object : originalValue ) {
- *             receiver.indexedValue( "&lt;collection element&gt;", i, object );
- *             i++;
+ *         for ( int i = 0; i < originalValue.size(); i++ ) {
+ *             receiver.indexedValue( "&lt;iterable element&gt;", i, originalValue.get( i ) );
  *         }
  *     }
  * }
