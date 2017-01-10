@@ -18,17 +18,20 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.time.Clock;
 import java.time.Year;
 
+import javax.validation.ClockProvider;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Future.List;
 
 /**
- * The annotated element must be a date in the future.
- * Now is defined as the current time according to the virtual machine
- * The calendar used if the compared type is of type {@code Calendar}
- * is the calendar based on the current time zone and the current locale.
+ * The annotated element must be an instant, date or time in the future.
+ * <p>
+ * By default, "now" is defined as the current time according to the virtual machine, applying the current default time
+ * zone if needed. If required, an alternative {@link ClockProvider} can be specified when bootstrapping a validator
+ * factory or validator, allowing to customize the {@link Clock} representing the current instant, date and time.
  * <p>
  * Supported types are:
  * <ul>
