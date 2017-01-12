@@ -55,4 +55,3 @@ public @interface Null {
 		Null[] value();
 	}
 }
-
