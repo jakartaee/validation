@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation used to mark the type parameter to which a {@link ValueExtractor} is tied.
+ * <p>
+ * Must be given exactly once for a value extractor type.
  *
  * @author Gunnar Morling
  * @author Guillaume Smet
