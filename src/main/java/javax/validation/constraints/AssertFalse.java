@@ -22,6 +22,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.AssertFalse.List;
+import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated element must be false.
@@ -43,6 +44,12 @@ public @interface AssertFalse {
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
+
+	/**
+	 * @return if the validated value should be unwrapped before validation
+	 * @since 2.0
+	 */
+	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
 
 	/**
 	 * Defines several {@link AssertFalse} annotations on the same element.

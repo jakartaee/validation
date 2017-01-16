@@ -22,6 +22,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Size.List;
+import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated element size must be between the specified boundaries (included).
@@ -62,6 +63,12 @@ public @interface Size {
 	int max() default Integer.MAX_VALUE;
 
 	/**
+	 * @return if the validated value should be unwrapped before validation
+	 * @since 2.0
+	 */
+	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
+
+	/**
 	 * Defines several {@link Size} annotations on the same element.
 	 *
 	 * @see Size
@@ -73,4 +80,5 @@ public @interface Size {
 
 		Size[] value();
 	}
+
 }

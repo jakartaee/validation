@@ -22,6 +22,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Pattern.List;
+import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated {@code CharSequence} must match the specified regular expression.
@@ -63,6 +64,12 @@ public @interface Pattern {
 	 * @return the payload associated to the constraint
 	 */
 	Class<? extends Payload>[] payload() default { };
+
+	/**
+	 * @return if the validated value should be unwrapped before validation
+	 * @since 2.0
+	 */
+	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
 
 	/**
 	 * Possible Regexp flags.

@@ -10,11 +10,13 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import javax.validation.ConstraintTarget;
 import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.groups.Default;
+import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * Describes a single constraint and its composing constraints.
@@ -104,4 +106,11 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	 * @return {@code true} if the constraint is annotated with {@link ReportAsSingleViolation}
 	 */
 	boolean isReportAsSingleViolation();
+
+	/**
+	 * @return a {@link ValidateUnwrappedValue} defining the unwrapping behavior.
+	 *
+	 * @since 2.0
+	 */
+	ValidateUnwrappedValue validateUnwrappedValue();
 }
