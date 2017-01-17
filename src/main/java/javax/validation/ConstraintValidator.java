@@ -6,8 +6,9 @@
  */
 package javax.validation;
 
-import javax.validation.constraintvalidation.SupportedValidationTarget;
 import java.lang.annotation.Annotation;
+
+import javax.validation.constraintvalidation.SupportedValidationTarget;
 
 /**
  * Defines the logic to validate a given constraint {@code A}
@@ -38,10 +39,13 @@ public interface ConstraintValidator<A extends Annotation, T> {
 	 * <p>
 	 * This method is guaranteed to be called before any use of this instance for
 	 * validation.
+	 * <p>
+	 * The default implementation is a no-op.
 	 *
 	 * @param constraintAnnotation annotation instance for a given constraint declaration
 	 */
-	void initialize(A constraintAnnotation);
+	default void initialize(A constraintAnnotation) {
+	}
 
 	/**
 	 * Implements the validation logic.
