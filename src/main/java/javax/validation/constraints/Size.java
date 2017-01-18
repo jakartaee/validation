@@ -73,5 +73,4 @@ public @interface Size {
 
 		Size[] value();
 	}
-
 }
