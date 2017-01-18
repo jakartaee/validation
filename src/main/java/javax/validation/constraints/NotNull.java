@@ -22,7 +22,6 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.NotNull.List;
-import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated element must not be {@code null}.
@@ -42,12 +41,6 @@ public @interface NotNull {
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
-
-	/**
-	 * @return if the validated value should be unwrapped before validation
-	 * @since 2.0
-	 */
-	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
 
 	/**
 	 * Defines several {@link NotNull} annotations on the same element.

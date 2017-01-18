@@ -22,7 +22,6 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Digits.List;
-import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated element must be a number within accepted range
@@ -61,12 +60,6 @@ public @interface Digits {
 	 * @return maximum number of fractional digits accepted for this number
 	 */
 	int fraction();
-
-	/**
-	 * @return if the validated value should be unwrapped before validation
-	 * @since 2.0
-	 */
-	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
 
 	/**
 	 * Defines several {@link Digits} annotations on the same element.

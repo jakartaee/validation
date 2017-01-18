@@ -22,7 +22,6 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.DecimalMax.List;
-import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * The annotated element must be a number whose value must be lower or
@@ -74,12 +73,6 @@ public @interface DecimalMax {
 	 * @since 1.1
 	 */
 	boolean inclusive() default true;
-
-	/**
-	 * @return if the validated value should be unwrapped before validation
-	 * @since 2.0
-	 */
-	ValidateUnwrappedValue validateUnwrappedValue() default ValidateUnwrappedValue.DEFAULT;
 
 	/**
 	 * Defines several {@link DecimalMax} annotations on the same element.
