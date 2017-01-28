@@ -371,12 +371,12 @@ public class Validation {
 			return validationProviderList;
 		}
 
-		private synchronized List<ValidationProvider<?>> getCachedValidationProviders(ClassLoader classLoader) {
+		private static synchronized List<ValidationProvider<?>> getCachedValidationProviders(ClassLoader classLoader) {
 			SoftReference<List<ValidationProvider<?>>> ref = providersPerClassloader.get( classLoader );
 			return ref != null ? ref.get() : null;
 		}
 
-		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
+		private static synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
 			providersPerClassloader.put( classLoader, new SoftReference<>( providers ) );
 		}
 	}
