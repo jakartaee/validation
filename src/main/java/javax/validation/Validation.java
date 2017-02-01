@@ -148,7 +148,7 @@ public class Validation {
 	 */
 	public static <T extends Configuration<T>, U extends ValidationProvider<T>>
 	ProviderSpecificBootstrap<T> byProvider(Class<U> providerType) {
-		return new ProviderSpecificBootstrapImpl<T, U>( providerType );
+		return new ProviderSpecificBootstrapImpl<>( providerType );
 	}
 
 	//private class, not exposed
@@ -308,18 +308,19 @@ public class Validation {
 
 	private static class GetValidationProviderListAction implements PrivilegedAction<List<ValidationProvider<?>>> {
 
+		private final static GetValidationProviderListAction INSTANCE = new GetValidationProviderListAction();
+
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
-		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
-				new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>();
+		private final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
+				new WeakHashMap<>();
 
 		public static List<ValidationProvider<?>> getValidationProviderList() {
-			final GetValidationProviderListAction action = new GetValidationProviderListAction();
 			if ( System.getSecurityManager() != null ) {
-				return AccessController.doPrivileged( action );
+				return AccessController.doPrivileged( INSTANCE );
 			}
 			else {
-				return action.run();
+				return INSTANCE.run();
 			}
 		}
 
@@ -357,7 +358,7 @@ public class Validation {
 		private List<ValidationProvider<?>> loadProviders(ClassLoader classloader) {
 			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
 			Iterator<ValidationProvider> providerIterator = loader.iterator();
-			List<ValidationProvider<?>> validationProviderList = new ArrayList<ValidationProvider<?>>();
+			List<ValidationProvider<?>> validationProviderList = new ArrayList<>();
 			while ( providerIterator.hasNext() ) {
 				try {
 					validationProviderList.add( providerIterator.next() );
