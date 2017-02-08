@@ -7,6 +7,7 @@
 package javax.validation.bootstrap;
 
 import javax.validation.Configuration;
+import javax.validation.NoProviderFoundException;
 import javax.validation.ValidationException;
 import javax.validation.ValidationProviderResolver;
 import javax.validation.ValidatorFactory;
@@ -41,8 +42,10 @@ public interface GenericBootstrap {
 	 * returned by the {@link ValidationProviderResolver} strategy.
 	 *
 	 * @return a {@code Configuration} implementation compliant with the bootstrap state
-	 * @throws ValidationException if the {@code Configuration} object cannot be built;
-	 *         this is generally due to an issue with the {@code ValidationProviderResolver}
+	 * @throws NoProviderFoundException if no Bean Validation provider was found
+	 * @throws ValidationException if a Bean Validation provider was found but the
+	 *         {@code Configuration} object cannot be built; this is generally due to an
+	 *         issue with the {@code ValidationProviderResolver}
 	 */
 	Configuration<?> configure();
 }

@@ -95,7 +95,9 @@ public class Validation {
 	 *
 	 * @return {@code ValidatorFactory} instance
 	 *
-	 * @throws ValidationException if the {@code ValidatorFactory} cannot be built
+	 * @throws NoProviderFoundException if no Bean Validation provider was found
+	 * @throws ValidationException if a Bean Validation provider was found but the
+	 * {@code ValidatorFactory} cannot be built
 	 */
 	public static ValidatorFactory buildDefaultValidatorFactory() {
 		return byDefaultProvider().configure().buildValidatorFactory();
@@ -273,7 +275,7 @@ public class Validation {
 			if ( validationProviders.size() == 0 ) {
 				String msg = "Unable to create a Configuration, because no Bean Validation provider could be found." +
 						" Add a provider like Hibernate Validator (RI) to your classpath.";
-				throw new ValidationException( msg );
+				throw new NoProviderFoundException( msg );
 			}
 
 			Configuration<?> config;
