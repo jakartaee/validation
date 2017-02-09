@@ -8,6 +8,7 @@ package javax.validation;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Reports the result of constraint violations.
@@ -16,6 +17,7 @@ import java.util.Set;
  * @author Gunnar Morling
  */
 public class ConstraintViolationException extends ValidationException {
+
 	private final Set<ConstraintViolation<?>> constraintViolations;
 
 	/**
@@ -32,7 +34,7 @@ public class ConstraintViolationException extends ValidationException {
 			this.constraintViolations = null;
 		}
 		else {
-			this.constraintViolations = new HashSet<ConstraintViolation<?>>( constraintViolations );
+			this.constraintViolations = new HashSet<>( constraintViolations );
 		}
 	}
 
@@ -42,7 +44,7 @@ public class ConstraintViolationException extends ValidationException {
 	 * @param constraintViolations {@code Set} of {@link ConstraintViolation}
 	 */
 	public ConstraintViolationException(Set<? extends ConstraintViolation<?>> constraintViolations) {
-		this( null, constraintViolations );
+		this( toString( constraintViolations ), constraintViolations );
 	}
 
 	/**
@@ -52,5 +54,11 @@ public class ConstraintViolationException extends ValidationException {
 	 */
 	public Set<ConstraintViolation<?>> getConstraintViolations() {
 		return constraintViolations;
+	}
+
+	private static String toString(Set<? extends ConstraintViolation<?>> constraintViolations) {
+		return constraintViolations.stream()
+			.map( cv -> cv == null ? "null" : cv.getPropertyPath() + ": " + cv.getMessage() )
+			.collect( Collectors.joining( ", " ) );
 	}
 }

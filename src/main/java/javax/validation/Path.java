@@ -22,6 +22,18 @@ import java.util.List;
 public interface Path extends Iterable<Path.Node> {
 
 	/**
+	 * Returns a human-readable representation of this path.
+	 * <p>
+	 * Clients should not rely on any specific structure of the returned value. Instead they should iterate through the
+	 * path nodes and obtain any required information by calling the methods on {@link Node} and its sub-types.
+	 *
+	 * @return a human-readable representation of this path
+	 * @since 2.0
+	 */
+	@Override
+	String toString();
+
+	/**
 	 * Represents an element of a navigation path.
 	 */
 	interface Node {
@@ -110,6 +122,18 @@ public interface Path extends Iterable<Path.Node> {
 		 * @since 1.1
 		 */
 		<T extends Node> T as(Class<T> nodeType);
+
+		/**
+		 * Returns a human-readable representation of this node.
+		 * <p>
+		 * Clients should not rely on any specific structure of the returned value. Instead they should obtain any
+		 * required information by calling the methods on this interface and its sub-types.
+		 *
+		 * @return a human-readable representation of this node
+		 * @since 2.0
+		 */
+		@Override
+		String toString();
 	}
 
 	/**
