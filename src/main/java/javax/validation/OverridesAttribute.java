@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RUNTIME)
 @Target({ METHOD })
-@Repeatable(List.class)
+@Repeatable(OverridesAttribute.List.class)
 public @interface OverridesAttribute {
 
 	/**
