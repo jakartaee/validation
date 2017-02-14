@@ -6,12 +6,14 @@
  */
 package javax.validation;
 
-import java.lang.annotation.Annotation;
 import static java.lang.annotation.ElementType.METHOD;
-import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import java.lang.annotation.Target;
+
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
 /**
  * Marks an attribute as overriding the attribute of a composing constraint.
@@ -19,8 +21,10 @@ import java.lang.annotation.Documented;
  *
  * @author Emmanuel Bernard
  */
+@Documented
 @Retention(RUNTIME)
 @Target({ METHOD })
+@Repeatable(OverridesAttribute.List.class)
 public @interface OverridesAttribute {
 
 	/**
