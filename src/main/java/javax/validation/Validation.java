@@ -272,7 +272,7 @@ public class Validation {
 				throw new ValidationException( "Unable to get available provider resolvers.", re );
 			}
 
-			if ( validationProviders.size() == 0 ) {
+			if ( validationProviders.isEmpty() ) {
 				String msg = "Unable to create a Configuration, because no Bean Validation provider could be found." +
 						" Add a provider like Hibernate Validator (RI) to your classpath.";
 				throw new NoProviderFoundException( msg );
