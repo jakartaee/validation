@@ -102,6 +102,36 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <!--
+                        Creates a report by running "mvn japicmp:cmp"
+                        Note: you need to install the jars before running the japicmp command.
+                    -->
+                    <groupId>com.github.siom79.japicmp</groupId>
+                    <artifactId>japicmp-maven-plugin</artifactId>
+                    <version>0.9.3</version>
+                    <configuration>
+                        <oldVersion>
+                            <dependency>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>${project.artifactId}</artifactId>
+                                <version>1.1.0.Final</version>
+                            </dependency>
+                        </oldVersion>
+                        <newVersion>
+                            <file>
+                                <path>${project.build.directory}/${project.artifactId}-${project.version}.${project.packaging}</path>
+                            </file>
+                        </newVersion>
+                        <parameter>
+                            <onlyModified>true</onlyModified>
+                        </parameter>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.felix</groupId>
