@@ -7,6 +7,7 @@
 package javax.validation.executable;
 
 import javax.validation.ValidationException;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -58,6 +59,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Target({ CONSTRUCTOR, METHOD, TYPE, PACKAGE })
 @Retention(RUNTIME)
+@Documented
 public @interface ValidateOnExecution {
 
 	/**

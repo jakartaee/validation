@@ -6,12 +6,14 @@
  */
 package javax.validation;
 
-import javax.validation.groups.Default;
-
 import static java.lang.annotation.ElementType.TYPE;
-import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+
+import javax.validation.groups.Default;
 
 /**
  * Defines group sequence.
@@ -26,6 +28,7 @@ import java.lang.annotation.Target;
  */
 @Target({ TYPE })
 @Retention(RUNTIME)
+@Documented
 public @interface GroupSequence {
 
 	Class<?>[] value();
