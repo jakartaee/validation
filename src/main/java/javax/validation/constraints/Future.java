@@ -29,9 +29,10 @@ import javax.validation.constraints.Future.List;
 /**
  * The annotated element must be an instant, date or time in the future.
  * <p>
- * By default, "now" is defined as the current time according to the virtual machine, applying the current default time
- * zone if needed. If required, an alternative {@link ClockProvider} can be specified when bootstrapping a validator
- * factory or validator, allowing to customize the {@link Clock} representing the current instant, date and time.
+ * <i>Now</i> is defined by the {@link ClockProvider} attached to the {@link javax.validation.Validator}
+ * or {@link javax.validation.ValidatorFactory}.
+ * The default {@code clockProvider} defines the current time according to the virtual machine,
+ * applying the current default time zone if needed.
  * <p>
  * Supported types are:
  * <ul>
