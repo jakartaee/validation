@@ -15,6 +15,7 @@ package javax.validation;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  *
  * @since 1.1
  */
@@ -52,5 +53,12 @@ public enum ElementKind {
 	/**
 	 * The return value of a method or constructor.
 	 */
-	RETURN_VALUE
+	RETURN_VALUE,
+
+	/**
+	 * A type argument of a generic declaration.
+	 *
+	 * @since 2.0
+	 */
+	TYPE_ARGUMENT
 }

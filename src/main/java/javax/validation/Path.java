@@ -6,6 +6,7 @@
  */
 package javax.validation;
 
+import java.lang.reflect.TypeVariable;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ import java.util.List;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public interface Path extends Iterable<Path.Node> {
 
@@ -206,5 +208,18 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface PropertyNode extends Node {
+	}
+
+	/**
+	 * Node representing a type argument in a generic declaration.
+	 *
+	 * @since 2.0
+	 */
+	interface TypeArgumentNode extends Node {
+
+		/**
+		 * @return the type parameter associated with this type argument
+		 */
+		TypeVariable<?> getTypeParameter();
 	}
 }
