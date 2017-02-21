@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public interface Path extends Iterable<Path.Node> {
 
@@ -78,6 +79,14 @@ public interface Path extends Iterable<Path.Node> {
 		Object getKey();
 
 		/**
+		 * @return the type parameter associated with the type argument if contained in a generic declaration or
+		 * cascaded via a generic declaration.
+		 *
+		 * @since 2.0
+		 */
+		TypeParameter getTypeParameter();
+
+		/**
 		 * The kind of element represented by the node. The following relationship
 		 * between an {@link ElementKind} and its {@code Node} subtype exists:
 		 * <ul>
@@ -88,6 +97,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *     <li>{@link ElementKind#PARAMETER}: {@link ParameterNode}</li>
 		 *     <li>{@link ElementKind#CROSS_PARAMETER}: {@link CrossParameterNode}</li>
 		 *     <li>{@link ElementKind#RETURN_VALUE}: {@link ReturnValueNode}</li>
+		 *     <li>{@link ElementKind#TYPE_ARGUMENT}: {@link TypeArgumentNode}</li>
 		 * </ul>
 		 * <p>
 		 * This is useful to narrow down the {@code Node} type and access node specific
@@ -206,5 +216,13 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface PropertyNode extends Node {
+	}
+
+	/**
+	 * Node representing a type argument in a generic declaration.
+	 *
+	 * @since 2.0
+	 */
+	interface TypeArgumentNode extends Node {
 	}
 }

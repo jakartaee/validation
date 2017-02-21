@@ -9,7 +9,12 @@ package javax.validation.examples;
 import java.util.Iterator;
 
 import javax.validation.Path;
-import javax.validation.Path.*;
+import javax.validation.Path.ConstructorNode;
+import javax.validation.Path.MethodNode;
+import javax.validation.Path.Node;
+import javax.validation.Path.ParameterNode;
+import javax.validation.Path.TypeArgumentNode;
+import javax.validation.TypeParameter;
 
 /**
  * This test does not have assertion but makes sure the APIs compile
@@ -26,6 +31,7 @@ public class NodeTraversalTest {
 		Class<?>[] params = null;
 		boolean isCtr = false;
 		int arg;
+		TypeParameter typeParameter = null;
 		while(nodeIterator.hasNext()) {
 			Node node = nodeIterator.next();
 			switch ( node.getKind() ) {
@@ -46,6 +52,10 @@ public class NodeTraversalTest {
 				break;
 			case RETURN_VALUE:
 				arg = -1; //convention in my special code
+				break;
+			case TYPE_ARGUMENT:
+				TypeArgumentNode typeArgumentNode = node.as( TypeArgumentNode.class );
+				typeParameter = typeArgumentNode.getTypeParameter();
 				break;
 			case BEAN:
 				break;
