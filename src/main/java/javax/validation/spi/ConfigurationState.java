@@ -17,6 +17,7 @@ import javax.validation.MessageInterpolator;
 import javax.validation.ParameterNameProvider;
 import javax.validation.TraversableResolver;
 import javax.validation.ValidatorFactory;
+import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * Contract between a {@link Configuration} and a
@@ -79,6 +80,31 @@ public interface ConfigurationState {
 	 * @return set of input stream
 	 */
 	Set<InputStream> getMappingStreams();
+
+	/**
+	 * Returns a set of value extractors.
+	 * <p>
+	 * The extractors are retrieved from the following sources in decreasing
+	 * order:
+	 * <ul>
+	 *     <li>extractors passed programmatically to {@link Configuration}</li>
+	 *     <li>extractors defined in {@code META-INF/validation.xml} provided
+	 *     that {@code ignoredXmlConfiguration} is {@code false}.</li>
+	 *     <li>extractors loaded through the Java service loader</li>
+	 * </ul>
+	 * An extractor for a given type and type parameter passed in
+	 * programmatically takes precedence over any extractors for the same type
+	 * and type parameter defined in {@code META-INF/validation.xml} or loaded
+	 * through the service loader. Extractors defined in
+	 * {@code META-INF/validation.xml} take precedence over any extractor for
+	 * the same type and type parameter loaded through the service loader.
+	 * <p>
+	 * Extractors defined in {@code META-INF/validation.xml} or loaded through
+	 * the service loader are instantiated using their no-arg constructor.
+	 *
+	 * @return set of value extractors; may be empty but never {@code null}
+	 */
+	Set<ValueExtractor<?>> getValueExtractors();
 
 	/**
 	 * Returns the constraint validator factory of this configuration.

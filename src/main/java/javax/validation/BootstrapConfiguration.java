@@ -8,9 +8,11 @@ package javax.validation;
 
 import java.util.Map;
 import java.util.Set;
+
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
 import javax.validation.spi.ValidationProvider;
+import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * Represents the user specified default configuration in
@@ -77,6 +79,14 @@ public interface BootstrapConfiguration {
 	 * @since 2.0
 	 */
 	String getClockProviderClassName();
+
+	/**
+	 * Returns the class names of {@link ValueExtractor}s.
+	 *
+	 * @return the value extractor class names or an empty set if none are specified
+	 * @since 2.0
+	 */
+	Set<String> getValueExtractorClassNames();
 
 	/**
 	 * Returns a set of resource paths pointing to XML constraint mapping files.

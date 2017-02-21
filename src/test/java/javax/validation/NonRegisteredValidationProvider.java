@@ -7,11 +7,13 @@
 package javax.validation;
 
 import java.io.InputStream;
+import java.util.Set;
 
 import javax.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
 import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ConfigurationState;
 import javax.validation.spi.ValidationProvider;
+import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * A validation provider which is not registered with a service file and thus cannot be used with the default provider
@@ -69,6 +71,11 @@ public class NonRegisteredValidationProvider implements ValidationProvider<NonRe
 		}
 
 		@Override
+		public NonRegisteredConfiguration addValueExtractor(ValueExtractor<?> extractor) {
+			throw new UnsupportedOperationException( "Not implemented" );
+		}
+
+		@Override
 		public NonRegisteredConfiguration addMapping(InputStream stream) {
 			throw new UnsupportedOperationException( "Not implemented" );
 		}
@@ -100,6 +107,11 @@ public class NonRegisteredValidationProvider implements ValidationProvider<NonRe
 
 		@Override
 		public ClockProvider getDefaultClockProvider() {
+			throw new UnsupportedOperationException( "Not implemented" );
+		}
+
+		@Override
+		public Set<ValueExtractor<?>> getDefaultValueExtractors() {
 			throw new UnsupportedOperationException( "Not implemented" );
 		}
 
