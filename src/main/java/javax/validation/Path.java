@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public interface Path extends Iterable<Path.Node> {
 
@@ -88,6 +89,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *     <li>{@link ElementKind#PARAMETER}: {@link ParameterNode}</li>
 		 *     <li>{@link ElementKind#CROSS_PARAMETER}: {@link CrossParameterNode}</li>
 		 *     <li>{@link ElementKind#RETURN_VALUE}: {@link ReturnValueNode}</li>
+		 *     <li>{@link ElementKind#CONTAINER_ELEMENT}: {@link ContainerElementNode}</li>
 		 * </ul>
 		 * <p>
 		 * This is useful to narrow down the {@code Node} type and access node specific
@@ -198,6 +200,21 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface BeanNode extends Node {
+
+		/**
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
+		 *
+		 * @since 2.0
+		 */
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 *
+		 * @since 2.0
+		 */
+		Integer getTypeArgumentIndex();
 	}
 
 	/**
@@ -206,5 +223,39 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface PropertyNode extends Node {
+
+		/**
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
+		 *
+		 * @since 2.0
+		 */
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 *
+		 * @since 2.0
+		 */
+		Integer getTypeArgumentIndex();
+	}
+
+	/**
+	 * Node representing a container element e.g. a type argument in a generic declaration.
+	 *
+	 * @since 2.0
+	 */
+	interface ContainerElementNode extends Node {
+
+		/**
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
+		 */
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 */
+		Integer getTypeArgumentIndex();
 	}
 }
