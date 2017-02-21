@@ -6,6 +6,8 @@
  */
 package javax.validation;
 
+import javax.validation.valueextraction.ValueExtractor;
+
 /**
  * Represents the context that is used to create {@link Validator}
  * instances.
@@ -82,6 +84,20 @@ public interface ValidatorContext {
 	 * @since 2.0
 	 */
 	ValidatorContext clockProvider(ClockProvider clockProvider);
+
+	/**
+	 * Adds a value extractor to be used by the {@link Validator}. Has
+	 * priority over any extractors for the same type and type parameter
+	 * detected through the service loader,  given in the XML configuration or
+	 * configured for the validator factory.
+	 *
+	 * @param extractor value extractor implementation
+	 * @return self following the chaining method pattern
+	 * @throws IllegalArgumentException If more than one extractor for the same
+	 *         type and type parameter is added
+	 * @since 2.0
+	 */
+	ValidatorContext addValueExtractor(ValueExtractor<?> extractor);
 
 	/**
 	 * Returns an initialized {@link Validator} instance respecting the defined state.

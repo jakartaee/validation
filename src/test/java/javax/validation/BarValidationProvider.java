@@ -10,20 +10,22 @@ import java.io.InputStream;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.BarValidationProvider.DummyConfiguration;
 import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ConfigurationState;
 import javax.validation.spi.ValidationProvider;
+import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * @author Hardy Ferentschik
  */
 public class BarValidationProvider implements ValidationProvider<DummyConfiguration> {
-	public static List<SoftReference<BarValidationProvider>> createdValidationProviders = new ArrayList<SoftReference<BarValidationProvider>>();
+	public static List<SoftReference<BarValidationProvider>> createdValidationProviders = new ArrayList<>();
 
 	public BarValidationProvider() {
-		createdValidationProviders.add( new SoftReference<BarValidationProvider>( this ) );
+		createdValidationProviders.add( new SoftReference<>( this ) );
 	}
 
 	@Override
@@ -75,6 +77,11 @@ public class BarValidationProvider implements ValidationProvider<DummyConfigurat
 		}
 
 		@Override
+		public DummyConfiguration addValueExtractor(ValueExtractor<?> extractor) {
+			return null;
+		}
+
+		@Override
 		public DummyConfiguration addMapping(InputStream stream) {
 			return null;
 		}
@@ -106,6 +113,11 @@ public class BarValidationProvider implements ValidationProvider<DummyConfigurat
 
 		@Override
 		public ClockProvider getDefaultClockProvider() {
+			return null;
+		}
+
+		@Override
+		public Set<ValueExtractor<?>> getDefaultValueExtractors() {
 			return null;
 		}
 
