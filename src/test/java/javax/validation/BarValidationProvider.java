@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.BarValidationProvider.DummyConfiguration;
 import javax.validation.spi.BootstrapState;
@@ -113,11 +112,6 @@ public class BarValidationProvider implements ValidationProvider<DummyConfigurat
 
 		@Override
 		public ClockProvider getDefaultClockProvider() {
-			return null;
-		}
-
-		@Override
-		public Set<ValueExtractor<?>> getDefaultValueExtractors() {
 			return null;
 		}
 

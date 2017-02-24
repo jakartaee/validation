@@ -7,10 +7,10 @@
 package javax.validation;
 
 import java.io.InputStream;
-import java.util.Set;
 
 import javax.validation.spi.ValidationProvider;
 import javax.validation.valueextraction.ValueExtractor;
+import javax.validation.valueextraction.ValueExtractorDeclarationException;
 
 /**
  * Receives configuration information, selects the appropriate
@@ -129,14 +129,14 @@ public interface Configuration<T extends Configuration<T>> {
 	T clockProvider(ClockProvider clockProvider);
 
 	/**
-	 * Adds a value extractor. Has priority over any extractors for the same
+	 * Adds a value extractor. Has priority over any extractor for the same
 	 * type and type parameter detected through the service loader or given in
 	 * the XML configuration.
 	 *
 	 * @param extractor value extractor implementation
 	 * @return {@code this} following the chaining method pattern.
-	 * @throws IllegalArgumentException If more than one extractor for the same
-	 *         type and type parameter is added
+	 * @throws ValueExtractorDeclarationException If more than one extractor for
+	 *         the same type and type use is added
 	 * @since 2.0
 	 */
 	T addValueExtractor(ValueExtractor<?> extractor);
@@ -267,17 +267,6 @@ public interface Configuration<T extends Configuration<T>> {
 	 * @since 2.0
 	 */
 	ClockProvider getDefaultClockProvider();
-
-	/**
-	 * Returns the default {@link ValueExtractor} implementations as per the
-	 * specification.
-	 *
-	 * @return the default {@code ValueExtractor} implementations compliant
-	 * with the specification
-	 *
-	 * @since 2.0
-	 */
-	Set<ValueExtractor<?>> getDefaultValueExtractors();
 
 	/**
 	 * Returns configuration information stored in the {@code META-INF/validation.xml} file.

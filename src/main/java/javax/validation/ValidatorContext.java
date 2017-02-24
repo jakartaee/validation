@@ -7,6 +7,7 @@
 package javax.validation;
 
 import javax.validation.valueextraction.ValueExtractor;
+import javax.validation.valueextraction.ValueExtractorDeclarationException;
 
 /**
  * Represents the context that is used to create {@link Validator}
@@ -87,14 +88,14 @@ public interface ValidatorContext {
 
 	/**
 	 * Adds a value extractor to be used by the {@link Validator}. Has
-	 * priority over any extractors for the same type and type parameter
-	 * detected through the service loader,  given in the XML configuration or
+	 * priority over any extractor for the same type and type parameter
+	 * detected through the service loader, given in the XML configuration or
 	 * configured for the validator factory.
 	 *
 	 * @param extractor value extractor implementation
 	 * @return self following the chaining method pattern
-	 * @throws IllegalArgumentException If more than one extractor for the same
-	 *         type and type parameter is added
+	 * @throws ValueExtractorDeclarationException If more than one extractor for
+	 *         the same type and type use is added
 	 * @since 2.0
 	 */
 	ValidatorContext addValueExtractor(ValueExtractor<?> extractor);
