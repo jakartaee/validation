@@ -89,11 +89,11 @@ public interface ConfigurationState {
 	 * <ul>
 	 *     <li>extractors passed programmatically to {@link Configuration}</li>
 	 *     <li>extractors defined in {@code META-INF/validation.xml} provided
-	 *     that {@code ignoredXmlConfiguration} is {@code false}.</li>
+	 *     that {@code ignoredXmlConfiguration} is {@code false}</li>
 	 *     <li>extractors loaded through the Java service loader</li>
 	 * </ul>
 	 * An extractor for a given type and type parameter passed in
-	 * programmatically takes precedence over any extractors for the same type
+	 * programmatically takes precedence over any extractor for the same type
 	 * and type parameter defined in {@code META-INF/validation.xml} or loaded
 	 * through the service loader. Extractors defined in
 	 * {@code META-INF/validation.xml} take precedence over any extractor for

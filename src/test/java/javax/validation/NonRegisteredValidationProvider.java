@@ -7,7 +7,6 @@
 package javax.validation;
 
 import java.io.InputStream;
-import java.util.Set;
 
 import javax.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
 import javax.validation.spi.BootstrapState;
@@ -107,11 +106,6 @@ public class NonRegisteredValidationProvider implements ValidationProvider<NonRe
 
 		@Override
 		public ClockProvider getDefaultClockProvider() {
-			throw new UnsupportedOperationException( "Not implemented" );
-		}
-
-		@Override
-		public Set<ValueExtractor<?>> getDefaultValueExtractors() {
 			throw new UnsupportedOperationException( "Not implemented" );
 		}
 
