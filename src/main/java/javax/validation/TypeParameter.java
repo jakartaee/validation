@@ -19,73 +19,28 @@ import java.lang.reflect.TypeVariable;
  * @author Guillaume Smet
  * @since 2.0
  */
-public class TypeParameter implements Serializable {
-
-	private final String name;
-
-	private final int index;
-
-	private GenericDeclaration genericDeclaration;
-
-	public static TypeParameter of(TypeVariable<?> typeVariable) {
-		java.lang.reflect.GenericDeclaration originalGenericDeclaration = (java.lang.reflect.GenericDeclaration) typeVariable.getGenericDeclaration();
-		if ( !( originalGenericDeclaration instanceof Class ) ) {
-			throw new ValidationException( "Only class level type variables are supported." );
-		}
-
-		GenericDeclaration genericDeclaration = new ClassGenericDeclaration( (Class<?>) originalGenericDeclaration );
-		TypeParameter typeParameter = null;
-
-		for ( TypeParameter currentTypeParameter : genericDeclaration.getTypeParameters() ) {
-			currentTypeParameter.genericDeclaration = genericDeclaration;
-			if ( typeVariable.getName().equals( currentTypeParameter.getName() ) ) {
-				typeParameter = currentTypeParameter;
-			}
-		}
-
-		return typeParameter;
-	}
-
-	private TypeParameter(String name, int index) {
-		this.name = name;
-		this.index = index;
-	}
+public interface TypeParameter extends Serializable {
 
 	/**
 	 * Returns the name of the type parameter.
 	 *
 	 * @return the name of the type parameter
 	 */
-	public String getName() {
-		return name;
-	}
+	public String getName();
 
 	/**
 	 * Returns the index of the type parameter in the array of type parameters of the generic declaration.
 	 *
 	 * @return the index of the type parameter
 	 */
-	public int getIndex() {
-		return index;
-	}
+	public int getIndex();
 
 	/**
 	 * Returns the generic declaration defining this type parameter.
 	 *
 	 * @return the generic declaration
 	 */
-	public GenericDeclaration getGenericDeclaration() {
-		return genericDeclaration;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append( name );
-		sb.append( " from " );
-		sb.append( genericDeclaration );
-		return sb.toString();
-	}
+	public GenericDeclaration getGenericDeclaration();
 
 	/**
 	 * A common interface for the generic declaration deemed to be serializable.
@@ -111,64 +66,5 @@ public class TypeParameter implements Serializable {
 		 * @throws ValidationException if the generic declaration cannot be cast to the desired type
 		 */
 		<T extends GenericDeclaration> T as(Class<T> implementation);
-	}
-
-	/**
-	 * A class based generic declaration.
-	 *
-	 * @author Guillaume Smet
-	 * @since 2.0
-	 */
-	public static class ClassGenericDeclaration implements GenericDeclaration {
-
-		private final String className;
-
-		private final TypeParameter[] typeParameters;
-
-		private ClassGenericDeclaration(Class<?> clazz) {
-			this.className = clazz.getName();
-			this.typeParameters = new TypeParameter[clazz.getTypeParameters().length];
-			for ( int i = 0; i < clazz.getTypeParameters().length; i++ ) {
-				this.typeParameters[i] = new TypeParameter( clazz.getTypeParameters()[i].getName(), i );
-			}
-		}
-
-		/**
-		 * Returns the fully qualified class name of the class.
-		 *
-		 * @return the fully qualified class name
-		 */
-		public String getClassName() {
-			return className;
-		}
-
-		@Override
-		public TypeParameter[] getTypeParameters() {
-			return typeParameters;
-		}
-
-		@SuppressWarnings("unchecked")
-		@Override
-		public <T extends GenericDeclaration> T as(Class<T> implementation) {
-			if ( !implementation.isAssignableFrom( getClass() ) ) {
-				throw new ValidationException( "Cannot cast " + getClass().getName() + " to " + implementation.getName() + "." );
-			}
-			return (T) this;
-		}
-
-		@Override
-		public String toString() {
-			StringBuilder sb = new StringBuilder();
-			sb.append( className );
-			sb.append( "<" );
-			for ( int i = 0; i < typeParameters.length; i++ ) {
-				if ( i > 0 ) {
-					sb.append( ", " );
-				}
-				sb.append( typeParameters[i].getName() );
-			}
-			sb.append( ">" );
-			return sb.toString();
-		}
 	}
 }
