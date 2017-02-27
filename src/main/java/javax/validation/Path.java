@@ -202,11 +202,18 @@ public interface Path extends Iterable<Path.Node> {
 	interface BeanNode extends Node {
 
 		/**
-		 * @return the type parameter affected by the violated constraint
+		 * @return the class of the container for the element affected by the violated constraint
 		 *
 		 * @since 2.0
 		 */
-		TypeParameter getTypeParameter();
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 *
+		 * @since 2.0
+		 */
+		Integer getContainerElementIndex();
 	}
 
 	/**
@@ -217,11 +224,18 @@ public interface Path extends Iterable<Path.Node> {
 	interface PropertyNode extends Node {
 
 		/**
-		 * @return the type parameter affected by the violated constraint
+		 * @return the class of the container for the element affected by the violated constraint
 		 *
 		 * @since 2.0
 		 */
-		TypeParameter getTypeParameter();
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 *
+		 * @since 2.0
+		 */
+		Integer getContainerElementIndex();
 	}
 
 	/**
@@ -232,8 +246,13 @@ public interface Path extends Iterable<Path.Node> {
 	interface ContainerElementNode extends Node {
 
 		/**
-		 * @return the type parameter affected by the violated constraint
+		 * @return the class of the container for the element affected by the violated constraint
 		 */
-		TypeParameter getTypeParameter();
+		Class<?> getContainerClass();
+
+		/**
+		 * @return the index of the type parameter affected by the violated constraint in the container class
+		 */
+		Integer getContainerElementIndex();
 	}
 }

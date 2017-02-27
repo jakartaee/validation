@@ -10,11 +10,10 @@ import java.util.Iterator;
 
 import javax.validation.Path;
 import javax.validation.Path.ConstructorNode;
+import javax.validation.Path.ContainerElementNode;
 import javax.validation.Path.MethodNode;
 import javax.validation.Path.Node;
 import javax.validation.Path.ParameterNode;
-import javax.validation.Path.ContainerElementNode;
-import javax.validation.TypeParameter;
 
 /**
  * This test does not have assertion but makes sure the APIs compile
@@ -31,7 +30,8 @@ public class NodeTraversalTest {
 		Class<?>[] params = null;
 		boolean isCtr = false;
 		int arg;
-		TypeParameter typeParameter = null;
+		Class<?> containerClass = null;
+		Integer containerElementIndex = null;
 		while(nodeIterator.hasNext()) {
 			Node node = nodeIterator.next();
 			switch ( node.getKind() ) {
@@ -54,8 +54,9 @@ public class NodeTraversalTest {
 				arg = -1; //convention in my special code
 				break;
 			case CONTAINER_ELEMENT:
-				ContainerElementNode typeArgumentNode = node.as( ContainerElementNode.class );
-				typeParameter = typeArgumentNode.getTypeParameter();
+				ContainerElementNode containerElement = node.as( ContainerElementNode.class );
+				containerClass = containerElement.getContainerClass();
+				containerElementIndex = containerElement.getContainerElementIndex();
 				break;
 			case BEAN:
 				break;
