@@ -97,7 +97,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *     <li>{@link ElementKind#PARAMETER}: {@link ParameterNode}</li>
 		 *     <li>{@link ElementKind#CROSS_PARAMETER}: {@link CrossParameterNode}</li>
 		 *     <li>{@link ElementKind#RETURN_VALUE}: {@link ReturnValueNode}</li>
-		 *     <li>{@link ElementKind#TYPE_ARGUMENT}: {@link TypeArgumentNode}</li>
+		 *     <li>{@link ElementKind#CONTAINER_ELEMENT}: {@link ContainerElementNode}</li>
 		 * </ul>
 		 * <p>
 		 * This is useful to narrow down the {@code Node} type and access node specific
@@ -219,10 +219,10 @@ public interface Path extends Iterable<Path.Node> {
 	}
 
 	/**
-	 * Node representing a type argument in a generic declaration.
+	 * Node representing a container element e.g. a type argument in a generic declaration.
 	 *
 	 * @since 2.0
 	 */
-	interface TypeArgumentNode extends Node {
+	interface ContainerElementNode extends Node {
 	}
 }

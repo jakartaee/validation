@@ -13,7 +13,7 @@ import javax.validation.Path.ConstructorNode;
 import javax.validation.Path.MethodNode;
 import javax.validation.Path.Node;
 import javax.validation.Path.ParameterNode;
-import javax.validation.Path.TypeArgumentNode;
+import javax.validation.Path.ContainerElementNode;
 import javax.validation.TypeParameter;
 
 /**
@@ -53,8 +53,8 @@ public class NodeTraversalTest {
 			case RETURN_VALUE:
 				arg = -1; //convention in my special code
 				break;
-			case TYPE_ARGUMENT:
-				TypeArgumentNode typeArgumentNode = node.as( TypeArgumentNode.class );
+			case CONTAINER_ELEMENT:
+				ContainerElementNode typeArgumentNode = node.as( ContainerElementNode.class );
 				typeParameter = typeArgumentNode.getTypeParameter();
 				break;
 			case BEAN:

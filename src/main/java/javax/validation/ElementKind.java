@@ -56,9 +56,9 @@ public enum ElementKind {
 	RETURN_VALUE,
 
 	/**
-	 * A type argument of a generic declaration.
+	 * A container element e.g. a type argument of a generic declaration.
 	 *
 	 * @since 2.0
 	 */
-	TYPE_ARGUMENT
+	CONTAINER_ELEMENT
 }
