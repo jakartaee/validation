@@ -79,14 +79,6 @@ public interface Path extends Iterable<Path.Node> {
 		Object getKey();
 
 		/**
-		 * @return the type parameter associated with the type argument if contained in a generic declaration or
-		 * cascaded via a generic declaration.
-		 *
-		 * @since 2.0
-		 */
-		TypeParameter getTypeParameter();
-
-		/**
 		 * The kind of element represented by the node. The following relationship
 		 * between an {@link ElementKind} and its {@code Node} subtype exists:
 		 * <ul>
@@ -208,6 +200,13 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface BeanNode extends Node {
+
+		/**
+		 * @return the type parameter affected by the violated constraint
+		 *
+		 * @since 2.0
+		 */
+		TypeParameter getTypeParameter();
 	}
 
 	/**
@@ -216,6 +215,13 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 1.1
 	 */
 	interface PropertyNode extends Node {
+
+		/**
+		 * @return the type parameter affected by the violated constraint
+		 *
+		 * @since 2.0
+		 */
+		TypeParameter getTypeParameter();
 	}
 
 	/**
@@ -224,5 +230,10 @@ public interface Path extends Iterable<Path.Node> {
 	 * @since 2.0
 	 */
 	interface ContainerElementNode extends Node {
+
+		/**
+		 * @return the type parameter affected by the violated constraint
+		 */
+		TypeParameter getTypeParameter();
 	}
 }
