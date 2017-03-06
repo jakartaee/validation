@@ -258,8 +258,10 @@ public interface Configuration<T extends Configuration<T>> {
 	 * Returns an implementation of the {@link ClockProvider}
 	 * interface following the default {@code ClockProvider}
 	 * defined in the specification:
-	 *
-	 * TODO BVAL-496 paste definition of the specification
+	 * <ul>
+	 *     <li>returns a clock representing the current system time and default time
+	 *     zone.</li>
+	 * </ul>
 	 *
 	 * @return default {@code ClockProvider} implementation compliant with
 	 *         the specification
