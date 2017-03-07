@@ -17,6 +17,7 @@ import java.lang.ref.SoftReference;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -134,6 +135,15 @@ public class ValidationTest {
 		assertNotNull( configuration );
 	}
 
+	// BVAL-559
+	@Test(expectedExceptions = NoProviderFoundException.class)
+	public void testNoProviderFoundThrowsNoProviderFoundException() {
+		Validation.byDefaultProvider()
+				.providerResolver( new EmptyValidationProviderResolver() )
+				.configure()
+				.buildValidatorFactory();
+	}
+
 	private int countInMemoryProviders() {
 		int count = 0;
 		// we cannot access Validation.DefaultValidationProviderResolver#providersPerClassloader, so we have to
@@ -191,6 +201,14 @@ public class ValidationTest {
 			E element = enumList.get( currentIndex );
 			currentIndex++;
 			return element;
+		}
+	}
+
+	private static class EmptyValidationProviderResolver implements ValidationProviderResolver {
+
+		@Override
+		public List<ValidationProvider<?>> getValidationProviders() {
+			return Collections.emptyList();
 		}
 	}
 }
