@@ -15,6 +15,7 @@ package javax.validation;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  *
  * @since 1.1
  */
@@ -52,5 +53,13 @@ public enum ElementKind {
 	/**
 	 * The return value of a method or constructor.
 	 */
-	RETURN_VALUE
+	RETURN_VALUE,
+
+	/**
+	 * An element stored in a container, e.g. the value wrapped by {@code Optional}, a value stored in a {@code List} or
+	 * a value stored in an array.
+	 *
+	 * @since 2.0
+	 */
+	CONTAINER_ELEMENT
 }
