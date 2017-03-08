@@ -56,7 +56,8 @@ public enum ElementKind {
 	RETURN_VALUE,
 
 	/**
-	 * A container element e.g. a type argument of a generic declaration.
+	 * An element stored in a container, e.g. the value wrapped by {@code Optional}, a value stored in a {@code List} or
+	 * a value stored in an array.
 	 *
 	 * @since 2.0
 	 */

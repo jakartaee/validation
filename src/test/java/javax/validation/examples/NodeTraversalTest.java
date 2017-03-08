@@ -31,7 +31,7 @@ public class NodeTraversalTest {
 		boolean isCtr = false;
 		int arg;
 		Class<?> containerClass = null;
-		Integer containerElementIndex = null;
+		Integer typeArgumentIndex = null;
 		while(nodeIterator.hasNext()) {
 			Node node = nodeIterator.next();
 			switch ( node.getKind() ) {
@@ -56,7 +56,7 @@ public class NodeTraversalTest {
 			case CONTAINER_ELEMENT:
 				ContainerElementNode containerElement = node.as( ContainerElementNode.class );
 				containerClass = containerElement.getContainerClass();
-				containerElementIndex = containerElement.getContainerElementIndex();
+				typeArgumentIndex = containerElement.getTypeArgumentIndex();
 				break;
 			case BEAN:
 				break;

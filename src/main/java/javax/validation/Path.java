@@ -202,7 +202,8 @@ public interface Path extends Iterable<Path.Node> {
 	interface BeanNode extends Node {
 
 		/**
-		 * @return the class of the container for the element affected by the violated constraint
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
 		 *
 		 * @since 2.0
 		 */
@@ -213,7 +214,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *
 		 * @since 2.0
 		 */
-		Integer getContainerElementIndex();
+		Integer getTypeArgumentIndex();
 	}
 
 	/**
@@ -224,7 +225,8 @@ public interface Path extends Iterable<Path.Node> {
 	interface PropertyNode extends Node {
 
 		/**
-		 * @return the class of the container for the element affected by the violated constraint
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
 		 *
 		 * @since 2.0
 		 */
@@ -235,7 +237,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *
 		 * @since 2.0
 		 */
-		Integer getContainerElementIndex();
+		Integer getTypeArgumentIndex();
 	}
 
 	/**
@@ -246,13 +248,14 @@ public interface Path extends Iterable<Path.Node> {
 	interface ContainerElementNode extends Node {
 
 		/**
-		 * @return the class of the container for the element affected by the violated constraint
+		 * @return the type of the container the node is placed in, if contained in a container type such as
+		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
 		 */
 		Class<?> getContainerClass();
 
 		/**
 		 * @return the index of the type parameter affected by the violated constraint in the container class
 		 */
-		Integer getContainerElementIndex();
+		Integer getTypeArgumentIndex();
 	}
 }
