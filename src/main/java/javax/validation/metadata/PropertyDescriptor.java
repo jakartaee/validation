@@ -14,7 +14,7 @@ package javax.validation.metadata;
  *
  * @author Emmanuel Bernard
  */
-public interface PropertyDescriptor extends ElementDescriptor, CascadableDescriptor {
+public interface PropertyDescriptor extends ElementDescriptor, CascadableDescriptor, ContainerDescriptor {
 
 	/**
 	 * Name of the property according to the Java Bean specification.

@@ -50,7 +50,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Returns a set of property descriptors having at least one constraint defined
 	 * or marked as cascaded ({@link Valid}).
 	 * <p>
-	 * If not property matches, an empty set is returned.
+	 * If no property matches, an empty set is returned.
 	 * Properties of super types are considered.
 	 *
 	 * @return the set of {@link PropertyDescriptor}s for the constraint properties; if
