@@ -125,7 +125,7 @@
                         maxOccurs="unbounded"
                         minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="typeArgumentIndex" use="optional">
+        <xs:attribute name="type-argument-index" use="optional">
             <xs:simpleType>
                 <xs:restriction base="xs:int">
                     <xs:minInclusive value="0" />
