@@ -12,7 +12,7 @@ package javax.validation.metadata;
  * @author Gunnar Morling
  * @since 1.1
  */
-public interface ParameterDescriptor extends ElementDescriptor, CascadableDescriptor {
+public interface ParameterDescriptor extends ElementDescriptor, CascadableDescriptor, ContainerDescriptor {
 
 	/**
 	 * Returns this parameter's index within the parameter array of the method
