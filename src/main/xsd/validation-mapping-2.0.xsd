@@ -117,7 +117,7 @@
                         maxOccurs="unbounded"
                         minOccurs="0"/>
             <xs:element type="map:containerElementTypeType"
-                        name="containerElementType"
+                        name="container-element-type"
                         maxOccurs="unbounded"
                         minOccurs="0"/>
         </xs:sequence>
@@ -183,7 +183,7 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:containerElementTypeType"
-                        name="containerElementType"
+                        name="container-element-type"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:constraintType"
@@ -237,7 +237,7 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:containerElementTypeType"
-                        name="containerElementType"
+                        name="container-element-type"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:constraintType"
@@ -256,7 +256,7 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:containerElementTypeType"
-                        name="containerElementType"
+                        name="container-element-type"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:constraintType"
@@ -290,7 +290,7 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:containerElementTypeType"
-                        name="containerElementType"
+                        name="container-element-type"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element type="map:constraintType"
