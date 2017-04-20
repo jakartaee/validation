@@ -13,6 +13,8 @@ import javax.validation.ValidationException;
  * {@link ExtractedValue}.
  *
  * @author Gunnar Morling
+ *
+ * @since 2.0
  */
 public class ValueExtractorDefinitionException extends ValidationException {
 

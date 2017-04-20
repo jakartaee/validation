@@ -13,6 +13,8 @@ import javax.validation.ValidationException;
  * and type use have been configured in {@code META-INF/validation.xml}.
  *
  * @author Gunnar Morling
+ *
+ * @since 2.0
  */
 public class ValueExtractorDeclarationException extends ValidationException {
 
