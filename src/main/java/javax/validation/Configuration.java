@@ -242,7 +242,11 @@ public interface Configuration<T extends Configuration<T>> {
 	 * interface following the default {@code ParameterNameProvider}
 	 * defined in the specification:
 	 * <ul>
-	 *     <li>returns names in the form {@code arg&lt;PARAMETER_INDEX&gt;}
+	 *     <li>returns the actual parameter names as provided in the validated
+	 *     executable’s definition, if the class file of the executable contains
+	 *     parameter name information</li>
+	 *     <li>
+	 *     otherwise returns names in the form {@code arg&lt;PARAMETER_INDEX&gt;},
 	 *     where {@code PARAMETER_INDEX} starts at 0 for the first parameter,
 	 *     e.g. {@code arg0}, {@code arg1} etc.</li>
 	 * </ul>
