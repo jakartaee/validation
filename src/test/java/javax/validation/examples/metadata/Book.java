@@ -6,7 +6,11 @@
  */
 package javax.validation.examples.metadata;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.groups.ConvertGroup;
@@ -21,8 +25,13 @@ public class Book {
     public interface FirstLevelCheck {}
     public interface SecondLevelCheck {}
 
+    public static class Chapter {
+        //[...]
+    }
+
     private String title;
     private String description;
+    private Map<@Valid Chapter, @Size(min=1) List<@NotBlank String>> keywordsPerChapter;
 
     @Valid
     @NotNull

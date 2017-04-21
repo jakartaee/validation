@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.examples.metadata.Book.SecondLevelCheck;
@@ -17,6 +18,7 @@ import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
 import javax.validation.metadata.ConstraintDescriptor;
 import javax.validation.metadata.ConstructorDescriptor;
+import javax.validation.metadata.ContainerElementTypeDescriptor;
 import javax.validation.metadata.CrossParameterDescriptor;
 import javax.validation.metadata.GroupConversionDescriptor;
 import javax.validation.metadata.MethodDescriptor;
@@ -36,6 +38,7 @@ public class MetaDataApiTest {
 	public void testMeta() {
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
+		//tag::include[]
 		BeanDescriptor bookDescriptor = validator.getConstraintsForClass(Book.class);
 
 		assert ! bookDescriptor.hasConstraints();
@@ -49,12 +52,12 @@ public class MetaDataApiTest {
 		assert bookDescriptor.getConstrainedProperties().size() == 2;
 
 		//not a property
-		assert bookDescriptor.getConstraintsForProperty("doesNotExist") == null;
+		assert bookDescriptor.getConstraintsForProperty( "doesNotExist" ) == null;
 
 		//property with no constraint
-		assert bookDescriptor.getConstraintsForProperty("description") == null;
+		assert bookDescriptor.getConstraintsForProperty( "description" ) == null;
 
-		PropertyDescriptor propertyDescriptor = bookDescriptor.getConstraintsForProperty("title");
+		PropertyDescriptor propertyDescriptor = bookDescriptor.getConstraintsForProperty( "title" );
 		assert propertyDescriptor.getConstraintDescriptors().size() == 2;
 		assert "title".equals( propertyDescriptor.getPropertyName() );
 
@@ -78,12 +81,31 @@ public class MetaDataApiTest {
 		//assuming the implementation returns the Size constraint second
 		constraintDescriptor = propertyDescriptor.getConstraintDescriptors().iterator().next();
 		assert constraintDescriptor.getAnnotation().annotationType().equals( Size.class );
-		assert constraintDescriptor.getAttributes().get("max") == Integer.valueOf( 30 );
+		assert constraintDescriptor.getAttributes().get( "max" ) == Integer.valueOf( 30 );
 		assert constraintDescriptor.getGroups().size() == 1;
 
-		propertyDescriptor = bookDescriptor.getConstraintsForProperty("author");
+		propertyDescriptor = bookDescriptor.getConstraintsForProperty( "author" );
 		assert propertyDescriptor.getConstraintDescriptors().size() == 1;
 		assert propertyDescriptor.isCascaded();
+
+		propertyDescriptor = bookDescriptor.getConstraintsForProperty( "keywordsPerChapter" );
+
+		// @Valid on the map key
+		ContainerElementTypeDescriptor mapKeyElementDescriptor = propertyDescriptor.getConstraintsForContainerElementType( 0 );
+		assert mapKeyElementDescriptor.isCascaded() == true;
+
+		// @Size on the map value
+		ContainerElementTypeDescriptor mapValueElementDescriptor = propertyDescriptor.getConstraintsForContainerElementType( 1 );
+		assert mapValueElementDescriptor.getConstraintDescriptors().size() == 1;
+		assert mapValueElementDescriptor.getConstraintDescriptors().iterator().next().getAnnotation().annotationType() == Size.class;
+
+		// @NotBlank on the nested list elements
+		ContainerElementTypeDescriptor listElementDescriptor = mapValueElementDescriptor.getConstraintsForContainerElementType( 0 );
+		assert listElementDescriptor.getConstraintDescriptors().size() == 1;
+		assert listElementDescriptor.getConstraintDescriptors().iterator().next().getAnnotation().annotationType() == NotBlank.class;
+
+		// no further nested container element constraints
+		assert listElementDescriptor.getConstrainedContainerElementTypes().isEmpty();
 
 		//getTitle() and addChapter()
 		assert bookDescriptor.getConstrainedMethods(MethodType.GETTER, MethodType.NON_GETTER).size() == 2;
@@ -169,5 +191,6 @@ public class MetaDataApiTest {
 		ConstraintDescriptor<?> crossParameterConstraint =
 				crossParameterDescriptor.getConstraintDescriptors().iterator().next();
 		assert crossParameterConstraint.getAnnotation().annotationType() == ValidInterval.class;
+		//end::include[]
 	}
 }
