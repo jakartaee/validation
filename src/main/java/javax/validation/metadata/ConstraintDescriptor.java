@@ -16,7 +16,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.groups.Default;
-import javax.validation.valueextraction.ValidateUnwrappedValue;
 
 /**
  * Describes a single constraint and its composing constraints.

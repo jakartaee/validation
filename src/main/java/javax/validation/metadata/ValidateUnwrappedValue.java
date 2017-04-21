@@ -4,7 +4,9 @@
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
  */
-package javax.validation.valueextraction;
+package javax.validation.metadata;
+
+import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * The unwrapping behavior that can be applied to a specific constraint.
