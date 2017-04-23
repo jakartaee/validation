@@ -13,12 +13,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation used to mark the type parameter to which a {@link ValueExtractor} is tied.
+ * Marks the type parameter of a container type to which a {@link ValueExtractor} is tied.
  * <p>
  * Must be given exactly once for a value extractor type.
  *
  * @author Gunnar Morling
  * @author Guillaume Smet
+ *
+ * @see ValueExtractor
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE_USE)
