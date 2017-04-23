@@ -14,9 +14,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Annotation used on a {@link ValueExtractor} to indicate that the value should be unwrapped by default.
+ * Marks a {@link ValueExtractor} definition so that it is applied automatically when detecting constraints declared on
+ * the container type supported by the extractor, causing the constraints to be applied to the container's elements
+ * instead of the container.
  * <p>
- * This behavior can be changed per constraint using {@code &#064;Constraint(validateWrappedValue = NO )}.
+ * If needed, this behavior can be changed per constraint using {@link Unwrapping.Skip}, causing the constraints to be
+ * applied to the container itself:
+ *
+ * <pre>
+ * &#064;SomeConstraint(payload = Unwrapping.Skip.class)
+ * SomeContainerType container;
+ * </pre>
  *
  * @author Guillaume Smet
  * @since 2.0

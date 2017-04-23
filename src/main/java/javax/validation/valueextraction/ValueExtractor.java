@@ -13,7 +13,7 @@ import java.util.Set;
 import javax.validation.Path;
 
 /**
- * Defines the logic used to extract the values to validate from an object of type {@code T}.
+ * Defines the logic used to extract the values from a container object of type {@code T}.
  * <p>
  * A value extractor is tied to one specific type parameter of {@code T}. The {@link ExtractedValue} annotation
  * is used to mark that type parameter.
@@ -56,7 +56,7 @@ public interface ValueExtractor<T> {
 		/**
 		 * Receives the value extracted from an object.
 		 *
-		 * @param nodeName the name of the node to be added to the {@link Path}
+		 * @param nodeName the name of the node representing the container element. It will be added to the {@link Path}
 		 * @param object the value to validate
 		 */
 		void value(String nodeName, Object object);
@@ -64,7 +64,7 @@ public interface ValueExtractor<T> {
 		/**
 		 * Receives the value extracted from an {@link Iterable} object that is not indexed (e.g. a {@link Set}).
 		 *
-		 * @param nodeName the name of the node to be added to the {@link Path}
+		 * @param nodeName the name of the node representing the container element. It will be added to the {@link Path}
 		 * @param object the value to validate
 		 */
 		void iterableValue(String nodeName, Object object);
@@ -72,7 +72,7 @@ public interface ValueExtractor<T> {
 		/**
 		 * Receives the value extracted from an indexed object (e.g. a {@link List} or an array).
 		 *
-		 * @param nodeName the name of the node to be added to the {@link Path}
+		 * @param nodeName the name of the node representing the container element. It will be added to the {@link Path}
 		 * @param i the index of the value in the original object
 		 * @param object the value to validate
 		 */
@@ -81,7 +81,7 @@ public interface ValueExtractor<T> {
 		/**
 		 * Receives the value extracted from a keyed object (e.g. a {@link Map}).
 		 *
-		 * @param nodeName the name of the node to be added to the {@link Path}
+		 * @param nodeName the name of the node representing the container element. It will be added to the {@link Path}
 		 * @param key the key of the value in the original object
 		 * @param object the value to validate
 		 */
