@@ -22,8 +22,8 @@ public interface ContainerDescriptor {
 	 * in the order of their declaration.
 	 *
 	 * @return the list of descriptors representing the container element types of
-	 *         this container; an empty set will be returned if this executable has
-	 *         no container element types, but never {@code null}
+	 *         this container; an empty list will be returned if there are  no
+	 *         container element types, but never {@code null}
 	 */
 	List<ContainerElementTypeDescriptor> getContainerElementTypes();
 }

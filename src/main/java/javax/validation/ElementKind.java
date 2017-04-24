@@ -56,8 +56,7 @@ public enum ElementKind {
 	RETURN_VALUE,
 
 	/**
-	 * An element stored in a container, e.g. the value wrapped by {@code Optional}, a value stored in a {@code List} or
-	 * a value stored in an array.
+	 * An element stored in a container, e.g. a key or value of a {@code Map} or an element of a {@code List}.
 	 *
 	 * @since 2.0
 	 */
