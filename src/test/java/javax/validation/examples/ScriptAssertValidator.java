@@ -16,10 +16,7 @@ import javax.validation.constraintvalidation.ValidationTarget;
  * @author Emmanuel Bernard <emmanuel@hibernate.org>
  */
 @SupportedValidationTarget( { ValidationTarget.ANNOTATED_ELEMENT, ValidationTarget.PARAMETERS } )
-public class ScriptAssertValidator implements ConstraintValidator<NotNull,Object[]> {
-	@Override
-	public void initialize(NotNull constraintAnnotation) {
-	}
+public class ScriptAssertValidator implements ConstraintValidator<NotNull, Object[]> {
 
 	@Override
 	public boolean isValid(Object[] value, ConstraintValidatorContext context) {
