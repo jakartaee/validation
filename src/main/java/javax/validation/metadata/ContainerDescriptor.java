@@ -6,9 +6,7 @@
  */
 package javax.validation.metadata;
 
-import java.util.Set;
-
-import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Represents an element that might be a container, thus allowing container element constraints.
@@ -19,23 +17,13 @@ import javax.validation.Valid;
 public interface ContainerDescriptor {
 
 	/**
-	 * Returns the container element type descriptor for a given type argument.
-	 * <p>
-	 * Returns {@code null} if the container element type does not exist or has no constraint nor is marked as cascaded
-	 * (see {@link #getConstrainedContainerElementTypes()})
+	 * Returns the list of descriptors representing the container element
+	 * types (e.g. type arguments of a generic type) of this container, if any,
+	 * in the order of their declaration.
 	 *
-	 * @param typeArgumentIndex type argument index evaluated
-	 * @return the container element type descriptor
+	 * @return the list of descriptors representing the container element types of
+	 *         this container; an empty set will be returned if this executable has
+	 *         no container element types, but never {@code null}
 	 */
-	ContainerElementTypeDescriptor getConstraintsForContainerElementType(int typeArgumentIndex);
-
-	/**
-	 * Returns a set of container element type descriptors having at least one constraint defined or marked as cascaded
-	 * ({@link Valid}).
-	 * <p>
-	 * If no container element type matches, an empty set is returned.
-	 *
-	 * @return the set of {@link ContainerElementTypeDescriptor}s
-	 */
-	Set<ContainerElementTypeDescriptor> getConstrainedContainerElementTypes();
+	List<ContainerElementTypeDescriptor> getContainerElementTypes();
 }
