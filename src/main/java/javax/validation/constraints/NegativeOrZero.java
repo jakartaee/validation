@@ -21,10 +21,10 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.Negative.List;
+import javax.validation.constraints.NegativeOrZero.List;
 
 /**
- * The annotated element must be a strictly negative number (i.e. 0 is considered as an invalid value).
+ * The annotated element must be a negative number or 0.
  * <p>
  * Supported types are:
  * <ul>
@@ -44,24 +44,24 @@ import javax.validation.constraints.Negative.List;
 @Repeatable(List.class)
 @Documented
 @Constraint(validatedBy = { })
-public @interface Negative {
+public @interface NegativeOrZero {
 
-	String message() default "{javax.validation.constraints.Negative.message}";
+	String message() default "{javax.validation.constraints.NegativeOrZero.message}";
 
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@link Negative} constraints on the same element.
+	 * Defines several {@link NegativeOrZero} constraints on the same element.
 	 *
-	 * @see Negative
+	 * @see NegativeOrZero
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
 
-		Negative[] value();
+		NegativeOrZero[] value();
 	}
 }
