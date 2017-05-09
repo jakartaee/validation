@@ -24,7 +24,7 @@ import javax.validation.Payload;
 import javax.validation.constraints.Positive.List;
 
 /**
- * The annotated element must be a positive number.
+ * The annotated element must be a strictly positive number (i.e. 0 is considered as an invalid value).
  * <p>
  * Supported types are:
  * <ul>
@@ -51,14 +51,6 @@ public @interface Positive {
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
-
-	/**
-	 * Whether the annotated element must be strictly positive (0 is considered as an invalid value) or not (0 is a
-	 * valid value).
-	 *
-	 * @return whether the annotated element must be strictly positive
-	 */
-	boolean strict() default false;
 
 	/**
 	 * Defines several {@link Positive} constraints on the same element.
