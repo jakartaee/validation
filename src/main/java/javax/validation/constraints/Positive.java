@@ -58,7 +58,7 @@ public @interface Positive {
 	 *
 	 * @return whether the annotated element must be strictly positive
 	 */
-	boolean strict() default false;
+	boolean strict() default true;
 
 	/**
 	 * Defines several {@link Positive} constraints on the same element.
