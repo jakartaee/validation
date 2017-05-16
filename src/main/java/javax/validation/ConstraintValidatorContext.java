@@ -103,6 +103,7 @@ public interface ConstraintValidatorContext {
 	 * //under the "home" key in the map
 	 * context.buildConstraintViolationWithTemplate( "Incorrect home address" )
 	 *             .addBeanNode()
+	 *                 .inContainer( Map.class, 0 )
 	 *                 .inIterable().atKey( "home" )
 	 *             .addConstraintViolation();
 	 *
@@ -112,6 +113,7 @@ public interface ConstraintValidatorContext {
 	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
 	 *             .addPropertyNode( "addresses" )
 	 *             .addPropertyNode( "country" )
+	 *                 .inContainer( Map.class, 0 )
 	 *                 .inIterable().atKey( "home" )
 	 *             .addPropertyNode( "name" )
 	 *             .addConstraintViolation();
@@ -134,6 +136,7 @@ public interface ConstraintValidatorContext {
 	 *         "Map entry home present in both and does not match")
 	 *             .addParameterNode(1)
 	 *             .addBeanNode()
+	 *                 .inContainer( Map.class, 0 )
 	 *                 .inIterable().atKey("home")
 	 *             .addConstraintViolation();
 	 *
@@ -146,6 +149,7 @@ public interface ConstraintValidatorContext {
 	 *         "Map entry home present in both but city does not match")
 	 *             .addParameterNode(1)
 	 *             .addPropertyNode("city")
+	 *                 .inContainer( Map.class, 0 )
 	 *                 .inIterable().atKey("home")
 	 *             .addConstraintViolation();
 	 * </pre>
@@ -224,6 +228,19 @@ public interface ConstraintValidatorContext {
 		LeafNodeBuilderCustomizableContext addBeanNode();
 
 		/**
+		 * Adds a container element node to the path the {@link ConstraintViolation}
+		 * will be associated to.
+		 *
+		 * @param containerType the type of the container
+		 * @param typeArgumentIndex the index of the type parameter
+		 * @return a builder representing the container element node
+		 * @throws IllegalArgumentException if the index is not valid
+		 *
+		 * @since 2.0
+		 */
+		ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, Integer typeArgumentIndex);
+
+		/**
 		 * Adds a method parameter node to the path the {@link ConstraintViolation}
 		 * will be associated to.
 		 * The parameter index must be valid (i.e. within the boundaries of the method
@@ -287,6 +304,18 @@ public interface ConstraintValidatorContext {
 			 * @return a builder representing iterable details
 			 */
 			LeafNodeContextBuilder inIterable();
+
+			/**
+			 * Marks the node as being in a container such as a {@code List}, {@code Map} or {@code Optional}
+			 *
+			 * @param containerClass the type of the container
+			 * @param typeArgumentIndex type index of the concerned type argument
+			 * @return a builder representing the current node
+			 * @throws IllegalArgumentException if the index is not valid
+			 *
+			 * @since 2.0
+			 */
+			LeafNodeBuilderCustomizableContext inContainer(Class<?> containerClass, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -393,6 +422,19 @@ public interface ConstraintValidatorContext {
 			LeafNodeBuilderCustomizableContext addBeanNode();
 
 			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 *
+			 * @since 2.0
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, Integer typeArgumentIndex);
+
+			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
 			 * constraint validator marks the value as invalid.
 			 * <p>
@@ -420,6 +462,18 @@ public interface ConstraintValidatorContext {
 			 * @return a builder representing iterable details
 			 */
 			NodeContextBuilder inIterable();
+
+			/**
+			 * Marks the node as being in a container such as a {@code List}, {@code Map} or {@code Optional}
+			 *
+			 * @param containerClass the type of the container
+			 * @param typeArgumentIndex type index of the concerned type argument
+			 * @return a builder representing the current node
+			 * @throws IllegalArgumentException if the index is not valid
+			 *
+			 * @since 2.0
+			 */
+			NodeBuilderCustomizableContext inContainer(Class<?> containerClass, Integer typeArgumentIndex);
 
 			/**
 			 * Adds a node to the path the {@link ConstraintViolation} will be associated to.
@@ -459,6 +513,19 @@ public interface ConstraintValidatorContext {
 			 * @since 1.1
 			 */
 			LeafNodeBuilderCustomizableContext addBeanNode();
+
+			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 *
+			 * @since 2.0
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, int typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -541,6 +608,221 @@ public interface ConstraintValidatorContext {
 			 * @since 1.1
 			 */
 			LeafNodeBuilderCustomizableContext addBeanNode();
+
+			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 * Note that container element nodes are always leaf nodes.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 *
+			 * @since 2.0
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, Integer typeArgumentIndex);
+
+			/**
+			 * Adds the new {@link ConstraintViolation} to be generated if the
+			 * constraint validator mark the value as invalid.
+			 * <p>
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
+			 * comes from and the constraint violation builder nested
+			 * objects throw {@code IllegalStateException} after this call.
+			 *
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *         {@code ConstraintViolationBuilder} comes from
+			 */
+			ConstraintValidatorContext addConstraintViolation();
+		}
+
+		/**
+		 * Represents a container element node whose context is known
+		 * (i.e. index, key and isInIterable)
+		 * and that is not necessarily a leaf node (i.e. subnodes can
+		 * be added).
+		 *
+		 * @since 2.0
+		 */
+		interface ContainerElementNodeBuilderDefinedContext {
+
+			/**
+			 * Adds a property node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 * <p>
+			 * {@code name} describes a single property. In particular,
+			 * dot (.) is not allowed.
+			 *
+			 * @param name property name
+			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
+			 */
+			NodeBuilderCustomizableContext addPropertyNode(String name);
+
+			/**
+			 * Adds a bean node (class-level) to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 * Note that bean nodes are always leaf nodes.
+			 *
+			 * @return a builder representing the bean node
+			 */
+			LeafNodeBuilderCustomizableContext addBeanNode();
+
+			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, Integer typeArgumentIndex);
+
+			/**
+			 * Adds the new {@link ConstraintViolation} to be generated if the
+			 * constraint validator marks the value as invalid.
+			 * <p>
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
+			 * comes from and the constraint violation builder nested
+			 * objects throw {@code IllegalStateException} after this call.
+			 *
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *           {@code ConstraintViolationBuilder} comes from
+			 */
+			ConstraintValidatorContext addConstraintViolation();
+		}
+
+		/**
+		 * Represents a container element node whose context is
+		 * configurable (i.e. index, key and isInIterable)
+		 * and that is not necessarily a leaf node (i.e. subnodes can
+		 * be added).
+		 *
+		 * @since 2.0
+		 */
+		interface ContainerElementNodeBuilderCustomizableContext {
+
+			/**
+			 * Marks the node as being in an {@code Iterable} or a {@code Map}.
+			 *
+			 * @return a builder representing iterable details
+			 */
+			ContainerElementNodeContextBuilder inIterable();
+
+			/**
+			 * Adds a property node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * {@code name} describes a single property. In particular,
+			 * dot (.) is not allowed.
+			 *
+			 * @param name property name
+			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
+			 */
+			NodeBuilderCustomizableContext addPropertyNode(String name);
+
+			/**
+			 * Adds a bean node (class-level) to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 * <p>
+			 * Note that bean nodes are always leaf nodes.
+			 *
+			 * @return a builder representing the bean node
+			 */
+			LeafNodeBuilderCustomizableContext addBeanNode();
+
+			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, int typeArgumentIndex);
+
+			/**
+			 * Adds the new {@link ConstraintViolation} to be generated if the
+			 * constraint validator mark the value as invalid.
+			 * <p>
+			 * Methods of the {@code ConstraintViolationBuilder} instance this object
+			 * comes from and the constraint violation builder nested
+			 * objects throw {@code IllegalStateException} after this call.
+			 *
+			 * @return {@code ConstraintValidatorContext} instance the
+			 *         {@code ConstraintViolationBuilder} comes from
+			 */
+			ConstraintValidatorContext addConstraintViolation();
+		}
+
+		/**
+		 * Represents refinement choices for a container element node which is
+		 * in an {@code Iterator} or {@code Map}.
+		 * <p>
+		 * If the iterator is an indexed collection or a map,
+		 * the index or the key should be set.
+		 * <p>
+		 * The node is not necessarily a leaf node (i.e. subnodes can
+		 * be added).
+		 *
+		 * @since 2.0
+		 */
+		interface ContainerElementNodeContextBuilder {
+
+			/**
+			 * Defines the key the object is into the {@code Map}.
+			 *
+			 * @param key map key
+			 * @return a builder representing the current node
+			 */
+
+			ContainerElementNodeBuilderDefinedContext atKey(Object key);
+
+			/**
+			 * Defines the index the object is into the {@code List} or array.
+			 *
+			 * @param index index
+			 * @return a builder representing the current node
+			 */
+			ContainerElementNodeBuilderDefinedContext atIndex(Integer index);
+
+			/**
+			 * Adds a property node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * {@code name} describes a single property. In particular,
+			 * dot (.) is not allowed.
+			 *
+			 * @param name property name
+			 * @return a builder representing node {@code name}
+			 * @throws IllegalArgumentException if the name is null
+			 */
+			NodeBuilderCustomizableContext addPropertyNode(String name);
+
+			/**
+			 * Adds a bean node (class-level) to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 * <p>
+			 * Note that bean nodes are always leaf nodes.
+			 *
+			 * @return a builder representing the bean node
+			 */
+			LeafNodeBuilderCustomizableContext addBeanNode();
+
+			/**
+			 * Adds a container element node to the path the {@link ConstraintViolation}
+			 * will be associated to.
+			 *
+			 * @param containerType the type of the container
+			 * @param typeArgumentIndex the index of the type parameter
+			 * @return a builder representing the container element node
+			 * @throws IllegalArgumentException if the index is not valid
+			 */
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
