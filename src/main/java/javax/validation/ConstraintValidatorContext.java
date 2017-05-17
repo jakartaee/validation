@@ -103,7 +103,7 @@ public interface ConstraintValidatorContext {
 	 * //under the "home" key in the map
 	 * context.buildConstraintViolationWithTemplate( "Incorrect home address" )
 	 *             .addBeanNode()
-	 *                 .inContainer( Map.class, 0 )
+	 *                 .inContainer( Map.class, 1 )
 	 *                 .inIterable().atKey( "home" )
 	 *             .addConstraintViolation();
 	 *
@@ -113,7 +113,7 @@ public interface ConstraintValidatorContext {
 	 * context.buildConstraintViolationWithTemplate( "this detail is wrong" )
 	 *             .addPropertyNode( "addresses" )
 	 *             .addPropertyNode( "country" )
-	 *                 .inContainer( Map.class, 0 )
+	 *                 .inContainer( Map.class, 1 )
 	 *                 .inIterable().atKey( "home" )
 	 *             .addPropertyNode( "name" )
 	 *             .addConstraintViolation();
@@ -136,7 +136,7 @@ public interface ConstraintValidatorContext {
 	 *         "Map entry home present in both and does not match")
 	 *             .addParameterNode(1)
 	 *             .addBeanNode()
-	 *                 .inContainer( Map.class, 0 )
+	 *                 .inContainer( Map.class, 1 )
 	 *                 .inIterable().atKey("home")
 	 *             .addConstraintViolation();
 	 *
@@ -149,7 +149,7 @@ public interface ConstraintValidatorContext {
 	 *         "Map entry home present in both but city does not match")
 	 *             .addParameterNode(1)
 	 *             .addPropertyNode("city")
-	 *                 .inContainer( Map.class, 0 )
+	 *                 .inContainer( Map.class, 1 )
 	 *                 .inIterable().atKey("home")
 	 *             .addConstraintViolation();
 	 * </pre>
