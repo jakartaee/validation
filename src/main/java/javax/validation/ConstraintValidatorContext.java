@@ -117,6 +117,15 @@ public interface ConstraintValidatorContext {
 	 *                 .inIterable().atKey( "home" )
 	 *             .addPropertyNode( "name" )
 	 *             .addConstraintViolation();
+	 *
+	 * //From a class level constraint on User
+	 * //Build a constraint violation on the default path + addresses["home"].&lt;map key&gt;
+	 * //i.e. a container element constraint violation for the map key
+	 * context.buildConstraintViolationWithTemplate( "the map key is invalid" )
+	 *             .addPropertyNode( "addresses" )
+	 *             .addContainerElementNode( "&lt;map key&gt;", Map.class, 0 )
+	 *                 .inIterable().atKey( "invalid" )
+	 *             .addConstraintViolation();
 	 * </pre>
 	 * <p>
 	 * Cross-parameter constraints on a method can create a node specific
