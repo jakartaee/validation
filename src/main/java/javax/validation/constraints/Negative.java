@@ -58,7 +58,7 @@ public @interface Negative {
 	 *
 	 * @return whether the annotated element must be strictly negative
 	 */
-	boolean strict() default false;
+	boolean strict() default true;
 
 	/**
 	 * Defines several {@link Negative} constraints on the same element.
