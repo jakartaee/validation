@@ -40,7 +40,7 @@ public @interface OverridesAttribute {
 	 *
 	 * @return name of constraint attribute overridden
 	 */
-	String name();
+	String name() default "";
 
 	/**
 	 * The index of the targeted constraint declaration when using
