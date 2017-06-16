@@ -6,8 +6,9 @@
  */
 package javax.validation.metadata;
 
-import javax.validation.Valid;
 import java.util.Set;
+
+import javax.validation.Valid;
 
 /**
  * Describes a constrained Java Bean and the constraints associated to it. All
@@ -119,7 +120,7 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * or at least one parameter or return value marked for cascaded validation.
 	 *
 	 * @return a set with descriptors for the constrained constructor of this
-	 *         bean; will be empty if this bea has no constrained constructor
+	 *         bean; will be empty if this bean has no constrained constructor
 	 *         but never {@code null}
 	 *
 	 * @since 1.1

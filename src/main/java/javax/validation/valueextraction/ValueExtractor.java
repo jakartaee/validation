@@ -74,8 +74,8 @@ public interface ValueExtractor<T> {
 		void value(String nodeName, Object object);
 
 		/**
-		 * Receives the value extracted from an {@link Iterable} object that is not indexed (e.g.
-		 * a {@link Set}).
+		 * Receives the value extracted from an iterable object that is not indexed (e.g.
+		 * a {@link Iterable}, {@link Set} or a {@link Map}).
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
 		 * {@code null}, a node with that name will be added to the {@link Path}
@@ -84,7 +84,7 @@ public interface ValueExtractor<T> {
 		void iterableValue(String nodeName, Object object);
 
 		/**
-		 * Receives the value extracted from an indexed object (e.g. a {@link List} or an array).
+		 * Receives the value extracted from an indexed object (e.g. a {@link List}).
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
 		 * {@code null}, a node with that  name will be added to the {@link Path}
