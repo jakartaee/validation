@@ -18,7 +18,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import java.time.Clock;
 import java.time.Year;
 
 import javax.validation.ClockProvider;
