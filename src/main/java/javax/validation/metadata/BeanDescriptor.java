@@ -103,7 +103,6 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * exists or the specified constructor neither has parameter or return value
 	 * constraints nor a parameter or return value marked for cascaded
 	 * validation.
-	 * Constructor of super types are considered.
 	 *
 	 * @param parameterTypes the parameter types of the constructor
 	 * @return a constructor descriptor for the given constructor
