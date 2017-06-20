@@ -6,10 +6,13 @@
  */
 package javax.validation.metadata;
 
-import java.util.List;
+import java.util.Set;
+
+import javax.validation.Valid;
 
 /**
- * Represents an element that might be a container, thus allowing container element constraints.
+ * Represents an element that might be a container, thus allowing container element
+ * constraints.
  *
  * @author Guillaume Smet
  * @since 2.0
@@ -17,13 +20,18 @@ import java.util.List;
 public interface ContainerDescriptor {
 
 	/**
-	 * Returns the list of descriptors representing the container element
-	 * types (e.g. type arguments of a generic type) of this container, if any,
-	 * in the order of their declaration.
+	 * If this element is of a container type, e.g. {@code List} or {@code Map}, a set of
+	 * descriptors of those container element types is returned, which are constrained or
+	 * marked with {@link Valid}. A container element type is constrained, if it hosts at
+	 * least one constraint.
+	 * <p>
+	 * In the context of properties and method return values, container element types of
+	 * super-types are considered.
 	 *
-	 * @return the list of descriptors representing the container element types of
-	 *         this container; an empty list will be returned if there are  no
-	 *         container element types, but never {@code null}
+	 * @return the set of descriptors representing the container element types that are
+	 * constrained or are marked with {@code Valid}. An empty set will be returned if this
+	 * element is not of a container type or is of a container type but there are no container
+	 * element types hosting constraints or marked with {@code Valid}.
 	 */
-	List<ContainerElementTypeDescriptor> getContainerElementTypes();
+	Set<ContainerElementTypeDescriptor> getConstrainedContainerElementTypes();
 }
