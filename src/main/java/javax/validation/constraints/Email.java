@@ -24,8 +24,8 @@ import javax.validation.Payload;
 import javax.validation.constraints.Email.List;
 
 /**
- * The string has to be a well-formed email address. Exact semantics of what makes up a valid email
- * address are left to Bean Validation providers. Accepts {@code CharSequence}.
+ * The string has to be a well-formed email address. Exact semantics of what makes up a valid
+ * email address are left to Bean Validation providers. Accepts {@code CharSequence}.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
@@ -46,12 +46,14 @@ public @interface Email {
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * @return an additional regular expression the annotated element must match. The default is any string ('.*')
+	 * @return an additional regular expression the annotated element must match. The default
+	 * is any string ('.*')
 	 */
 	String regexp() default ".*";
 
 	/**
-	 * @return used in combination with {@link #regexp()} in order to specify a regular expression option
+	 * @return used in combination with {@link #regexp()} in order to specify a regular
+	 * expression option
 	 */
 	Pattern.Flag[] flags() default { };
 
