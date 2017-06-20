@@ -8,6 +8,8 @@ package javax.validation;
 
 import java.util.List;
 
+import javax.validation.valueextraction.ValueExtractor;
+
 /**
  * Represents the navigation path from an object to another
  * in an object graph.
@@ -54,6 +56,12 @@ public interface Path extends Iterable<Path.Node> {
 		 *     cross-parameter.</li>
 		 *     <li>The literal {@code <return value>} for a method or constructor return
 		 *     value.</li>
+		 *     <li>The node name as defined by the {@link ValueExtractor} for a container
+		 *     element; specifically, the literal {@code <list element>} for elements
+		 *     stored in a list, the literal {@code <iterable element>} for elements
+		 *     stored in an {@code Iterable}, the literal {@code <map key>} for the keys
+		 *     stored in a {@code Map} and the literal {@code <map value>} for the values
+		 *     stored in a {@code Map}.
 		 * </ul>
 		 *
 		 * @return name of the element which the node represents
@@ -61,20 +69,21 @@ public interface Path extends Iterable<Path.Node> {
 		String getName();
 
 		/**
-		 * @return {@code true} if the node represents an object contained in an
-		 *         {@code Iterable} or in a {@code Map}, {@code false} otherwise
+		 * @return  @return {@code true} if the node represents an object contained in
+		 * a multi-valued container such as {@code Iterable} or {@code Map} or an array,
+		 * {@code false} otherwise
 		 */
 		boolean isInIterable();
 
 		/**
-		 * @return the index the node is placed in if contained in an array or
-		 *         {@code List}; {@code null} otherwise
+		 * @return the index the node is placed in if contained in an array, a {@code List}
+		 *         or any other container supporting indexed access, {@code null} otherwise
 		 */
 		Integer getIndex();
 
 		/**
-		 * @return the key the node is placed in if contained in a {@code Map},
-		 *         {@code null} otherwise
+		 * @return the key the node is placed in if contained in a {@code Map} or any
+		 *         other container supporting keyed access, {@code null} otherwise
 		 */
 		Object getKey();
 
