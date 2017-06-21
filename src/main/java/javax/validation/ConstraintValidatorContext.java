@@ -242,13 +242,14 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @param name the node name
 		 * @param containerType the type of the container
-		 * @param typeArgumentIndex the index of the type parameter
+		 * @param typeArgumentIndex the index of the type argument
 		 * @return a builder representing the container element node
 		 * @throws IllegalArgumentException if the index is not valid
 		 *
 		 * @since 2.0
 		 */
-		ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+		ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+				Class<?> containerType, Integer typeArgumentIndex);
 
 		/**
 		 * Adds a method parameter node to the path the {@link ConstraintViolation}
@@ -437,13 +438,14 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -531,13 +533,14 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -628,13 +631,14 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -688,11 +692,12 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -754,11 +759,12 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -833,11 +839,12 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
-			 * @param typeArgumentIndex the index of the type parameter
+			 * @param typeArgumentIndex the index of the type argument
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name, Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
+					Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
