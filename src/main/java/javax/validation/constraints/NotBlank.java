@@ -24,12 +24,13 @@ import javax.validation.Payload;
 import javax.validation.constraints.NotBlank.List;
 
 /**
- * The annotated element must not be {@code null} nor empty after removing any leading or trailing
- * whitespace. Accepts {@code CharSequence}.
+ * The annotated element must not be {@code null} and must contain at least one non-whitespace character. Accepts
+ * {@code CharSequence}.
  *
  * @author Hardy Ferentschik
- *
  * @since 2.0
+ *
+ * @see Character#isWhitespace(char)
  */
 @Documented
 @Constraint(validatedBy = { })
