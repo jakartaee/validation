@@ -103,6 +103,8 @@ public interface ConfigurationState {
 	 * the service loader are instantiated using their no-arg constructor.
 	 *
 	 * @return set of value extractors; may be empty but never {@code null}
+	 *
+	 * @since 2.0
 	 */
 	Set<ValueExtractor<?>> getValueExtractors();
 
