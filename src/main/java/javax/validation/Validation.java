@@ -153,6 +153,18 @@ public class Validation {
 		return new ProviderSpecificBootstrapImpl<>( providerType );
 	}
 
+	/**
+	 * Not a public API; it can be used reflectively by code that integrates with Bean Validation, e.g. application
+	 * servers, to clear the provider cache maintained by the default provider resolver.
+	 * <p>
+	 * This is a strictly unsupported API, its definition may be changed or removed at any time. Its purpose is to
+	 * explore the addition of standardized methods for dealing with provider caching in a future revision of the spec.
+	 */
+	@SuppressWarnings("unused")
+	private static void clearDefaultValidationProviderResolverCache() {
+		GetValidationProviderListAction.clearCache();
+	}
+
 	//private class, not exposed
 	private static class ProviderSpecificBootstrapImpl<T extends Configuration<T>, U extends ValidationProvider<T>>
 			implements ProviderSpecificBootstrap<T> {
@@ -317,13 +329,17 @@ public class Validation {
 		private final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
 				new WeakHashMap<>();
 
-		public static List<ValidationProvider<?>> getValidationProviderList() {
+		public static synchronized List<ValidationProvider<?>> getValidationProviderList() {
 			if ( System.getSecurityManager() != null ) {
 				return AccessController.doPrivileged( INSTANCE );
 			}
 			else {
 				return INSTANCE.run();
 			}
+		}
+
+		public static synchronized void clearCache() {
+			INSTANCE.providersPerClassloader.clear();
 		}
 
 		@Override
