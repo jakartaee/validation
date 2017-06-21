@@ -30,7 +30,7 @@ public @interface ExtractedValue {
 
 	/**
 	 * Returns the type of the value extracted by the {@link ValueExtractor}. If not set, returns
-	 * {@code Void.class}, meaning the type will be automatically inferred from the type argument
+	 * {@code void.class}, meaning the type will be automatically inferred from the type argument
 	 * of the parameterized type.
 	 * <p>
 	 * Used to define value extractors for non-generic wrapper types e.g. {@link OptionalInt}.
@@ -41,6 +41,6 @@ public @interface ExtractedValue {
 	 *
 	 * @return the type of the value extracted by the value extractor
 	 */
-	Class<?> type() default Void.class;
+	Class<?> type() default void.class;
 
 }
