@@ -69,7 +69,7 @@ public interface Path extends Iterable<Path.Node> {
 		String getName();
 
 		/**
-		 * @return  @return {@code true} if the node represents an object contained in
+		 * @return {@code true} if the node represents an object contained in
 		 * a multi-valued container such as {@code Iterable} or {@code Map} or an array,
 		 * {@code false} otherwise
 		 */
