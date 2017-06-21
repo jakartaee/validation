@@ -18,19 +18,22 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.time.Year;
 
 import javax.validation.ClockProvider;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.Future.List;
+import javax.validation.constraints.FutureOrPresent.List;
 
 /**
- * The annotated element must be an instant, date or time in the future.
+ * The annotated element must be an instant, date or time in the present or in the future.
  * <p>
  * <i>Now</i> is defined by the {@link ClockProvider} attached to the {@link javax.validation.Validator}
  * or {@link javax.validation.ValidatorFactory}.
  * The default {@code clockProvider} defines the current time according to the virtual machine,
  * applying the current default time zone if needed.
+ * <p>The notion of present here is defined relatively to the type on which the constraint is used.
+ * For instance, if the constraint is on a {@link Year}, present would mean the whole current year.
  * <p>
  * Supported types are:
  * <ul>
@@ -54,31 +57,32 @@ import javax.validation.constraints.Future.List;
  * <p>
  * {@code null} elements are considered valid.
  *
- * @author Emmanuel Bernard
+ * @author Guillaume Smet
+ * @since 2.0
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
 @Constraint(validatedBy = { })
-public @interface Future {
+public @interface FutureOrPresent {
 
-	String message() default "{javax.validation.constraints.Future.message}";
+	String message() default "{javax.validation.constraints.FutureOrPresent.message}";
 
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
 
 	/**
-	 * Defines several {@link Future} annotations on the same element.
+	 * Defines several {@link FutureOrPresent} annotations on the same element.
 	 *
-	 * @see Future
+	 * @see FutureOrPresent
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Documented
 	@interface List {
 
-		Future[] value();
+		FutureOrPresent[] value();
 	}
 }
