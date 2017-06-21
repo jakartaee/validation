@@ -211,16 +211,18 @@ public interface Path extends Iterable<Path.Node> {
 	interface BeanNode extends Node {
 
 		/**
-		 * @return the type of the container the node is placed in, if contained in a container type such as
-		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
+		 * @return the type of the container the node is placed in, if contained in a
+		 * container type such as {@code Optional}, {@code List} or {@code Map},
+		 * {@code null} otherwise
 		 *
 		 * @since 2.0
 		 */
 		Class<?> getContainerClass();
 
 		/**
-		 * @return the index of the type parameter affected by the violated constraint, if contained in a generic
-		 * container type such as {@code Optional}, {@code List} or {@code Map}.
+		 * @return the index of the type argument affected by the violated constraint, if
+		 * contained in a generic container type such as {@code Optional}, {@code List} or
+		 * {@code Map}.
 		 *
 		 * @since 2.0
 		 */
@@ -235,23 +237,27 @@ public interface Path extends Iterable<Path.Node> {
 	interface PropertyNode extends Node {
 
 		/**
-		 * @return the type of the container the node is placed in, if contained in a container type such as
-		 * {@code Optional}, {@code List} or an array, {@code null} otherwise
+		 * @return the type of the container the node is placed in, if contained in a
+		 * container type such as {@code Optional}, {@code List} or {@code Map},
+		 * {@code null} otherwise
 		 *
 		 * @since 2.0
 		 */
 		Class<?> getContainerClass();
 
 		/**
-		 * @return the index of the type parameter affected by the violated constraint, if contained in a generic
-		 * container type such as {@code Optional}, {@code List} or {@code Map}, {@code null} otherwise
+		 * @return the index of the type argument affected by the violated constraint, if
+		 * contained in a generic container type such as {@code Optional}, {@code List} or
+		 * {@code Map}, {@code null} otherwise
+		 *
 		 * @since 2.0
 		 */
 		Integer getTypeArgumentIndex();
 	}
 
 	/**
-	 * Node representing an element in a container such as {@code Optional}, {@code List} or an array
+	 * Node representing an element in a generic container such as {@code Optional},
+	 * {@code List} or {@code Map}.
 	 *
 	 * @since 2.0
 	 */
@@ -263,8 +269,7 @@ public interface Path extends Iterable<Path.Node> {
 		Class<?> getContainerClass();
 
 		/**
-		 * @return the index of the type parameter affected by the violated constraint, if contained in a generic
-		 * container type such as {@code Optional}, {@code List} or {@code Map}, {@code null} if contained in an array
+		 * @return the index of the type argument affected by the violated constraint
 		 */
 		Integer getTypeArgumentIndex();
 	}

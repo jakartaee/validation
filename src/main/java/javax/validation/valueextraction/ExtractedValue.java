@@ -14,7 +14,8 @@ import java.lang.annotation.Target;
 import java.util.OptionalInt;
 
 /**
- * Marks the type parameter of a container type to which a {@link ValueExtractor} is tied.
+ * Marks the type parameter of a generic container type to which a {@link ValueExtractor} is tied
+ * or specifies the type of the wrapped element(s) of non-generic container types.
  * <p>
  * Must be given exactly once for a value extractor type.
  *
