@@ -148,6 +148,7 @@
                         <Export-Package>
                             javax.validation.*;version="${project.version}",
                         </Export-Package>
+                        <Automatic-Module-Name>java.validation</Automatic-Module-Name>
                     </instructions>
                 </configuration>
                 <executions>
