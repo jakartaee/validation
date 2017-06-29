@@ -22,15 +22,16 @@ import java.lang.annotation.Target;
 import javax.validation.ClockProvider;
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.validation.constraints.Future.List;
 
 /**
  * The annotated element must be an instant, date or time in the future.
  * <p>
- * <i>Now</i> is defined by the {@link ClockProvider} attached to the {@link javax.validation.Validator}
- * or {@link javax.validation.ValidatorFactory}.
- * The default {@code clockProvider} defines the current time according to the virtual machine,
- * applying the current default time zone if needed.
+ * <i>Now</i> is defined by the {@link ClockProvider} attached to the {@link Validator} or
+ * {@link ValidatorFactory}. The default {@code clockProvider} defines the current time
+ * according to the virtual machine, applying the current default time zone if needed.
  * <p>
  * Supported types are:
  * <ul>
