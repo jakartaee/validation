@@ -12,6 +12,8 @@ import javax.validation.metadata.ConstraintDescriptor;
  * Describes a constraint violation. This object exposes the constraint
  * violation context as well as the message describing the violation.
  *
+ * @param <T> the type of the root bean
+ *
  * @author Emmanuel Bernard
  */
 public interface ConstraintViolation<T> {

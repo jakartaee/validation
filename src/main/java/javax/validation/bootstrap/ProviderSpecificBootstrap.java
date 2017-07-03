@@ -25,6 +25,8 @@ import javax.validation.spi.ValidationProvider;
  * If no {@code ValidationProviderResolver} is defined, the
  * default {@code ValidationProviderResolver} strategy is used.
  *
+ * @param <T> the provider specific {@link Configuration} type
+ *
  * @author Emmanuel Bernard
  */
 public interface ProviderSpecificBootstrap<T extends Configuration<T>> {

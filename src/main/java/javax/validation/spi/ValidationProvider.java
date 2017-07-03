@@ -17,8 +17,8 @@ import javax.validation.ValidatorFactory;
  * Implementations must have a public no-arg constructor. The construction of a provider
  * should be as "lightweight" as possible.
  *
- * {@code T} represents the provider specific Configuration subclass
- * which typically host provider's additional configuration methods.
+ * @param <T> the provider specific Configuration subclass which typically host provider's
+ * additional configuration methods
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
