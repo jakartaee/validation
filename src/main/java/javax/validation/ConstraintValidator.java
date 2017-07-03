@@ -26,6 +26,9 @@ import javax.validation.constraintvalidation.SupportedValidationTarget;
  * cross-parameter constraints. Check out {@link SupportedValidationTarget}
  * and {@link Constraint} for more information.
  *
+ * @param <A> the annotation type handled by an implementation
+ * @param <T> the target type supported by an implementation
+ *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
  */

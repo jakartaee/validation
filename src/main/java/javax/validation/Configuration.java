@@ -45,6 +45,8 @@ import javax.validation.valueextraction.ValueExtractorDeclarationException;
  * <p>
  * Implementations are not meant to be thread-safe.
  *
+ * @param <T> the type of a provider-specific specialization of this contract
+ *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
  * @author Hardy Ferentschik
