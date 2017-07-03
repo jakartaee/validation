@@ -22,7 +22,7 @@ import javax.validation.valueextraction.Unwrapping;
 /**
  * Describes a single constraint and its composing constraints.
  * <p>
- * {@code T} is the constraint's annotation type.
+ * @param <T> the constraint's annotation type
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik

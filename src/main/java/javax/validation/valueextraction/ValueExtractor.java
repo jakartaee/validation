@@ -40,6 +40,8 @@ import javax.validation.Path;
  * }
  * </pre>
  *
+ * @param <T> the container type handled by a specific implementation
+ *
  * @author Gunnar Morling
  * @author Guillaume Smet
  * @see ExtractedValue
