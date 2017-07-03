@@ -6,6 +6,7 @@
  */
 package javax.validation.metadata;
 
+import javax.validation.valueextraction.UnwrapByDefault;
 import javax.validation.valueextraction.ValueExtractor;
 
 /**
@@ -17,18 +18,23 @@ import javax.validation.valueextraction.ValueExtractor;
 public enum ValidateUnwrappedValue {
 
 	/**
-	 * Respects the default behavior of the {@link ValueExtractor}.
+	 * No specific unwrapping behavior has been defined for this constraint and the default
+	 * behavior applies: if there is exactly one maximally-specific type-compliant
+	 * {@link ValueExtractor} and this extractor is marked with {@link UnwrapByDefault}, this
+	 * extractor is applied and the constraint is applied to the value(s) wrapped by the
+	 * annotated container. Otherwise, no value extractor is applied.
 	 */
 	DEFAULT,
 
 	/**
-	 * The value is unwrapped before validation.
+	 * The value is unwrapped before validation, i.e. the constraint is applied to the
+	 * value(s) wrapped by the annotated container.
 	 */
-	YES,
+	UNWRAP,
 
 	/**
-	 * The value is not unwrapped before validation.
+	 * The value is not unwrapped before validation, i.e. the constraint is applied to the
+	 * annotated element.
 	 */
-	NO;
-
+	SKIP;
 }
