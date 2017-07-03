@@ -15,7 +15,9 @@ import javax.validation.ConstraintTarget;
 import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
+import javax.validation.ValidationException;
 import javax.validation.groups.Default;
+import javax.validation.valueextraction.Unwrapping;
 
 /**
  * Describes a single constraint and its composing constraints.
@@ -107,9 +109,25 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	boolean isReportAsSingleViolation();
 
 	/**
-	 * @return a {@link ValidateUnwrappedValue} defining the unwrapping behavior.
+	 * @return a {@link ValidateUnwrappedValue} describing the unwrapping behavior as given
+	 * via the {@link Unwrapping} constraint payloads.
 	 *
 	 * @since 2.0
 	 */
-	ValidateUnwrappedValue validateUnwrappedValue();
+	ValidateUnwrappedValue getValueUnwrapping();
+
+	/**
+	 * Returns an instance of the specified type allowing access to provider-specific APIs.
+	 * <p>
+	 * If the Bean Validation provider implementation does not support the specified class,
+	 * a {@link ValidationException} is thrown.
+	 *
+	 * @param type the class of the object to be returned
+	 * @param <U> the type of the object to be returned
+	 * @return an instance of the specified class
+	 * @throws ValidationException if the provider does not support the call
+	 *
+	 * @since 2.0
+	 */
+	<U> U unwrap(Class<U> type);
 }
