@@ -46,6 +46,7 @@ import javax.validation.Path;
  * @author Guillaume Smet
  * @see ExtractedValue
  * @see UnwrapByDefault
+ * @since 2.0
  */
 public interface ValueExtractor<T> {
 
@@ -63,6 +64,8 @@ public interface ValueExtractor<T> {
 	 * <p>
 	 * The value has to be passed to the method corresponding best to the type of the
 	 * original value.
+	 *
+	 * @since 2.0
 	 */
 	interface ValueReceiver {
 

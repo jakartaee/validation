@@ -23,6 +23,7 @@ import java.util.OptionalInt;
  * @author Guillaume Smet
  *
  * @see ValueExtractor
+ * @since 2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE_USE)
