@@ -321,7 +321,7 @@ public interface ConstraintValidatorContext {
 
 			/**
 			 * Marks the node as being in a container such as a {@code List}, {@code Map} or
-			 * {@code Optional}
+			 * {@code Optional}.
 			 *
 			 * @param containerClass the type of the container
 			 * @param typeArgumentIndex type index of the concerned type argument
@@ -483,7 +483,7 @@ public interface ConstraintValidatorContext {
 
 			/**
 			 * Marks the node as being in a container such as a {@code List}, {@code Map} or
-			 * {@code Optional}
+			 * {@code Optional}.
 			 *
 			 * @param containerClass the type of the container
 			 * @param typeArgumentIndex type index of the concerned type argument
