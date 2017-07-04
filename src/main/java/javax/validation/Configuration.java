@@ -18,7 +18,8 @@ import javax.validation.valueextraction.ValueExtractorDeclarationException;
  * <p>
  * Usage:
  * <pre>
- * Configuration&lt;?&gt; configuration = //provided by one of the Validation bootstrap methods
+ * //provided by one of the Validation bootstrap methods
+ * Configuration&lt;?&gt; configuration =
  *     ValidatorFactory = configuration
  *         .messageInterpolator( new CustomMessageInterpolator() )
  *         .buildValidatorFactory();
@@ -40,7 +41,8 @@ import javax.validation.valueextraction.ValueExtractorDeclarationException;
  *     the provider class requested and use it</li>
  *     <li>if a specific provider is requested in {@code META-INF/validation.xml},
  *     find the first provider implementing the provider class requested and use it</li>
- *     <li>otherwise, use the first provider returned by the {@code ValidationProviderResolver}</li>
+ *     <li>otherwise, use the first provider returned by the
+ *     {@code ValidationProviderResolver}</li>
  * </ul>
  * <p>
  * Implementations are not meant to be thread-safe.

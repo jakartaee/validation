@@ -30,8 +30,8 @@ public interface ContainerDescriptor {
 	 *
 	 * @return the set of descriptors representing the container element types that are
 	 * constrained or are marked with {@code Valid}. An empty set will be returned if this
-	 * element is not of a container type or is of a container type but there are no container
-	 * element types hosting constraints or marked with {@code Valid}.
+	 * element is not of a container type or is of a container type but there are no
+	 * container element types hosting constraints or marked with {@code Valid}.
 	 */
 	Set<ContainerElementTypeDescriptor> getConstrainedContainerElementTypes();
 }

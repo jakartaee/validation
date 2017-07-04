@@ -63,8 +63,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 * Returns a method descriptor for the given method.
 	 * <p>
 	 * Returns {@code null} if no method with the given name and parameter types
-	 * exists or the specified method neither has parameter or return value constraints nor a parameter
-	 * or return value marked for cascaded validation.
+	 * exists or the specified method neither has parameter or return value constraints nor a
+	 * parameter or return value marked for cascaded validation.
 	 * Methods of super types are considered.
 	 *
 	 * @param methodName the name of the method
@@ -94,7 +94,8 @@ public interface BeanDescriptor extends ElementDescriptor {
 	 *
 	 * @since 1.1
 	 */
-	Set<MethodDescriptor> getConstrainedMethods(MethodType methodType, MethodType... methodTypes);
+	Set<MethodDescriptor> getConstrainedMethods(MethodType methodType,
+												MethodType... methodTypes);
 
 	/**
 	 * Returns a constructor descriptor for the given constructor.

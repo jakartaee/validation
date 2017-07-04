@@ -7,6 +7,7 @@
 package javax.validation;
 
 import java.util.Set;
+
 import javax.validation.executable.ExecutableValidator;
 import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
@@ -61,7 +62,8 @@ public interface Validator {
 	 * of the class {@code beanType} would the property value be {@code value}.
 	 * <p>
 	 * {@link ConstraintViolation} objects return {@code null} for
-	 * {@link ConstraintViolation#getRootBean()} and {@link ConstraintViolation#getLeafBean()}.
+	 * {@link ConstraintViolation#getRootBean()} and
+	 * {@link ConstraintViolation#getLeafBean()}.
 	 *
 	 * @param beanType the bean type
 	 * @param propertyName property to validate

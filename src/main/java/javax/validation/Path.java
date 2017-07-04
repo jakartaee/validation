@@ -27,8 +27,9 @@ public interface Path extends Iterable<Path.Node> {
 	/**
 	 * Returns a human-readable representation of this path.
 	 * <p>
-	 * Clients should not rely on any specific structure of the returned value. Instead they should iterate through the
-	 * path nodes and obtain any required information by calling the methods on {@link Node} and its sub-types.
+	 * Clients should not rely on any specific structure of the returned value. Instead they
+	 * should iterate through the path nodes and obtain any required information by calling
+	 * the methods on {@link Node} and its sub-types.
 	 *
 	 * @return a human-readable representation of this path
 	 * @since 2.0
@@ -137,8 +138,9 @@ public interface Path extends Iterable<Path.Node> {
 		/**
 		 * Returns a human-readable representation of this node.
 		 * <p>
-		 * Clients should not rely on any specific structure of the returned value. Instead they should obtain any
-		 * required information by calling the methods on this interface and its sub-types.
+		 * Clients should not rely on any specific structure of the returned value. Instead
+		 * they should obtain any required information by calling the methods on this
+		 * interface and its sub-types.
 		 *
 		 * @return a human-readable representation of this node
 		 * @since 2.0

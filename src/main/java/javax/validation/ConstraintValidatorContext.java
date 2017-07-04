@@ -33,14 +33,14 @@ public interface ConstraintValidatorContext {
 	 */
 	String getDefaultConstraintMessageTemplate();
 
-
 	/**
-	 * Returns the provider for obtaining the current time in the form of a {@link Clock}, e.g. when validating the
-	 * {@code Future} and {@code Past} constraints.
+	 * Returns the provider for obtaining the current time in the form of a {@link Clock},
+	 * e.g. when validating the {@code Future} and {@code Past} constraints.
 	 *
-	 * @return the provider for obtaining the current time, never {@code null}. If no specific provider has been
-	 * configured during bootstrap, a default implementation using the current system time and the current default time
-	 * zone as returned by {@link Clock#systemDefaultZone()} will be returned.
+	 * @return the provider for obtaining the current time, never {@code null}. If no
+	 * specific provider has been configured during bootstrap, a default implementation using
+	 * the current system time and the current default time zone as returned by
+	 * {@link Clock#systemDefaultZone()} will be returned.
 	 *
 	 * @since 2.0
 	 */
@@ -131,14 +131,16 @@ public interface ConstraintValidatorContext {
 	 * Cross-parameter constraints on a method can create a node specific
 	 * to a particular parameter if required. Let's explore a few examples:
 	 * <pre>
-	 * //Cross-parameter constraint on method createUser(String password, String passwordRepeat)
+	 * //Cross-parameter constraint on method
+	 * //createUser(String password, String passwordRepeat)
 	 * //Build a constraint violation on the default path + "passwordRepeat"
 	 * context.buildConstraintViolationWithTemplate("Passwords do not match")
 	 *             .addParameterNode(1)
 	 *             .addConstraintViolation();
 	 *
 	 * //Cross-parameter constraint on a method
-	 * //mergeAddresses(Map&lt;String,Address&gt; addresses, Map&lt;String,Address&gt; otherAddresses)
+	 * //mergeAddresses(Map&lt;String,Address&gt; addresses,
+	 * //        Map&lt;String,Address&gt; otherAddresses)
 	 * //Build a constraint violation on the default path + "otherAddresses["home"]
 	 * //i.e. the Address bean hosted in the "home" key of the "otherAddresses" map parameter
 	 * context.buildConstraintViolationWithTemplate(
@@ -150,7 +152,8 @@ public interface ConstraintValidatorContext {
 	 *             .addConstraintViolation();
 	 *
 	 * //Cross-parameter constraint on a method
-	 * //mergeAddresses(Map&lt;String,Address&gt; addresses, Map&lt;String,Address&gt; otherAddresses)
+	 * //mergeAddresses(Map&lt;String,Address&gt; addresses,
+	 * //        Map&lt;String,Address&gt; otherAddresses)
 	 * //Build a constraint violation on the default path + "otherAddresses["home"].city
 	 * //i.e. on the "city" property of the Address bean hosted in
 	 * //the "home" key of the "otherAddresses" map
@@ -317,7 +320,8 @@ public interface ConstraintValidatorContext {
 			LeafNodeContextBuilder inIterable();
 
 			/**
-			 * Marks the node as being in a container such as a {@code List}, {@code Map} or {@code Optional}
+			 * Marks the node as being in a container such as a {@code List}, {@code Map} or
+			 * {@code Optional}
 			 *
 			 * @param containerClass the type of the container
 			 * @param typeArgumentIndex type index of the concerned type argument
@@ -326,7 +330,8 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @since 2.0
 			 */
-			LeafNodeBuilderCustomizableContext inContainer(Class<?> containerClass, Integer typeArgumentIndex);
+			LeafNodeBuilderCustomizableContext inContainer(Class<?> containerClass,
+														   Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -444,8 +449,8 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -477,7 +482,8 @@ public interface ConstraintValidatorContext {
 			NodeContextBuilder inIterable();
 
 			/**
-			 * Marks the node as being in a container such as a {@code List}, {@code Map} or {@code Optional}
+			 * Marks the node as being in a container such as a {@code List}, {@code Map} or
+			 * {@code Optional}
 			 *
 			 * @param containerClass the type of the container
 			 * @param typeArgumentIndex type index of the concerned type argument
@@ -486,7 +492,8 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @since 2.0
 			 */
-			NodeBuilderCustomizableContext inContainer(Class<?> containerClass, Integer typeArgumentIndex);
+			NodeBuilderCustomizableContext inContainer(Class<?> containerClass,
+													   Integer typeArgumentIndex);
 
 			/**
 			 * Adds a node to the path the {@link ConstraintViolation} will be associated to.
@@ -539,8 +546,8 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -637,8 +644,8 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @since 2.0
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -696,8 +703,8 @@ public interface ConstraintValidatorContext {
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -763,8 +770,8 @@ public interface ConstraintValidatorContext {
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the
@@ -843,8 +850,8 @@ public interface ConstraintValidatorContext {
 			 * @return a builder representing the container element node
 			 * @throws IllegalArgumentException if the index is not valid
 			 */
-			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(String name,
-					Class<?> containerType, Integer typeArgumentIndex);
+			ContainerElementNodeBuilderCustomizableContext addContainerElementNode(
+					String name, Class<?> containerType, Integer typeArgumentIndex);
 
 			/**
 			 * Adds the new {@link ConstraintViolation} to be generated if the

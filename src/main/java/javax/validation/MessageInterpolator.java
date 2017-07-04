@@ -7,6 +7,7 @@
 package javax.validation;
 
 import java.util.Locale;
+
 import javax.validation.metadata.ConstraintDescriptor;
 
 /**
@@ -50,7 +51,8 @@ public interface MessageInterpolator {
 	 */
 	interface Context {
 		/**
-		 * @return {@link ConstraintDescriptor} corresponding to the constraint being validated
+		 * @return {@link ConstraintDescriptor} corresponding to the constraint being
+		 * validated
 		 */
 		ConstraintDescriptor<?> getConstraintDescriptor();
 

@@ -30,8 +30,8 @@ import javax.validation.constraints.PositiveOrZero.List;
  * <ul>
  *     <li>{@code BigDecimal}</li>
  *     <li>{@code BigInteger}</li>
- *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, {@code float}, {@code double} and their respective
- *     wrappers</li>
+ *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, {@code float},
+ *     {@code double} and their respective wrappers</li>
  * </ul>
  * <p>
  * {@code null} elements are considered valid.

@@ -17,9 +17,9 @@ import javax.validation.Path;
 /**
  * Defines the logic used to extract the values from a container object of type {@code T}.
  * <p>
- * A value extractor for a generic type such as {@link Optional}, {@link List} or {@link Map} is
- * tied to one specific type parameter of {@code T}. The {@link ExtractedValue} annotation is
- * used to mark that type parameter. A value extractor for a non-generic type such as
+ * A value extractor for a generic type such as {@link Optional}, {@link List} or {@link Map}
+ * is tied to one specific type parameter of {@code T}. The {@link ExtractedValue} annotation
+ * is used to mark that type parameter. A value extractor for a non-generic type such as
  * {@link OptionalInt} needs to declare the type of the wrapped element using
  * {@link ExtractedValue#type()}.
  * <p>
@@ -61,8 +61,8 @@ public interface ValueExtractor<T> {
 	/**
 	 * Provides a set of methods receiving value extracted by the {@link ValueExtractor}.
 	 * <p>
-	 * The value has to be passed to the method corresponding best to the type of the original
-	 * value.
+	 * The value has to be passed to the method corresponding best to the type of the
+	 * original value.
 	 */
 	interface ValueReceiver {
 

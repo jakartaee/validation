@@ -108,7 +108,8 @@ public interface ValidatorFactory extends AutoCloseable {
 	 * methods is not allowed:
 	 * <ul>
 	 *     <li>methods of this {@code ValidatorFactory} instance</li>
-	 *     <li>methods of {@link Validator} instances created by this {@code ValidatorFactory}</li>
+	 *     <li>methods of {@link Validator} instances created by this
+	 *     {@code ValidatorFactory}</li>
 	 * </ul>
 	 *
 	 * @since 1.1

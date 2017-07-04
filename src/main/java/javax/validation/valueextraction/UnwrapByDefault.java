@@ -14,12 +14,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Marks a {@link ValueExtractor} definition so that it is applied automatically when detecting constraints declared on
- * the container type supported by the extractor, causing the constraints to be applied to the container's elements
- * instead of the container.
+ * Marks a {@link ValueExtractor} definition so that it is applied automatically when
+ * detecting constraints declared on the container type supported by the extractor, causing
+ * the constraints to be applied to the container's elements instead of the container.
  * <p>
- * If needed, this behavior can be changed per constraint using {@link Unwrapping.Skip}, causing the constraints to be
- * applied to the container itself:
+ * If needed, this behavior can be changed per constraint using {@link Unwrapping.Skip},
+ * causing the constraints to be applied to the container itself:
  *
  * <pre>
  * &#064;SomeConstraint(payload = Unwrapping.Skip.class)

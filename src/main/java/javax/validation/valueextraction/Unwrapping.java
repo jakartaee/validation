@@ -9,8 +9,8 @@ package javax.validation.valueextraction;
 import javax.validation.Payload;
 
 /**
- * Set of interfaces used in the {@code payload()} of a constraint to indicate if a value should be unwrapped before
- * validation.
+ * Set of interfaces used in the {@code payload()} of a constraint to indicate if a value
+ * should be unwrapped before validation.
  * <p>
  * This is used to overwrite the default configuration defined on the {@link ValueExtractor}.
  *
@@ -28,7 +28,8 @@ public interface Unwrapping {
 	}
 
 	/**
-	 * Skip the unwrapping if it has been enabled on the {@link ValueExtractor} by the {@link UnwrapByDefault}
+	 * Skip the unwrapping if it has been enabled on the {@link ValueExtractor} by the
+	 * {@link UnwrapByDefault}
 	 * annotation.
 	 *
 	 * @since 2.0

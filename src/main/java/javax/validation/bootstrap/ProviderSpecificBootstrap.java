@@ -39,7 +39,8 @@ public interface ProviderSpecificBootstrap<T extends Configuration<T>> {
 	 *
 	 * @return {@code this} following the chaining method pattern
 	 */
-	public ProviderSpecificBootstrap<T> providerResolver(ValidationProviderResolver resolver);
+	public ProviderSpecificBootstrap<T> providerResolver(
+			ValidationProviderResolver resolver);
 
 	/**
 	 * Determines the provider implementation suitable for {@code T} and delegates

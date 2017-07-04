@@ -33,7 +33,8 @@ public interface ValidatorContext {
 	 * the message interpolator of the {@link ValidatorFactory}
 	 * is used.
 	 *
-	 * @param messageInterpolator the {@link MessageInterpolator} used by the {@code Validator}
+	 * @param messageInterpolator the {@link MessageInterpolator} used by the
+	 * {@code Validator}
 	 *
 	 * @return self following the chaining method pattern
 	 */
@@ -46,7 +47,8 @@ public interface ValidatorContext {
 	 * If not set or if {@code null} is passed as a parameter,
 	 * the traversable resolver of the {@link ValidatorFactory} is used.
 	 *
-	 * @param traversableResolver the {@code TraversableResolver} used by the {@code Validator}
+	 * @param traversableResolver the {@code TraversableResolver} used by the
+	 * {@code Validator}
 	 * @return self following the chaining method pattern
 	 */
 	ValidatorContext traversableResolver(TraversableResolver traversableResolver);

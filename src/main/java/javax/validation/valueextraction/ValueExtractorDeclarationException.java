@@ -9,8 +9,9 @@ package javax.validation.valueextraction;
 import javax.validation.ValidationException;
 
 /**
- * Raised if the configuration of {@link ValueExtractor} is illegal, e.g. because multiple extractors for the same type
- * and type use have been configured in {@code META-INF/validation.xml}.
+ * Raised if the configuration of {@link ValueExtractor} is illegal, e.g. because multiple
+ * extractors for the same type and type use have been configured in
+ * {@code META-INF/validation.xml}.
  *
  * @author Gunnar Morling
  *

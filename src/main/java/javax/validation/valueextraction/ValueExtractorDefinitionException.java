@@ -9,8 +9,8 @@ package javax.validation.valueextraction;
 import javax.validation.ValidationException;
 
 /**
- * Raised if a {@link ValueExtractor} definition is illegal, e.g. because it doesn't declare its extracted value using
- * {@link ExtractedValue}.
+ * Raised if a {@link ValueExtractor} definition is illegal, e.g. because it doesn't declare
+ * its extracted value using {@link ExtractedValue}.
  *
  * @author Gunnar Morling
  *

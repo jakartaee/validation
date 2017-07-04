@@ -24,8 +24,8 @@ import javax.validation.Payload;
 import javax.validation.constraints.NotBlank.List;
 
 /**
- * The annotated element must not be {@code null} and must contain at least one non-whitespace character. Accepts
- * {@code CharSequence}.
+ * The annotated element must not be {@code null} and must contain at least one
+ * non-whitespace character. Accepts {@code CharSequence}.
  *
  * @author Hardy Ferentschik
  * @since 2.0

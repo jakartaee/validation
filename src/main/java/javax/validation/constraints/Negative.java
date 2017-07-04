@@ -24,14 +24,15 @@ import javax.validation.Payload;
 import javax.validation.constraints.Negative.List;
 
 /**
- * The annotated element must be a strictly negative number (i.e. 0 is considered as an invalid value).
+ * The annotated element must be a strictly negative number (i.e. 0 is considered as an
+ * invalid value).
  * <p>
  * Supported types are:
  * <ul>
  *     <li>{@code BigDecimal}</li>
  *     <li>{@code BigInteger}</li>
- *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, {@code float}, {@code double} and their respective
- *     wrappers</li>
+ *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, {@code float},
+ *     {@code double} and their respective wrappers</li>
  * </ul>
  * <p>
  * {@code null} elements are considered valid.

@@ -14,8 +14,8 @@ import java.lang.annotation.Target;
 import java.util.OptionalInt;
 
 /**
- * Marks the type parameter of a generic container type to which a {@link ValueExtractor} is tied
- * or specifies the type of the wrapped element(s) of non-generic container types.
+ * Marks the type parameter of a generic container type to which a {@link ValueExtractor} is
+ * tied or specifies the type of the wrapped element(s) of non-generic container types.
  * <p>
  * Must be given exactly once for a value extractor type.
  *
@@ -30,11 +30,12 @@ import java.util.OptionalInt;
 public @interface ExtractedValue {
 
 	/**
-	 * Returns the type of the value extracted by the {@link ValueExtractor}. If not set, returns
-	 * {@code void.class}, meaning the type will be automatically inferred from the type argument
-	 * of the parameterized type.
+	 * Returns the type of the value extracted by the {@link ValueExtractor}. If not set,
+	 * returns {@code void.class}, meaning the type will be automatically inferred from the
+	 * type argument of the parameterized type.
 	 * <p>
-	 * Used to define value extractors for non-generic wrapper types e.g. {@link OptionalInt}.
+	 * Used to define value extractors for non-generic wrapper types e.g.
+	 * {@link OptionalInt}.
 	 * <p>
 	 * May not be used when {@code ExtractedValue} is defined on the type parameter of
 	 * a generic wrapper type. A {@code ValueExtractorDefinitionException} will be thrown in
