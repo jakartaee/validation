@@ -36,8 +36,16 @@ import javax.validation.groups.ConvertGroup.List;
 @Documented
 public @interface ConvertGroup {
 
-	Class<?> from();
+	/**
+	 * The source group of this conversion.
+	 * @return the source group of this conversion
+	 */
+	Class<?> from() default Default.class;
 
+	/**
+	 * The target group of this conversion.
+	 * @return the target group of this conversion
+	 */
 	Class<?> to();
 
 	/**
