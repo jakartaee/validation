@@ -97,7 +97,7 @@ public interface ValidatorContext {
 	 * @param extractor value extractor implementation
 	 * @return self following the chaining method pattern
 	 * @throws ValueExtractorDeclarationException If more than one extractor for
-	 *         the same type and type use is added
+	 *         the same type and type parameter is added
 	 * @since 2.0
 	 */
 	ValidatorContext addValueExtractor(ValueExtractor<?> extractor);

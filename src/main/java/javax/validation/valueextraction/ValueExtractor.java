@@ -20,7 +20,7 @@ import javax.validation.Path;
  * A value extractor for a generic type such as {@link Optional}, {@link List} or {@link Map}
  * is tied to one specific type parameter of {@code T}. The {@link ExtractedValue} annotation
  * is used to mark that type parameter. A value extractor for a non-generic type such as
- * {@link OptionalInt} needs to declare the type of the wrapped element using
+ * {@link OptionalInt} needs to declare the type of the wrapped element(s) using
  * {@link ExtractedValue#type()}.
  * <p>
  * The extracted values are passed to the corresponding method of the {@link ValueReceiver}.
@@ -73,7 +73,8 @@ public interface ValueExtractor<T> {
 		 * Receives the value extracted from an object.
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
-		 * {@code null}, a node with that name will be added to the {@link Path}
+		 * {@code null}, the name will be used when adding a container element node to the
+		 * {@link Path}
 		 * @param object the value to validate
 		 */
 		void value(String nodeName, Object object);
@@ -83,7 +84,8 @@ public interface ValueExtractor<T> {
 		 * a {@link Iterable}, {@link Set} or a {@link Map}).
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
-		 * {@code null}, a node with that name will be added to the {@link Path}
+		 * {@code null}, the name will be used when adding a container element node to the
+		 * {@link Path}
 		 * @param object the value to validate
 		 */
 		void iterableValue(String nodeName, Object object);
@@ -92,7 +94,8 @@ public interface ValueExtractor<T> {
 		 * Receives the value extracted from an indexed object (e.g. a {@link List}).
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
-		 * {@code null}, a node with that  name will be added to the {@link Path}
+		 * {@code null}, the name will be used when adding a container element node to the
+		 * {@link Path}
 		 * @param i the index of the value in the original object
 		 * @param object the value to validate
 		 */
@@ -102,7 +105,8 @@ public interface ValueExtractor<T> {
 		 * Receives the value extracted from a keyed object (e.g. a {@link Map}).
 		 *
 		 * @param nodeName the name of the node representing the container element. If not
-		 * {@code null}, a node with that name will be added to the {@link Path}
+		 * {@code null}, the name will be used when adding a container element node to the
+		 * {@link Path}
 		 * @param key the key of the value in the original object
 		 * @param object the value to validate
 		 */

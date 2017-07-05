@@ -31,19 +31,17 @@ import java.util.OptionalInt;
 public @interface ExtractedValue {
 
 	/**
-	 * Returns the type of the value extracted by the {@link ValueExtractor}. If not set,
-	 * returns {@code void.class}, meaning the type will be automatically inferred from the
-	 * type argument of the parameterized type.
+	 * The type of the value extracted by the {@link ValueExtractor}. If not set, the type
+	 * will be automatically inferred from the type argument of the parameterized type.
 	 * <p>
 	 * Used to define value extractors for non-generic wrapper types e.g.
 	 * {@link OptionalInt}.
 	 * <p>
 	 * May not be used when {@code ExtractedValue} is defined on the type parameter of
-	 * a generic wrapper type. A {@code ValueExtractorDefinitionException} will be thrown in
-	 * this case.
+	 * a generic container type. A {@code ValueExtractorDefinitionException} will be thrown
+	 * in this case.
 	 *
 	 * @return the type of the value extracted by the value extractor
 	 */
 	Class<?> type() default void.class;
-
 }

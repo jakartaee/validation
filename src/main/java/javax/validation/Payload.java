@@ -6,6 +6,8 @@
  */
 package javax.validation;
 
+import javax.validation.valueextraction.Unwrapping;
+
 /**
  * Payload type that can be attached to a given
  * constraint declaration.
@@ -13,7 +15,8 @@ package javax.validation;
  * Payloads are typically used to carry on metadata information
  * consumed by a validation client.
  * </p>
- * Use of payloads is not considered portable.
+ * With the exception of the {@link Unwrapping} payload types, the use of payloads is not
+ * considered portable.
  *
  * @author Emmanuel Bernard
  * @author Gerhard Petracek

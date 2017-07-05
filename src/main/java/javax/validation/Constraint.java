@@ -6,15 +6,15 @@
  */
 package javax.validation;
 
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 import javax.validation.constraintvalidation.ValidationTarget;
-
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Marks an annotation as being a Bean Validation constraint.
@@ -77,16 +77,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface Constraint {
 
 	/**
-	 * {@link ConstraintValidator} classes must reference distinct target types
-	 * for a given {@link ValidationTarget}
-	 * If two {@code ConstraintValidator}s refer to the same type,
-	 * an exception will occur.
+	 * {@link ConstraintValidator} classes implementing the constraint. The given classes
+	 * must reference distinct target types for a given {@link ValidationTarget}. If two
+	 * {@code ConstraintValidator}s refer to the same type, an exception will occur.
 	 * <p>
 	 * At most one {@code ConstraintValidator} targeting the array of parameters of
 	 * methods or constructors (aka cross-parameter) is accepted. If two or more
 	 * are present, an exception will occur.
 	 *
-	 * @return array of (@code ConstraintValidator} classes implementing the constraint
+	 * @return array of {@code ConstraintValidator} classes implementing the constraint
 	 */
 	Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
 }
