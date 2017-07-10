@@ -313,7 +313,8 @@ public interface ConstraintValidatorContext {
 		interface LeafNodeBuilderCustomizableContext {
 
 			/**
-			 * Marks the node as being in an {@code Iterable} or a {@code Map}.
+			 * Marks the node as being in an iterable, e.g. array, {@code Iterable} or a
+			 * {@code Map}.
 			 *
 			 * @return a builder representing iterable details
 			 */
@@ -475,7 +476,8 @@ public interface ConstraintValidatorContext {
 		interface NodeBuilderCustomizableContext {
 
 			/**
-			 * Marks the node as being in an {@code Iterable} or a {@code Map}.
+			 * Marks the node as being in an iterable, e.g. array, {@code Iterable} or a
+			 * {@code Map}.
 			 *
 			 * @return a builder representing iterable details
 			 */
@@ -731,7 +733,8 @@ public interface ConstraintValidatorContext {
 		interface ContainerElementNodeBuilderCustomizableContext {
 
 			/**
-			 * Marks the node as being in an {@code Iterable} or a {@code Map}.
+			 * Marks the node as being in an iterable, e.g. array, {@code Iterable} or a
+			 * {@code Map}.
 			 *
 			 * @return a builder representing iterable details
 			 */
