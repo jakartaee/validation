@@ -130,7 +130,7 @@ public interface Path extends Iterable<Path.Node> {
 		 *
 		 * @return this node narrowed down to the given type.
 		 *
-		 * @throws ClassCastException If this node is not assignable to the type {@code T}
+		 * @throws ClassCastException if this node is not assignable to the type {@code T}
 		 * @since 1.1
 		 */
 		<T extends Node> T as(Class<T> nodeType);

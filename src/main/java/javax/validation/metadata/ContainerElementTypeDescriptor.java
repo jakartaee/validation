@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public interface ContainerElementTypeDescriptor extends ElementDescriptor, CascadableDescriptor, ContainerDescriptor {
 
 	/**
-	 * Returns the index of the type argument corresponding to this container element type
+	 * Returns the index of the type argument corresponding to this container element type.
 	 * @return the index of the type argument corresponding to this container element type
 	 */
 	Integer getTypeArgumentIndex();

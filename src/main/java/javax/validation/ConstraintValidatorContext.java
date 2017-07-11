@@ -350,9 +350,9 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Represents refinement choices for a node which is
-		 * in an {@code Iterator} or {@code Map}.
+		 * in an iterable, e.g. array, {@code Iterable} or {@code Map}.
 		 * <p>
-		 * If the iterator is an indexed collection or a map,
+		 * If the iterable is an indexed collection or a map,
 		 * the index or the key should be set.
 		 * <p>
 		 * The node is a leaf node (i.e. no subnode can be added).
@@ -567,9 +567,9 @@ public interface ConstraintValidatorContext {
 
 		/**
 		 * Represents refinement choices for a node which is
-		 * in an {@code Iterator} or {@code Map}.
+		 * in an iterable, e.g. array, {@code Iterable} or {@code Map}.
 		 * <p>
-		 * If the iterator is an indexed collection or a map,
+		 * If the iterable is an indexed collection or a map,
 		 * the index or the key should be set.
 		 * <p>
 		 * The node is not necessarily a leaf node (i.e. subnodes can
@@ -636,7 +636,6 @@ public interface ConstraintValidatorContext {
 			/**
 			 * Adds a container element node to the path the {@link ConstraintViolation}
 			 * will be associated to.
-			 * Note that container element nodes are always leaf nodes.
 			 *
 			 * @param name the node name
 			 * @param containerType the type of the container
@@ -791,10 +790,9 @@ public interface ConstraintValidatorContext {
 		}
 
 		/**
-		 * Represents refinement choices for a container element node which is
-		 * in an {@code Iterator} or {@code Map}.
+		 * Represents refinement choices for a container element node.
 		 * <p>
-		 * If the iterator is an indexed collection or a map,
+		 * If the container is an indexed collection or a map,
 		 * the index or the key should be set.
 		 * <p>
 		 * The node is not necessarily a leaf node (i.e. subnodes can

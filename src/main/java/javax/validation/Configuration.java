@@ -139,8 +139,8 @@ public interface Configuration<T extends Configuration<T>> {
 	 *
 	 * @param extractor value extractor implementation
 	 * @return {@code this} following the chaining method pattern.
-	 * @throws ValueExtractorDeclarationException If more than one extractor for
-	 *         the same type and type use is added
+	 * @throws ValueExtractorDeclarationException if more than one extractor for
+	 *         the same type and type parameter is added
 	 * @since 2.0
 	 */
 	T addValueExtractor(ValueExtractor<?> extractor);
