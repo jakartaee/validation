@@ -57,6 +57,11 @@ public class ConstraintViolationExceptionTest {
 
 		assertNull( constraintViolationException.getConstraintViolations() );
 		assertNull( constraintViolationException.getMessage() );
+
+		constraintViolationException = new ConstraintViolationException( null );
+
+		assertNull( constraintViolationException.getConstraintViolations() );
+		assertNull( constraintViolationException.getMessage() );
 	}
 
 	/**

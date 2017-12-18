@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
  *
  * @author Emmanuel Bernard
  * @author Gunnar Morling
+ * @author Guillaume Smet
  */
 public class ConstraintViolationException extends ValidationException {
 
@@ -24,7 +25,7 @@ public class ConstraintViolationException extends ValidationException {
 	 * Creates a constraint violation report.
 	 *
 	 * @param message error message
-	 * @param constraintViolations {@code Set} of {@link ConstraintViolation}
+	 * @param constraintViolations a {@code Set} of {@link ConstraintViolation}s or null
 	 */
 	public ConstraintViolationException(String message,
 										Set<? extends ConstraintViolation<?>> constraintViolations) {
@@ -41,16 +42,19 @@ public class ConstraintViolationException extends ValidationException {
 	/**
 	 * Creates a constraint violation report.
 	 *
-	 * @param constraintViolations {@code Set} of {@link ConstraintViolation}
+	 * @param constraintViolations a {@code Set} of {@link ConstraintViolation}s or null
 	 */
 	public ConstraintViolationException(Set<? extends ConstraintViolation<?>> constraintViolations) {
-		this( toString( constraintViolations ), constraintViolations );
+		this(
+				constraintViolations != null ? toString( constraintViolations ) : null,
+				constraintViolations
+		);
 	}
 
 	/**
-	 * Set of constraint violations reported during a validation.
+	 * Returns the set of constraint violations reported during a validation.
 	 *
-	 * @return {@code Set} of {@link ConstraintViolation}
+	 * @return the {@code Set} of {@link ConstraintViolation}s or null
 	 */
 	public Set<ConstraintViolation<?>> getConstraintViolations() {
 		return constraintViolations;
