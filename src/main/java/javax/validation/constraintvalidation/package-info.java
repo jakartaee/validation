@@ -5,7 +5,7 @@
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
  */
 /**
- * Package containing constructs specific to constraint validators
+ * Package containing constructs specific to constraint validators.
  * In particular {@link javax.validation.constraintvalidation.SupportedValidationTarget}
  * is used to refine the validation target of a {@link javax.validation.ConstraintValidator}.
  */
