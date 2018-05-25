@@ -29,7 +29,7 @@ public interface TraversableResolver {
 	 *        or hosting the method or constructor validated
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
-	 *        (using the path specification defined by Bean Validator)
+	 *        (using the path specification defined by Bean Validation)
 	 * @param elementType either {@code FIELD} or {@code METHOD}
 	 * @return {@code true} if the Bean Validation provider is allowed to
 	 *         reach the property state, {@code false} otherwise
@@ -57,7 +57,7 @@ public interface TraversableResolver {
 	 *        or hosting the method or constructor validated
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
-	 *        (using the path specification defined by Bean Validator)
+	 *        (using the path specification defined by Bean Validation)
 	 * @param elementType either {@code FIELD} or {@code METHOD}
 	 * @return {@code true} if the Bean Validation provider is allowed to
 	 *         cascade validation, {@code false} otherwise
