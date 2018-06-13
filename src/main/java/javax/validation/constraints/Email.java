@@ -26,6 +26,8 @@ import javax.validation.constraints.Email.List;
 /**
  * The string has to be a well-formed email address. Exact semantics of what makes up a valid
  * email address are left to Bean Validation providers. Accepts {@code CharSequence}.
+ * <p>
+ * {@code null} elements are considered valid.
  *
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
