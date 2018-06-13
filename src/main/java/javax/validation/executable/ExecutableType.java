@@ -51,7 +51,6 @@ public enum ExecutableType {
 	NON_GETTER_METHODS,
 
 	/**
-	/**
 	 * All methods following the getter pattern. A getter according to the
 	 * JavaBeans specification is a method whose:
 	 * <ul>

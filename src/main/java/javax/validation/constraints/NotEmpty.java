@@ -24,7 +24,9 @@ import javax.validation.Payload;
 import javax.validation.constraints.NotEmpty.List;
 
 /**
- * The annotated element must not be {@code null} nor empty. Supported types are:
+ * The annotated element must not be {@code null} nor empty.
+ * <p>
+ * Supported types are:
  * <ul>
  * <li>{@code CharSequence} (length of character sequence is evaluated)</li>
  * <li>{@code Collection} (collection size is evaluated)</li>

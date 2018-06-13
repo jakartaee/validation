@@ -24,7 +24,8 @@ import javax.validation.Payload;
 import javax.validation.constraints.Digits.List;
 
 /**
- * The annotated element must be a number within accepted range
+ * The annotated element must be a number within accepted range.
+ * <p>
  * Supported types are:
  * <ul>
  *     <li>{@code BigDecimal}</li>
