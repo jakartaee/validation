@@ -34,7 +34,7 @@ public interface BootstrapConfiguration {
 	 * Class name of the {@link ValidationProvider} implementation
 	 * or {@code null} if none is specified.
 	 *
-	 * @return validation provider class name
+	 * @return validation provider class name or {@code null}
 	 */
 	String getDefaultProviderClassName();
 
@@ -42,7 +42,7 @@ public interface BootstrapConfiguration {
 	 * Class name of the {@link ConstraintValidatorFactory} implementation
 	 * or {@code null} if none is specified.
 	 *
-	 * @return constraint validator factory class name
+	 * @return constraint validator factory class name or {@code null}
 	 */
 	String getConstraintValidatorFactoryClassName();
 
@@ -106,7 +106,7 @@ public interface BootstrapConfiguration {
 
 	/**
 	 * Returns the set of executable types that should be considered
-	 * unless explicitly overridden via {@link ValidateOnExecution}
+	 * unless explicitly overridden via {@link ValidateOnExecution}.
 	 * <p>
 	 * Returns a set containing {@link ExecutableType#CONSTRUCTORS} and
 	 * {@link ExecutableType#NON_GETTER_METHODS} if unspecified in the configuration.
