@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Provides names for method and constructor parameters.
  * <p>
- * Used by the Bean Validation runtime when creating constraint violation
+ * Used by the Jakarta Bean Validation runtime when creating constraint violation
  * objects for violated method constraints.
  * <p>
  * Implementations must be thread-safe.

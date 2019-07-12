@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -76,7 +76,7 @@ public interface ConfigurationState {
 	 * {@code Configuration} implementation after the {@link ValidatorFactory}
 	 * creation (or if an exception occurs). All streams are guaranteed to
 	 * adhere to the mark/reset contract (see {@link InputStream#markSupported()}
-	 * by the Bean Validation provider.
+	 * by the Jakarta Bean Validation provider.
 	 *
 	 * @return set of input stream
 	 */

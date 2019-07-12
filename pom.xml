@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Bean Validation API
+  ~ Jakarta Bean Validation API
   ~
   ~ License: Apache License, Version 2.0
   ~ See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -12,11 +12,11 @@
     <artifactId>jakarta.validation-api</artifactId>
     <version>2.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Bean Validation API</name>
+    <name>Jakarta Bean Validation API</name>
     <url>http://beanvalidation.org</url>
 
     <description>
-        Bean Validation API
+        Jakarta Bean Validation API
     </description>
 
     <developers>
@@ -217,9 +217,9 @@
                     <links>
                         <link>http://docs.oracle.com/javase/8/docs/api/</link>
                     </links>
-                    <packagesheader>Bean Validation API Packages</packagesheader>
-                    <doctitle>Bean Validation API ${project.version}</doctitle>
-                    <windowtitle>Bean Validation API ${project.version}</windowtitle>
+                    <packagesheader>Jakarta Bean Validation API Packages</packagesheader>
+                    <doctitle>Jakarta Bean Validation API ${project.version}</doctitle>
+                    <windowtitle>Jakarta Bean Validation API ${project.version}</windowtitle>
                     <bottom>
                         <![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} <a href="http://redhat.com">Red Hat Inc.</a>  All Rights Reserved.
                         Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>.]]>

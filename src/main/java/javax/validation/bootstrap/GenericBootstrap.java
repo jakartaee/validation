@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -13,7 +13,7 @@ import javax.validation.ValidationProviderResolver;
 import javax.validation.ValidatorFactory;
 
 /**
- * Defines the state used to bootstrap Bean Validation and
+ * Defines the state used to bootstrap Jakarta Bean Validation and
  * creates a provider agnostic {@link Configuration}.
  *
  * @author Emmanuel Bernard
@@ -42,8 +42,8 @@ public interface GenericBootstrap {
 	 * returned by the {@link ValidationProviderResolver} strategy.
 	 *
 	 * @return a {@code Configuration} implementation compliant with the bootstrap state
-	 * @throws NoProviderFoundException if no Bean Validation provider was found
-	 * @throws ValidationException if a Bean Validation provider was found but the
+	 * @throws NoProviderFoundException if no Jakarta Bean Validation provider was found
+	 * @throws ValidationException if a Jakarta Bean Validation provider was found but the
 	 *         {@code Configuration} object cannot be built; this is generally due to an
 	 *         issue with the {@code ValidationProviderResolver}
 	 */

@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -173,7 +173,7 @@ public interface ConstraintValidatorContext {
 
 	/**
 	 * Returns an instance of the specified type allowing access to
-	 * provider-specific APIs. If the Bean Validation provider
+	 * provider-specific APIs. If the Jakarta Bean Validation provider
 	 * implementation does not support the specified class,
 	 * {@link ValidationException} is thrown.
 	 *

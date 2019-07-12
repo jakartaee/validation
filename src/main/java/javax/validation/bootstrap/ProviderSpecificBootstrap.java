@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -12,7 +12,7 @@ import javax.validation.ValidationProviderResolver;
 import javax.validation.spi.ValidationProvider;
 
 /**
- * Defines the state used to bootstrap Bean Validation and
+ * Defines the state used to bootstrap Jakarta Bean Validation and
  * creates a provider specific {@link Configuration}
  * of type {@code T}.
  * <p>

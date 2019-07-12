@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -7,7 +7,7 @@
 package javax.validation;
 
 /**
- * Exception raised if no Bean Validation provider could be found.
+ * Exception raised if no Jakarta Bean Validation provider could be found.
  *
  * @author Gunnar Morling
  *

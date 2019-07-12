@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Bean Validation API
+  ~ Jakarta Bean Validation API
   ~
   ~ License: Apache License, Version 2.0
   ~ See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -14,9 +14,9 @@
 
     <xs:annotation>
         <xs:documentation><![CDATA[
-            This is the XML Schema for Bean Validation constraint mapping files.
+            This is the XML Schema for Jakarta Bean Validation constraint mapping files.
 
-            Bean Validation constraint mapping files must indicate the Bean Validation
+            Jakarta Bean Validation constraint mapping files must indicate the Jakarta Bean Validation
             XML schema by using the constraint mapping namespace:
 
             http://xmlns.jcp.org/xml/ns/validation/mapping

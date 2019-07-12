@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -22,7 +22,7 @@ import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ValidationProvider;
 
 /**
- * This class is the entry point for Bean Validation.
+ * This class is the entry point for Jakarta Bean Validation.
  * <p>
  * There are three ways to bootstrap it:
  * <ul>
@@ -85,7 +85,7 @@ public class Validation {
 
 	/**
 	 * Builds and returns a {@link ValidatorFactory} instance based on the
-	 * default Bean Validation provider and following the XML configuration.
+	 * default Jakarta Bean Validation provider and following the XML configuration.
 	 * <p>
 	 * The provider list is resolved using the default validation provider resolver
 	 * logic.
@@ -95,8 +95,8 @@ public class Validation {
 	 *
 	 * @return {@code ValidatorFactory} instance
 	 *
-	 * @throws NoProviderFoundException if no Bean Validation provider was found
-	 * @throws ValidationException if a Bean Validation provider was found but the
+	 * @throws NoProviderFoundException if no Jakarta Bean Validation provider was found
+	 * @throws ValidationException if a Jakarta Bean Validation provider was found but the
 	 * {@code ValidatorFactory} cannot be built
 	 */
 	public static ValidatorFactory buildDefaultValidatorFactory() {
@@ -138,7 +138,7 @@ public class Validation {
 	 * </pre>,
 	 * where {@code ACMEConfiguration} is the
 	 * {@code Configuration} sub interface uniquely identifying the
-	 * ACME Bean Validation provider. and {@code ACMEProvider} is the
+	 * ACME Jakarta Bean Validation provider. and {@code ACMEProvider} is the
 	 * {@link ValidationProvider} implementation of the ACME provider.
 	 *
 	 * @param providerType the {@code ValidationProvider} implementation type
@@ -155,7 +155,7 @@ public class Validation {
 	}
 
 	/**
-	 * Not a public API; it can be used reflectively by code that integrates with Bean Validation, e.g. application
+	 * Not a public API; it can be used reflectively by code that integrates with Jakarta Bean Validation, e.g. application
 	 * servers, to clear the provider cache maintained by the default provider resolver.
 	 * <p>
 	 * This is a strictly unsupported API, its definition may be changed or removed at any time. Its purpose is to
@@ -286,7 +286,7 @@ public class Validation {
 			}
 
 			if ( validationProviders.isEmpty() ) {
-				String msg = "Unable to create a Configuration, because no Bean Validation provider could be found." +
+				String msg = "Unable to create a Configuration, because no Jakarta Bean Validation provider could be found." +
 						" Add a provider like Hibernate Validator (RI) to your classpath.";
 				throw new NoProviderFoundException( msg );
 			}
@@ -305,7 +305,7 @@ public class Validation {
 
 	/**
 	 * Finds {@link ValidationProvider} according to the default {@link ValidationProviderResolver} defined in the
-	 * Bean Validation specification. This implementation first uses thread's context classloader to locate providers.
+	 * Jakarta Bean Validation specification. This implementation first uses thread's context classloader to locate providers.
 	 * If no suitable provider is found using the aforementioned class loader, it uses current class loader.
 	 * If it still does not find any suitable provider, it tries to locate the built-in provider using the current
 	 * class loader.

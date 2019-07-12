@@ -1,5 +1,5 @@
 /*
- * Bean Validation API
+ * Jakarta Bean Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -102,7 +102,7 @@ public interface Validator {
 	 * Returns an instance of the specified type allowing access to
 	 * provider-specific APIs.
 	 * <p>
-	 * If the Bean Validation provider implementation does not support
+	 * If the Jakarta Bean Validation provider implementation does not support
 	 * the specified class, {@link ValidationException} is thrown.
 	 *
 	 * @param type the class of the object to be returned
