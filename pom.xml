@@ -221,8 +221,7 @@
                     <doctitle>Jakarta Bean Validation API ${project.version}</doctitle>
                     <windowtitle>Jakarta Bean Validation API ${project.version}</windowtitle>
                     <bottom>
-                        <![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} <a href="http://redhat.com">Red Hat Inc.</a>  All Rights Reserved.
-                        Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>.]]>
+                        <![CDATA[This spec is licensed under the EFSL; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
                     </bottom>
                 </configuration>
             </plugin>
