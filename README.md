@@ -5,8 +5,8 @@ This repository contains the Java Jakarta Bean Validation 2.0 API.
 Jakarta Bean Validation defines a metadata model and API for JavaBean and method validation.
 
 You can learn more about it here:
-* Official website: <http://beanvalidation.org/>
-* Latest draft of the spec: <http://beanvalidation.org/latest-draft/spec/>
+* Official website: <https://beanvalidation.org/>
+* Latest draft of the spec: <https://beanvalidation.org/latest-draft/spec/>
 * Reference implementation: <https://github.com/hibernate/hibernate-validator/>
 
 ## System requirements
@@ -27,8 +27,8 @@ You will also need a JDK 8 and Maven 3 (>= 3.0.3). With these prerequisites in p
 
 ## Contribute
 
-Want to join us? You can find all the relevant information about contributing to Jakarta Bean Validation on the [website](http://beanvalidation.org/contribute/).
+Want to join us? You can find all the relevant information about contributing to Jakarta Bean Validation on the [website](https://beanvalidation.org/contribute/).
 
 ## Continuous Integration
 
-The official Continuous Integration service for the project is hosted on [ci.hibernate.org](http://ci.hibernate.org/view/Validator/).
+The official Continuous Integration service for the project is hosted on [ci.hibernate.org](https://ci.hibernate.org/view/Validator/).

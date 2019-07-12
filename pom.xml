@@ -13,7 +13,7 @@
     <version>2.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Jakarta Bean Validation API</name>
-    <url>http://beanvalidation.org</url>
+    <url>https://beanvalidation.org</url>
 
     <description>
         Jakarta Bean Validation API

@@ -4,13 +4,13 @@ Contributions from the community are essential in keeping Jakarta Bean Validatio
 
 Please see the following pages to learn more about contributing to the Jakarta Bean Validation spec, its API, TCK and website:
 
-* [General contribution guide](http://beanvalidation.org/contribute/)
-* [Contributing to the specification](http://beanvalidation.org/contribute/specification/)
-* [Contributing to the API and the TCK](http://beanvalidation.org/contribute/coding)
-* [Contributing to the website](http://beanvalidation.org/contribute/site)
+* [General contribution guide](https://beanvalidation.org/contribute/)
+* [Contributing to the specification](https://beanvalidation.org/contribute/specification/)
+* [Contributing to the API and the TCK](https://beanvalidation.org/contribute/coding)
+* [Contributing to the website](https://beanvalidation.org/contribute/site)
 
 Before working on a feature for a long time, it is recommended to discuss the suggested change,
-e.g. by sending a mail to the [beanvalidation-dev](http://lists.jboss.org/pipermail/beanvalidation-dev/) mailing list.
+e.g. by sending a mail to the [beanvalidation-dev](https://lists.jboss.org/pipermail/beanvalidation-dev/) mailing list.
 
 ## Eclipse Contributor Agreement
 
