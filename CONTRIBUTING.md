@@ -1,5 +1,4 @@
-Guidelines for contributing to Jakarta Bean Validation
-====
+# Guidelines for contributing to Jakarta Bean Validation
 
 Contributions from the community are essential in keeping Jakarta Bean Validation strong and successful.
 
@@ -12,5 +11,14 @@ Please see the following pages to learn more about contributing to the Jakarta B
 
 Before working on a feature for a long time, it is recommended to discuss the suggested change,
 e.g. by sending a mail to the [beanvalidation-dev](http://lists.jboss.org/pipermail/beanvalidation-dev/) mailing list.
-If there's agreement on a given change and this is your first pull request for Jakarta Bean Validation,
-please sign the [Contributor License Agreement](https://cla.jboss.org/) for the "Jakarta Bean Validation" project.
+
+## Eclipse Contributor Agreement
+
+Before your contribution can be accepted by the project team contributors must electronically sign the Eclipse Contributor Agreement (ECA).
+
+ * http://www.eclipse.org/legal/ECA.php
+
+Commits that are provided by non-committers must have a Signed-off-by field in the footer indicating that the author is aware of the terms by which the contribution has been provided to the project.
+The non-committer must additionally have an Eclipse Foundation account and must have a signed Eclipse Contributor Agreement (ECA) on file.
+
+For more information, please see the [Eclipse Committer Handbook](https://www.eclipse.org/projects/handbook/#resources-commit).
