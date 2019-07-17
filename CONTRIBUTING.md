@@ -10,7 +10,7 @@ Please see the following pages to learn more about contributing to the Jakarta B
 * [Contributing to the website](https://beanvalidation.org/contribute/site)
 
 Before working on a feature for a long time, it is recommended to discuss the suggested change,
-e.g. by sending a mail to the [beanvalidation-dev](https://lists.jboss.org/pipermail/beanvalidation-dev/) mailing list.
+e.g. by sending a mail to the [bean-validation-dev](https://accounts.eclipse.org/mailing-list/bean-validation-dev) mailing list.
 
 ## Eclipse Contributor Agreement
 
