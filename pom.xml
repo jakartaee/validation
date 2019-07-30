@@ -72,9 +72,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/beanvalidation/beanvalidation-api.git</connection>
-        <developerConnection>scm:git:git@github.com:beanvalidation/beanvalidation-api.git</developerConnection>
-        <url>https://github.com/beanvalidation/beanvalidation-api</url>
+        <connection>scm:git:git://github.com/eclipse-ee4j/beanvalidation-api.git</connection>
+        <developerConnection>scm:git:git@github.com:eclipse-ee4j/beanvalidation-api.git</developerConnection>
+        <url>https://github.com/eclipse-ee4j/beanvalidation-api</url>
         <tag>HEAD</tag>
     </scm>
 
