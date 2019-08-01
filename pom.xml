@@ -235,11 +235,11 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
-                    <header>${project.basedir}/src/main/resources/license.header</header>
+                    <header>${project.basedir}/license/license.header</header>
                     <strictCheck>true</strictCheck>
                     <headerDefinitions>
-                        <headerDefinition>${project.basedir}/src/main/resources/java-header-style.xml</headerDefinition>
-                        <headerDefinition>${project.basedir}/src/main/resources/xml-header-style.xml</headerDefinition>
+                        <headerDefinition>${project.basedir}/license/java-header-style.xml</headerDefinition>
+                        <headerDefinition>${project.basedir}/license/xml-header-style.xml</headerDefinition>
                     </headerDefinitions>
                     <mapping>
                         <java>JAVA_CLASS_STYLE</java>
