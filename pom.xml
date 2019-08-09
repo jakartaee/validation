@@ -212,7 +212,7 @@
                     <doctitle>Jakarta Bean Validation API ${project.version}</doctitle>
                     <windowtitle>Jakarta Bean Validation API ${project.version}</windowtitle>
                     <bottom>
-                        <![CDATA[This spec is licensed under the <a href="https://www.eclipse.org/legal/efsl.php" target="_blank">EFSL</a>; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
+                        <![CDATA[This spec is licensed under the <a href="{@docRoot}/doc-files/speclicense.html" target="_top">EFSL</a>; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
                     </bottom>
                 </configuration>
             </plugin>
