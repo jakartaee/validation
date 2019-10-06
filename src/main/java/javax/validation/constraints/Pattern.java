@@ -18,7 +18,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Pattern.List;
@@ -143,6 +142,13 @@ public @interface Pattern {
 	@Documented
 	@interface List {
 
+		enum Composition {AND, OR}
+
 		Pattern[] value();
+
+		/**
+		 * @return how the patterns are composed. AND composition by default
+		 */
+		Composition composition() default Composition.AND;
 	}
 }
