@@ -137,7 +137,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            javax.validation.*;version="${project.version}",
+                            jakarta.validation.*;version="${project.version}",
                         </Export-Package>
                         <Automatic-Module-Name>java.validation</Automatic-Module-Name>
                     </instructions>
