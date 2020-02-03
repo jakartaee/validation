@@ -139,7 +139,7 @@
                         <Export-Package>
                             jakarta.validation.*;version="${project.version}",
                         </Export-Package>
-                        <Automatic-Module-Name>java.validation</Automatic-Module-Name>
+                        <Automatic-Module-Name>jakarta.validation</Automatic-Module-Name>
                     </instructions>
                 </configuration>
                 <executions>
