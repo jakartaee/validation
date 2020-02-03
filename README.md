@@ -1,6 +1,6 @@
 # Jakarta Bean Validation API
 
-This repository contains the Java Jakarta Bean Validation 2.0 API.
+This repository contains the Java Jakarta Bean Validation 3.0 API.
 
 Jakarta Bean Validation defines a metadata model and API for JavaBean and method validation.
 
