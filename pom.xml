@@ -15,7 +15,7 @@
 
     <groupId>jakarta.validation</groupId>
     <artifactId>jakarta.validation-api</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0-M1</version>
     <packaging>jar</packaging>
     <name>Jakarta Bean Validation API</name>
     <url>https://beanvalidation.org</url>
