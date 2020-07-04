@@ -183,7 +183,7 @@
                     <windowtitle>Jakarta Bean Validation API ${project.version}</windowtitle>
                     <bottom><![CDATA[
 Comments to: <a href="mailto:bean-validation-dev@eclipse.org">bean-validation-dev@eclipse.org</a>.<br>
-Copyright &#169; 2019 Eclipse Foundation.<br>
+Copyright &#169; 2019,2020 Eclipse Foundation.<br>
 Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">EFSL</a>; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
                     </bottom>
                 </configuration>
