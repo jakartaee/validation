@@ -86,6 +86,12 @@ public class ValidationTest {
 	@Test
 	public void testCachedProvidersCanBeGarbageCollected() {
 		int LOOP_COUNT = 100;
+		int BUF_SIZE = 10 * 1024 * 1024;
+		// Need to calcuate how much memory to use
+		long maxMemory = Runtime.getRuntime().maxMemory();
+		long BUF_COUNT = maxMemory / BUF_SIZE + 1;
+		assertTrue(BUF_COUNT < Integer.MAX_VALUE, "BUF_COUNT > Integer.MAX_VALUE");
+		int ALLOC_COUNT = Math.toIntExact(BUF_COUNT);
 
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
@@ -98,7 +104,7 @@ public class ValidationTest {
 			assertTrue( createdProviders > 1, "There should be cached providers" );
 
 			try {
-				byte[][] buf = new byte[1024][];
+				byte[][] buf = new byte[ALLOC_COUNT][];
 				for ( int i = 0; i < buf.length; i++ ) {
 					buf[i] = new byte[10 * 1024 * 1024];
 				}
