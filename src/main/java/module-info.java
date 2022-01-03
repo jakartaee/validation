@@ -14,4 +14,8 @@ module jakarta.validation {
     exports jakarta.validation.metadata;
     exports jakarta.validation.spi;
     exports jakarta.validation.valueextraction;
+
+    uses jakarta.validation.spi.BootstrapState;
+    uses jakarta.validation.spi.ConfigurationState;
+    uses jakarta.validation.spi.ValidationProvider;
 }
