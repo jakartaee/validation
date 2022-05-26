@@ -107,6 +107,8 @@
                         <Export-Package>
                             jakarta.validation.*;version="${project.version}",
                         </Export-Package>
+                        <!-- Make sure we keep 1.8 compatibility for JavaSE in the manifest -->
+                        <Require-Capability><![CDATA[osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"]]></Require-Capability>
                     </instructions>
                 </configuration>
                 <executions>
