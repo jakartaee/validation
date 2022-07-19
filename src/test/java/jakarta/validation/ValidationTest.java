@@ -14,6 +14,9 @@ import static org.testng.Assert.fail;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ import jakarta.validation.NoProviderFoundException;
 import jakarta.validation.Validation;
 import jakarta.validation.ValidationProviderResolver;
 import jakarta.validation.ValidatorFactory;
+import jakarta.validation.bootstrap.GenericBootstrap;
 import jakarta.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
 import jakarta.validation.spi.ValidationProvider;
 
@@ -165,6 +169,29 @@ public class ValidationTest {
 		}
 		return count;
 	}
+	
+	@Test
+	public void testWeakHashMapSynchronization() {
+		try {
+			Validation validation = new Validation();
+			GenericBootstrap f1 = Validation.byDefaultProvider();
+			System.out.println(f1.getClass().getDeclaredField("defaultResolver"));
+			Class<?>[] classes = validation.getClass().getDeclaredClasses();
+			for (int i = 0; i < classes.length; i++) {
+				if (classes[i].getSimpleName().equals("GetValidationProviderListAction")) {
+					Field field = classes[i].getDeclaredField("providersPerClassloader");
+					field.setAccessible(true);
+					Constructor<?> constructor = classes[i].getDeclaredConstructor();
+					constructor.setAccessible(true);
+					Object obj = constructor.newInstance();
+					assertTrue(field.get(obj).getClass().getName().equals("java.util.Collections$SynchronizedMap"));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		} 
+	}
 
 	private static class CustomValidationProviderClassLoader extends ClassLoader {
 		private static final String SERVICES_FILE = "META-INF/services/" + ValidationProvider.class.getName();
@@ -221,4 +248,5 @@ public class ValidationTest {
 			return Collections.emptyList();
 		}
 	}
+	
 }
