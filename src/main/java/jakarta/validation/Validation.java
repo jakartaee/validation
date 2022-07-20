@@ -163,7 +163,7 @@ public class Validation {
 	 */
 	@SuppressWarnings("unused")
 	private static void clearDefaultValidationProviderResolverCache() {
-		GetValidationProviderListAction.clearCache();
+		GetValidationProviderListAction.INSTANCE.clearCache();
 	}
 
 	//private class, not exposed
@@ -339,8 +339,8 @@ public class Validation {
 			}
 		}
 
-		public static synchronized void clearCache() {
-			INSTANCE.providersPerClassloader.clear();
+		public synchronized void clearCache() {
+			providersPerClassloader.clear();
 		}
 
 		@Override
