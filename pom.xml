@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Jakarta Bean Validation API
+  ~ Jakarta Validation API
   ~
   ~ License: Apache License, Version 2.0
   ~ See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -17,11 +17,11 @@
     <artifactId>jakarta.validation-api</artifactId>
     <version>3.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Jakarta Bean Validation API</name>
+    <name>Jakarta Validation API</name>
     <url>https://beanvalidation.org</url>
 
     <description>
-        Jakarta Bean Validation API
+        Jakarta Validation API
     </description>
 
     <developers>
@@ -77,9 +77,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/beanvalidation-api.git</connection>
-        <developerConnection>scm:git:git@github.com:eclipse-ee4j/beanvalidation-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/beanvalidation-api</url>
+        <connection>scm:git:git://github.com/jakartaee/validation.git</connection>
+        <developerConnection>scm:git:git@github.com:jakartaee/validation.git</developerConnection>
+        <url>https://github.com/jakartaee/validation</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -202,9 +202,9 @@
                 <configuration>
                     <source>8</source>
                     <detectJavaApiLink>false</detectJavaApiLink>
-                    <packagesheader>Jakarta Bean Validation API Packages</packagesheader>
-                    <doctitle>Jakarta Bean Validation API ${project.version}</doctitle>
-                    <windowtitle>Jakarta Bean Validation API ${project.version}</windowtitle>
+                    <packagesheader>Jakarta Validation API Packages</packagesheader>
+                    <doctitle>Jakarta Validation API ${project.version}</doctitle>
+                    <windowtitle>Jakarta Validation API ${project.version}</windowtitle>
                     <bottom><![CDATA[
 Comments to: <a href="mailto:bean-validation-dev@eclipse.org">bean-validation-dev@eclipse.org</a>.<br>
 Copyright &#169; 2019,2020 Eclipse Foundation.<br>
