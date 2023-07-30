@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -25,7 +25,7 @@ import jakarta.validation.constraints.Email.List;
 
 /**
  * The string has to be a well-formed email address. Exact semantics of what makes up a valid
- * email address are left to Jakarta Bean Validation providers. Accepts {@code CharSequence}.
+ * email address are left to Jakarta Validation providers. Accepts {@code CharSequence}.
  * <p>
  * {@code null} elements are considered valid.
  *

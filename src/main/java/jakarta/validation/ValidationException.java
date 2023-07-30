@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -7,7 +7,7 @@
 package jakarta.validation;
 
 /**
- * Base exception of all Jakarta Bean Validation "unexpected" problems.
+ * Base exception of all Jakarta Validation "unexpected" problems.
  *
  * @author Emmanuel Bernard
  */

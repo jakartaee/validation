@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -14,7 +14,7 @@ import jakarta.validation.valueextraction.ValueExtractorDeclarationException;
 
 /**
  * Receives configuration information, selects the appropriate
- * Jakarta Bean Validation provider and builds the appropriate {@link ValidatorFactory}.
+ * Jakarta Validation provider and builds the appropriate {@link ValidatorFactory}.
  * <p>
  * Usage:
  * <pre>
@@ -146,18 +146,18 @@ public interface Configuration<T extends Configuration<T>> {
 	T addValueExtractor(ValueExtractor<?> extractor);
 
 	/**
-	 * Add a stream describing constraint mapping in the Jakarta Bean Validation XML
+	 * Add a stream describing constraint mapping in the Jakarta Validation XML
 	 * format.
 	 * <p>
 	 * The stream should be closed by the client API after the
-	 * {@link ValidatorFactory} has been built. The Jakarta Bean Validation provider
+	 * {@link ValidatorFactory} has been built. The Jakarta Validation provider
 	 * must not close the stream.
 	 *
 	 * @param stream
 	 *        XML mapping stream; the given stream should support the
 	 *        mark/reset contract (see {@link InputStream#markSupported()});
 	 *        if it doesn't, it will be wrapped into a stream supporting the
-	 *        mark/reset contract by the Jakarta Bean Validation provider
+	 *        mark/reset contract by the Jakarta Validation provider
 	 *
 	 * @return {@code this} following the chaining method pattern
 	 * @throws IllegalArgumentException if {@code stream} is null
