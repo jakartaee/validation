@@ -173,7 +173,7 @@ public interface ConstraintValidatorContext {
 
 	/**
 	 * Returns an instance of the specified type allowing access to
-	 * provider-specific APIs. If the Jakarta Bean Validation provider
+	 * provider-specific APIs. If the Jakarta Validation provider
 	 * implementation does not support the specified class,
 	 * {@link ValidationException} is thrown.
 	 *
