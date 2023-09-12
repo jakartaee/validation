@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -89,7 +89,7 @@ public interface ValidatorFactory extends AutoCloseable {
 
 	/**
 	 * Returns an instance of the specified type allowing access to
-	 * provider-specific APIs. If the Jakarta Bean Validation provider
+	 * provider-specific APIs. If the Jakarta Validation provider
 	 * implementation does not support the specified class, a
 	 * {@code ValidationException} is thrown.
 	 *

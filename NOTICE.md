@@ -1,13 +1,15 @@
-# Notices for Eclipse Jakarta Bean Validation
+# Notices for Eclipse Jakarta Validation
 
-This content is produced and maintained by the Eclipse Jakarta Bean Validation
+This content is produced and maintained by the Eclipse Jakarta Validation
 project.
 
 * Project home: https://projects.eclipse.org/projects/ee4j.bean-validation
 
+   See https://gitlab.eclipse.org/eclipsefdn/helpdesk/-/issues/3497 for progress of rename.
+
 ## Trademarks
 
- Jakarta Bean Validation is a trademark of the Eclipse Foundation.
+ Jakarta Validation is a trademark of the Eclipse Foundation.
 
 ## Copyright
 
@@ -27,9 +29,9 @@ SPDX-License-Identifier: Apache-2.0
 
 The project maintains the following source code repositories:
 
- * [The specification repository](https://github.com/eclipse-ee4j/beanvalidation-spec)
- * [The API repository](https://github.com/eclipse-ee4j/beanvalidation-api)
- * [The TCK repository](https://github.com/eclipse-ee4j/beanvalidation-tck)
+* [The specification repository](https://github.com/jakartaee/validation-spec)
+* [The API repository](https://github.com/jakartaee/validation)
+* [The TCK repository](https://github.com/jakartaee/validation-tck)
 
 ## Third-party Content
 

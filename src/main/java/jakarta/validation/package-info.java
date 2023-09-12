@@ -1,16 +1,16 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
  */
 /**
- * Top level package of the Jakarta Bean Validation API.
+ * Top level package of the Jakarta Validation API.
  *
  * The main runtime artifacts are:
  * <ul>
- *     <li>{@link jakarta.validation.Validation}: the entry point to bootstrap Jakarta Bean Validation</li>
- *     <li>{@link jakarta.validation.ValidatorFactory}: the bootstrapped Jakarta Bean Validation engine</li>
+ *     <li>{@link jakarta.validation.Validation}: the entry point to bootstrap Jakarta Validation</li>
+ *     <li>{@link jakarta.validation.ValidatorFactory}: the bootstrapped Jakarta Validation engine</li>
  *     <li>{@link jakarta.validation.Validator}: contract to validate beans and access the metadata</li>
  *     <li>{@link jakarta.validation.ConstraintViolation}: constraint violation report</li>
  * </ul>

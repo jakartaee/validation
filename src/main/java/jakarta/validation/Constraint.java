@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -17,7 +17,7 @@ import jakarta.validation.constraintvalidation.SupportedValidationTarget;
 import jakarta.validation.constraintvalidation.ValidationTarget;
 
 /**
- * Marks an annotation as being a Jakarta Bean Validation constraint.
+ * Marks an annotation as being a Jakarta Validation constraint.
  * <p>
  * A given constraint annotation must be annotated by a {@code @Constraint}
  * annotation which refers to its list of constraint validation implementations.

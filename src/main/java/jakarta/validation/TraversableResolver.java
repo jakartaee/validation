@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -11,7 +11,7 @@ import static jakarta.validation.Path.*;
 import java.lang.annotation.ElementType;
 
 /**
- * Contract determining if a property can be accessed by the Jakarta Bean Validation provider.
+ * Contract determining if a property can be accessed by the Jakarta Validation provider.
  * This contract is called for each property that is being either validated or cascaded.
  * <p>
  * A traversable resolver implementation must be thread-safe.
@@ -20,7 +20,7 @@ import java.lang.annotation.ElementType;
  */
 public interface TraversableResolver {
 	/**
-	 * Determines if the Jakarta Bean Validation provider is allowed to reach the property state.
+	 * Determines if the Jakarta Validation provider is allowed to reach the property state.
 	 *
 	 * @param traversableObject object hosting {@code traversableProperty}
 	 *        or {@code null} if {@code validateValue} is called
@@ -29,9 +29,9 @@ public interface TraversableResolver {
 	 *        or hosting the method or constructor validated
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
-	 *        (using the path specification defined by Bean Validation)
+	 *        (using the path specification defined by Validation)
 	 * @param elementType either {@code FIELD} or {@code METHOD}
-	 * @return {@code true} if the Jakarta Bean Validation provider is allowed to
+	 * @return {@code true} if the Jakarta Validation provider is allowed to
 	 *         reach the property state, {@code false} otherwise
 	 */
 	boolean isReachable(Object traversableObject,
@@ -41,7 +41,7 @@ public interface TraversableResolver {
 						ElementType elementType);
 
 	/**
-	 * Determines if the Jakarta Bean Validation provider is allowed to cascade validation on
+	 * Determines if the Jakarta Validation provider is allowed to cascade validation on
 	 * the bean instance returned by the property value
 	 * marked as {@code @Valid}.
 	 * <p>
@@ -57,9 +57,9 @@ public interface TraversableResolver {
 	 *        or hosting the method or constructor validated
 	 * @param pathToTraversableObject path from the root object to
 	 *        {@code traversableObject}
-	 *        (using the path specification defined by Bean Validation)
+	 *        (using the path specification defined by Validation)
 	 * @param elementType either {@code FIELD} or {@code METHOD}
-	 * @return {@code true} if the Jakarta Bean Validation provider is allowed to
+	 * @return {@code true} if the Jakarta Validation provider is allowed to
 	 *         cascade validation, {@code false} otherwise
 	 */
 	boolean isCascadable(Object traversableObject,

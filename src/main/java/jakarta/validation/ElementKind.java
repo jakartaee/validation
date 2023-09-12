@@ -1,5 +1,5 @@
 /*
- * Jakarta Bean Validation API
+ * Jakarta Validation API
  *
  * License: Apache License, Version 2.0
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -7,7 +7,7 @@
 package jakarta.validation;
 
 /**
- * Enum of possible kinds of elements encountered in Jakarta Bean Validation.
+ * Enum of possible kinds of elements encountered in Jakarta Validation.
  * <p>
  * Mostly elements that can be constrained and described in the metadata
  * but also elements that can be part of a {@link Path} and represented

@@ -1,19 +1,21 @@
-# Contributing to Eclipse Jakarta Bean Validation
+# Contributing to Eclipse Jakarta Validation
 
 Thanks for your interest in this project.
 
 ## Project description
 
-Bean Validation defines a metadata model and API for JavaBean and method validation.
+Validation defines a metadata model and API for JavaBean and method validation.
 
 * https://beanvalidation.org/
 * https://projects.eclipse.org/projects/ee4j.bean-validation
 
+   See https://gitlab.eclipse.org/eclipsefdn/helpdesk/-/issues/3497 for progress of rename.
+
 ## Developer resources
 
-Contributions from the community are essential in keeping Jakarta Bean Validation strong and successful.
+Contributions from the community are essential in keeping Jakarta Validation strong and successful.
 
-Please see the following pages to learn more about contributing to the Jakarta Bean Validation spec, its API, TCK and website:
+Please see the following pages to learn more about contributing to the Jakarta Validation spec, its API, TCK and website:
 
 * [General contribution guide](https://beanvalidation.org/contribute/)
 * [Contributing to the specification](https://beanvalidation.org/contribute/specification/)
@@ -25,9 +27,9 @@ e.g. by sending a mail to the [bean-validation-dev](https://accounts.eclipse.org
 
 The project maintains the following source code repositories:
 
- * [The specification repository](https://github.com/eclipse-ee4j/beanvalidation-spec)
- * [The API repository](https://github.com/eclipse-ee4j/beanvalidation-api)
- * [The TCK repository](https://github.com/eclipse-ee4j/beanvalidation-tck)
+* [The specification repository](https://github.com/jakartaee/validation-spec)
+* [The API repository](https://github.com/jakartaee/validation)
+* [The TCK repository](https://github.com/jakartaee/validation-tck)
 
 ## Eclipse Contributor Agreement
 
