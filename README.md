@@ -31,9 +31,9 @@ Want to join us? You can find all the relevant information about contributing to
 
 ## Continuous Integration
 
-The official Continuous Integration service for the project is hosted on [ci.eclipse.org](https://ci.eclipse.org/bean-validation/).
+The official Continuous Integration service for the project is hosted on [ci.eclipse.org](https://ci.eclipse.org/validation/).
 
 ## Publishing the Schemas
 The schema files should be published to the https://github.com/jakartaee/jakarta.ee website repository by following the
 procedure described at https://eclipse-ee4j.github.io/jakartaee-platform/publish-xml-schemas. The location for
-the schema files in the repsitory is the static/xml/ns/validation directory.
+the schema files in the repository is the static/xml/ns/validation directory.
