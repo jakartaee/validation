@@ -10,12 +10,12 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.6</version>
+        <version>1.0.9</version>
     </parent>
 
     <groupId>jakarta.validation</groupId>
     <artifactId>jakarta.validation-api</artifactId>
-    <version>3.0.3-SNAPSHOT</version>
+    <version>3.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Jakarta Validation API</name>
     <url>https://beanvalidation.org</url>
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.11</version>
+            <version>7.7.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -155,10 +155,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>3.2.2</version>
                 <configuration>
-                    <forkMode>once</forkMode>
+                    <forkCount>1</forkCount>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    <useModulePath>false</useModulePath>
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
@@ -167,7 +168,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
                 <configuration>
                     <archive>
                         <manifestFile>${basedir}/target/classes/META-INF/MANIFEST.MF</manifestFile>
@@ -177,7 +177,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -190,7 +189,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -207,7 +205,7 @@
                     <windowtitle>Jakarta Validation API ${project.version}</windowtitle>
                     <bottom><![CDATA[
 Comments to: <a href="mailto:bean-validation-dev@eclipse.org">bean-validation-dev@eclipse.org</a>.<br>
-Copyright &#169; 2019,2020 Eclipse Foundation.<br>
+Copyright &#169; 2019,2023 Eclipse Foundation.<br>
 Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">EFSL</a>; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
                     </bottom>
                 </configuration>
