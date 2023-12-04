@@ -3,9 +3,7 @@
 This content is produced and maintained by the Eclipse Jakarta Validation
 project.
 
-* Project home: https://projects.eclipse.org/projects/ee4j.bean-validation
-
-   See https://gitlab.eclipse.org/eclipsefdn/helpdesk/-/issues/3497 for progress of rename.
+* Project home: https://projects.eclipse.org/projects/ee4j.validation
 
 ## Trademarks
 
