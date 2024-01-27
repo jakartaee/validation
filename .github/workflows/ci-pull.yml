@@ -13,19 +13,18 @@ permissions:
 jobs:
   build:
 
-    # TODO Enable strategy for next Jakarta Release Cycle
-    # strategy:
-    #   matrix:
-    #     java-version: [ '21', '25-ea' ]
+    strategy:
+      matrix:
+        java-version: [ '17', '21' ]
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-    - name: Set up JDK 21 #${{ matrix.java-version }}
+    - name: Set up JDK ${{ matrix.java-version }}
       uses: actions/setup-java@387ac29b308b003ca37ba93a6cab5eb57c8f5f93 # v4.0.0
       with:
-        java-version: 21 #${{ matrix.java-version }}
+        java-version: ${{ matrix.java-version }}
         distribution: 'temurin'
         cache: maven
     - name: Build API
