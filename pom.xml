@@ -15,7 +15,7 @@
 
     <groupId>jakarta.validation</groupId>
     <artifactId>jakarta.validation-api</artifactId>
-    <version>3.1.0-M1</version>
+    <version>3.1.0-M2</version>
     <packaging>jar</packaging>
     <name>Jakarta Validation API</name>
     <url>https://beanvalidation.org</url>
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version>
+            <version>7.9.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
