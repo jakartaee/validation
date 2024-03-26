@@ -10,8 +10,10 @@ import java.lang.ref.SoftReference;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.WeakHashMap;
@@ -327,8 +329,8 @@ public class Validation {
 
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
-		private final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
-				new WeakHashMap<>();
+		private final Map<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
+				Collections.synchronizedMap(new WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>>());
 
 		public static synchronized List<ValidationProvider<?>> getValidationProviderList() {
 			if ( System.getSecurityManager() != null ) {
