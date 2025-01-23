@@ -7,31 +7,31 @@
   -->
 <xs:schema attributeFormDefault="unqualified"
            elementFormDefault="qualified"
-           targetNamespace="http://xmlns.jcp.org/xml/ns/validation/configuration"
+           targetNamespace="https://jakarta.ee/xml/ns/validation/configuration"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:config="http://xmlns.jcp.org/xml/ns/validation/configuration"
-           version="2.0">
+           xmlns:config="https://jakarta.ee/xml/ns/validation/configuration"
+           version="3.1">
 
     <xs:annotation>
         <xs:documentation><![CDATA[
-            This is the XML Schema for the Jakarta Bean Validation configuration file.
+            This is the XML Schema for the Jakarta Validation configuration file.
             The configuration file must be named "META-INF/validation.xml".
 
-            Jakarta Bean Validation configuration files must indicate the Jakarta Bean Validation
+            Jakarta Validation configuration files must indicate the Jakarta Validation
             XML schema by using the validation namespace:
 
-            http://xmlns.jcp.org/xml/ns/validation/configuration
+            https://jakarta.ee/xml/ns/validation/configuration
 
             and indicate the version of the schema by using the version attribute
             as shown below:
 
             <validation-config
-                xmlns="http://xmlns.jcp.org/xml/ns/validation/configuration"
+                xmlns="https://jakarta.ee/xml/ns/validation/configuration"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="
-                    http://xmlns.jcp.org/xml/ns/validation/configuration
-                    http://xmlns.jcp.org/xml/ns/validation/configuration/validation-configuration-2.0.xsd"
-                version="2.0">
+                    https://jakarta.ee/xml/ns/validation/configuration
+                    https://jakarta.ee/xml/ns/validation/validation-configuration-3.1.xsd"
+                version="3.1">
                 [...]
             </validation-config>
         ]]>
@@ -56,7 +56,7 @@
             <xs:element type="config:propertyType" name="property" maxOccurs="unbounded"
                     minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="version" type="config:versionType" fixed="2.0" use="required"/>
+        <xs:attribute name="version" type="config:versionType" fixed="3.0" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="executable-validationType">

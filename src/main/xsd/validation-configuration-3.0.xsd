@@ -14,10 +14,10 @@
 
     <xs:annotation>
         <xs:documentation><![CDATA[
-            This is the XML Schema for the Jakarta Validation configuration file.
+            This is the XML Schema for the Jakarta Bean Validation configuration file.
             The configuration file must be named "META-INF/validation.xml".
 
-            Jakarta Validation configuration files must indicate the Jakarta Validation
+            Jakarta Bean Validation configuration files must indicate the Jakarta Bean Validation
             XML schema by using the validation namespace:
 
             https://jakarta.ee/xml/ns/validation/configuration
