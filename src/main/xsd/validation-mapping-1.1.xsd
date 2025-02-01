@@ -14,9 +14,9 @@
 
     <xs:annotation>
         <xs:documentation><![CDATA[
-            This is the XML Schema for Jakarta Validation constraint mapping files.
+            This is the XML Schema for Jakarta Bean Validation constraint mapping files.
 
-            Jakarta Validation constraint mapping files must indicate the Jakarta Validation
+            Jakarta Bean Validation constraint mapping files must indicate the Jakarta Bean Validation
             XML schema by using the constraint mapping namespace:
 
             http://jboss.org/xml/ns/javax/validation/mapping
