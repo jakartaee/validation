@@ -161,7 +161,7 @@ public class Validation {
 	 */
 	@SuppressWarnings("unused")
 	private static void clearDefaultValidationProviderResolverCache() {
-		GetValidationProviderListAction.INSTANCE.clearCache();
+		DefaultValidationProviderResolver.clearCache();
 	}
 
 	//private class, not exposed
@@ -314,30 +314,18 @@ public class Validation {
 	 * @author Hardy Ferentschik
 	 */
 	private static class DefaultValidationProviderResolver implements ValidationProviderResolver {
-		@Override
-		public List<ValidationProvider<?>> getValidationProviders() {
-			return GetValidationProviderListAction.getValidationProviderList();
-		}
-	}
-
-	private static class GetValidationProviderListAction {
-
-		private final static GetValidationProviderListAction INSTANCE = new GetValidationProviderListAction();
 
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
-		private final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
+		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
 				new WeakHashMap<>();
 
-		public static synchronized List<ValidationProvider<?>> getValidationProviderList() {
-			return INSTANCE.run();
-		}
-
-		public synchronized void clearCache() {
+		public static synchronized void clearCache() {
 			providersPerClassloader.clear();
 		}
 
-		public List<ValidationProvider<?>> run() {
+		@Override
+		public List<ValidationProvider<?>> getValidationProviders() {
 			// Option #1: try first context class loader
 			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 			List<ValidationProvider<?>> cachedContextClassLoaderProviderList = getCachedValidationProviders( classloader );
