@@ -7,8 +7,6 @@
 package jakarta.validation;
 
 import java.lang.ref.SoftReference;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -163,7 +161,7 @@ public class Validation {
 	 */
 	@SuppressWarnings("unused")
 	private static void clearDefaultValidationProviderResolverCache() {
-		GetValidationProviderListAction.INSTANCE.clearCache();
+		DefaultValidationProviderResolver.clearCache();
 	}
 
 	//private class, not exposed
@@ -210,8 +208,14 @@ public class Validation {
 
 			// if no resolver is given, simply instantiate the given provider
 			if ( resolver == null ) {
-				U provider = run( NewProviderInstance.action( validationProviderClass ) );
-				return provider.createSpecializedConfiguration( state );
+
+				try {
+					U provider = validationProviderClass.newInstance();
+					return provider.createSpecializedConfiguration( state );
+				}
+				catch (InstantiationException | IllegalAccessException | RuntimeException e) {
+					throw new ValidationException( "Cannot instantiate provider type: " + validationProviderClass, e );
+				}
 			}
 			else {
 				//stay null if no resolver is defined
@@ -234,10 +238,6 @@ public class Validation {
 				}
 			}
 			throw new ValidationException( "Unable to find provider: " + validationProviderClass );
-		}
-
-		private <P> P run(PrivilegedAction<P> action) {
-			return System.getSecurityManager() != null ? AccessController.doPrivileged( action ) : action.run();
 		}
 	}
 
@@ -314,37 +314,18 @@ public class Validation {
 	 * @author Hardy Ferentschik
 	 */
 	private static class DefaultValidationProviderResolver implements ValidationProviderResolver {
-		@Override
-		public List<ValidationProvider<?>> getValidationProviders() {
-			// class loading and ServiceLoader methods should happen in a PrivilegedAction
-			return GetValidationProviderListAction.getValidationProviderList();
-		}
-	}
-
-	private static class GetValidationProviderListAction implements PrivilegedAction<List<ValidationProvider<?>>> {
-
-		private final static GetValidationProviderListAction INSTANCE = new GetValidationProviderListAction();
 
 		//cache per classloader for an appropriate discovery
 		//keep them in a weak hash map to avoid memory leaks and allow proper hot redeployment
-		private final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
+		private static final WeakHashMap<ClassLoader, SoftReference<List<ValidationProvider<?>>>> providersPerClassloader =
 				new WeakHashMap<>();
 
-		public static synchronized List<ValidationProvider<?>> getValidationProviderList() {
-			if ( System.getSecurityManager() != null ) {
-				return AccessController.doPrivileged( INSTANCE );
-			}
-			else {
-				return INSTANCE.run();
-			}
-		}
-
-		public synchronized void clearCache() {
+		public static synchronized void clearCache() {
 			providersPerClassloader.clear();
 		}
 
 		@Override
-		public List<ValidationProvider<?>> run() {
+		public List<ValidationProvider<?>> getValidationProviders() {
 			// Option #1: try first context class loader
 			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 			List<ValidationProvider<?>> cachedContextClassLoaderProviderList = getCachedValidationProviders( classloader );
@@ -398,29 +379,6 @@ public class Validation {
 
 		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
 			providersPerClassloader.put( classLoader, new SoftReference<>( providers ) );
-		}
-	}
-
-	private static class NewProviderInstance<T extends ValidationProvider<?>> implements PrivilegedAction<T> {
-
-		private final Class<T> clazz;
-
-		public static <T extends ValidationProvider<?>> NewProviderInstance<T> action(Class<T> clazz) {
-			return new NewProviderInstance<>( clazz );
-		}
-
-		private NewProviderInstance(Class<T> clazz) {
-			this.clazz = clazz;
-		}
-
-		@Override
-		public T run() {
-			try {
-				return clazz.newInstance();
-			}
-			catch (InstantiationException | IllegalAccessException | RuntimeException e) {
-				throw new ValidationException( "Cannot instantiate provider type: " + clazz, e );
-			}
 		}
 	}
 }
