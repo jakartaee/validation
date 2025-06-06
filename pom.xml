@@ -85,7 +85,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.outputTimestamp>2025-06-06T07:23:21Z</project.build.outputTimestamp>
+        <version.java.release>17</version.java.release>
+        <project.build.outputTimestamp>2025-06-06T00:00:00Z</project.build.outputTimestamp>
     </properties>
 
     <dependencies>
@@ -113,8 +114,8 @@
                         <Export-Package>
                             jakarta.validation.*;version="${project.version}",
                         </Export-Package>
-                        <!-- Make sure we keep 1.8 compatibility for JavaSE in the manifest -->
-                        <Require-Capability><![CDATA[osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"]]></Require-Capability>
+                        <!-- Make sure we keep java compatibility for JavaSE in the manifest -->
+                        <Require-Capability><![CDATA[osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=${version.java.release}))"]]></Require-Capability>
                     </instructions>
                 </configuration>
                 <executions>
@@ -127,16 +128,13 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
-            Use the JDK 9+ compiler but with -source 1.8 for all
-            but the module-info.java file.
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <release>9</release>
+                    <source>${version.java.release}</source>
+                    <release>${version.java.release}</release>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                     </compilerArgs>
@@ -144,18 +142,6 @@
                     <showWarnings>true</showWarnings>
                 </configuration>
                 <executions>
-                    <execution>
-                        <id>base-compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <release>8</release>
-                            <excludes>
-                                <exclude>module-info.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>default-testCompile</id>
                         <configuration>
@@ -210,14 +196,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <source>8</source>
+                    <source>${version.java.release}</source>
                     <detectJavaApiLink>false</detectJavaApiLink>
                     <packagesheader>Jakarta Validation API Packages</packagesheader>
                     <doctitle>Jakarta Validation API ${project.version}</doctitle>
                     <windowtitle>Jakarta Validation API ${project.version}</windowtitle>
                     <bottom><![CDATA[
 Comments to: <a href="mailto:bean-validation-dev@eclipse.org">bean-validation-dev@eclipse.org</a>.<br>
-Copyright &#169; 2019,2023 Eclipse Foundation.<br>
+Copyright &#169; 2019-{currentYear} Eclipse Foundation.<br>
 Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">EFSL</a>; this spec is based on material that is licensed under the Apache License, version 2.0.]]>
                     </bottom>
                 </configuration>
