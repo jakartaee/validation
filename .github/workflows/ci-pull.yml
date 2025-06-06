@@ -28,4 +28,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build API
-      run: mvn -B install --file pom.xml
+      run: ./mvnw -B install --file pom.xml
