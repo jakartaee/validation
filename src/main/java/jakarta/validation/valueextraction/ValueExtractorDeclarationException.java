@@ -6,6 +6,8 @@
  */
 package jakarta.validation.valueextraction;
 
+import java.io.Serial;
+
 import jakarta.validation.ValidationException;
 
 /**
@@ -18,6 +20,9 @@ import jakarta.validation.ValidationException;
  * @since 2.0
  */
 public class ValueExtractorDeclarationException extends ValidationException {
+
+	@Serial
+	private static final long serialVersionUID = -5924252723850532703L;
 
 	public ValueExtractorDeclarationException() {
 		super();

@@ -6,12 +6,18 @@
  */
 package jakarta.validation;
 
+import java.io.Serial;
+
 /**
- * Base exception of all Jakarta Validation "unexpected" problems.
+ * Base exception for all Jakarta Validation "unexpected" problems.
  *
  * @author Emmanuel Bernard
  */
 public class ValidationException extends RuntimeException {
+
+	@Serial
+	private static final long serialVersionUID = 5969686610069774201L;
+
 	public ValidationException(String message) {
 		super( message );
 	}
