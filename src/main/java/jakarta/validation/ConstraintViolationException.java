@@ -6,6 +6,7 @@
  */
 package jakarta.validation;
 
+import java.io.Serial;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,7 +20,10 @@ import java.util.stream.Collectors;
  */
 public class ConstraintViolationException extends ValidationException {
 
-	private final Set<ConstraintViolation<?>> constraintViolations;
+	@Serial
+	private static final long serialVersionUID = -5165623621635468818L;
+
+	private final HashSet<ConstraintViolation<?>> constraintViolations;
 
 	/**
 	 * Creates a constraint violation report.
@@ -62,7 +66,7 @@ public class ConstraintViolationException extends ValidationException {
 
 	private static String toString(Set<? extends ConstraintViolation<?>> constraintViolations) {
 		return constraintViolations.stream()
-			.map( cv -> cv == null ? "null" : cv.getPropertyPath() + ": " + cv.getMessage() )
-			.collect( Collectors.joining( ", " ) );
+				.map( cv -> cv == null ? "null" : cv.getPropertyPath() + ": " + cv.getMessage() )
+				.collect( Collectors.joining( ", " ) );
 	}
 }

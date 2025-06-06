@@ -7,6 +7,7 @@
 package jakarta.validation;
 
 import java.lang.ref.SoftReference;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -213,10 +214,10 @@ public final class Validation {
 			if ( resolver == null ) {
 
 				try {
-					U provider = validationProviderClass.newInstance();
+					U provider = validationProviderClass.getDeclaredConstructor().newInstance();
 					return provider.createSpecializedConfiguration( state );
 				}
-				catch (InstantiationException | IllegalAccessException | RuntimeException e) {
+				catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | RuntimeException e) {
 					throw new ValidationException( "Cannot instantiate provider type: " + validationProviderClass, e );
 				}
 			}
@@ -358,6 +359,7 @@ public final class Validation {
 			return validationProviderList;
 		}
 
+		@SuppressWarnings("rawtypes")
 		private List<ValidationProvider<?>> loadProviders(ClassLoader classloader) {
 			ServiceLoader<ValidationProvider> loader = ServiceLoader.load( ValidationProvider.class, classloader );
 			Iterator<ValidationProvider> providerIterator = loader.iterator();

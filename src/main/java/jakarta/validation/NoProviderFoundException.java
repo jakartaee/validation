@@ -6,6 +6,8 @@
  */
 package jakarta.validation;
 
+import java.io.Serial;
+
 /**
  * Exception raised if no Jakarta Validation provider could be found.
  *
@@ -14,6 +16,9 @@ package jakarta.validation;
  * @since 2.0
  */
 public class NoProviderFoundException extends ValidationException {
+
+	@Serial
+	private static final long serialVersionUID = -2200340693485056605L;
 
 	public NoProviderFoundException() {
 		super();
