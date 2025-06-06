@@ -79,7 +79,10 @@ import jakarta.validation.spi.ValidationProvider;
  * @author Emmanuel Bernard
  * @author Hardy Ferentschik
  */
-public class Validation {
+public final class Validation {
+
+	private Validation() {
+	}
 
 	/**
 	 * Builds and returns a {@link ValidatorFactory} instance based on the
