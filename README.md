@@ -11,7 +11,7 @@ You can learn more about it here:
 
 ## System requirements
 
-JDK 8.
+JDK 21.
 
 ## Licensing
 
@@ -21,7 +21,7 @@ Refer to [license.txt](https://github.com/jakartaee/validation/blob/master/licen
 ## Build from Source
 
 You can build the Jakarta Validation API from source by cloning the git repository https://github.com/jakartaee/validation
-You will also need a JDK 8 and Maven 3 (>= 3.0.3). With these prerequisites in place you can compile the source via:
+You will also need a JDK 21 and Maven 3 (>= 3.9.10). With these prerequisites in place you can compile the source via:
 
     mvn clean install
 
