@@ -1,12 +1,12 @@
 # Jakarta Validation API
 
-This repository contains the Jakarta Validation 3.1 API.
+This repository contains the Jakarta Validation 4.0 API.
 
 Jakarta Validation defines a metadata model and API for JavaBean and method validation.
 
 You can learn more about it here:
 * Official website: <https://beanvalidation.org/>
-* Latest draft of the spec: <https://jakarta.ee/specifications/bean-validation/3.1/jakarta-validation-spec-3.1>
+* Latest draft of the spec: <https://jakarta.ee/specifications/bean-validation/4.0/jakarta-validation-spec-4.0>
 * Reference implementation: <https://github.com/hibernate/hibernate-validator/>
 
 ## System requirements

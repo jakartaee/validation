@@ -15,7 +15,7 @@
 
     <groupId>jakarta.validation</groupId>
     <artifactId>jakarta.validation-api</artifactId>
-    <version>3.2.0-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Jakarta Validation API</name>
     <url>https://beanvalidation.org</url>
@@ -85,6 +85,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputTimestamp>2025-06-06T07:23:21Z</project.build.outputTimestamp>
     </properties>
 
     <dependencies>
@@ -153,6 +154,12 @@
                             <excludes>
                                 <exclude>module-info.java</exclude>
                             </excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <configuration>
+                            <useModulePath>false</useModulePath>
                         </configuration>
                     </execution>
                 </executions>
