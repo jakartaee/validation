@@ -28,4 +28,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build API
-      run: ./mvnw -B install --file pom.xml
+      run: |
+        EXTRA_ARGS=""
+        if [[ "${{ matrix.java }}" -lt 21 ]]; then
+          # for JDKs < 21 we should skip extra checks as those won't pass:
+          EXTRA_ARGS="-Pskip-checks"
+        fi
+        
+        ./mvnw -B install --file pom.xml $EXTRA_ARGS 
