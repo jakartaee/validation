@@ -208,9 +208,10 @@ public interface ConstraintValidatorContext {
 		 *
 		 * @param name property name
 		 * @return a builder representing node {@code name}
-		 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)},
+		 * @deprecated replaced by {@link #addPropertyNode(String)},
 		 *             {@link #addBeanNode()} and {@link #addParameterNode(int)}
 		 */
+		@Deprecated(since = "1.1", forRemoval = true)
 		NodeBuilderDefinedContext addNode(String name);
 
 		/**
@@ -407,9 +408,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
+			 * @deprecated replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
+			@Deprecated(since = "1.1", forRemoval = true)
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
@@ -505,9 +507,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
+			 * @deprecated replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
+			@Deprecated(since = "1.1", forRemoval = true)
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
@@ -601,9 +604,10 @@ public interface ConstraintValidatorContext {
 			 *
 			 * @param name property name
 			 * @return a builder representing node {@code name}
-			 * @deprecated since 1.1 - replaced by {@link #addPropertyNode(String)}
+			 * @deprecated replaced by {@link #addPropertyNode(String)}
 			 *             and {@link #addBeanNode()}
 			 */
+			@Deprecated(since = "1.1", forRemoval = true)
 			NodeBuilderCustomizableContext addNode(String name);
 
 			/**
