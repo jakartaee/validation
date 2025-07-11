@@ -3,9 +3,24 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
-
+      interval: "weekly"
+      day: "monday"
+    groups:
+      workflow-actions:
+        patterns:
+          - "*"
+    allow:
+      - dependency-name: "actions/*"
   - package-ecosystem: maven
     directory: /
     schedule:
-      interval: daily
+      interval: "weekly"
+      day: "monday"
+    groups:
+      build-dependencies:
+        patterns:
+          # Maven plugins:
+          - "*maven*plugin*"
+          - "org.apache.maven*:*"
+          # Test dependencies:
+          - "org.testng*"
