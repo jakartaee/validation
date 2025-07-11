@@ -296,8 +296,17 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration>
-                    <header>${project.basedir}/license/license.header</header>
                     <strictCheck>true</strictCheck>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>${project.basedir}/license/license.header</header>
+                            <includes>
+                                <include>**/*.java</include>
+                                <include>**/*.xml</include>
+                                <include>**/*.xsd</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
                     <headerDefinitions>
                         <headerDefinition>${project.basedir}/license/java-header-style.xml</headerDefinition>
                         <headerDefinition>${project.basedir}/license/xml-header-style.xml</headerDefinition>
@@ -307,11 +316,6 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
                         <xml>XML_FILE_STYLE</xml>
                         <xsd>XML_FILE_STYLE</xsd>
                     </mapping>
-                    <includes>
-                        <include>**/*.java</include>
-                        <include>**/*.xml</include>
-                        <include>**/*.xsd</include>
-                    </includes>
                 </configuration>
                 <executions>
                     <execution>
