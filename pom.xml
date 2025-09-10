@@ -100,6 +100,8 @@
         <version.maven-deploy-plugin>3.1.4</version.maven-deploy-plugin>
         <version.license-maven-plugin>5.0.0</version.license-maven-plugin>
         <version.enforcer.plugin>3.6.1</version.enforcer.plugin>
+        <version.maven-resources-plugin>3.3.1</version.maven-resources-plugin>
+        <version.maven-bundle-plugin>6.0.0</version.maven-bundle-plugin>
 
         <version.testng>7.11.0</version.testng>
 
@@ -118,7 +120,15 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/xsd</directory>
+                <directory>${project.basedir}/src/main/xsd</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>NOTICE.md</include>
+                    <include>license.txt</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
             </resource>
         </resources>
         <pluginManagement>
@@ -135,7 +145,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>6.0.0</version>
+                    <version>${version.maven-bundle-plugin}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -171,6 +181,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${version.enforcer.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${version.maven-resources-plugin}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -217,6 +232,10 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
