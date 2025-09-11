@@ -43,7 +43,7 @@ public class XsdValidationTest {
 	public void beforeClass() throws Exception {
 		Pattern pattern = Pattern.compile( ".+(\\d+\\.\\d+)\\.xsd" );
 
-		try ( Stream<Path> stream = Files.list( Paths.get( XsdValidationTest.this.getClass().getResource( "/validation-configuration-1.0.xsd" ).toURI() ).getParent() ) ) {
+		try ( Stream<Path> stream = Files.list( Paths.get( XsdValidationTest.this.getClass().getResource( "/META-INF/validation-configuration-1.0.xsd" ).toURI() ).getParent() ) ) {
 			stream.forEach( path -> {
 				String filename = path.getFileName().toString();
 				if ( filename.endsWith( ".xsd" ) ) {
@@ -102,41 +102,41 @@ public class XsdValidationTest {
 	@DataProvider(name = "xsd")
 	public static Object[][] xsd() {
 		return new Object[][] {
-				{ "1.0", "/validation-configuration-1.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "1.0", "/META-INF/validation-configuration-1.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"http://jboss.org/xml/ns/javax/validation/configuration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://jboss.org/xml/ns/javax/validation/configuration validation-configuration-1.0.xsd\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
-				{ "1.1", "/validation-configuration-1.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "1.1", "/META-INF/validation-configuration-1.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"http://jboss.org/xml/ns/javax/validation/configuration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://jboss.org/xml/ns/javax/validation/configuration validation-configuration-1.1.xsd\" version=\"1.1\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
-				{ "2.0", "/validation-configuration-2.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "2.0", "/META-INF/validation-configuration-2.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"http://xmlns.jcp.org/xml/ns/validation/configuration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/validation/configuration http://xmlns.jcp.org/xml/ns/validation/configuration/validation-configuration-2.0.xsd\" version=\"2.0\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
-				{ "3.0", "/validation-configuration-3.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "3.0", "/META-INF/validation-configuration-3.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"https://jakarta.ee/xml/ns/validation/configuration\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/configuration https://jakarta.ee/xml/ns/validation/validation-configuration-3.0.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"3.0\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
-				{ "3.1", "/validation-configuration-3.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "3.1", "/META-INF/validation-configuration-3.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"https://jakarta.ee/xml/ns/validation/configuration\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/configuration https://jakarta.ee/xml/ns/validation/validation-configuration-3.1.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"3.1\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
-				{ "4.0", "/validation-configuration-4.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "4.0", "/META-INF/validation-configuration-4.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<validation-config xmlns=\"https://jakarta.ee/xml/ns/validation/configuration\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/configuration https://jakarta.ee/xml/ns/validation/validation-configuration-4.0.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"4.0\"><property name=\"com.acme.validation.safetyChecking\">failOnError</property></validation-config>"
 				},
 
-				{ "1.0", "/validation-mapping-1.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "1.0", "/META-INF/validation-mapping-1.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"http://jboss.org/xml/ns/javax/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://jboss.org/xml/ns/javax/validation/mapping validation-mapping-1.0.xsd\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
-				{ "1.1", "/validation-mapping-1.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "1.1", "/META-INF/validation-mapping-1.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"http://jboss.org/xml/ns/javax/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://jboss.org/xml/ns/javax/validation/mapping validation-mapping-1.1.xsd\" version=\"1.1\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
-				{ "2.0", "/validation-mapping-2.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "2.0", "/META-INF/validation-mapping-2.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"http://xmlns.jcp.org/xml/ns/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/validation/mapping http://xmlns.jcp.org/xml/ns/validation/mapping/validation-mapping-2.0.xsd\" version=\"2.0\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
-				{ "3.0", "/validation-mapping-3.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "3.0", "/META-INF/validation-mapping-3.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"https://jakarta.ee/xml/ns/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/mapping https://jakarta.ee/xml/ns/validation/validation-mapping-3.0.xsd\" version=\"3.0\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
-				{ "3.1", "/validation-mapping-3.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "3.1", "/META-INF/validation-mapping-3.1.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"https://jakarta.ee/xml/ns/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/mapping https://jakarta.ee/xml/ns/validation/validation-mapping-3.1.xsd\" version=\"3.1\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
-				{ "4.0", "/validation-mapping-4.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				{ "4.0", "/META-INF/validation-mapping-4.0.xsd", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 						"<constraint-mappings xmlns=\"https://jakarta.ee/xml/ns/validation/mapping\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"https://jakarta.ee/xml/ns/validation/mapping https://jakarta.ee/xml/ns/validation/validation-mapping-4.0.xsd\" version=\"4.0\"><constraint-definition annotation=\"jakarta.validation.constraints.NotNull\"><validated-by><value>com.acme.SomeValidator</value></validated-by></constraint-definition></constraint-mappings>"
 				},
 		};
