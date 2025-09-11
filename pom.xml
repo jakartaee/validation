@@ -119,6 +119,7 @@
         <resources>
             <resource>
                 <directory>src/main/xsd</directory>
+                <targetPath>META-INF</targetPath>
             </resource>
         </resources>
         <pluginManagement>
