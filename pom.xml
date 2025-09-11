@@ -121,6 +121,7 @@
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/xsd</directory>
+                <targetPath>META-INF</targetPath>
             </resource>
             <resource>
                 <directory>${project.basedir}</directory>
