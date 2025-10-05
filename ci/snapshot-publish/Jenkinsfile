@@ -1,0 +1,37 @@
+/*
+ * Jakarta Validation API
+ *
+ * License: Apache License, Version 2.0
+ * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
+ */
+
+// Avoid running the pipeline on branch indexing
+if (currentBuild.getBuildCauses().toString().contains('BranchIndexingCause')) {
+	print "INFO: Build skipped due to trigger being Branch Indexing"
+	currentBuild.result = 'NOT_BUILT'
+	return
+}
+
+pipeline {
+	tools {
+		jdk 'openjdk-jdk25-latest'
+	}
+	options {
+		// Wait for 1h before publishing snapshots, in case there's more commits.
+		quietPeriod 3600
+		// In any case, never publish snapshots more than once per hour.
+		rateLimitBuilds(throttle: [count: 1, durationName: 'hour', userBoost: true])
+
+		buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
+		disableConcurrentBuilds(abortPrevious: false)
+	}
+	stages {
+		stage('Publish Snapshot to Maven Central') {
+			steps {
+				script {
+					sh "mvn clean deploy"
+				}
+			}
+		}
+	}
+}
