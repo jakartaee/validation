@@ -15,14 +15,9 @@ if (currentBuild.getBuildCauses().toString().contains('BranchIndexingCause')) {
 }
 
 pipeline {
-	agent {
-		kubernetes {
-			yaml loadOverridableResource(
-					libraryResource: 'org/eclipsefdn/container/agent.yml'
-			)
-		}
-	}
+	agent basic
 	tools {
+		maven 'apache-maven-3.9.11'
 		jdk 'openjdk-jdk25-latest'
 	}
 	options {
@@ -38,7 +33,7 @@ pipeline {
 		stage('Publish Snapshot to Maven Central') {
 			steps {
 				script {
-					sh "mvn clean deploy"
+					sh "./mvnw clean deploy"
 				}
 			}
 		}
