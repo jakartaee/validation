@@ -5,6 +5,8 @@
  * See the license.txt file in the root directory or <http://www.apache.org/licenses/LICENSE-2.0>.
  */
 
+@Library('releng-pipeline') _
+
 // Avoid running the pipeline on branch indexing
 if (currentBuild.getBuildCauses().toString().contains('BranchIndexingCause')) {
 	print "INFO: Build skipped due to trigger being Branch Indexing"
@@ -13,6 +15,13 @@ if (currentBuild.getBuildCauses().toString().contains('BranchIndexingCause')) {
 }
 
 pipeline {
+	agent {
+		kubernetes {
+			yaml loadOverridableResource(
+					libraryResource: 'org/eclipsefdn/container/agent.yml'
+			)
+		}
+	}
 	tools {
 		jdk 'openjdk-jdk25-latest'
 	}
