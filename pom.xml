@@ -282,7 +282,7 @@
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -400,6 +400,25 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
             <properties>
                 <enforcer.skip>true</enforcer.skip>
             </properties>
+        </profile>
+        <profile>
+            <id>oss-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <autoPublish>${autoPublish}</autoPublish>
+                            <deploymentName>Jakarta Validation ${project.version}-${maven.build.timestamp}</deploymentName>
+                            <publishingServerId>central</publishingServerId>
+                            <waitUntil>published</waitUntil>
+                            <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
