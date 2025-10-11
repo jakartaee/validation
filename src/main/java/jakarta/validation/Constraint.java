@@ -24,13 +24,9 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
  * <p>
  * Each constraint annotation must host the following attributes:
  * <ul>
- *     <li>{@code String message() default [...];} which should default to an error
- *     message key made of the fully-qualified class name of the constraint followed by
- *     {@code .message}. For example {@code "{com.acme.constraints.NotSafe.message}"}</li>
- *     <li>{@code Class<?>[] groups() default {};} for user to customize the targeted
- *     groups</li>
- *     <li>{@code Class<? extends Payload>[] payload() default {};} for
- *     extensibility purposes</li>
+ *     <li>{@link String}<code> message() default [...];</code> which should default to an error message key made of the fully-qualified class name of the constraint followed by <code>.message</code>. For example <code>"{com.acme.constraints.NotSafe.message}"</code></li>
+ *     <li>{@link Class}<code><?>[] groups() default {};</code> for user to customize the targeted groups</li>
+ *     <li>{@link Class}<code>&lt;? extends </code>{@link Payload}<code>&gt;[] payload() default {};</code> for extensibility purposes</li>
  * </ul>
  * <p>
  * When building a constraint that is both generic and cross-parameter, the constraint
@@ -38,18 +34,18 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
  * A constraint is generic if it targets the annotated element and is cross-parameter if
  * it targets the array of parameters of a method or constructor.
  * <pre>
- *     ConstraintTarget validationAppliesTo() default ConstraintTarget.IMPLICIT;
+ *     {@link ConstraintTarget} validationAppliesTo() default {@link ConstraintTarget#IMPLICIT};
  * </pre>
  * This property allows the constraint user to choose whether the constraint
  * targets the return type of the executable or its array of parameters.
  *
  * A constraint is both generic and cross-parameter if
  * <ul>
- *     <li>two kinds of {@code ConstraintValidator}s are attached to the
+ *     <li>two kinds of {@link ConstraintValidator}s are attached to the
  *     constraint, one targeting {@link ValidationTarget#ANNOTATED_ELEMENT}
  *     and one targeting {@link ValidationTarget#PARAMETERS},</li>
- *     <li>or if a {@code ConstraintValidator} targets both
- *     {@code ANNOTATED_ELEMENT} and {@code PARAMETERS}.</li>
+ *     <li>or if a {@link ConstraintValidator} targets both
+ *     {@link ValidationTarget#ANNOTATED_ELEMENT} and {@link ValidationTarget#PARAMETERS}.</li>
  * </ul>
  *
  * Such dual constraints are rare. See {@link SupportedValidationTarget} for more info.
@@ -79,13 +75,13 @@ public @interface Constraint {
 	/**
 	 * {@link ConstraintValidator} classes implementing the constraint. The given classes
 	 * must reference distinct target types for a given {@link ValidationTarget}. If two
-	 * {@code ConstraintValidator}s refer to the same type, an exception will occur.
+	 * {@link ConstraintValidator}s refer to the same type, an exception will occur.
 	 * <p>
-	 * At most one {@code ConstraintValidator} targeting the array of parameters of
+	 * At most one {@link ConstraintValidator} targeting the array of parameters of
 	 * methods or constructors (aka cross-parameter) is accepted. If two or more
 	 * are present, an exception will occur.
 	 *
-	 * @return array of {@code ConstraintValidator} classes implementing the constraint
+	 * @return array of {@link ConstraintValidator} classes implementing the constraint
 	 */
 	Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
 }
