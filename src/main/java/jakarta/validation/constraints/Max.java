@@ -46,7 +46,7 @@ import jakarta.validation.constraints.Max.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Max {
 
 	String message() default "{jakarta.validation.constraints.Max.message}";

@@ -61,7 +61,7 @@ import jakarta.validation.constraints.Past.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Past {
 
 	String message() default "{jakarta.validation.constraints.Past.message}";

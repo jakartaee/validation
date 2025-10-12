@@ -46,7 +46,7 @@ import jakarta.validation.constraints.Min.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Min {
 
 	String message() default "{jakarta.validation.constraints.Min.message}";

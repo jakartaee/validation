@@ -33,7 +33,7 @@ import jakarta.validation.constraints.NotNull.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface NotNull {
 
 	String message() default "{jakarta.validation.constraints.NotNull.message}";

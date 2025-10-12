@@ -61,7 +61,7 @@ import jakarta.validation.constraints.Future.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Future {
 
 	String message() default "{jakarta.validation.constraints.Future.message}";
