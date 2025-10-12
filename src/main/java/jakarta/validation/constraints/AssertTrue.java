@@ -35,7 +35,7 @@ import jakarta.validation.constraints.AssertTrue.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface AssertTrue {
 
 	String message() default "{jakarta.validation.constraints.AssertTrue.message}";

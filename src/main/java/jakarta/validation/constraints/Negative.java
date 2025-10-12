@@ -44,7 +44,7 @@ import jakarta.validation.constraints.Negative.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Negative {
 
 	String message() default "{jakarta.validation.constraints.Negative.message}";

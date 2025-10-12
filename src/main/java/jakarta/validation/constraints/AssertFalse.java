@@ -35,7 +35,7 @@ import jakarta.validation.constraints.AssertFalse.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface AssertFalse {
 
 	String message() default "{jakarta.validation.constraints.AssertFalse.message}";

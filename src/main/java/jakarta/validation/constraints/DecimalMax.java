@@ -46,7 +46,7 @@ import jakarta.validation.constraints.DecimalMax.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface DecimalMax {
 
 	String message() default "{jakarta.validation.constraints.DecimalMax.message}";

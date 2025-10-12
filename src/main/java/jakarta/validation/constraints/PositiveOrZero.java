@@ -43,7 +43,7 @@ import jakarta.validation.constraints.PositiveOrZero.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface PositiveOrZero {
 
 	String message() default "{jakarta.validation.constraints.PositiveOrZero.message}";
