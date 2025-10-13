@@ -31,6 +31,7 @@ import jakarta.validation.constraints.Min.List;
  * <ul>
  *     <li>{@code BigDecimal}</li>
  *     <li>{@code BigInteger}</li>
+ *     <li>{@code CharSequence}</li>
  *     <li>{@code byte}, {@code short}, {@code int}, {@code long}, and their respective
  *     wrappers</li>
  * </ul>
