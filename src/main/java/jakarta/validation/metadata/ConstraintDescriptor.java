@@ -93,6 +93,24 @@ public interface ConstraintDescriptor<T extends Annotation> {
 	Map<String, Object> getAttributes();
 
 	/**
+	 * Returns the value of the annotation attribute.
+	 * <p>
+	 * Serves as a shortcut to {@code (V) getAttributes().get(attrName);}.
+	 * <p>
+	 * If this constraint is used as part of a composed constraint, attribute
+	 * values are reflecting the overridden attribute of the composing constraint.
+	 *
+	 * @param name the name of the constraint attribute to retrieve
+	 * @param type the class of the attribute to be returned
+	 * @return the value of a requested attribute, or {@code null} if such attribute is not defined.
+	 * @param <V> the type of the attribute to be returned
+	 * @throws ClassCastException if the actual attribute value cannot be cast to the requested type.
+	 * @see #getAttributes()
+	 * @since 4.0
+	 */
+	<V> V getAttribute(String name, Class<V> type);
+
+	/**
 	 * Return a set of composing {@link ConstraintDescriptor}s where each
 	 * descriptor describes a composing constraint. {@code ConstraintDescriptor}
 	 * instances of composing constraints reflect overridden attribute values in
