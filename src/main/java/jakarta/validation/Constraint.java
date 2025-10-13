@@ -24,9 +24,13 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
  * <p>
  * Each constraint annotation must host the following attributes:
  * <ul>
- *     <li>{@link String}<code> message() default [...];</code> which should default to an error message key made of the fully-qualified class name of the constraint followed by <code>.message</code>. For example <code>"{com.acme.constraints.NotSafe.message}"</code></li>
- *     <li>{@link Class}<code><?>[] groups() default {};</code> for user to customize the targeted groups</li>
- *     <li>{@link Class}<code>&lt;? extends </code>{@link Payload}<code>&gt;[] payload() default {};</code> for extensibility purposes</li>
+ *     <li>{@code String message() default [...];} which should default to an error
+ *     message key made of the fully-qualified class name of the constraint followed by
+ *     {@code .message}. For example {@code "{com.acme.constraints.NotSafe.message}"}</li>
+ *     <li>{@code Class<?>[] groups() default {};} for user to customize the targeted
+ *     groups</li>
+ *     <li>{@code Class<? extends Payload>[] payload() default {};} for
+ *     extensibility purposes</li>
  * </ul>
  * <p>
  * When building a constraint that is both generic and cross-parameter, the constraint
@@ -34,7 +38,7 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
  * A constraint is generic if it targets the annotated element and is cross-parameter if
  * it targets the array of parameters of a method or constructor.
  * <pre>
- *     {@link ConstraintTarget} validationAppliesTo() default {@link ConstraintTarget#IMPLICIT};
+ *     ConstraintTarget validationAppliesTo() default ConstraintTarget.IMPLICIT;
  * </pre>
  * This property allows the constraint user to choose whether the constraint
  * targets the return type of the executable or its array of parameters.
@@ -62,6 +66,9 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
  *     Class&lt;? extends Payload&gt;[] payload() default {};
  * }
  * </pre>
+ *
+ * @see Payload
+ * @see ConstraintTarget
  *
  * @author Emmanuel Bernard
  * @author Gavin King
