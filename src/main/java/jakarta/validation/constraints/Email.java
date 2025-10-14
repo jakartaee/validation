@@ -34,11 +34,11 @@ import jakarta.validation.constraints.Email.List;
  *
  * @since 2.0
  */
-@Documented
-@Constraint(validatedBy = { })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Repeatable(List.class)
+@Documented
+@Constraint
 public @interface Email {
 
 	String message() default "{jakarta.validation.constraints.Email.message}";

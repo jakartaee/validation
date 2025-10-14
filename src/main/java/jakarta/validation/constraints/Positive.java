@@ -44,7 +44,7 @@ import jakarta.validation.constraints.Positive.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Positive {
 
 	String message() default "{jakarta.validation.constraints.Positive.message}";

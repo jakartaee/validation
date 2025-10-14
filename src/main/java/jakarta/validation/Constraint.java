@@ -90,5 +90,5 @@ public @interface Constraint {
 	 *
 	 * @return array of {@link ConstraintValidator} classes implementing the constraint
 	 */
-	Class<? extends ConstraintValidator<?, ?>>[] validatedBy();
+	Class<? extends ConstraintValidator<?, ?>>[] validatedBy() default {};
 }

@@ -36,7 +36,7 @@ import jakarta.validation.constraints.Pattern.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Pattern {
 
 	/**

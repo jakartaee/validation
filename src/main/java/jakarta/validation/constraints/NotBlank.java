@@ -32,11 +32,11 @@ import jakarta.validation.constraints.NotBlank.List;
  *
  * @see Character#isWhitespace(char)
  */
-@Documented
-@Constraint(validatedBy = { })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Repeatable(List.class)
+@Documented
+@Constraint
 public @interface NotBlank {
 
 	String message() default "{jakarta.validation.constraints.NotBlank.message}";

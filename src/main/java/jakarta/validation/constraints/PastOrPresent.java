@@ -67,7 +67,7 @@ import jakarta.validation.constraints.PastOrPresent.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface PastOrPresent {
 
 	String message() default "{jakarta.validation.constraints.PastOrPresent.message}";

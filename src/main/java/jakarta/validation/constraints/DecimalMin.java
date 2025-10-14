@@ -46,7 +46,7 @@ import jakarta.validation.constraints.DecimalMin.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface DecimalMin {
 
 	String message() default "{jakarta.validation.constraints.DecimalMin.message}";

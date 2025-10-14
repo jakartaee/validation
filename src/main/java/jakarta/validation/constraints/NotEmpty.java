@@ -39,11 +39,11 @@ import jakarta.validation.constraints.NotEmpty.List;
  *
  * @since 2.0
  */
-@Documented
-@Constraint(validatedBy = { })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Repeatable(List.class)
+@Documented
+@Constraint
 public @interface NotEmpty {
 
 	String message() default "{jakarta.validation.constraints.NotEmpty.message}";

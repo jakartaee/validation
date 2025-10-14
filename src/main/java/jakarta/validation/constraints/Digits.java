@@ -43,7 +43,7 @@ import jakarta.validation.constraints.Digits.List;
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = { })
+@Constraint
 public @interface Digits {
 
 	String message() default "{jakarta.validation.constraints.Digits.message}";
