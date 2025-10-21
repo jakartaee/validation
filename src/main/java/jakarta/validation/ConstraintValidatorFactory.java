@@ -9,7 +9,8 @@ package jakarta.validation;
 /**
  * Instantiates a {@link ConstraintValidator} instance based off its class.
  * The {@code ConstraintValidatorFactory} is <b>not</b> responsible
- * for calling {@link ConstraintValidator#initialize(java.lang.annotation.Annotation)}.
+ * for initializing the instance. The validation provider calls
+ * {@link ConstraintValidator#initialize(jakarta.validation.metadata.ConstraintDescriptor, ConstraintValidatorInitializationContext)}.
  *
  * @author Dhanji R. Prasanna
  * @author Emmanuel Bernard
