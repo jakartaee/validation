@@ -90,7 +90,7 @@
         <version.java.release>17</version.java.release>
         <!-- Min required JDK/Maven versions for the build: -->
         <version.min.java>21</version.min.java>
-        <version.min.maven>3.9.11</version.min.maven>
+        <version.min.maven>3.9.12</version.min.maven>
 
         <version.maven-wrapper-plugin>3.3.4</version.maven-wrapper-plugin>
         <version.maven-compiler-plugin>3.14.1</version.maven-compiler-plugin>
