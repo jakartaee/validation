@@ -101,7 +101,7 @@
         <version.license-maven-plugin>5.0.0</version.license-maven-plugin>
         <version.enforcer.plugin>3.6.2</version.enforcer.plugin>
         <version.maven-resources-plugin>3.4.0</version.maven-resources-plugin>
-        <version.maven-bundle-plugin>6.0.0</version.maven-bundle-plugin>
+        <version.maven-bundle-plugin>6.0.2</version.maven-bundle-plugin>
         <version.flatten-maven-plugin>1.7.3</version.flatten-maven-plugin>
 
         <version.testng>7.12.0</version.testng>
