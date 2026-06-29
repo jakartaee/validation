@@ -353,6 +353,7 @@ public final class Validation {
 				validationProviderList = loadProviders( classloader );
 			}
 
+			validationProviderList = List.copyOf( validationProviderList );
 			// cache the detected providers against the classloader in which they were found
 			cacheValidationProviders( classloader, validationProviderList );
 
