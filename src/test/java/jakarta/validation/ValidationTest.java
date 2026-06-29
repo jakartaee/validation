@@ -9,7 +9,9 @@ package jakarta.validation;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertSame;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.expectThrows;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
@@ -28,12 +30,31 @@ import jakarta.validation.Validation;
 import jakarta.validation.ValidationProviderResolver;
 import jakarta.validation.ValidatorFactory;
 import jakarta.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
+import jakarta.validation.spi.BootstrapState;
 import jakarta.validation.spi.ValidationProvider;
 
 /**
  * @author Hardy Ferentschik
  */
 public class ValidationTest {
+
+	@Test
+	public void testDefaultResolverReturnsUnmodifiableProviderList() {
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		Thread.currentThread().setContextClassLoader( new CustomValidationProviderClassLoader( "-1" ) );
+		try {
+			BootstrapState bootstrapState = (BootstrapState) Validation.byDefaultProvider();
+			ValidationProviderResolver resolver = bootstrapState.getDefaultValidationProviderResolver();
+			List<ValidationProvider<?>> providers = resolver.getValidationProviders();
+
+			assertTrue( providers.get( 0 ) instanceof BarValidationProvider );
+			expectThrows( UnsupportedOperationException.class, () -> providers.remove( 0 ) );
+			assertSame( resolver.getValidationProviders(), providers );
+		}
+		finally {
+			Thread.currentThread().setContextClassLoader( contextClassLoader );
+		}
+	}
 
 	// BVAL-298
 	@Test
