@@ -25,6 +25,83 @@ import jakarta.validation.valueextraction.ValueExtractor;
 public interface Path extends Iterable<Path.Node> {
 
 	/**
+	 * Returns the number of nodes in this path.
+	 *
+	 * @return the number of nodes in this path
+	 *
+	 * @implNote The default implementation iterates through all nodes to determine the count.
+	 *          Implementations may override this method for better performance.
+	 * @since 4.0
+	 */
+	default int length() {
+		int count = 0;
+		for ( @SuppressWarnings("unused") Node node : this ) {
+			count++;
+		}
+		return count;
+	}
+
+	/**
+	 * Returns the node at the given index.
+	 *
+	 * @param index the index of the node to return
+	 * @return the node at the given index
+	 * @throws IndexOutOfBoundsException if the index is negative or greater than or equal
+	 *         to {@link #length()}
+	 *
+	 * @implNote The default implementation iterates through all nodes to determine the count.
+	 *          Implementations may override this method for better performance.
+	 * @since 4.0
+	 */
+	default Node getNode(int index) {
+		if ( index < 0 ) {
+			throw new IndexOutOfBoundsException( index );
+		}
+		int i = 0;
+		for ( Node node : this ) {
+			if ( i == index ) {
+				return node;
+			}
+			i++;
+		}
+		throw new IndexOutOfBoundsException(
+				"Index " + index + " is out of bounds for path of length " + i );
+	}
+
+	/**
+	 * Returns the first node in this path.
+	 *
+	 * @return the first node in this path
+	 * @throws IndexOutOfBoundsException if this path is empty
+	 * @implNote The default implementation delegates to {@link #getNode(int) getNode(0)}.
+	 *          Implementations may override this method for better performance.
+	 * @since 4.0
+	 */
+	default Node getRootNode() {
+		return getNode( 0 );
+	}
+
+	/**
+	 * Returns the last node in this path.
+	 *
+	 * @return the last node in this path
+	 * @throws IndexOutOfBoundsException if this path is empty
+	 * @implNote The default implementation iterates through all nodes to find the last one.
+	 * 	        Implementations may override this method for better performance.
+	 * @since 4.0
+	 */
+	default Node getLeafNode() {
+		Node last = null;
+		for ( Node node : this ) {
+			last = node;
+		}
+		if ( last == null ) {
+			throw new IndexOutOfBoundsException( "Path is empty" );
+		}
+		return last;
+	}
+
+	/**
 	 * Returns a human-readable representation of this path.
 	 * <p>
 	 * Clients should not rely on any specific structure of the returned value. Instead they
