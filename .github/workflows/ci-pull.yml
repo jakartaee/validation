@@ -19,7 +19,7 @@ jobs:
           - { name: "17", java_version_numeric: 17 }
           - { name: "21", java_version_numeric: 21 }
           - { name: "25", java_version_numeric: 25 }
-          - { name: "26-ea", java_version_numeric: 26, from: 'jdk.java.net' }
+          - { name: "26", java_version_numeric: 26 }
 
     runs-on: ubuntu-latest
 
