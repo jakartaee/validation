@@ -9,6 +9,7 @@ package jakarta.validation;
 import java.lang.annotation.Annotation;
 
 import jakarta.validation.constraintvalidation.SupportedValidationTarget;
+import jakarta.validation.metadata.ConstraintDescriptor;
 
 /**
  * Defines the logic to validate a given constraint {@code A}
@@ -33,6 +34,26 @@ import jakarta.validation.constraintvalidation.SupportedValidationTarget;
  * @author Hardy Ferentschik
  */
 public interface ConstraintValidator<A extends Annotation, T> {
+
+	/**
+	 * Initializes the validator in preparation for
+	 * {@link #isValid(Object, ConstraintValidatorContext)} calls.
+	 * The constraint annotation descriptor for a given constraint declaration is passed.
+	 * <p>
+	 * This method is guaranteed to be called before any use of this instance for validation.
+	 * <p>
+	 * The default implementation is a no-op.
+	 * <p>
+	 * Validation providers are expected to call this method only. {@code ConstraintValidator}s should implement only one of the initialize methods.
+	 * Either this one, which will be directly called by the validation provider, or the {@link #initialize(Annotation)},
+	 * which will be called through the default implementation of the current method.
+	 *
+	 * @param constraintDescriptor annotation instance for a given constraint declaration
+	 * @param context context in which the constraint is initialized
+	 */
+	default void initialize(ConstraintDescriptor<A> constraintDescriptor, ConstraintValidatorInitializationContext context) {
+		initialize( constraintDescriptor.getAnnotation() );
+	}
 
 	/**
 	 * Initializes the validator in preparation for
