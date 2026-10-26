@@ -13,6 +13,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.lang.ref.SoftReference;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -23,11 +24,8 @@ import java.util.List;
 
 import org.testng.annotations.Test;
 
-import jakarta.validation.NoProviderFoundException;
-import jakarta.validation.Validation;
-import jakarta.validation.ValidationProviderResolver;
-import jakarta.validation.ValidatorFactory;
 import jakarta.validation.NonRegisteredValidationProvider.NonRegisteredConfiguration;
+import jakarta.validation.spi.ValidationPackageOpener;
 import jakarta.validation.spi.ValidationProvider;
 
 /**
@@ -152,6 +150,40 @@ public class ValidationTest {
 				.providerResolver( new EmptyValidationProviderResolver() )
 				.configure()
 				.buildValidatorFactory();
+	}
+
+	@Test
+	public void testPackageOpenerAvailableFromBootstrapState() {
+		FooValidationProvider.latestBootstrapState = null;
+		Validation.buildDefaultValidatorFactory();
+		assertNotNull( FooValidationProvider.latestBootstrapState, "BootstrapState should have been captured" );
+
+		ValidationPackageOpener opener = FooValidationProvider.latestBootstrapState.getPackageOpener();
+		assertNotNull( opener, "ValidationPackageOpener should not be null" );
+	}
+
+	@Test
+	public void testPackageOpenerNoOpOnUnnamedModule() {
+		FooValidationProvider.latestBootstrapState = null;
+		Validation.buildDefaultValidatorFactory();
+		ValidationPackageOpener opener = FooValidationProvider.latestBootstrapState.getPackageOpener();
+
+		// In classpath mode all classes are in the unnamed module; openPackage should be a no-op
+		opener.openPackage(
+				MethodHandles.lookup(),
+				getClass().getModule(),
+				getClass().getPackageName()
+		);
+	}
+
+	@Test
+	public void testPackageOpenerAvailableFromProviderSpecificBootstrap() {
+		FooValidationProvider.latestBootstrapState = null;
+		Validation.byProvider( FooValidationProvider.class ).configure();
+		assertNotNull( FooValidationProvider.latestBootstrapState, "BootstrapState should have been captured" );
+
+		ValidationPackageOpener opener = FooValidationProvider.latestBootstrapState.getPackageOpener();
+		assertNotNull( opener, "ValidationPackageOpener should not be null for provider-specific bootstrap" );
 	}
 
 	private int countInMemoryProviders() {
