@@ -383,7 +383,7 @@ public final class Validation {
 		}
 
 		private synchronized void cacheValidationProviders(ClassLoader classLoader, List<ValidationProvider<?>> providers) {
-			providersPerClassloader.put( classLoader, new SoftReference<>( providers ) );
+			providersPerClassloader.put( classLoader, new SoftReference<>( List.copyOf(  providers ) ) );
 		}
 	}
 }
