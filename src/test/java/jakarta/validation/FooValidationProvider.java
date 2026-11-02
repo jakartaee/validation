@@ -11,16 +11,6 @@ import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.validation.BootstrapConfiguration;
-import jakarta.validation.ClockProvider;
-import jakarta.validation.Configuration;
-import jakarta.validation.ConstraintValidatorFactory;
-import jakarta.validation.MessageInterpolator;
-import jakarta.validation.ParameterNameProvider;
-import jakarta.validation.TraversableResolver;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorContext;
-import jakarta.validation.ValidatorFactory;
 import jakarta.validation.FooValidationProvider.DummyConfiguration;
 import jakarta.validation.spi.BootstrapState;
 import jakarta.validation.spi.ConfigurationState;
@@ -32,6 +22,7 @@ import jakarta.validation.valueextraction.ValueExtractor;
  */
 public class FooValidationProvider implements ValidationProvider<DummyConfiguration> {
 	public static List<SoftReference<FooValidationProvider>> createdValidationProviders = new ArrayList<>();
+	public static volatile BootstrapState latestBootstrapState;
 
 	public FooValidationProvider() {
 		createdValidationProviders.add( new SoftReference<>( this ) );
@@ -39,11 +30,13 @@ public class FooValidationProvider implements ValidationProvider<DummyConfigurat
 
 	@Override
 	public DummyConfiguration createSpecializedConfiguration(BootstrapState state) {
-		return null;
+		latestBootstrapState = state;
+		return new DummyConfiguration();
 	}
 
 	@Override
 	public DummyConfiguration createGenericConfiguration(BootstrapState state) {
+		latestBootstrapState = state;
 		return new DummyConfiguration();
 	}
 

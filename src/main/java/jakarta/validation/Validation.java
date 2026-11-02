@@ -17,7 +17,9 @@ import java.util.WeakHashMap;
 
 import jakarta.validation.bootstrap.GenericBootstrap;
 import jakarta.validation.bootstrap.ProviderSpecificBootstrap;
+import jakarta.validation.internal.ValidationPackageOpenerImpl;
 import jakarta.validation.spi.BootstrapState;
+import jakarta.validation.spi.ValidationPackageOpener;
 import jakarta.validation.spi.ValidationProvider;
 
 /**
@@ -215,6 +217,7 @@ public final class Validation {
 
 				try {
 					U provider = validationProviderClass.getDeclaredConstructor().newInstance();
+					state.providerModule = provider.getClass().getModule();
 					return provider.createSpecializedConfiguration( state );
 				}
 				catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | RuntimeException e) {
@@ -237,6 +240,7 @@ public final class Validation {
 			for ( ValidationProvider<?> provider : resolvers ) {
 				if ( validationProviderClass.isAssignableFrom( provider.getClass() ) ) {
 					ValidationProvider<T> specificProvider = validationProviderClass.cast( provider );
+					state.providerModule = specificProvider.getClass().getModule();
 					return specificProvider.createSpecializedConfiguration( state );
 
 				}
@@ -250,6 +254,7 @@ public final class Validation {
 
 		private ValidationProviderResolver resolver;
 		private ValidationProviderResolver defaultResolver;
+		private Module providerModule;
 
 		@Override
 		public GenericBootstrap providerResolver(ValidationProviderResolver resolver) {
@@ -268,6 +273,14 @@ public final class Validation {
 				defaultResolver = new DefaultValidationProviderResolver();
 			}
 			return defaultResolver;
+		}
+
+		@Override
+		public ValidationPackageOpener getPackageOpener() {
+			if ( providerModule == null || !providerModule.isNamed() ) {
+				return (providerLookup, targetModule, packageName) -> { };
+			}
+			return new ValidationPackageOpenerImpl( providerModule );
 		}
 
 		@Override
@@ -297,7 +310,9 @@ public final class Validation {
 
 			Configuration<?> config;
 			try {
-				config = resolver.getValidationProviders().get( 0 ).createGenericConfiguration( this );
+				final ValidationProvider<?> provider = resolver.getValidationProviders().get( 0 );
+				this.providerModule = provider.getClass().getModule();
+				config = provider.createGenericConfiguration( this );
 			}
 			catch ( RuntimeException re ) {
 				throw new ValidationException( "Unable to instantiate Configuration.", re );
