@@ -32,4 +32,17 @@ public interface BootstrapState {
 	 * @return default implementation of ValidationProviderResolver
 	 */
 	ValidationProviderResolver getDefaultValidationProviderResolver();
+
+	/**
+	 * Returns a {@link ValidationPackageOpener} that can relay JPMS package-opens
+	 * through the {@code jakarta.validation} module to the validation
+	 * provider module discovered during bootstrap.
+	 * <p>
+	 * In non-modular (classpath) environments, the returned opener is a
+	 * no-op and can be safely invoked without effect.
+	 *
+	 * @return a {@code ValidationPackageOpener} instance; never {@code null}
+	 * @since 4.0
+	 */
+	ValidationPackageOpener getPackageOpener();
 }
